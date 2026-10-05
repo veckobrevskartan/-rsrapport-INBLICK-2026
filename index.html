@@ -110,6 +110,8 @@
     .hormuz-map { padding: 12px; }
     #hormuz-map { width: 100%; height: min(68vh, 650px); min-height: 500px; border-radius: 5px; background: #dceaf0; }
     .hormuz-map .leaflet-container { font: 14px/1.45 var(--sans); }
+    /* Prevent the site-wide SVG sizing rules from enlarging Leaflet's tiny attribution flag. */
+    .hormuz-map .leaflet-attribution-flag { width: 12px !important; height: 8px !important; vertical-align: baseline; }
     .hormuz-map .leaflet-control-layers { font: .78rem/1.55 var(--sans); }
     .map-legend { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: -20px 0 12px; color: var(--muted); font-size: .82rem; }
     .map-legend span { display: inline-flex; align-items: center; gap: 8px; }

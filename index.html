@@ -90,6 +90,18 @@
     .source-note { color: var(--quiet); font-size: .86rem; }
     footer { padding: 28px 0 42px; border-top: 1px solid var(--line); color: var(--quiet); font-size: .82rem; }
     footer .shell { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .longform { max-width: 790px; margin-top: 30px; }
+    .longform h3 { margin: 34px 0 11px; color: var(--text); font: 400 1.5rem/1.25 var(--serif); }
+    .longform p { margin: 0 0 1.1em; color: var(--muted); font: 400 1rem/1.82 var(--serif); }
+    .longform .source-note { margin-top: 22px; color: var(--quiet); font: .84rem/1.65 var(--sans); }
+    .longform .source-note strong { color: var(--text); }
+    .citation { color: var(--gold); font: .86em var(--sans); white-space: normal; }
+    .chapter-refs { margin-top: 38px; padding-top: 20px; border-top: 1px solid var(--line); }
+    .chapter-refs h3 { margin: 0 0 12px; font: 600 .75rem var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+    .chapter-refs ol { padding-left: 1.25rem; color: var(--quiet); font: .77rem/1.7 var(--sans); }
+    .chapter-refs li { padding: 0 0 12px 4px; overflow-wrap: anywhere; }
+    .chapter-refs li::marker { color: var(--gold); }
+    .chapter-refs a { color: var(--blue); }
     @media (max-width: 850px) {
       .nav { gap: 14px; }
       .layout { grid-template-columns: 1fr; gap: 16px; padding-top: 32px; }
@@ -162,16 +174,46 @@
       </section>
 
       <section class="section" id="varldsordning" aria-labelledby="h-varldsordning">
-        <div class="section-kicker">01 · Geopolitisk ram</div>
+        <div class="section-kicker">01 · Geopolitisk ram · lägesbild 5 oktober 2026</div>
         <h2 id="h-varldsordning">Världsordning i förändring</h2>
-        <p class="section-intro">Hur stormaktskonkurrens och förändrade internationella relationer påverkar regler, institutioner och staters handlingsutrymme. Kapitlet sätter den globala ramen för rapportens övriga analyser.</p>
-        <div class="grid">
-          <article class="card"><div class="card-label">USA</div><h3>Prioriteringar och allianser</h3><p>Strategiska vägval, transatlantiska relationer och konsekvenser för Europas och Sveriges säkerhetsplanering.</p></article>
-          <article class="card"><div class="card-label">Kina</div><h3>Teknik, handel och inflytande</h3><p>Kinas globala agerande och hur ekonomiska, tekniska och säkerhetspolitiska beroenden påverkar europeiska intressen.</p></article>
-          <article class="card"><div class="card-label">Ryssland</div><h3>Krig och revisionism</h3><p>Rysslands krig mot Ukraina, militära återuppbyggnad och användning av maktmedel i Europas närområde.</p></article>
-          <article class="card"><div class="card-label">Internationella grupperingar</div><h3>BRICS och andra samarbeten</h3><p>Vad nya partnerskap faktiskt innebär, vilka intressen som förenar eller skiljer medlemmarna och hur det påverkar Europa.</p></article>
+        <p class="section-intro">Utvecklingen hittills under 2026 pekar mot en omförhandling av ansvar, inflytande och regler inom den internationella ordningen. För Sverige blir följderna tydligast i mötet mellan den transatlantiska säkerhetsgarantin, Europas ökade ansvar och framväxten av fler forum där stater driver konkurrerande reformkrav.</p>
+
+        <div class="longform">
+          <p>Det går ännu inte att slå fast att en ny världsordning har ersatt den efter kalla kriget etablerade ordningen. De tillgängliga beläggen visar i stället en dragkamp inom och mellan befintliga institutioner. USA omprioriterar sitt försvar och kräver större insatser från partnerländer. Nato bekräftar samtidigt artikel 5, medan de europeiska allierade och Kanada tar ett större ansvar för försvaret. BRICS-länderna använder ett växande samarbetsforum för att driva förändringar i global styrning och utveckla praktiskt samarbete inom bland annat betalningar och digital infrastruktur. Sammantaget tyder detta på en ordning där institutionerna består, men där makt, kostnader och förhandlingspositioner omfördelas <a class="citation" href="#ref-us-nds">(U.S. Department of War, 2026)</a> <a class="citation" href="#ref-nato">(Nato, 2026)</a> <a class="citation" href="#ref-brics">(BRICS, 2026)</a>.</p>
+
+          <h3>USA och den transatlantiska relationen</h3>
+          <p>USA:s nationella försvarsstrategi för 2026 anger fyra huvudlinjer: försvar av hemlandet, avskräckning av Kina, större ansvar för allierade och partner samt en starkare amerikansk försvarsindustri. Strategin betonar också militär och kommersiell tillgång till strategisk terräng i västra halvklotet, däribland Grönland och Panamakanalen. För Europa är innebörden inte ett formellt amerikanskt utträde ur Nato. Den är att Washington tydligare kopplar sitt stöd till prioriteringar närmare det egna territoriet och till att allierade själva stärker sin förmåga <a class="citation" href="#ref-us-nds">(U.S. Department of War, 2026)</a>.</p>
+          <p>Natos toppmöte i Ankara i juli visade samtidigt att den kollektiva försvarsgarantin fortsatt bekräftas politiskt. Ledarna slog fast sitt åtagande enligt artikel 5 och beskrev det transatlantiska bandet som bestående. Deklarationen uppgav också att europeiska allierade och Kanada ökade sina investeringar i centrala försvarsförmågor med mer än 139 miljarder amerikanska dollar under 2025. De åtog sig att finansiera huvuddelen av stödet till Ukraina och utlovade 70 miljarder euro i militär materiel, stöd och utbildning för 2026, med minst motsvarande nivå för 2027 <a class="citation" href="#ref-nato">(Nato, 2026)</a>.</p>
+          <p>Detta är två samtidiga utvecklingar: den formella garantin består, medan den praktiska ansvarsfördelningen förändras. Natos deklaration redovisar politiska åtaganden och investeringar, men visar inte i sig att alla förmågebrister är åtgärdade eller att utlovat stöd redan har levererats. Den skillnaden blir viktig när Sveriges och Europas handlingsutrymme bedöms.</p>
+
+          <h3>Kina och kampen om internationellt inflytande</h3>
+          <p>Stormaktskonkurrens handlar också om hur stater uppfattas som partner och om deras anspråk på inflytande. I Pew Research Centers undersökning 2026 hade Kina en mer positiv bedömning än USA i de flesta av de 36 länder som ingick. Intervjuerna omfattade 42&nbsp;151 personer och genomfördes mellan februari och maj. I Sverige svarade endast åtta procent att USA i utrikespolitiken tar hänsyn till länder som Sveriges intressen <a class="citation" href="#ref-pew-china">(Pew Research Center, 2026a)</a> <a class="citation" href="#ref-pew-us">(Pew Research Center, 2026b)</a>.</p>
+          <p>Opinionsmätningen visar en förändring i internationell uppfattning, inte en förskjutning av Sveriges säkerhetspolitiska orientering eller ett bevis på att Kina betraktas som en mer pålitlig partner i alla frågor. Den bör läsas tillsammans med andra mått på diplomatiskt inflytande, handel, teknikberoenden och konkreta statliga beslut. För rapportens fortsatta analys är den ändå relevant: upplevd legitimitet påverkar hur attraktivt ett lands ledarskap och dess internationella förslag framstår.</p>
+
+          <h3>BRICS och reformkrav på den globala ordningen</h3>
+          <p>New Delhi-deklarationen från BRICS-toppmötet i september förespråkar större inflytande för tillväxt- och utvecklingsekonomier i FN, Internationella valutafonden, Världsbanken och Världshandelsorganisationen. Dokumentet beskriver multipolaritet som ett mål och motsätter sig ensidiga sanktioner som inte beslutats av FN:s säkerhetsråd. Det ger också BRICS arbetsgrupp för betalningar i uppdrag att söka lösningar för effektivare gränsöverskridande betalningar; deklarationen nämner diskussioner om avräkning och investeringar i medlemsländernas egna valutor <a class="citation" href="#ref-brics">(BRICS, 2026)</a>.</p>
+          <p>Deklarationen belägger en gemensam reformagenda på vissa områden, men inte att BRICS fungerar som en enhetlig politisk eller militär allians. Betalningsarbetet är ett utvecklingsspår, inte ett beslut om en gemensam valuta eller om att ersätta dollarn. Vår bedömning är därför att BRICS främst bör analyseras som ett forum där medlemsländer kan samordna krav och utveckla praktiska samarbeten, samtidigt som deras nationella intressen och relationer med väst skiljer sig åt.</p>
+
+          <h3>Den politiska ordningens inre utveckling</h3>
+          <p>Den internationella konkurrensen utspelar sig också mellan olika styrelseskick och politiska modeller. V-Dem klassificerade vid utgången av 2025 92 länder som autokratier och 87 som demokratier; enligt rapportens beräkningar levde 74 procent av världens befolkning i autokratier. Det är en regimklassificering byggd på V-Dems metod och mått, inte en karta över vilka stater som samarbetar eller står mot varandra. Den ger ändå en viktig bakgrund till att legitimitet, politiska rättigheter och definitionen av en regelbaserad ordning blivit omstridda frågor <a class="citation" href="#ref-vdem">(Nord et al., 2026)</a>.</p>
+
+          <h3>Preliminär analytisk bedömning</h3>
+          <p>Med underlag till och med den 5 oktober framträder tre förhållanden. För det första kvarstår Nato som den grundläggande institutionella ramen för Europas kollektiva försvar, men Europas och Kanadas ansvar ökar. För det andra söker fler stater större inflytande i befintliga globala institutioner och bygger kompletterande samarbetsformer; det är inte i sig belägg för att en sammanhållen ersättningsordning redan finns. För det tredje är USA:s fortsatta roll i Europa både en militär och politisk fråga: åtagandena består, men amerikanska prioriteringar och förtroendet för USA förändras. För Sverige innebär detta att alliansens löften, faktisk förmågeutveckling och politisk uthållighet behöver följas var för sig.</p>
+
+          <p class="source-note"><strong>Avgränsning:</strong> Detta är en delårsbedömning, inte rapportens slutsats om 2026 som helhet. Utvecklingen under oktober–december och genomförandet av beslut och utfästelser ska följas upp före slutversionen.</p>
+
+          <div class="chapter-refs" aria-labelledby="refs-varldsordning">
+            <h3 id="refs-varldsordning">Referenser</h3>
+            <ol>
+              <li id="ref-brics">BRICS. (2026, 12 september). <em>BRICS New Delhi Declaration: Building for Resilience, Innovation, Cooperation and Sustainability.</em> Prime Minister’s Office, Government of India. <a href="https://www.pmindia.gov.in/en/news_updates/brics-new-delhi-declaration-building-for-resilience-innovation-cooperation-and-sustainability-september-12-2026/?comment=disable" target="_blank" rel="noopener">https://www.pmindia.gov.in/en/news_updates/brics-new-delhi-declaration-building-for-resilience-innovation-cooperation-and-sustainability-september-12-2026/</a></li>
+              <li id="ref-nato">Nato. (2026, 8 juli). <em>The Ankara Summit Declaration.</em> <a href="https://www.nato.int/en/about-us/official-texts-and-resources/official-texts/2026/07/08/the-ankara-summit-declaration" target="_blank" rel="noopener">https://www.nato.int/en/about-us/official-texts-and-resources/official-texts/2026/07/08/the-ankara-summit-declaration</a></li>
+              <li id="ref-pew-china">Pew Research Center. (2026a, 15 juli). <em>People in many countries now view China more positively than the U.S.</em> <a href="https://www.pewresearch.org/global/2026/07/15/people-in-many-countries-now-view-china-more-positively-than-the-u-s/" target="_blank" rel="noopener">https://www.pewresearch.org/global/2026/07/15/people-in-many-countries-now-view-china-more-positively-than-the-u-s/</a></li>
+              <li id="ref-pew-us">Pew Research Center. (2026b, 23 juni). <em>Trump gets negative reviews internationally as fewer say U.S. is a reliable partner.</em> <a href="https://www.pewresearch.org/global/2026/06/23/trump-gets-negative-reviews-internationally-as-fewer-say-u-s-is-a-reliable-partner/" target="_blank" rel="noopener">https://www.pewresearch.org/global/2026/06/23/trump-gets-negative-reviews-internationally-as-fewer-say-u-s-is-a-reliable-partner/</a></li>
+              <li id="ref-us-nds">U.S. Department of War. (2026, 23 januari). <em>2026 National Defense Strategy.</em> <a href="https://media.defense.gov/2026/Jan/23/2003864773/-1/-1/0/2026-NATIONAL-DEFENSE-STRATEGY.PDF" target="_blank" rel="noopener">https://media.defense.gov/2026/Jan/23/2003864773/-1/-1/0/2026-NATIONAL-DEFENSE-STRATEGY.PDF</a></li>
+              <li id="ref-vdem">Nord, M., Altman, D., Fernandes, T., Good God, A., &amp; Lindberg, S. I. (2026). <em>Democracy Report 2026: Unraveling the Democratic Era?</em> University of Gothenburg, V-Dem Institute. <a href="https://www.v-dem.net/documents/75/V-Dem_Institute_Democracy_Report_2026_lowres.pdf" target="_blank" rel="noopener">https://www.v-dem.net/documents/75/V-Dem_Institute_Democracy_Report_2026_lowres.pdf</a></li>
+            </ol>
+          </div>
         </div>
-        <div class="analysis-chain"><strong>Analyskedja</strong><p>Global utveckling → Europas och Nordens läge → svenska intressen, beroenden och handlingsutrymme.</p></div>
       </section>
 
       <section class="section" id="sakerhetslage" aria-labelledby="h-sakerhetslage">

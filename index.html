@@ -107,6 +107,19 @@
     .order-map .synthesis { fill: #e5c85d; font: 700 21px var(--sans); letter-spacing: .04em; }
     .order-map .supra { fill: #b8973a; font: 700 13px var(--sans); letter-spacing: .15em; }
     @media (max-width: 560px) { .order-map { padding: 12px; margin-inline: -4px; } .order-map figcaption { font-size: .76rem; } }
+    .hormuz-map { padding: 12px; }
+    #hormuz-map { width: 100%; height: min(68vh, 650px); min-height: 500px; border-radius: 5px; background: #dceaf0; }
+    .hormuz-map .leaflet-container { font: 14px/1.45 var(--sans); }
+    .hormuz-map .leaflet-control-layers { font: .78rem/1.55 var(--sans); }
+    .map-legend { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: -20px 0 12px; color: var(--muted); font-size: .82rem; }
+    .map-legend span { display: inline-flex; align-items: center; gap: 8px; }
+    .legend-line { display: inline-block; width: 28px; border-top: 4px solid; }
+    .legend-sea { border-color: #c45b2d; border-top-style: dashed; }
+    .legend-eastwest { border-color: #087e75; }
+    .legend-adcop { border-color: #6657a8; }
+    .legend-zone { display: inline-block; width: 16px; height: 16px; border: 2px dashed #b83232; border-radius: 50%; background: rgba(220,82,82,.18); }
+    @media (max-width: 560px) { #hormuz-map { height: 58vh; min-height: 430px; } .map-legend { margin-top: -20px; gap: 8px 14px; } }
+
     .chapter-refs { margin-top: 38px; padding-top: 20px; border-top: 1px solid var(--line); }
     .chapter-refs h3 { margin: 0 0 12px; font: 600 .75rem var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
     .chapter-refs ol { padding-left: 1.25rem; color: var(--quiet); font: .77rem/1.7 var(--sans); }
@@ -137,6 +150,7 @@
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
   </style>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
   <div class="site-watermark" aria-hidden="true"></div>
@@ -305,91 +319,74 @@
           <p>För Sverige är kopplingen till Arktis konkret: norra Sverige ingår i ett större nordiskt område för militär rörlighet, energiförsörjning och kritiska råvaror. Möjligheten att ta emot, förflytta och försörja allierade styrkor beror på fungerande vägar, järnvägar, hamnar, flygbaser och kommunikationer. Övningar prövar delar av detta under begränsade förhållanden, medan den nordiska transportberedskapsplaneringen beskriver de strukturella flaskhalsarna. Därför bör utvecklingen bedömas genom både militär närvaro och den civila infrastruktur som gör närvaron uthållig.</p>
 
           <h3>Hormuz: när regional konflikt blir transport- och energirisk</h3>
-          <figure class="order-map hormuz-map" aria-label="Karta över Hormuzsundet och oljeledningar till exporthamnar utanför sundet">
-            <svg viewBox="0 0 1000 640" role="img" aria-labelledby="hormuz-title hormuz-desc">
-              <title id="hormuz-title">Hormuzsundet och alternativa oljevägar genom Saudiarabien och Förenade arabemiraten</title>
-              <desc id="hormuz-desc">Schematisk nordvänd karta med Iran norr om Persiska viken och Arabiska halvön söder om viken. Den streckade sjövägen går genom Hormuzsundet. Saudiarabiens East–West Pipeline går från Persiska viken västerut till Yanbu vid Röda havet. En markering visar rapporterade skador på tre pumpstationer i september 2026. UAE:s ADCOP-ledning går från Abu Dhabi till Fujairah vid Omanbukten.</desc>
-              <defs>
-                <marker id="map-arrow-sea" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#bb572f"/></marker>
-                <marker id="map-arrow-pipe" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#087e75"/></marker>
-                <marker id="map-arrow-adcop" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#6657a8"/></marker>
-              </defs>
-              <rect width="1000" height="640" rx="8" fill="#dceaf0"/>
-              <g stroke="#b7d0da" stroke-width="1">
-                <path d="M0 160H1000M0 320H1000M0 480H1000"/>
-                <path d="M250 0V510M500 0V510M750 0V510"/>
-              </g>
-              <g fill="#33738c" font-family="var(--sans)" font-size="16" font-style="italic">
-                <text x="43" y="204">Röda havet</text>
-                <text x="613" y="210">Persiska viken</text>
-                <text x="823" y="346">Omanbukten</text>
-                <text x="842" y="467">Arabiska havet</text>
-              </g>
-              <path d="M355 65 L450 43 L559 58 L623 94 L680 116 L732 136 L766 158 L786 176 L820 187 L847 207 L875 221 L898 244 L909 275 L891 299 L870 315 L858 344 L837 367 L819 405 L790 436 L753 449 L710 436 L670 407 L625 410 L575 431 L522 450 L473 448 L425 426 L383 400 L351 362 L330 324 L312 282 L316 241 L302 204 L313 163 L322 116 Z"
-                    fill="#eadfca" stroke="#827c69" stroke-width="2.5"/>
-              <path d="M493 29 L955 29 L955 79 L935 107 L920 137 L895 158 L862 171 L828 184 L802 183 L785 168 L758 159 L737 145 L709 144 L685 125 L650 121 L623 99 L590 93 L559 70 L520 57 Z"
-                    fill="#dfd1b7" stroke="#827c69" stroke-width="2.5"/>
-              <path d="M739 158 L766 158 L786 176 L802 184 L820 187 L830 205 L816 218 L799 220 L787 207 L773 197 L755 190 Z"
-                    fill="#e5dac4" stroke="#827c69" stroke-width="2"/>
-              <g fill="#34404a" font-family="var(--sans)" font-size="19" font-weight="700">
-                <text x="622" y="83">IRAN</text>
-                <text x="458" y="359">SAUDIARABIEN</text>
-                <text x="748" y="276" font-size="15">FÖRENADE</text>
-                <text x="748" y="295" font-size="15">ARABEMIRATEN</text>
-                <text x="831" y="390" font-size="16">OMAN</text>
-              </g>
-              <g fill="#fff" stroke="#74818a" stroke-width="1.5">
-                <circle cx="666" cy="224" r="6"/><circle cx="467" cy="239" r="6"/>
-                <circle cx="317" cy="255" r="6"/><circle cx="757" cy="246" r="6"/>
-                <circle cx="825" cy="232" r="6"/><circle cx="228" cy="292" r="6"/>
-              </g>
-              <g fill="#263944" font-family="var(--sans)" font-size="14">
-                <text x="674" y="220">Ras Tanura</text>
-                <text x="473" y="233">Riyadh</text>
-                <text x="321" y="250">Medina</text>
-                <text x="764" y="241">Abu Dhabi</text>
-                <text x="832" y="228">Fujairah</text>
-                <text x="185" y="315">Yanbu</text>
-              </g>
-              <path d="M666 224 C590 226 520 231 467 239 S356 251 317 255 S260 272 228 292"
-                    fill="none" stroke="#087e75" stroke-width="8" stroke-linecap="round" marker-end="url(#map-arrow-pipe)"/>
-              <path d="M666 224 C590 226 520 231 467 239 S356 251 317 255 S260 272 228 292"
-                    fill="none" stroke="#d7fff7" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 12"/>
-              <rect x="366" y="177" width="267" height="41" rx="6" fill="#f6fffc" stroke="#087e75" stroke-width="1.5"/>
-              <text x="381" y="194" fill="#075f59" font-family="var(--sans)" font-size="14" font-weight="700">EAST–WEST PIPELINE</text>
-              <text x="381" y="210" fill="#34404a" font-family="var(--sans)" font-size="12">Ras Tanura → Yanbu · export via Röda havet</text>
-              <g fill="#c63c35" stroke="#fff" stroke-width="2">
-                <circle cx="421" cy="244" r="9"/><circle cx="411" cy="251" r="5"/><circle cx="432" cy="253" r="5"/>
-              </g>
-              <path d="M419 256 L390 289" fill="none" stroke="#b63331" stroke-width="2"/>
-              <rect x="258" y="286" width="257" height="48" rx="6" fill="#fff9f4" stroke="#c63c35" stroke-width="1.5"/>
-              <text x="271" y="306" fill="#a12626" font-family="var(--sans)" font-size="13" font-weight="700">ATTACK · 11 SEPTEMBER 2026</text>
-              <text x="271" y="324" fill="#34404a" font-family="var(--sans)" font-size="12">tre pumpstationer skadades längs ledningen</text>
-              <path d="M757 246 C782 239 805 235 825 232" fill="none" stroke="#6657a8" stroke-width="7" stroke-linecap="round" marker-end="url(#map-arrow-adcop)"/>
-              <rect x="657" y="305" width="236" height="43" rx="6" fill="#fbfaff" stroke="#6657a8" stroke-width="1.5"/>
-              <text x="670" y="323" fill="#4f4386" font-family="var(--sans)" font-size="14" font-weight="700">ADCOP · UAE</text>
-              <text x="670" y="340" fill="#34404a" font-family="var(--sans)" font-size="12">Abu Dhabi → Fujairah</text>
-              <path d="M665 183 C713 180 755 182 786 195 L802 211 L821 229 C837 254 850 282 873 311 L926 362"
-                    fill="none" stroke="#bb572f" stroke-width="6" stroke-dasharray="13 9" marker-end="url(#map-arrow-sea)"/>
-              <rect x="741" y="105" width="222" height="45" rx="6" fill="#fffaf7" stroke="#bb572f" stroke-width="1.5"/>
-              <text x="755" y="125" fill="#963d20" font-family="var(--sans)" font-size="14" font-weight="700">SJÖTRANSPORT</text>
-              <text x="755" y="141" fill="#34404a" font-family="var(--sans)" font-size="12">via Hormuzsundet</text>
-              <path d="M804 211 L817 222 L808 233 L795 222 Z" fill="#bb572f" stroke="#fff" stroke-width="2"/>
-              <path d="M828 195 L832 209" stroke="#963d20" stroke-width="1.5"/>
-              <text x="838" y="190" fill="#963d20" font-family="var(--sans)" font-size="14" font-weight="700">HORMUZ</text>
-              <rect x="24" y="500" width="952" height="110" rx="8" fill="#f7fafb" stroke="#98b2bd" stroke-width="1.5"/>
-              <text x="45" y="527" fill="#263944" font-family="var(--sans)" font-size="14" font-weight="700">TECKENFÖRKLARING</text>
-              <path d="M45 552H126" stroke="#bb572f" stroke-width="5" stroke-dasharray="13 9" marker-end="url(#map-arrow-sea)"/>
-              <text x="142" y="557" fill="#263944" font-family="var(--sans)" font-size="13">sjöväg genom sundet</text>
-              <path d="M362 552H443" stroke="#087e75" stroke-width="7" marker-end="url(#map-arrow-pipe)"/>
-              <text x="459" y="557" fill="#263944" font-family="var(--sans)" font-size="13">East–West Pipeline</text>
-              <path d="M665 552H746" stroke="#6657a8" stroke-width="7" marker-end="url(#map-arrow-adcop)"/>
-              <text x="761" y="557" fill="#263944" font-family="var(--sans)" font-size="13">ADCOP</text>
-              <circle cx="62" cy="583" r="7" fill="#c63c35" stroke="#fff" stroke-width="2"/>
-              <text x="80" y="588" fill="#263944" font-family="var(--sans)" font-size="12">skadeplats enligt rapportering; kartmarkeringen är ungefärlig</text>
-              <text x="636" y="588" fill="#52636c" font-family="var(--sans)" font-size="12">Schematisk karta, ej skalenlig.</text>
-            </svg>
+          <figure class="order-map hormuz-map" aria-label="Interaktiv OpenStreetMap över Hormuzsundet och alternativa oljevägar">
+            <div id="hormuz-map" role="region" aria-label="Karta över Persiska viken, Hormuzsundet, Omanbukten, Saudiarabien och Förenade arabemiraten"></div>
+            <noscript><p>Kartan kräver JavaScript. Textavsnittet nedan beskriver sjövägen genom Hormuz och oljeledningarna till Yanbu och Fujairah.</p></noscript>
           </figure>
+          <div class="map-legend" aria-label="Kartans teckenförklaring">
+            <span><i class="legend-line legend-sea"></i>Sjöväg genom Hormuz</span>
+            <span><i class="legend-line legend-eastwest"></i>Saudiarabiens East–West Pipeline</span>
+            <span><i class="legend-line legend-adcop"></i>UAE:s ADCOP-ledning</span>
+            <span><i class="legend-zone"></i>Rapporterade skadeområden, ungefärliga</span>
+          </div>
+          <p class="source-note">Kartunderlag: © OpenStreetMap contributors. Ledningarnas sträckning är schematisk; skaderapporteringen anger områden, inte exakta pumpstationskoordinater. Klicka på markörer och linjer för källor och detaljer.</p>
+          <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+          <script>
+            (function () {
+              const mapNode = document.getElementById("hormuz-map");
+              if (!mapNode || !window.L) return;
+              const map = L.map(mapNode, { scrollWheelZoom: false }).fitBounds([[14.0, 35.5], [30.5, 60.5]], { padding: [14, 14] });
+              L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                maxZoom: 19,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+              }).addTo(map);
+
+              const sea = L.layerGroup().addTo(map);
+              const eastWest = L.layerGroup().addTo(map);
+              const adcop = L.layerGroup().addTo(map);
+              const damage = L.layerGroup().addTo(map);
+              const popupLink = (url, label) => '<a href="' + url + '" target="_blank" rel="noopener">' + label + '</a>';
+
+              const seaRoute = [[26.55,50.15],[26.35,51.5],[26.25,53.2],[26.35,54.8],[26.55,56.25],[26.05,57.25],[25.2,58.5],[23.7,60.0]];
+              L.polyline(seaRoute, { color:"#c45b2d", weight:5, opacity:.9, dashArray:"12 9" })
+                .bindPopup("Schematisk sjöväg från Persiska viken genom Hormuzsundet till Omanbukten och vidare mot Arabiska havet. Linjen visar en korridor, inte en faktisk fartygsrutt.")
+                .bindTooltip("Sjötransport genom Hormuz").addTo(sea);
+              L.circleMarker([26.57,56.25], { radius:8, color:"#9b3f20", weight:2, fillColor:"#e27a46", fillOpacity:.95 })
+                .bindPopup("Hormuzsundet<br>Förbinder Persiska viken med Omanbukten.")
+                .bindTooltip("Hormuzsundet").addTo(sea);
+
+              const eastWestRoute = [[25.94,49.67],[25.45,48.2],[24.75,46.72],[24.55,44.8],[24.48,42.5],[24.45,40.2],[24.09,38.06]];
+              L.polyline(eastWestRoute, { color:"#087e75", weight:6, opacity:.95 })
+                .bindPopup("Saudiarabiens East–West Pipeline (Petroline), schematiskt ritad från Abqaiq till Yanbu. " + popupLink("https://www.reuters.com/business/energy/saudi-arabia-restarts-east-west-oil-pipeline-resume-exports-yanbu-sources-say-2026-09-22/","Reuters om återstart och export via Yanbu") + ".")
+                .bindTooltip("East–West Pipeline · Abqaiq–Yanbu").addTo(eastWest);
+              L.marker([25.94,49.67]).bindPopup("Abqaiq<br>Östra startområdet för East–West Pipeline.").addTo(eastWest);
+              L.marker([24.09,38.06]).bindPopup("Yanbu<br>Exporthamn vid Röda havet; alternativ till utskeppning genom Hormuz.").addTo(eastWest);
+
+              const adcopRoute = [[23.45,53.5],[23.9,54.35],[24.45,55.2],[25.12,56.34]];
+              L.polyline(adcopRoute, { color:"#6657a8", weight:6, opacity:.95 })
+                .bindPopup("UAE:s ADCOP-ledning går från Abu Dhabi/Habshan till exportterminalen vid Fujairah, utanför Hormuzsundet. Sträckningen visas schematiskt. " + popupLink("https://adnoc.ae/en/adnoc-pipelines/about-us/who-we-are","ADNOC om ledningen och exportterminalen") + ".")
+                .bindTooltip("ADCOP · Abu Dhabi–Fujairah").addTo(adcop);
+              L.marker([23.45,53.5]).bindPopup("Habshan / Abu Dhabi-området<br>ADCOP-ledningens västra ände.").addTo(adcop);
+              L.marker([25.12,56.34]).bindPopup("Fujairah<br>Exportterminal vid Omanbukten, öster om Hormuzsundet.").addTo(adcop);
+
+              const damageStyle = { color:"#b83232", weight:2, fillColor:"#dc5252", fillOpacity:.18, dashArray:"7 6" };
+              L.circle([24.75,46.72], Object.assign({ radius:65000 }, damageStyle))
+                .bindPopup("Rapporterade skador på pumpstationer i Riyadh-regionen. Cirkeln visar ett ungefärligt område, inte stationernas exakta lägen. " + popupLink("https://www.reuters.com/business/energy/three-pumping-stations-along-saudi-east-west-pipeline-were-hit-recent-attack-2026-09-17/","Reuters rapportering om tre skadade pumpstationer") + ".")
+                .bindTooltip("Rapporterat skadeområde · ungefärligt").addTo(damage);
+              L.circle([24.45,39.61], Object.assign({ radius:65000 }, damageStyle))
+                .bindPopup("Rapporterade skador på pumpstationer i Medina-regionen. Cirkeln visar ett ungefärligt område, inte stationernas exakta lägen. " + popupLink("https://www.reuters.com/business/energy/three-pumping-stations-along-saudi-east-west-pipeline-were-hit-recent-attack-2026-09-17/","Reuters rapportering om tre skadade pumpstationer") + ".")
+                .bindTooltip("Rapporterat skadeområde · ungefärligt").addTo(damage);
+
+              L.control.layers(null, {
+                "Sjöväg genom Hormuz": sea,
+                "East–West Pipeline": eastWest,
+                "ADCOP": adcop,
+                "Rapporterade skadeområden": damage
+              }, { collapsed: false }).addTo(map);
+              L.control.scale({ imperial: false }).addTo(map);
+              window.addEventListener("resize", function () { map.invalidateSize(); });
+            })();
+          </script>
           <p>Hormuzsundet är fortfarande den huvudsakliga sjövägen ut ur Persiska viken. Det finns två etablerade oljeledningar som kan föra en del av exporten till hamnar utanför sundet: Saudiarabiens East–West Pipeline till Yanbu vid Röda havet och Förenade arabemiratens ADCOP-ledning från Abu Dhabi till Fujairah vid Omanbukten. De ger alternativa exportvägar, men deras kapacitet är begränsad jämfört med normala sjöflöden och de flyttar sårbarheten till ledningar, pumpstationer och terminaler. U.S. Energy Information Administration beskriver bypass-kapaciteten som begränsad; ADNOC anger att ADCOP är omkring 406 kilometer och mynnar vid Fujairah (EIA, 2019; ADNOC, u.å.).</p>
           <p>Den alternativa vägen blev själv ett mål den 11 september. Reuters rapporterade att drönare skadade tre pumpstationer längs Saudiarabiens cirka 1&nbsp;200 kilometer långa East–West Pipeline, varefter ledningen stängdes tillfälligt av säkerhetsskäl. Saudiarabien pekade ut en attack med ursprung i Irak; ansvaret för angreppet har inte offentligt fastställts av någon grupp. Ledningen återstartades den 22 september, enligt Reuters, men attacken visade att omledning via Yanbu inte undanröjer risken för avbrott. <a href="https://www.linkedin.com/feed/update/urn:li:activity:7506623691632496640">Angreppet mot pumpstationerna och konsekvenserna för oljeleden</a> och <a href="https://www.reuters.com/business/energy/three-pumping-stations-along-saudi-east-west-pipeline-were-hit-recent-attack-2026-09-17/">satellitbilderna och skadebedömningen</a> ger belägg för skador, men inte i sig för vem som beordrade attacken (Reuters, 2026c, 2026d, 2026e).</p>
           <p>Den 4 oktober rapporterade Reuters att Irans parlamentstalman sade att sundet inte skulle öppnas förrän villkor i en tidigare överenskommelse uppfyllts. Dagen därpå beskrev Reuters både en återhämtning av Mellanösterns oljeexport under september och minst sju incidenter mot tankfartyg i början av oktober. Flödena hade delvis återhämtat sig, men fartygsrisker och komplicerade omlastningar kvarstod. Exportvolym, faktisk passage och kommersiell risk är skilda mått; läget kan därför inte beskrivas som vare sig helt normalt eller totalt stängt (Reuters, 2026a, 2026b).</p>

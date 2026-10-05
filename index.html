@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b2b">
+  <meta name="description" content="Arbetsstomme för Svensk OSINT:s årsrapport INBLICK 2026. Geopolitisk utveckling och vad den innebär för Sverige.">
+  <title>INBLICK 2026 — Årsrapport | Svensk OSINT</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #101b2b;
+      --bg-soft: #15243a;
+      --bg-card: #192a42;
+      --text: #f2f0e9;
+      --muted: #c0c8d2;
+      --quiet: #9eacbd;
+      --line: rgba(202, 216, 232, .17);
+      --gold: #d2b46f;
+      --gold-soft: rgba(210, 180, 111, .12);
+      --blue: #9bc6df;
+      --max: 1240px;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.68 var(--sans); }
+    a { color: var(--blue); text-underline-offset: .2em; }
+    a:hover { color: #d0e8f4; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+    .skip-link { position: absolute; left: 1rem; top: -5rem; z-index: 20; padding: .7rem 1rem; background: var(--gold); color: #111; }
+    .skip-link:focus { top: 1rem; }
+    .topbar { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--line); background: rgba(16,27,43,.96); backdrop-filter: blur(12px); }
+    .topbar-inner { width: min(var(--max), calc(100% - 40px)); min-height: 68px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { color: var(--text); text-decoration: none; font-size: .78rem; font-weight: 750; letter-spacing: .14em; white-space: nowrap; }
+    .brand span { color: var(--gold); }
+    .nav { display: flex; align-items: center; gap: 20px; overflow-x: auto; scrollbar-width: thin; }
+    .nav a { color: var(--muted); text-decoration: none; font-size: .78rem; white-space: nowrap; }
+    .nav a:hover { color: var(--gold); }
+    .shell { width: min(var(--max), calc(100% - 40px)); margin: auto; }
+    .hero { min-height: 520px; padding: 84px 0 72px; display: grid; align-content: center; border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
+    .hero::after { content: ""; position: absolute; width: 420px; height: 420px; border: 1px solid rgba(210,180,111,.2); border-radius: 50%; right: 2%; top: 8%; box-shadow: 0 0 0 48px rgba(210,180,111,.025), 0 0 0 96px rgba(210,180,111,.018); pointer-events: none; }
+    .eyebrow { color: var(--gold); font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
+    h1 { max-width: 900px; margin: 20px 0 18px; font-size: clamp(3rem, 8vw, 6.6rem); letter-spacing: -.035em; }
+    h1 em { color: var(--gold); font-weight: 400; }
+    .hero-lead { position: relative; z-index: 1; max-width: 680px; margin: 0; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.25rem); }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 32px; color: var(--quiet); font-size: .82rem; }
+    .hero-meta strong { color: var(--text); font-weight: 600; }
+    .status { display: inline-flex; align-items: center; gap: 8px; padding: 7px 11px; border: 1px solid rgba(210,180,111,.38); background: var(--gold-soft); color: #f0d89d; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
+    .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+    .layout { display: grid; grid-template-columns: 238px minmax(0, 1fr); gap: 56px; align-items: start; padding: 58px 0 100px; }
+    .toc { position: sticky; top: 94px; padding: 18px 0; border-top: 1px solid var(--line); }
+    .toc-title { margin: 0 0 14px; color: var(--gold); font-size: .7rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    .toc a { display: block; padding: 7px 0; color: var(--muted); text-decoration: none; font-size: .85rem; line-height: 1.4; }
+    .toc a:hover { color: var(--gold); }
+    main { min-width: 0; }
+    .intro { max-width: 780px; margin: 0 0 52px; color: var(--muted); font-size: 1.06rem; }
+    .intro strong { color: var(--text); }
+    .section { padding: 38px 0 44px; border-top: 1px solid var(--line); }
+    .section-kicker { margin-bottom: 12px; color: var(--gold); font-size: .7rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    h2 { margin: 0 0 18px; font-size: clamp(2rem, 4vw, 3rem); }
+    h3 { margin: 0 0 10px; font-size: 1.45rem; }
+    .section-intro { max-width: 760px; margin: 0 0 25px; color: var(--muted); }
+    .placeholder { color: var(--quiet); font-style: italic; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+    .card { min-height: 160px; padding: 22px; border: 1px solid var(--line); background: linear-gradient(145deg, rgba(25,42,66,.92), rgba(21,36,58,.72)); }
+    .card-label { margin-bottom: 10px; color: var(--gold); font-size: .69rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    .card p { margin: 0; color: var(--muted); font-size: .93rem; }
+    .analysis-chain { margin: 28px 0 0; padding: 22px 24px; border-left: 3px solid var(--gold); background: var(--gold-soft); }
+    .analysis-chain strong { display: block; margin-bottom: 5px; color: var(--gold); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
+    .analysis-chain p { margin: 0; color: var(--text); }
+    .deepdives { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; margin-top: 24px; }
+    .deepdives a { display: block; min-height: 124px; padding: 20px; border: 1px solid var(--line); color: var(--text); text-decoration: none; background: var(--bg-soft); }
+    .deepdives a:hover { border-color: var(--gold); }
+    .deepdives small { display: block; margin-bottom: 7px; color: var(--gold); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; }
+    .deepdives strong { font-family: var(--serif); font-size: 1.25rem; font-weight: 400; }
+    .assessment-list { display: grid; gap: 12px; counter-reset: assessment; }
+    .assessment { display: grid; grid-template-columns: 46px minmax(0,1fr); gap: 15px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+    .assessment::before { counter-increment: assessment; content: "0" counter(assessment); color: var(--gold); font: 1.1rem var(--serif); }
+    .assessment p { margin: 0; color: var(--muted); }
+    .method-box { padding: 24px; border: 1px solid var(--line); background: var(--bg-soft); }
+    .method-box p { margin: 0 0 12px; color: var(--muted); }
+    .method-box p:last-child { margin-bottom: 0; }
+    .source-note { color: var(--quiet); font-size: .86rem; }
+    footer { padding: 28px 0 42px; border-top: 1px solid var(--line); color: var(--quiet); font-size: .82rem; }
+    footer .shell { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    @media (max-width: 850px) {
+      .nav { gap: 14px; }
+      .layout { grid-template-columns: 1fr; gap: 16px; padding-top: 32px; }
+      .toc { position: static; display: flex; gap: 14px; overflow-x: auto; padding: 12px 0; }
+      .toc-title { display: none; }
+      .toc a { flex: 0 0 auto; }
+      .hero { min-height: 440px; padding: 64px 0; }
+      .hero::after { right: -190px; top: 25%; }
+    }
+    @media (max-width: 560px) {
+      .shell, .topbar-inner { width: min(100% - 28px, var(--max)); }
+      .topbar-inner { align-items: flex-start; flex-direction: column; justify-content: center; gap: 5px; padding: 10px 0; }
+      .nav { width: 100%; padding-bottom: 3px; }
+      .hero { min-height: 400px; }
+      .grid, .deepdives { grid-template-columns: 1fr; }
+      .card { min-height: 0; }
+      .layout { padding-bottom: 64px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#innehall">Hoppa till innehållet</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#start" aria-label="INBLICK 2026, till sidans början">INBLICK <span>／</span> 2026</a>
+      <nav class="nav" aria-label="Huvudnavigation">
+        <a href="#varldsordning">Världsordning</a>
+        <a href="#sakerhetslage">Säkerhetsläge</a>
+        <a href="#strategiska-domainer">Strategiska områden</a>
+        <a href="#sverige">Sverige</a>
+        <a href="#bedomningar">Bedömningar</a>
+        <a href="#metod">Metod</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero shell" id="start" aria-labelledby="sidtitel">
+    <div class="eyebrow">Svensk OSINT · Årsrapport</div>
+    <h1 id="sidtitel">En värld i rörelse.<br><em>Sverige i förändring.</em></h1>
+    <p class="hero-lead">En geopolitisk analys av 2026 och dess betydelse för Europa, Norden och Sveriges säkerhet. Rapporten byggs kapitel för kapitel med öppna källor och tydligt redovisade bedömningar.</p>
+    <div class="hero-meta">
+      <span class="status">Arbetsstomme · ej publicerad</span>
+      <span><strong>Analysperiod:</strong> 1 januari–31 december 2026</span>
+      <span><strong>Planerad publicering:</strong> omkring 10 februari 2027</span>
+    </div>
+  </section>
+
+  <div class="shell layout">
+    <aside class="toc" aria-label="Sidans innehåll">
+      <p class="toc-title">I rapporten</p>
+      <a href="#lasanvisning">Läsanvisning</a>
+      <a href="#varldsordning">Världsordning</a>
+      <a href="#sakerhetslage">Krig och säkerhetsläge</a>
+      <a href="#strategiska-domainer">Strategiska områden</a>
+      <a href="#sverige">Sverige</a>
+      <a href="#bedomningar">Samlad bedömning</a>
+      <a href="#metod">Metod och källor</a>
+    </aside>
+
+    <main id="innehall">
+      <section class="intro" id="lasanvisning">
+        <p><strong>Rapportens utgångspunkt är geopolitisk utveckling.</strong> Vi följer hur konkurrens mellan stater, krig, allianser, teknik och ekonomiska beroenden förändras – och analyserar hur följderna når Europa, Norden och Sverige.</p>
+        <p class="placeholder">Arbetsstomme: avsnitten nedan anger rapportens planerade innehåll. Analystext, källor och bedömningar läggs in efter separat granskning av varje del.</p>
+      </section>
+
+      <section class="section" id="varldsordning" aria-labelledby="h-varldsordning">
+        <div class="section-kicker">01 · Geopolitisk ram</div>
+        <h2 id="h-varldsordning">Världsordning i förändring</h2>
+        <p class="section-intro">Hur stormaktskonkurrens och förändrade internationella relationer påverkar regler, institutioner och staters handlingsutrymme. Kapitlet sätter den globala ramen för rapportens övriga analyser.</p>
+        <div class="grid">
+          <article class="card"><div class="card-label">USA</div><h3>Prioriteringar och allianser</h3><p>Strategiska vägval, transatlantiska relationer och konsekvenser för Europas och Sveriges säkerhetsplanering.</p></article>
+          <article class="card"><div class="card-label">Kina</div><h3>Teknik, handel och inflytande</h3><p>Kinas globala agerande och hur ekonomiska, tekniska och säkerhetspolitiska beroenden påverkar europeiska intressen.</p></article>
+          <article class="card"><div class="card-label">Ryssland</div><h3>Krig och revisionism</h3><p>Rysslands krig mot Ukraina, militära återuppbyggnad och användning av maktmedel i Europas närområde.</p></article>
+          <article class="card"><div class="card-label">Internationella grupperingar</div><h3>BRICS och andra samarbeten</h3><p>Vad nya partnerskap faktiskt innebär, vilka intressen som förenar eller skiljer medlemmarna och hur det påverkar Europa.</p></article>
+        </div>
+        <div class="analysis-chain"><strong>Analyskedja</strong><p>Global utveckling → Europas och Nordens läge → svenska intressen, beroenden och handlingsutrymme.</p></div>
+      </section>
+
+      <section class="section" id="sakerhetslage" aria-labelledby="h-sakerhetslage">
+        <div class="section-kicker">02 · Geografi och konflikter</div>
+        <h2 id="h-sakerhetslage">Krig och säkerhet i Europas närområde</h2>
+        <p class="section-intro">Utvecklingen i och omkring Europa analyseras i relation till stormakternas mål, den europeiska säkerhetsordningen och Sveriges geografiska läge.</p>
+        <div class="grid">
+          <article class="card"><div class="card-label">Ukraina</div><h3>Krigets militära och politiska följder</h3><p>Förlopp, stöd, förhandlingar och möjliga följder för europeisk säkerhet och svensk politik.</p></article>
+          <article class="card"><div class="card-label">Norden och Östersjön</div><h3>Avskräckning och regionalt samarbete</h3><p>Nato, nordiskt-baltiskt samarbete, militär rörlighet och säkerheten kring Östersjön.</p></article>
+          <article class="card"><div class="card-label">Arktis</div><h3>Strategisk konkurrens i norr</h3><p>Militär närvaro, sjöleder, råvaror, forskning och infrastruktur med betydelse för Norden.</p></article>
+          <article class="card"><div class="card-label">Konflikter och transportleder</div><h3>Globala chocker med europeisk räckvidd</h3><p>Mellanöstern och andra konflikter följs där de påverkar energi, handel, diplomati eller säkerhet i Europa.</p></article>
+        </div>
+      </section>
+
+      <section class="section" id="strategiska-domainer" aria-labelledby="h-strategiska-domainer">
+        <div class="section-kicker">03 · Gränsöverskridande utveckling</div>
+        <h2 id="h-strategiska-domainer">Teknik, information och strategiska beroenden</h2>
+        <p class="section-intro">Här följer vi hur geopolitisk konkurrens omsätts i praktiken – genom teknik, informationsmiljöer, ekonomiska relationer och sårbar infrastruktur.</p>
+        <div class="grid">
+          <article class="card"><div class="card-label">Informationsmiljö</div><h3>Påverkan och demokratisk motståndskraft</h3><p>Utländska påverkansförsök, informationsoperationer och deras dokumenterade uttryck i Europa och Sverige.</p></article>
+          <article class="card"><div class="card-label">Rymd och satelliter</div><h3>Förmåga och beroenden</h3><p>Satellitkommunikation, övervakning och positionering som säkerhetsresurser och möjliga sårbarheter.</p></article>
+          <article class="card"><div class="card-label">Digitala system</div><h3>Cyber och teknikberoenden</h3><p>Cyberhot, plattformar, AI och kontroll över teknisk infrastruktur med betydelse för europeisk och svensk säkerhet.</p></article>
+          <article class="card"><div class="card-label">Ekonomi och försörjning</div><h3>Handel, sanktioner och leveranskedjor</h3><p>Hur konkurrens, sanktioner och koncentrerade beroenden påverkar europeisk motståndskraft och svensk försörjning.</p></article>
+        </div>
+        <div class="deepdives" aria-label="Relaterade INBLICK-fördjupningar">
+          <a href="https://veckobrevskartan.github.io/INBLICK-Arktis-och-sateliter/" target="_blank" rel="noopener"><small>Fördjupning</small><strong>INBLICK: Arktis och satelliter ↗</strong></a>
+          <a href="https://veckobrevskartan.github.io/INBLICK-informationskrigsf-ring-valet-2026/" target="_blank" rel="noopener"><small>Fördjupning</small><strong>INBLICK: Informationskrigföring kring valet 2026 ↗</strong></a>
+        </div>
+      </section>
+
+      <section class="section" id="sverige" aria-labelledby="h-sverige">
+        <div class="section-kicker">04 · Nationell tillämpning</div>
+        <h2 id="h-sverige">Sverige i den nya säkerhetsmiljön</h2>
+        <p class="section-intro">Sverigekapitlen knyter samman omvärldsanalysen med svenska intressen och förmågor. Varje del ska visa både den internationella drivkraften och det konkreta svenska sammanhanget.</p>
+        <div class="grid">
+          <article class="card"><div class="card-label">Hotbild</div><h3>Hot mot Sverige och svenska intressen</h3><p>Statliga aktörer, underrättelseverksamhet, påverkan och andra hot – med tydlig skillnad mellan myndighetsbedömningar och vår analys.</p></article>
+          <article class="card"><div class="card-label">Försvar och allianser</div><h3>Sverige i Nato</h3><p>Svensk roll i alliansen, nordisk-baltiskt samarbete, försvarsplanering och förändringar i avskräckning och militär rörlighet.</p></article>
+          <article class="card"><div class="card-label">Motståndskraft</div><h3>Totalförsvar och försörjningsberedskap</h3><p>Svensk förmåga att upprätthålla samhällsviktiga funktioner och hantera beroenden i kris och krig.</p></article>
+          <article class="card"><div class="card-label">Demokrati</div><h3>Valet 2026 – uppföljning</h3><p>Vad som faktiskt dokumenterades inför och under valet, hur myndigheter bedömde läget och vilka lärdomar som kan dras.</p></article>
+          <article class="card"><div class="card-label">Underrättelseförmåga</div><h3>Strategi och myndighetsförändringar</h3><p>Den nationella underrättelsestrategin och etableringen av Sveriges utrikesunderrättelsetjänst, bedömda utifrån vad som hunnit genomföras.</p></article>
+          <article class="card"><div class="card-label">Sårbarheter</div><h3>Svenska strategiska beroenden</h3><p>Energi, transporter, telekom, digitala tjänster, rymd, försvarsindustri och kritiska leveranskedjor – med belägg för varje prioritering.</p></article>
+        </div>
+      </section>
+
+      <section class="section" id="bedomningar" aria-labelledby="h-bedomningar">
+        <div class="section-kicker">05 · Analytisk syntes</div>
+        <h2 id="h-bedomningar">Samlad bedömning</h2>
+        <p class="section-intro">Bedömningarna skrivs när temakapitel och källunderlag är granskade. De ska sammanfatta vad som förändrats, varför det spelar roll och hur det berör Sverige.</p>
+        <div class="assessment-list">
+          <div class="assessment"><p class="placeholder">Bedömning 1 läggs till efter källgranskning och syntes.</p></div>
+          <div class="assessment"><p class="placeholder">Bedömning 2 läggs till efter källgranskning och syntes.</p></div>
+          <div class="assessment"><p class="placeholder">Osäkerheter och indikatorer för kommande utveckling läggs till här.</p></div>
+        </div>
+      </section>
+
+      <section class="section" id="metod" aria-labelledby="h-metod">
+        <div class="section-kicker">06 · Transparens</div>
+        <h2 id="h-metod">Metod, bedömningsnivåer och källor</h2>
+        <div class="method-box">
+          <p><strong>Analysperiod:</strong> 1 januari–31 december 2026. Slutlig källkontroll görs inför planerad publicering omkring 10 februari 2027.</p>
+          <p><strong>Arbetssätt:</strong> öppna källor, myndighetsrapporter, primärdokument, forskning och etablerad rapportering jämförs. Händelser och efterföljande uppdateringar hålls isär för att undvika dubbelräkning.</p>
+          <p><strong>Redovisning:</strong> verifierade uppgifter, källors bedömningar och Svensk OSINT:s egna analytiska slutsatser märks tydligt. Osäkerhet och alternativa förklaringar anges där de påverkar slutsatsen.</p>
+          <p class="source-note">Metodtext, nivåer för sannolikhetsbedömningar och fullständig referenslista färdigställs tillsammans med kapitlen.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer><div class="shell"><span>INBLICK 2026 · Svensk OSINT</span><span>Arbetsversion · innehåll och struktur under utveckling</span></div></footer>
+</body>
+</html>

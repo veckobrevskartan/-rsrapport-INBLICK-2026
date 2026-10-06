@@ -289,6 +289,78 @@
       .political-dependencies span { font-size:.88rem; }
     }
     @media print { .political-country { break-inside:avoid; }.political-country-grid { grid-template-columns:minmax(0,1fr); }.political-landscape { background:transparent; } }
+/* Ombud: HTML text keeps the diagram readable when branches stack on phones. */
+    .proxy-network { margin:30px 0 34px;padding:22px;border:1px solid rgba(184,151,58,.5);background:linear-gradient(150deg,#102d3e,#0d1e34);min-width:0;max-width:100%; }
+    .proxy-network .proxy-kicker { color:var(--blue);font:700 .7rem/1.5 var(--sans);letter-spacing:.13em;text-transform:uppercase; }
+    .proxy-network h4 { margin:7px 0 9px;color:var(--text);font:400 clamp(1.4rem,3vw,1.85rem)/1.2 var(--serif); }
+    .proxy-network .proxy-intro { margin:0 0 18px;color:var(--muted);font:.88rem/1.55 var(--sans); }
+    .proxy-direct { position:relative;height:36px;margin:6px 0 5px; }
+    .proxy-direct svg { display:block;width:100%;height:36px;overflow:visible; }
+    .proxy-direct span { position:absolute;left:50%;top:-1px;transform:translateX(-50%);max-width:75%;padding:0 8px;background:#102b3d;color:var(--quiet);font:.72rem/1.5 var(--sans);text-align:center; }
+    .proxy-flow { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;list-style:none;margin:0;padding:0; }
+    .proxy-flow li { position:relative;min-width:0;padding:14px;border:1px solid rgba(184,151,58,.55);background:#0a1a2e; }
+    .proxy-flow li + li::before { content:"→";position:absolute;left:-27px;top:40%;width:26px;text-align:center;color:var(--gold);font:1.35rem/1 var(--sans); }
+    .proxy-flow strong { display:block;color:var(--text);font:600 .9rem/1.45 var(--sans); }
+    .proxy-network .proxy-flow p { margin:6px 0 0;color:var(--muted);font:.8rem/1.5 var(--sans); }
+    .proxy-fork { position:relative;height:58px; }
+    .proxy-fork svg { display:block;width:100%;height:58px; }
+    .proxy-fork span { position:absolute;left:50%;top:10px;transform:translateX(-50%);max-width:72%;padding:2px 10px;background:#10283b;color:var(--blue);font:600 .72rem/1.45 var(--sans);text-align:center; }
+    .proxy-branches { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px; }
+    .proxy-branch { position:relative;display:flex;flex-direction:column;min-width:0;padding:16px 14px;border:1px solid rgba(192,200,210,.3);border-top:3px solid #79c7b3;background:rgba(7,20,36,.62);overflow-wrap:anywhere; }
+    .proxy-branch--suspected { border-top-color:#edbe79;border-top-style:dashed; }
+    .proxy-branch--attributed { border-top-color:var(--blue); }
+    .proxy-network .proxy-branch h5 { margin:0 0 12px;color:var(--text);font:500 1.13rem/1.2 var(--serif); }
+    .proxy-branch .proxy-case { display:block;margin:0 0 6px;font:600 .81rem/1.45 var(--sans); }
+    .proxy-case-date { display:block;margin-bottom:11px;color:var(--quiet);font:.71rem/1.4 var(--sans); }
+    .proxy-status { align-self:flex-start;max-width:100%;padding:4px 7px;border:1px solid rgba(121,199,179,.65);background:rgba(121,199,179,.08);color:#bde7dd;font:600 .67rem/1.5 var(--sans); }
+    .proxy-status--suspected { border-style:dashed;border-color:rgba(237,190,121,.7);background:rgba(237,190,121,.08);color:#f3d4a7; }
+    .proxy-status--attributed { border-color:rgba(229,200,93,.65);background:rgba(229,200,93,.08);color:var(--blue); }
+    .proxy-network .proxy-branch p { margin:11px 0 0;color:var(--muted);font:.79rem/1.55 var(--sans); }
+    .proxy-network .proxy-branch .proxy-case-source { margin-top:auto;padding-top:12px;color:var(--quiet);font:.7rem/1.5 var(--sans); }
+    .proxy-feedback { display:grid;grid-template-columns:minmax(130px,.8fr) minmax(0,2fr);gap:18px;margin-top:19px;padding:16px;border-left:3px solid var(--gold);background:var(--gold-soft);min-width:0; }
+    .proxy-network .proxy-feedback h5 { margin:0;color:var(--blue);font:500 1.13rem/1.3 var(--serif); }
+    .proxy-feedback .proxy-feedback-arrow { display:block;margin-top:8px;color:var(--gold);font:1.5rem/1 var(--sans); }
+    .proxy-network .proxy-feedback p { margin:0;color:var(--muted);font:.8rem/1.6 var(--sans); }
+    .proxy-network .proxy-feedback small { display:block;margin-top:7px;color:var(--quiet);font:.71rem/1.5 var(--sans); }
+    .proxy-network figcaption { margin-top:17px;color:var(--quiet);font:.75rem/1.65 var(--sans); }
+    .proxy-network .proxy-more { display:block;margin-top:12px;padding-top:12px;border-top:1px solid var(--line);color:var(--text);font:.84rem/1.6 var(--sans); }
+    @media(max-width:720px) {
+      .proxy-network { margin:24px 0;padding:17px 14px; }
+      .proxy-network .proxy-intro { font-size:.95rem; }
+      .proxy-direct { height:auto;margin:0 0 15px;padding:8px 10px;border:1px dashed rgba(184,151,58,.5); }
+      .proxy-direct svg { display:none; }
+      .proxy-direct span { position:static;display:block;max-width:none;padding:0;transform:none;background:transparent;font-size:.82rem; }
+      .proxy-flow { grid-template-columns:minmax(0,1fr);gap:31px; }
+      .proxy-flow li { padding:15px; }
+      .proxy-flow li + li::before { content:"↓";left:calc(50% - 13px);top:-29px; }
+      .proxy-flow strong { font-size:1rem; }
+      .proxy-network .proxy-flow p { font-size:.92rem; }
+      .proxy-fork { height:auto;margin:19px 0 14px;text-align:center; }
+      .proxy-fork svg { display:none; }
+      .proxy-fork span { position:static;display:inline-block;max-width:100%;padding:0;transform:none;background:transparent;font-size:.86rem; }
+      .proxy-branches { grid-template-columns:minmax(0,1fr);gap:15px;padding-left:15px;border-left:1px dashed rgba(184,151,58,.6); }
+      .proxy-branch { padding:17px; }
+      .proxy-branch::before { content:"";position:absolute;left:-16px;top:25px;width:15px;border-top:1px dashed var(--gold); }
+      .proxy-network .proxy-branch h5 { font-size:1.25rem; }
+      .proxy-branch .proxy-case { font-size:.95rem; }
+      .proxy-case-date,.proxy-status { font-size:.78rem; }
+      .proxy-network .proxy-branch p { font-size:.94rem; }
+      .proxy-network .proxy-branch .proxy-case-source { font-size:.8rem; }
+      .proxy-feedback { grid-template-columns:minmax(0,1fr);gap:10px;padding:17px; }
+      .proxy-feedback .proxy-feedback-arrow { display:none; }
+      .proxy-network .proxy-feedback p { font-size:.94rem; }
+      .proxy-network .proxy-feedback small { font-size:.8rem; }
+      .proxy-network figcaption { font-size:.82rem; }
+      .proxy-network .proxy-more { font-size:.95rem; }
+    }
+    @media print {
+      .proxy-network { background:transparent; }
+      .proxy-flow li,.proxy-branch,.proxy-feedback { break-inside:avoid; }
+      .proxy-flow,.proxy-branches { grid-template-columns:minmax(0,1fr); }
+      .proxy-direct svg,.proxy-fork svg,.proxy-flow li + li::before { display:none; }
+      .proxy-fork { height:auto;margin:15px 0; }
+      .proxy-fork span { position:static;display:block;max-width:100%;transform:none;background:transparent; }
+    }
 </style>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
@@ -317,7 +389,7 @@
     <aside class="toc" aria-label="Sidans innehåll"><p class="toc-title">I rapporten</p>
  <a href="#bedomningar">Samlad bedömning · BLUF</a><a href="#lasanvisning">Läsanvisning</a>
  <a href="#varldsordning">01 · Världsordning</a><a class="toc-sub" href="#europeiskt-politiskt-landskap">Europas politiska handlingsutrymme</a><a class="toc-sub" href="#ryska-roda-linjer">Förhandlingarna om Ukraina</a>
- <a href="#sakerhetslage">02 · Europas säkerhetsläge</a><a class="toc-sub" href="#baltikum-sabotage">Baltikum: sabotage och ombud</a><a class="toc-sub" href="#tyskland-sabotage">Tyskland och Europas svar</a><a class="toc-sub" href="#aktivistsabotage">Sabotage och aktivistmotiv</a>
+ <a href="#sakerhetslage">02 · Europas säkerhetsläge</a><a class="toc-sub" href="#baltikum-sabotage">Baltikum: sabotage och ombud</a><a class="toc-sub" href="#tyskland-sabotage">Tyskland och Europas svar</a><a class="toc-sub" href="#ombud-sabotage">Från uppdrag till lokal handling</a><a class="toc-sub" href="#aktivistsabotage">Sabotage och aktivistmotiv</a>
  <a href="#sverige">03 · Hot mot Sverige</a><a class="toc-sub" href="#iran-ombud">Iran och kriminella ombud</a><a class="toc-sub" href="#valpaverkan">Valpåverkan</a><a class="toc-sub" href="#extremism-2026">Extremism och digitalt våld</a>
  <a href="#strategiska-domainer">04 · Förmåga och beroenden</a><a href="#fallkarta">05 · Karta och fallförteckning</a><a href="#metod">06 · Metod och källor</a><a class="toc-sub" href="#sannolikhetsskala">Sannolikhetsgrader</a></aside>
 
@@ -637,7 +709,7 @@
  <h3 id="baltikum-sabotage">Baltikum: sabotage, ombud och offentlig attribuering</h3>
 
           <p>Estland, Lettland och Litauen har under 2026 offentliggjort uppgifter om angrepp och utredningar som berör försvarsindustri, järnväg och internationella transportkedjor. Fallen visar hur stöd till Ukraina och samhällsviktiga funktioner kan bli mål även utanför krigszonen. De har olika rättslig status och olika tydlig koppling till Ryssland. Äldre angrepp tas här med när åtal eller nya myndighetsbedömningar offentliggjorts under 2026; de räknas inte som nya angrepp i år.</p>
-          <p><strong>Estland – Milrem Robotics:</strong> Den 29 september meddelade regeringen att den med full säkerhet bedömde att ryska specialtjänster hade beställt branden i en byggnad som användes av Milrem Robotics i Tallinn den 15 augusti. Slutsatsen byggde på Kapo:s underrättelseunderlag. Tre lettiska medborgare hade gripits i Lettland och överlämnats till Estland den 17–18 september. Regeringen beskrev angreppet som ett försök att skrämma landet och minska stödet till Ukraina, men meddelade att stödet och trycket på Ryssland skulle fortsätta. Det är en uttrycklig statlig attribuering; brottsutredningen pågick fortfarande när beskedet lämnades (<a href="https://valitsus.ee/en/news/russia-responsible-arson-attack-milrem">Estlands regering, 2026</a>).</p>
+          <p><strong>Estland – Milrem Robotics:</strong> Den 29 september meddelade regeringen att den med full säkerhet bedömde att ryska specialtjänster hade beställt branden i en byggnad som användes av Milrem Robotics i Tallinn den 15 augusti. Slutsatsen byggde på Kapo:s underrättelseunderlag. Tre lettiska medborgare hade gripits i Lettland den 17–18 augusti och överlämnats till Estland den 17–18 september. Regeringen beskrev angreppet som ett försök att skrämma landet och minska stödet till Ukraina, men meddelade att stödet och trycket på Ryssland skulle fortsätta. Det är en uttrycklig statlig attribuering; brottsutredningen pågick fortfarande när beskedet lämnades (<a href="https://valitsus.ee/en/news/russia-responsible-arson-attack-milrem">Estlands regering, 2026</a>).</p>
           <p><strong>Lettland – järnvägsbränder och påverkansmaterial:</strong> Den 12 mars redovisade säkerhetstjänsten VDD ett ärende där två personer misstänktes ha anlagt bränder i reläskåp och ett lok i augusti 2025. VDD hade den 2 mars begärt att åklagare skulle inleda lagföring och knöt gärningarna till ryska intressen. Enligt myndigheten filmade utförarna bränderna och skickade materialet till uppdragsgivare, som framställde bilderna som ryska framgångar i Ukraina. Det fysiska angreppet användes alltså även som material för psykologisk påverkan, enligt VDD:s utredning (<a href="https://vdd.gov.lv/en/news/press-releases/vdd-seeks-criminal-prosecution-against-two-individuals-for-arson-in-the-interests-of-russia">VDD, 2026b</a>).</p>
           <p><strong>Lettland – ett separat järnvägsärende:</strong> Den 26 maj beskrev VDD fyra misstänkta och fyra bränder i Riga: tre i oktober 2025 och en i januari 2026. Målen omfattade utrustning för järnvägsbelysning och tågstyrning. En redan fängslad person misstänktes ha fungerat som mellanhand för rekrytering och ersättning. Bränderna hade filmats och dokumentationen skickats via Telegram. VDD hade begärt lagföring den 21 maj. I detta pressmeddelande angavs endast ”främmande stat”; Ryssland namngavs inte. Ärendet ska därför hållas åtskilt från marsärendet både i fallräkning och attribuering (<a href="https://vdd.gov.lv/en/news/press-releases/vdd-seeks-criminal-prosecution-against-a-group-of-persons-for-arson-in-the-interests-of-a-foreign-state">VDD, 2026a</a>).</p>
           <p><strong>Litauen – TVC Solutions:</strong> Den 16 januari offentliggjorde åklagarmyndigheten att sex personer åtalats efter två misslyckade brandförsök i Šiauliai den 17 och 22 september 2024. Målet var TVC Solutions och utrustning för analys av radiospektrum avsedd för Ukrainas försvar. Åklagarmyndigheten uppgav att misstänkta samordnare i Ryssland hade kopplingar till den ryska militära underrättelsetjänsten GRU och att utredningen gav grund för misstanken att sabotaget beställts av och skulle gynna GRU. Det är en redovisad misstanke i ett åtalat terrorärende, inte en fällande dom om styrkedjan (<a href="https://www.prokuraturos.lt/lt/baudziamoji-byla-del-teroro-ispuoliu-siauliuose-perduota-teismui-with-text-in-english/11996">Lietuvos Respublikos prokuratūra, 2026</a>).</p>
@@ -664,6 +736,58 @@
           <p>Tysklands erfarenheter visar hur ett angrepp mot en transportkedja kan få säkerhetspolitiska följder långt utanför platsen där det upptäcks. Den 1 september pekade regeringen ut Ryssland som ansvarigt för försöket till drönarattentat vid Leipzig/Halle den 4 augusti. Bedömningen grundades enligt regeringen på polisutredning, underrättelseuppgifter och angreppets kännetecken, däribland användningen av rekryterade utförare. Den straffrättsliga utredningen fortsatte. Tyskland aviserade stängning av det ryska generalkonsulatet i Bonn, uppsägning av avtalet för Ryska huset i Berlin, skärpta inresekontroller och förslag till ytterligare EU-sanktioner. EU:s utrikesministrar uttryckte stöd den 2 september och Natos ambassadörsråd sammanträdde (<a href="https://www.bundesregierung.de/breg-de/service/fragen-und-anworten/reaktion-angriff-leipzig-2451522">Bundesregierung, 2026</a>).</p>
           <p>Reaktionen nådde också Sverige. Regeringen höll den 1 september en pressträff med anledning av Tysklands besked (<a href="https://www.regeringen.se/pressmeddelanden/2026/09/statsministern-justitieministern-och-forsvarsministern-haller-presstraff-om-det-europeiska-sakerhetslaget/">Regeringskansliet, 2026</a>). Europaparlamentet antog den 16 september en resolution om hybridhot och skydd av europeisk försvarsinfrastruktur. Parlamentet efterlyste en gemensam civil och militär hantering av operationer under tröskeln för väpnad konflikt samt starkare skydd för energi, transporter och kommunikation (<a href="https://oeil.europarl.europa.eu/oeil/en/document-summary?id=1915263">Europaparlamentet, 2026</a>). Resolutionen är ett politiskt ställningstagande. Underlaget visar en rörelse mot gemensamma motåtgärder; det räcker inte för att fastställa att just Leipzigfallet ensamt orsakade den europeiska utvecklingen.</p>
           <p>Tyska myndigheter beskriver en rekryteringsmodell där ryska underrättelsetjänster använder mellanhänder och sociala medier för att anlita tillfälliga utförare. Dessa ”engångsagenter” kan sakna utbildning, få begränsad ersättning och inte känna till uppdragsgivarens verkliga identitet. Regeringens redovisning av fler indikationer är inte ett mått på antalet bevisade sabotage (<a href="#ref-new-agents">Deutscher Bundestag, 2026, 8 juni</a>). Modellen försvårar upptäckt och kan hålla avstånd mellan beställare och gärning, men måste beläggas i varje ärende.</p>
+<figure class="proxy-network" id="ombud-sabotage" aria-labelledby="proxy-graphic-title" aria-describedby="proxy-graphic-caption">
+            <header>
+              <span class="proxy-kicker">Ombud och sabotage</span>
+              <h4 id="proxy-graphic-title">Från uppdrag till lokal handling</h4>
+              <p class="proxy-intro">Samordning och rekrytering kan skapa avstånd mellan beställare och utförare. Fallen nedan visar olika delar av förloppet.</p>
+            </header>
+            <div class="proxy-direct">
+              <svg viewBox="0 0 720 36" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M120 34V12H600V31M596 27L600 32L604 27" fill="none" stroke="#b8973a" stroke-width="1.3" stroke-dasharray="4 4"/></svg>
+              <span>Direktkontakt kan ersätta mellanled</span>
+            </div>
+            <ol class="proxy-flow" aria-label="Möjlig uppdragskedja">
+              <li><strong>Statlig uppdragsgivare</strong><p>Anger mål och inriktning.</p></li>
+              <li><strong>Samordning och rekrytering</strong><p>Mellanhänder, personliga nätverk eller digitala kontakter.</p></li>
+              <li><strong>Rekryterad utförare</strong><p>Avgränsat uppdrag; kan sakna insyn i helheten.</p></li>
+            </ol>
+            <div class="proxy-fork">
+              <svg viewBox="0 0 720 58" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M600 0V28H120V55M360 28V55M600 28V55" fill="none" stroke="#b8973a" stroke-width="1.3" stroke-dasharray="4 4"/></svg>
+              <span>Olika slags uppdrag</span>
+            </div>
+            <div class="proxy-branches" role="group" aria-label="Tre olika fall och deras offentliga bevisläge">
+              <div class="proxy-branch">
+                <h5>Inhämtning</h5>
+                <a class="proxy-case" href="https://www.linkedin.com/feed/update/urn:li:activity:7497235783225942016">GPS-paket från Tyskland</a>
+                <span class="proxy-case-date">Transporter i mars 2025</span>
+                <span class="proxy-status">Dom</span>
+                <p>Domstolen fann att en rysk statlig aktör beställt transporterna för rekognoscering. En fällande dom, två frikännanden. En konkret brandplan bevisades inte.</p>
+                <p class="proxy-case-source"><a href="https://oberlandesgericht-stuttgart.justiz-bw.de/pb/%2CLde/Startseite/Medien/6_%2BStrafsenat_%2BVerurteilung%2Beines%2BAngeklagten%2Bwegen%2BAgenten-taetigkeit%2Bzu%2BSabotagezwecken%2Bund%2BFreispruch%2Bzweier%2Bweiterer%2BAngeklagter%2Bvom%2BVorwurf%2Bder%2BVerabredung%2Bzur%2Bschweren%2BBrandstiftung%2Bu_%2Ba_/?LISTPAGE=8975136">Domstolens besked 18 augusti 2026</a>. Ej laga kraft vid beskedet.</p>
+              </div>
+              <div class="proxy-branch proxy-branch--suspected">
+                <h5>Förberedelse och försök</h5>
+                <a class="proxy-case" href="https://www.prokuraturos.lt/lt/baudziamoji-byla-del-teroro-ispuoliu-siauliuose-perduota-teismui-with-text-in-english/11996">TVC Solutions i Litauen</a>
+                <span class="proxy-case-date">Brandförsök i september 2024</span>
+                <span class="proxy-status proxy-status--suspected">Åtal · misstänkt GRU-koppling</span>
+                <p>Åtal mot sex personer offentliggjordes den 16 januari 2026 efter två misslyckade brandförsök. Åklagarmyndigheten misstänker GRU-kopplade samordnare.</p>
+              </div>
+              <div class="proxy-branch proxy-branch--attributed">
+                <h5>Fysisk skada</h5>
+                <a class="proxy-case" href="https://www.linkedin.com/feed/update/urn:li:activity:7508420218868834304">Milrem Robotics i Estland</a>
+                <span class="proxy-case-date">Brand den 15 augusti 2026</span>
+                <span class="proxy-status proxy-status--attributed">Regeringens attribuering</span>
+                <p>Estlands regering pekade den 29 september ut ryska specialtjänster som beställare. Brottsutredningen pågick vid beskedet.</p>
+                <p class="proxy-case-source"><a href="https://valitsus.ee/en/news/russia-responsible-arson-attack-milrem">Regeringens besked 29 september 2026</a>.</p>
+              </div>
+            </div>
+            <aside class="proxy-feedback" aria-label="Ett angrepp kan också användas för informationspåverkan">
+              <div><h5>Från brand till påverkansmaterial</h5><span class="proxy-feedback-arrow" aria-hidden="true">↪</span></div>
+              <div><p>Vid de <a href="https://vdd.gov.lv/en/news/press-releases/vdd-seeks-criminal-prosecution-against-two-individuals-for-arson-in-the-interests-of-russia">lettiska järnvägsbränderna</a> uppger VDD att utförarna filmade och skickade material till uppdragsgivare. Filmerna framställdes sedan som ryska framgångar i Ukraina.</p><small>Bränder i augusti 2025; lagföring begärd i mars 2026. VDD:s utredningsuppgifter.</small></div>
+            </aside>
+            <figcaption id="proxy-graphic-caption">Analytisk sambandsbild utifrån <a href="https://www.bundestag.de/presse/hib/kurzmeldungen-1183662">Deutscher Bundestag (2026)</a>, <a href="https://www.eurojust.europa.eu/news/joint-investigation-team-disrupts-group-using-self-igniting-parcels-terrorist-attacks">Eurojust (2026)</a> och fallen ovan. Linjerna visar möjliga vägar. Fallen tillhör skilda ärenden och bevisläget anges för varje fall.
+              <span class="proxy-more">Fördjupning: <a href="https://veckobrevskartan.github.io/russias-low-level-agents-in-europe/">Rysslands lågtröskelagenter i Europa 2022–2025</a>.</span>
+            </figcaption>
+          </figure>
           <p>Det <a href="https://www.linkedin.com/posts/svensk-osint_germany-says-two-people-arrested-on-suspicion-activity-7442322754164404224-drz7?utm_source=share&amp;utm_medium=member_ios&amp;rcm=ACoAADjG1qsB-0UCM_-IZE_s41MHtz1tWTArOik">misstänkta spioneriet mot en drönarleverantör och hans vardagsmiljö</a> visar att också personer i leveranskedjan kan vara måltavlor. Den 24 mars greps Sergey N. i Elda i Spanien och Alla S. i Rheine i Tyskland. Enligt <a href="https://www.presseportal.de/blaulicht/pm/14981/6242630">förbundsåklagarens redogörelse</a> hade Sergey N. från december 2025 kartlagt en person som levererade drönare och komponenter till Ukraina och filmat arbetsplatsen. Alla S. misstänktes därefter ha övertagit uppdraget och filmat bostadsadressen. Åklagaren bedömde att inhämtningen kunde förbereda ytterligare underrättelseoperationer mot personen; något genomfört angrepp fastställdes inte i beskedet.</p>
 <p>I ett separat ärende <a href="https://www.linkedin.com/feed/update/urn:li:activity:7456650473232715776">greps Sergej K. i Berlin den 28 april</a>. <a href="https://www.presseportal.de/blaulicht/pm/14981/6264982">Förbundsåklagaren</a> misstänkte att han sedan åtminstone maj 2025 förmedlat uppgifter om tyskt militärt stöd till Ukraina, företag som utvecklade drönare och robotar samt militära konvojer. Han ska även ha pekat ut möjliga sabotageobjekt och erbjudit sig att rekrytera fler personer. Här gällde misstankarna både kartläggning och uppbyggnad av ett nätverk. Gripandebeskedet visar vad som utreddes, inte att planerade sabotage hade genomförts.</p>
 <p><strong>Stuttgart – dom och två frikännanden:</strong> Den 18 augusti dömdes en 30-åring till ett år och tre månaders fängelse för agentverksamhet i sabotagesyfte. Två medåtalade frikändes. Ärendet gällde paket med GPS-sändare som skickats från Tyskland till Ukraina i mars 2025. Domstolen fann att en rysk statlig aktör hade beställt transporterna för att undersöka möjliga sabotageobjekt. Däremot bevisades ingen tillräckligt konkret plan att därefter skicka brandanordningar eller att de två frikända förstått den ryska kopplingen. Domen hade inte vunnit laga kraft när domstolen publicerade sitt besked (<a href="https://oberlandesgericht-stuttgart.justiz-bw.de/pb/%2CLde/Startseite/Medien/6_%2BStrafsenat_%2BVerurteilung%2Beines%2BAngeklagten%2Bwegen%2BAgenten-taetigkeit%2Bzu%2BSabotagezwecken%2Bund%2BFreispruch%2Bzweier%2Bweiterer%2BAngeklagter%2Bvom%2BVorwurf%2Bder%2BVerabredung%2Bzur%2Bschweren%2BBrandstiftung%2Bu_%2Ba_/?LISTPAGE=8975136">Oberlandesgericht Stuttgart, 2026</a>).</p>
@@ -1272,6 +1396,5 @@
 </script>
 </body>
 </html>
-
 
 

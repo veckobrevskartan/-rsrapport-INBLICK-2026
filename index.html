@@ -361,7 +361,68 @@
       .proxy-fork { height:auto;margin:15px 0; }
       .proxy-fork span { position:static;display:block;max-width:100%;transform:none;background:transparent; }
     }
-</style>
+    .civil-figure-wrap { max-width:790px;border-top:0; }
+    .civil-dependencies { width:100%;max-width:790px;min-width:0;margin:0 0 10px;padding:22px;border:1px solid rgba(184,151,58,.5);background:linear-gradient(145deg,#102d3e,#0d1e34);overflow-wrap:anywhere; }
+    .civil-dependencies .dependency-kicker { color:var(--blue);font:700 .7rem/1.5 var(--sans);letter-spacing:.13em;text-transform:uppercase; }
+    .civil-dependencies h4 { margin:7px 0 10px;color:var(--text);font:400 clamp(1.4rem,3vw,1.8rem)/1.25 var(--serif); }
+    .civil-dependencies .dependency-heading p { margin:0 0 20px;color:var(--muted);font:.9rem/1.6 var(--sans); }
+    .dependency-grid { display:grid;grid-template-columns:minmax(0,1fr) 72px minmax(0,1fr);grid-template-areas:"power drift digital" "traffic label orders" "transport resources supply";gap:0;align-items:stretch; }
+    .dependency-power { grid-area:power; }.dependency-digital { grid-area:digital; }.dependency-transport { grid-area:transport; }.dependency-supply { grid-area:supply; }
+    .dependency-edge-drift { grid-area:drift; }.dependency-edge-traffic { grid-area:traffic; }.dependency-edge-orders { grid-area:orders; }.dependency-edge-resources { grid-area:resources; }
+    .dependency-node { min-width:0;padding:16px;border:1px solid rgba(184,151,58,.38);border-top:3px solid var(--gold);background:rgba(10,22,40,.66); }
+    .civil-dependencies .dependency-node h5 { display:flex;align-items:baseline;gap:10px;margin:0 0 10px;color:var(--text);font:500 1.18rem/1.25 var(--serif); }
+    .dependency-node h5 span { flex:none;color:var(--blue);font:700 .7rem/1.4 var(--sans);letter-spacing:.06em; }
+    .civil-dependencies .dependency-node p { margin:0;color:var(--muted);font:.85rem/1.55 var(--sans); }
+    .civil-dependencies .dependency-node .dependency-needs { margin-top:12px;padding-top:10px;border-top:1px solid var(--line);color:var(--quiet);font:.76rem/1.5 var(--sans); }
+    .dependency-needs strong { color:var(--text);font-weight:600; }
+    .dependency-edge { display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:0;text-align:center;color:var(--blue);padding:7px 4px; }
+    .dependency-edge b { font:400 1.8rem/1 var(--sans); }
+    .dependency-edge span { max-width:100%;color:var(--muted);font:.65rem/1.35 var(--sans); }
+    .dependency-edge-traffic,.dependency-edge-orders { flex-direction:row;gap:9px;min-height:64px; }
+    .dependency-edge-traffic span,.dependency-edge-orders span { max-width:160px;font-size:.72rem; }
+    .dependency-map-label { grid-area:label;display:flex;align-items:center;justify-content:center;min-width:0;padding:6px 2px;text-align:center;color:var(--gold);font:600 .6rem/1.45 var(--sans);letter-spacing:.03em;text-transform:uppercase; }
+    .dependency-cascade { margin-top:20px;padding-top:16px;border-top:1px solid rgba(184,151,58,.4); }
+    .dependency-cascade-heading { display:flex;justify-content:space-between;align-items:baseline;gap:8px 15px;flex-wrap:wrap;margin-bottom:12px; }
+    .civil-dependencies .dependency-cascade h5 { margin:0;color:var(--text);font:500 1.08rem/1.3 var(--serif); }
+    .dependency-cascade-heading > span { color:var(--quiet);font:.68rem/1.5 var(--sans); }
+    .dependency-cascade ol { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;list-style:none;margin:0;padding:0; }
+    .dependency-cascade li { position:relative;min-width:0;padding:11px 12px;border-left:2px solid var(--gold);background:rgba(184,151,58,.07); }
+    .dependency-cascade li + li::before { content:"→";position:absolute;left:-21px;top:50%;transform:translateY(-50%);color:var(--blue);font:400 1.25rem/1 var(--sans); }
+    .dependency-cascade strong,.dependency-cascade li span { display:block; }
+    .dependency-cascade strong { margin-bottom:5px;color:var(--text);font:600 .8rem/1.4 var(--sans); }
+    .dependency-cascade li span { color:var(--muted);font:.75rem/1.5 var(--sans); }
+    .dependency-reserves { display:grid;grid-template-columns:125px minmax(0,1fr);gap:12px;align-items:start;margin-top:16px;padding:13px 14px;border-left:3px solid #7cbaab;background:rgba(124,186,171,.09); }
+    .dependency-reserves > strong { color:#acd9cc;font:600 .76rem/1.55 var(--sans); }
+    .civil-dependencies .dependency-reserves p { margin:0;color:var(--muted);font:.78rem/1.55 var(--sans); }
+    .civil-dependencies figcaption { margin-top:14px;color:var(--quiet);font:.73rem/1.6 var(--sans); }
+    @media (max-width:720px) {
+      .civil-dependencies { padding:18px 14px; }
+      .civil-dependencies h4 { font-size:1.55rem; }
+      .civil-dependencies .dependency-heading p { font-size:.98rem;line-height:1.6; }
+      .dependency-grid { grid-template-columns:minmax(0,1fr);grid-template-areas:"power" "digital" "transport" "supply";gap:12px; }
+      .dependency-edge,.dependency-map-label { display:none; }
+      .dependency-node { padding:17px 15px; }
+      .civil-dependencies .dependency-node h5 { font-size:1.28rem; }
+      .civil-dependencies .dependency-node p { font-size:.98rem;line-height:1.6; }
+      .civil-dependencies .dependency-node .dependency-needs { font-size:.87rem; }
+      .dependency-cascade-heading { display:block; }
+      .dependency-cascade-heading > span { display:block;margin-top:5px;font-size:.78rem; }
+      .dependency-cascade ol { grid-template-columns:minmax(0,1fr);gap:26px; }
+      .dependency-cascade li { padding:13px 14px; }
+      .dependency-cascade li + li::before { content:"↓";left:50%;top:-22px;transform:translateX(-50%); }
+      .dependency-cascade strong { font-size:.98rem; }
+      .dependency-cascade li span { font-size:.9rem; }
+      .dependency-reserves { grid-template-columns:minmax(0,1fr);gap:6px; }
+      .dependency-reserves > strong { font-size:.88rem; }
+      .civil-dependencies .dependency-reserves p { font-size:.91rem; }
+      .civil-dependencies figcaption { font-size:.82rem; }
+    }
+    @media print {
+      .civil-dependencies { background:transparent; }
+      .dependency-node { break-inside:avoid; }
+      .dependency-cascade,.dependency-reserves { break-inside:avoid; }
+    }
+  </style>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
@@ -391,7 +452,7 @@
  <a href="#varldsordning">01 · Världsordning</a><a class="toc-sub" href="#europeiskt-politiskt-landskap">Europas politiska handlingsutrymme</a><a class="toc-sub" href="#ryska-roda-linjer">Förhandlingarna om Ukraina</a>
  <a href="#sakerhetslage">02 · Europas säkerhetsläge</a><a class="toc-sub" href="#baltikum-sabotage">Baltikum: sabotage och ombud</a><a class="toc-sub" href="#tyskland-sabotage">Tyskland och Europas svar</a><a class="toc-sub" href="#ombud-sabotage">Från uppdrag till lokal handling</a><a class="toc-sub" href="#aktivistsabotage">Sabotage och aktivistmotiv</a>
  <a href="#sverige">03 · Hot mot Sverige</a><a class="toc-sub" href="#iran-ombud">Iran och kriminella ombud</a><a class="toc-sub" href="#valpaverkan">Valpåverkan</a><a class="toc-sub" href="#extremism-2026">Extremism och digitalt våld</a>
- <a href="#strategiska-domainer">04 · Förmåga och beroenden</a><a href="#fallkarta">05 · Karta och fallförteckning</a><a href="#metod">06 · Metod och källor</a><a class="toc-sub" href="#sannolikhetsskala">Sannolikhetsgrader</a></aside>
+ <a href="#strategiska-domainer">04 · Förmåga och beroenden</a><a class="toc-sub" href="#civila-beroenden">Beredskapens civila flöden</a><a href="#fallkarta">05 · Karta och fallförteckning</a><a href="#metod">06 · Metod och källor</a><a class="toc-sub" href="#sannolikhetsskala">Sannolikhetsgrader</a></aside>
 
     <main id="innehall">
       
@@ -1087,34 +1148,53 @@
 
         <div class="longform chapter-context"><p>Under 2026 har Sverige tagit steg inom allierad förstärkningsplanering, underrättelser och försörjningsberedskap. Strategier, organisationsbeslut och samarbeten anger vad som ska byggas upp. Resultatet behöver följas genom tillgängliga resurser, informationsdelning, leveranser och övad uthållighet. Satellittjänster och råvarukedjor visar samtidigt hur förmågan beror på aktörer och system utanför Sverige.</p><p>Detta kapitel följer hur hotbildens krav möter den svenska förmågeutvecklingen. Först behandlas militär samverkan, underrättelser och försörjning. Därefter följer digitala tjänster, betalningar, satelliter samt råvaru- och komponentkedjor. Frågan genom hela kapitlet är vilka beroenden som kan hanteras genom samarbete och vilka som fortfarande kräver fungerande reservlösningar.</p></div>
 
- <div class="chapter-figure"><div class="figure-scroll"><figure class="order-map" aria-label="Sambandsbild över underrättelser, försörjning, satelliter och råvaror">
-          <svg viewBox="0 0 960 370" role="img" aria-labelledby="dependency-title dependency-desc">
-            <title id="dependency-title">Fyra strategiska beroenden formar handlingsförmågan</title>
-            <desc id="dependency-desc">Underrättelser, rymd och satelliter, försvar och försörjning samt kritiska råvaror påverkar varandra och tillsammans Sveriges och Europas förmåga att fatta beslut, kommunicera, försvara och producera.</desc>
-            <defs><marker id="dep-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#b8973a"/></marker></defs>
-            <text x="30" y="27" class="supra">BEROENDEN SOM KAN PÅVERKA BESLUT OCH FÖRMÅGA</text>
-            <rect class="box" x="28" y="54" rx="8" width="410" height="96"/>
-            <text class="label" x="52" y="91">Underrättelseförmåga</text>
-            <text class="detail" x="52" y="120">analys · delning · beslutsunderlag</text>
-            <rect class="box" x="522" y="54" rx="8" width="410" height="96"/>
-            <text class="label" x="546" y="91">Rymd och satelliter</text>
-            <text class="detail" x="546" y="120">kommunikation · navigation · lägesbild</text>
-            <rect class="box" x="28" y="184" rx="8" width="410" height="96"/>
-            <text class="label" x="52" y="221">Försvar och försörjning</text>
-            <text class="detail" x="52" y="250">förflyttning · logistik · uthållighet</text>
-            <rect class="box" x="522" y="184" rx="8" width="410" height="96"/>
-            <text class="label" x="546" y="221">Kritiska råvaror</text>
-            <text class="detail" x="546" y="250">utvinning · förädling · leveranskedjor</text>
-            <path class="flow" d="M438 102 C480 102 480 102 522 102" marker-end="url(#dep-arrow)"/>
-            <path class="flow" d="M438 232 C480 232 480 232 522 232" marker-end="url(#dep-arrow)"/>
-            <path class="flow" d="M233 150 L233 184" marker-end="url(#dep-arrow)"/>
-            <path class="flow" d="M727 150 L727 184" marker-end="url(#dep-arrow)"/>
-            <rect class="box-accent" x="194" y="310" rx="8" width="572" height="48"/>
-            <text class="synthesis" x="480" y="340" text-anchor="middle">SAMHÄLLELIG OCH MILITÄR HANDLINGSFÖRMÅGA</text>
-            <path class="flow" d="M233 280 L370 310" marker-end="url(#dep-arrow)"/>
-            <path class="flow" d="M727 280 L590 310" marker-end="url(#dep-arrow)"/>
-          </svg>
-        </figure>
+<div class="chapter-figure civil-figure-wrap"><div class="figure-scroll"><figure class="civil-dependencies" id="civila-beroenden" aria-labelledby="dependency-title" aria-describedby="dependency-desc dependency-caption">
+  <div class="dependency-heading">
+    <span class="dependency-kicker">Förmåga och beroenden</span>
+    <h4 id="dependency-title">Sveriges beredskap vilar på civila flöden</h4>
+    <p id="dependency-desc">El, digitala system, transporter och försörjning behöver fungera tillsammans. En störning kan spridas mellan dem och påverka både samhällsservice och militär uthållighet.</p>
+  </div>
+  <div class="dependency-grid">
+    <article class="dependency-node dependency-power">
+      <h5><span aria-hidden="true">01</span> El</h5>
+      <p>Driver nät, styrsystem, terminaler och elektrifierad trafik.</p>
+      <p class="dependency-needs"><strong>Behöver:</strong> fungerande anläggningar, reservdelar och bränsle till reservkraft.</p>
+    </article>
+    <div class="dependency-edge dependency-edge-drift" aria-hidden="true"><b>→</b><span>Drift</span></div>
+    <article class="dependency-node dependency-digital">
+      <h5><span aria-hidden="true">02</span> Digitala system</h5>
+      <p>Möjliggör ledning, betalningar och samordning av logistik.</p>
+      <p class="dependency-needs"><strong>Behöver:</strong> el, förbindelser, fungerande drift och reservrutiner.</p>
+    </article>
+    <div class="dependency-edge dependency-edge-traffic" aria-hidden="true"><b>↓</b><span>Trafik och terminaler</span></div>
+    <div class="dependency-map-label" aria-hidden="true">Utvalda samband</div>
+    <div class="dependency-edge dependency-edge-orders" aria-hidden="true"><b>↓</b><span>Beställningar och betalningar</span></div>
+    <article class="dependency-node dependency-transport">
+      <h5><span aria-hidden="true">03</span> Transporter</h5>
+      <p>Flyttar personal, materiel, bränsle och förnödenheter.</p>
+      <p class="dependency-needs"><strong>Behöver:</strong> drivmedel, el, digitala system och framkomliga transportleder.</p>
+    </article>
+    <div class="dependency-edge dependency-edge-resources" aria-hidden="true"><b>↔</b><span>Leveranser<br>och resurser</span></div>
+    <article class="dependency-node dependency-supply">
+      <h5><span aria-hidden="true">04</span> Försörjning</h5>
+      <p>Säkrar livsmedel, läkemedel, bränsle, reservdelar och andra varor.</p>
+      <p class="dependency-needs"><strong>Behöver:</strong> produktion, transporter, energi samt fungerande beställningar och betalningar.</p>
+    </article>
+  </div>
+  <div class="dependency-cascade">
+    <div class="dependency-cascade-heading"><h5>Så kan en störning spridas</h5><span>Illustrativt förlopp</span></div>
+    <ol aria-label="Illustrativt förlopp vid elavbrott">
+      <li><strong>Elavbrott</strong><span>Kommunikation och systemdrift försvåras.</span></li>
+      <li><strong>Fördröjda flöden</strong><span>Beställningar, betalningar och leveranser tar längre tid.</span></li>
+      <li><strong>Påverkad beredskap</strong><span>Service, förflyttning och militär uthållighet kan begränsas.</span></li>
+    </ol>
+  </div>
+  <aside class="dependency-reserves" aria-label="Reservlösningar">
+    <strong>Reservlösningar</strong>
+    <p>Reservkraft, övade reservrutiner, alternativa transportvägar, lager och reparationsförmåga kan begränsa följderna.</p>
+  </aside>
+  <figcaption id="dependency-caption">Analytisk sambandsbild med utvalda beroenden och ett illustrativt förlopp. Källor: <a href="https://www.regeringen.se/informationsmaterial/2026/07/nationell-strategi-for----forsorjningsberedskap-for-totalforsvarsperioden-20252030/">Regeringens försörjningsstrategi (2026)</a> och <a href="https://www.nato.int/en/about-us/official-texts-and-resources/official-texts/2026/09/15/2026-resilience-baseline-requirements">Natos krav på motståndskraft (2026)</a>.</figcaption>
+</figure>
 
         </div></div><div class="longform"><h3>Nato: Sverige som bas, förbindelse och förstärkningsområde</h3>
 
@@ -1396,5 +1476,4 @@
 </script>
 </body>
 </html>
-
 

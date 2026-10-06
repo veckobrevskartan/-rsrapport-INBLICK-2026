@@ -1834,7 +1834,7 @@
   function currentHash() { if (location.hash) reveal(location.hash.slice(1), true); }
   document.addEventListener('click', event => {
     const link = event.target.closest('a[href^="#"]');
-    if (link) reveal(link.getAttribute('href').slice(1), false);
+    if (link) reveal(link.getAttribute('href').slice(1), true);
   });
   window.addEventListener('hashchange', currentHash);
   currentHash();

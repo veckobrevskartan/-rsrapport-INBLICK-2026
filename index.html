@@ -422,6 +422,52 @@
       .dependency-node { break-inside:avoid; }
       .dependency-cascade,.dependency-reserves { break-inside:avoid; }
     }
+    /* Public Nordic transport strategy: schematic corridors, not capacity estimates. */
+    .nordic-corridors { width:100%;max-width:790px;min-width:0;margin:28px 0 30px;padding:20px;border:1px solid rgba(184,151,58,.5);background:linear-gradient(145deg,#102d3e,#0d1e34);overflow-wrap:anywhere; }
+    .nordic-corridors .nordic-kicker { color:var(--blue);font:700 .7rem/1.5 var(--sans);letter-spacing:.13em;text-transform:uppercase; }
+    .nordic-corridors h4 { margin:7px 0 10px;color:var(--text);font:400 clamp(1.4rem,3vw,1.8rem)/1.25 var(--serif); }
+    .nordic-corridors .nordic-heading p { margin:0 0 16px;color:var(--muted);font:.88rem/1.6 var(--sans); }
+    .nordic-controls { min-width:0;margin:0 0 13px;padding:0;border:0;font:.82rem/1.45 var(--sans); }
+    .nordic-controls legend { width:100%;margin-bottom:8px;color:var(--text);font-weight:600; }
+    .nordic-toolbar { display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;margin-bottom:10px; }
+    .nordic-all { display:flex;align-items:center;gap:9px;min-height:44px;cursor:pointer;color:var(--text); }
+    .nordic-controls input { flex:none;width:17px;height:17px;margin:0;accent-color:var(--blue);cursor:pointer; }
+    .nordic-reset { min-height:44px;max-width:100%;padding:8px 12px;border:1px solid var(--gold);border-radius:4px;background:var(--bg);color:var(--blue);font:.78rem/1.4 var(--sans);cursor:pointer; }
+    .nordic-options { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px; }
+    .nordic-one { --corridor:#89b9e6; }.nordic-two { --corridor:#f7b381; }.nordic-three { --corridor:#65c6b8; }.nordic-four { --corridor:#b8a1ed; }
+    .nordic-option { display:flex;align-items:flex-start;gap:8px;min-width:0;min-height:44px;padding:10px;border:1px solid rgba(192,200,210,.23);border-left:3px solid var(--corridor);border-radius:4px;background:rgba(10,22,40,.55);cursor:pointer; }
+    .nordic-option:has(input:checked) { border-color:var(--corridor);background:rgba(255,255,255,.065); }
+    .nordic-option input { margin-top:4px; }
+    .nordic-number { flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--corridor);color:#081628;font:700 .78rem/1 var(--sans); }
+    .nordic-option strong { display:block;margin:0 0 3px;color:var(--text);font-size:.84rem;line-height:1.35; }
+    .nordic-option small { display:block;color:var(--muted);font-size:.75rem;line-height:1.45; }
+    .nordic-controls :focus-visible { outline:3px solid var(--blue);outline-offset:4px; }
+    .nordic-option:focus-within,.nordic-all:focus-within { outline:2px solid var(--blue);outline-offset:2px; }
+    .nordic-line-key { display:flex;flex-wrap:wrap;gap:8px 20px;margin:0 0 10px;color:var(--muted);font:.76rem/1.45 var(--sans); }
+    .nordic-line-key span { display:inline-flex;align-items:center;gap:8px; }
+    .nordic-line-key i { display:inline-block;width:26px;flex:none;border-top:3px solid var(--muted); }
+    .nordic-line-key .nordic-sea-key { border-top-style:dashed; }
+    #nordic-corridor-map { width:100%;height:570px;min-width:0;border:1px solid rgba(192,200,210,.25);border-radius:5px;background:#e1e9eb;color:#193145;isolation:isolate; }
+    #nordic-corridor-map.leaflet-container { font:13px/1.4 var(--sans); }
+    #nordic-corridor-map .leaflet-attribution-flag { display:none!important; }
+    #nordic-corridor-map .leaflet-control-attribution { color:#344a59;background:rgba(255,255,255,.95);font-size:10px;line-height:1.5; }
+    #nordic-corridor-map .leaflet-control-attribution a { color:#174d73; }
+    #nordic-corridor-map .leaflet-control-zoom a { color:#173449;background:#fff; }
+    #nordic-corridor-map .leaflet-popup-content { color:#193145;font:.85rem/1.5 var(--sans); }
+    #nordic-corridor-map .nordic-town-label { padding:2px 5px;border:1px solid #7e939d;border-radius:3px;background:rgba(255,255,255,.95);color:#173449;box-shadow:0 1px 3px #0002;font:600 11px/1.35 var(--sans); }
+    #nordic-corridor-map .nordic-town-label::before { display:none; }
+    .nordic-corridors .nordic-map-status { margin:8px 0 0;color:var(--muted);font:.76rem/1.5 var(--sans); }
+    .nordic-corridors figcaption { margin-top:12px;color:var(--muted);font:.79rem/1.6 var(--sans); }
+    .nordic-corridors figcaption a { color:var(--blue); }
+    @media (max-width:600px) {
+      .nordic-corridors { padding:14px; }
+      .nordic-options { grid-template-columns:minmax(0,1fr); }
+      .nordic-option { padding:10px 9px; }
+      #nordic-corridor-map { height:510px; }
+      #nordic-corridor-map .nordic-town-label { font-size:10px; }
+      .nordic-line-key { gap:8px 12px; }
+    }
+    @media print { .nordic-toolbar { display:none; }.nordic-corridors { break-inside:avoid; }#nordic-corridor-map { height:520px; } }
   </style>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
@@ -452,7 +498,7 @@
  <a href="#varldsordning">01 · Världsordning</a><a class="toc-sub" href="#europeiskt-politiskt-landskap">Europas politiska handlingsutrymme</a><a class="toc-sub" href="#ryska-roda-linjer">Förhandlingarna om Ukraina</a>
  <a href="#sakerhetslage">02 · Europas säkerhetsläge</a><a class="toc-sub" href="#baltikum-sabotage">Baltikum: sabotage och ombud</a><a class="toc-sub" href="#tyskland-sabotage">Tyskland och Europas svar</a><a class="toc-sub" href="#ombud-sabotage">Från uppdrag till lokal handling</a><a class="toc-sub" href="#aktivistsabotage">Sabotage och aktivistmotiv</a>
  <a href="#sverige">03 · Hot mot Sverige</a><a class="toc-sub" href="#iran-ombud">Iran och kriminella ombud</a><a class="toc-sub" href="#valpaverkan">Valpåverkan</a><a class="toc-sub" href="#extremism-2026">Extremism och digitalt våld</a>
- <a href="#strategiska-domainer">04 · Förmåga och beroenden</a><a class="toc-sub" href="#civila-beroenden">Beredskapens civila flöden</a><a href="#fallkarta">05 · Karta och fallförteckning</a><a href="#metod">06 · Metod och källor</a><a class="toc-sub" href="#sannolikhetsskala">Sannolikhetsgrader</a></aside>
+ <a href="#strategiska-domainer">04 · Förmåga och beroenden</a><a class="toc-sub" href="#civila-beroenden">Beredskapens civila flöden</a><a class="toc-sub" href="#nordiska-korridorer">Nordiska transportkorridorer</a><a href="#fallkarta">05 · Karta och fallförteckning</a><a href="#metod">06 · Metod och källor</a><a class="toc-sub" href="#sannolikhetsskala">Sannolikhetsgrader</a></aside>
 
     <main id="innehall">
       
@@ -674,12 +720,7 @@
 
           <p>Östersjön är både ett militärt operationsområde och en tät korridor för handel, energi och data. NATO:s <a href="https://www.nato.int/en/what-we-do/operations-and-missions/natos-maritime-activities">Baltic Sentry</a>, som inleddes 2025 efter skador på kritisk undervattensinfrastruktur, innebär ökad allierad närvaro och användning av bland annat fartyg, patrullflyg och marina drönare. Initiativet stärker övervakning och beredskap; dess existens visar inte i sig vem som ligger bakom en enskild kabelskada. Att hålla isär observerad skada, utredning och attribuering är centralt i en miljö där incidenter snabbt får politiska följder (NATO, 2025).</p>
           <p>Den ekonomiska och civila dimensionen blir tydlig i den nordiska <a href="https://www.trafikverket.se/contentassets/73ee9b79390f40979a28dd7d44884fcb/joint-nordic-strategy-for-transport-system-preparedness.pdf">strategin för transportsystemets beredskap</a>. Den behandlar scenarier där sjötrafik genom Östersjön och de danska sunden begränsas eller störs, och behovet av nordisk samordning kring hamnar, landförbindelser och isbrytning. <a href="https://www.linkedin.com/posts/svensk-osint_joint-nordic-strategy-for-transport-system-activity-7439042456538660864-BKS8">Strategin för nordisk transportberedskap</a> pekar på den praktiska följden för Sverige: hamnar och landkorridorer kan behöva bära större transitflöden om vissa sjövägar blir svårare att använda. Det är ett planeringsscenario, inte en prognos om att en blockad är nära förestående (Nordic Transport Preparedness Cooperation, 2026).</p>
-          <div class="corridor-figure">
-            <figure>
-              <img src="assets/prioriterade-transportkorridorer.png" alt="Karta över prioriterade transportkorridorer i Norden med TEN-T-järnvägar, vägar, flygplatser och hamnar samt fyra korridorer markerade med pilar.">
-              <figcaption>Strategins bilaga 1, ”Prioritised Transport Corridors” (Nordic Transport Preparedness Cooperation, 2026, s. 7). Korridorerna visar planerad nordisk transportberedskap; kartan är inte en prognos över faktiska transporter i en kris.</figcaption>
-            </figure>
-          </div>
+          <p class="source-note"><a href="#nordiska-korridorer">Se kartan över de fyra prioriterade transportkorridorerna</a> i kapitlet om svensk förmåga.</p>
           <p>En separat energianalys från Nordic Energy Research beskriver hur sammankopplingen mellan nordiska och baltiska el- och energisystem både ger motståndskraft och skapar ömsesidiga beroenden. Rapporten pekar särskilt på den täta koncentrationen av gränsöverskridande undervattensinfrastruktur i Östersjön och på att störningar kan få följder över nationsgränser. Den officiella <a href="https://pub.norden.org/nordicenergyresearch2026-02/">rapporten Energy Security in the Nordics</a> visar varför infrastrukturens skydd måste analyseras regionalt, samtidigt som varje incident bedöms utifrån sina egna belägg (Rauhala &amp; Fager-Pintilä, 2026).</p>
 
  <p>Ett konkret svenskt ingripande under året var <a href="https://www.linkedin.com/posts/svensk-osint_fartyg-bordat-i-%C3%B6stersj%C3%B6n-polismyndigheten-activity-7435748342091014144-m_Js">bordningen av Caffa den 6 mars</a> på svenskt sjöterritorium utanför Trelleborg. Kustbevakningen ingrep mot ett fartyg med oklar flaggstatus. I <a href="https://www.kustbevakningen.se/nyheter/samlingssida-kustbevakningens-nyheter-om-caffa/">uppföljningen den 12 maj</a> uppgav myndigheten att Polismyndigheten tagit fartyget i beslag medan en utländsk rättshjälpbegäran pågick. Det belyser behovet av sjösäkerhetskontroll och myndighetssamverkan. Ingripandet är däremot inte ett belägg för att Caffa genomförde sabotage.</p><p>Sårbarheten finns också på land. <a href="https://www.linkedin.com/posts/svensk-osint_sabotage-stoppade-t%C3%A5gtrafiken-p%C3%A5-fredagen-activity-7474032310921629697-kGoh">Kabelkapningen i Ylöjärvi den 19 juni</a> stoppade tåg på sträckan Tammerfors–Seinäjoki under flera timmar. Den 26 juni kapades telekablar i Malmi i Helsingfors. <a href="https://poliisi.fi/en/-/nbi-investigates-cable-severing-cases">Finlands centralkriminalpolis bekräftade den 30 juni att båda fallen var avsiktliga</a> och utredde grov skadegörelse; i Malmi även störning av telekommunikation. Myndigheten angav ingen beställare eller motivbild. För svensk beredskap visar fallen hur markbundna kommunikationsförbindelser kan påverka både samhällsservice och nordiska transportflöden.</p>
@@ -1201,6 +1242,31 @@
           <p>Sveriges roll i alliansen blir konkret i norra Europa. Under <a href="https://www.regeringen.se/artiklar/2026/03/pal-jonson-besokte-ovningen-cold-response-2026/">Cold Response 26</a> övade allierade styrkor förflyttningar från Sverige till norra Finland (Regeringskansliet, 2026e). I juni etablerades Natos framskjutna närvaro i Finland; den svenska stridsgruppen utgår från Boden och ska kunna verka på Nordkalotten och snabbt förstärka Finland (<a href="https://www.regeringen.se/pressmeddelanden/2026/06/svensk-trupp-stalls-under-natobefal-inom-ramen-for-flf-finland/">Regeringskansliet, 2026f</a>). <a href="https://www.linkedin.com/feed/update/urn:li:activity:7480711693170491392">Utvecklingen av styrkan och allierat deltagande</a> visar hur Sveriges nordliga geografi kopplas till Natos regionala planering.</p>
           <p>Detta fördjupar Sveriges militära integration, men innebär också att transporter, värdlandsstöd, ledning, skydd och uthållig försörjning får större betydelse. <a href="https://www.regeringen.se/regeringens-politik/totalforsvar/forsvarsbeslutet-20252030/">Regeringens försvarsbeslut</a> anger att Sverige ska kunna stödja allierade operationer på eller från svenskt territorium. (Regeringskansliet, 2026a). Det är en inriktning; den faktiska förmågan beror bland annat på fungerande järnvägar och vägar, hamnkapacitet, tillgängliga drivmedel, reservdelar och samordning mellan civila och militära aktörer. <a href="https://www.linkedin.com/posts/svensk-osint_ryssland-rustar-upp-l%C3%A4ngs-gr%C3%A4nsen-mot-norra-activity-7470472061694410752-8xcP">Utvecklingen på Nordkalotten</a> sätter dessa förflyttningar i sitt säkerhetspolitiska sammanhang.</p>
 
+<figure class="nordic-corridors" id="nordiska-korridorer" aria-labelledby="nordic-title" aria-describedby="nordic-caption">
+  <header class="nordic-heading">
+    <div class="nordic-kicker">Nordisk transportberedskap</div>
+    <h4 id="nordic-title">Sverige länkar samman nordiska transportkorridorer</h4>
+    <p>Fyra prioriterade korridorer för civila och militära behov. Offentlig planeringsbild den 24 februari 2026.</p>
+  </header>
+  <fieldset class="nordic-controls">
+    <legend>Välj en korridor för att följa den på kartan</legend>
+    <div class="nordic-toolbar">
+      <label class="nordic-all"><input type="radio" name="nordic-corridor" value="all" checked> Alla korridorer</label>
+      <button type="button" class="nordic-reset">Återställ kartutsnitt</button>
+    </div>
+    <div class="nordic-options">
+      <label class="nordic-option nordic-one"><input type="radio" name="nordic-corridor" value="1"><span class="nordic-number">1</span><span><strong>Sjövägar nära Sverige</strong><small>Beredskapskritiska sjövägar, särskilt nära svensk kust.</small></span></label>
+      <label class="nordic-option nordic-two"><input type="radio" name="nordic-corridor" value="2"><span class="nordic-number">2</span><span><strong>Södra Norden–Finland</strong><small>Öresund / Trelleborg / Göteborg–Gävle / Stockholm–Hangö / Åbo / Nådendal. Förlängning från Oslo.</small></span></label>
+      <label class="nordic-option nordic-three"><input type="radio" name="nordic-corridor" value="3"><span class="nordic-number">3</span><span><strong>Nordkalotten</strong><small>Göteborg–Hallsberg–Haparanda / Torneå–Uleåborg / Rovaniemi. Förlängning Boden–Ofotfjorden / Narvik.</small></span></label>
+      <label class="nordic-option nordic-four"><input type="radio" name="nordic-corridor" value="4"><span class="nordic-number">4</span><span><strong>Mittnorden</strong><small>Trondheimsfjorden–Sundsvall–Raumo / Björneborg.</small></span></label>
+    </div>
+  </fieldset>
+  <div class="nordic-line-key" aria-label="Kartans teckenförklaring"><span><i class="nordic-land-key" aria-hidden="true"></i>Landförbindelser: väg / järnväg</span><span><i class="nordic-sea-key" aria-hidden="true"></i>Sjöförbindelser</span></div>
+  <div id="nordic-corridor-map" role="region" aria-label="Karta över prioriterade nordiska transportkorridorer"></div>
+  <p class="nordic-map-status" role="status" aria-live="polite">Korridorerna beskrivs ovan. Den interaktiva kartan laddas när kartstödet är tillgängligt.</p>
+  <figcaption id="nordic-caption">Linjerna är schematiska; punkterna anger ungefärliga orts- och hamnregioner. Prioritering visar planeringsinriktning. Kapacitet och tillgång till transporttjänster behöver analyseras vidare enligt <a href="https://www.trafikverket.se/contentassets/73ee9b79390f40979a28dd7d44884fcb/joint-nordic-strategy-for-transport-system-preparedness.pdf">den nordiska transportstrategin</a> (NTPC, 2026, s. 4 och 7). Läs <a href="https://www.linkedin.com/posts/svensk-osint_joint-nordic-strategy-for-transport-system-activity-7439042456538660864-BKS8">genomgången av strategin</a> eller se <a href="assets/prioriterade-transportkorridorer.png">originalkartan</a>.</figcaption>
+</figure>
+
  <p>Förstärkningsförmågan kräver också uthålliga drivmedelsflöden. Den 22 juli godkände Nordatlantiska rådet <a href="https://www.linkedin.com/feed/update/urn:li:activity:7486367599421931520">Natos plan för drivmedelsförsörjning</a>, med investeringar om 27 miljarder euro i bland annat lager, distribution och nya ledningar. <a href="https://nato.int/en/news-and-events/articles/news/2026/07/22/north-atlantic-council-approves-nato-funding-for-upcoming-years-agrees-fuel-supply-chain-plan">Natos beslutsbesked</a> konkretiserar den logistiska delen av avskräckningen. Planen avser fortsatt utbyggnad; beloppet får inte läsas som infrastruktur som redan tagits i bruk under 2026. För Sverige är tillgången till bränsle en förutsättning för att transporter och allierade förstärkningar ska fungera.</p>
           <h3>Underrättelseförmåga: en gemensam riktning och en ny myndighet</h3>
 
@@ -1473,6 +1539,125 @@
   render();
 })();
 
+</script>
+<script id="nordic-corridor-script">
+(function () {
+  const root = document.getElementById('nordiska-korridorer');
+  if (!root) return;
+  const node = root.querySelector('#nordic-corridor-map');
+  const status = root.querySelector('.nordic-map-status');
+  if (!window.L) {
+    node.hidden = true;
+    status.textContent = 'Kartstödet kunde inte laddas. Korridorerna beskrivs ovan och finns i originalkartan nedan.';
+    for (const control of root.querySelectorAll('input,button')) control.disabled = true;
+    return;
+  }
+  const towns = {
+    oresund: { xy:[55.6,12.8], name:'Öresundsförbindelsen', groups:[2], label:false },
+    trelleborg: { xy:[55.3751,13.1569], name:'Trelleborg', groups:[2], label:false },
+    goteborg: { xy:[57.7089,11.9746], name:'Göteborg', groups:[2,3], direction:'left' },
+    oslo: { xy:[59.9139,10.7522], name:'Oslo', groups:[2], direction:'left' },
+    hallsberg: { xy:[59.0647,15.1099], name:'Hallsberg', groups:[3], direction:'left' },
+    gavle: { xy:[60.6749,17.1413], name:'Gävle', groups:[2], direction:'left' },
+    stockholm: { xy:[59.3293,18.0686], name:'Stockholm', groups:[2], direction:'bottom' },
+    hanko: { xy:[59.8253,22.9674], name:'Hanko (Hangö)', groups:[2], label:false },
+    turku: { xy:[60.46,22.145], name:'Åbo / Nådendal', groups:[2], direction:'right' },
+    boden: { xy:[65.8252,21.6886], name:'Boden', groups:[3], direction:'left' },
+    haparanda: { xy:[65.84,24.14], name:'Haparanda / Torneå', groups:[3], direction:'right' },
+    oulu: { xy:[65.0121,25.4651], name:'Uleåborg', groups:[3], direction:'right' },
+    rovaniemi: { xy:[66.5039,25.7294], name:'Rovaniemi', groups:[3], direction:'right' },
+    narvik: { xy:[68.4385,17.4272], name:'Narvik / Ofotfjorden', groups:[3], direction:'left' },
+    trondheim: { xy:[63.5,10.45], name:'Trondheimsfjorden', groups:[4], direction:'left' },
+    sundsvall: { xy:[62.3908,17.3069], name:'Sundsvall', groups:[4], direction:'left' },
+    rauma: { xy:[61.3,21.65], name:'Raumo / Björneborg', groups:[4], direction:'right' }
+  };
+  const p = id => towns[id].xy;
+  // Intermediate points keep the schematic links broadly on land or sea.
+  // They are not surveyed road, railway or shipping alignments.
+  const corridors = {
+    1: { color:'#24619b', sea:[[[55.8,12.9],[55.4,13.1],[55.0,14.0],[55.65,15.4],[56.0,16.1],[56.8,16.95],[57.9,17.4],[59.1,18.7],[60.2,18.9],[61.5,18.5],[62.6,18.6],[63.7,20.6],[64.5,22.3],[65.35,23.3]]], land:[] },
+    2: { color:'#b75e22', land:[
+      [p('oslo'),[59.0,11.5],p('goteborg')],
+      [p('goteborg'),[58.1,13.5],[59.2,15.7],p('gavle')],
+      [p('goteborg'),[58.1,13.5],[58.5,15.5],p('stockholm')],
+      [p('oresund'),[56.35,13.35],[57.1,14.9],[58.1,15.6],p('stockholm')],
+      [p('trelleborg'),[56.35,13.35]]
+    ], sea:[
+      [p('gavle'),[60.35,19.0],[60.2,20.5],p('turku')],
+      [p('stockholm'),[59.9,19.2],[60.2,20.5],p('turku')],
+      [p('stockholm'),[59.55,19.3],[59.62,21.1],p('hanko')]
+    ] },
+    3: { color:'#087c74', land:[
+      [p('goteborg'),[58.37,13.05],p('hallsberg')],
+      [p('hallsberg'),[60.4,16.1],[61.9,16.9],[63.0,18.5],[63.82,20.3],[64.8,20.9],p('boden'),p('haparanda')],
+      [p('haparanda'),[65.7,24.56],p('oulu')],
+      [p('haparanda'),[66.1,24.95],p('rovaniemi')],
+      [p('boden'),[66.8,20.8],[67.8,20.2],[68.2,19.1],p('narvik')]
+    ], sea:[] },
+    4: { color:'#7056a3', land:[
+      [p('trondheim'),[63.3,11.65],[63.31,12.1],[63.18,14.65],p('sundsvall')]
+    ], sea:[[p('sundsvall'),[61.8,19.1],p('rauma')]] }
+  };
+  const map = L.map(node, { scrollWheelZoom:false, zoomSnap:0.25, minZoom:3, maxZoom:10, tap:false });
+  const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom:19, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+  }).addTo(map);
+  let tileFailures = 0;
+  tiles.on('tileerror', () => {
+    tileFailures += 1;
+    if (tileFailures > 3) status.textContent = 'Bakgrundskartan kunde inte laddas helt. Korridorer och orter visas ändå schematiskt.';
+  });
+  const routeLayers = {};
+  const allBounds = L.latLngBounds([]);
+  for (const [id, corridor] of Object.entries(corridors)) {
+    const layer = L.featureGroup();
+    const title = root.querySelector('input[value="' + id + '"]').closest('label').querySelector('strong').textContent;
+    for (const mode of ['land','sea']) {
+      for (const points of corridor[mode]) {
+        const bounds = L.latLngBounds(points);
+        allBounds.extend(bounds);
+        L.polyline(points, { color:corridor.color, weight:4.5, opacity:0.92, lineCap:'round', lineJoin:'round', dashArray:mode === 'sea' ? '10 8' : null })
+          .bindTooltip('Korridor ' + id + ' · ' + title + ' · ' + (mode === 'sea' ? 'sjöförbindelse' : 'landförbindelse'))
+          .addTo(layer);
+      }
+    }
+    routeLayers[id] = layer;
+  }
+  const townLayer = L.layerGroup().addTo(map);
+  let active = 'all';
+  function fitSelection() {
+    const bounds = active === 'all' ? allBounds : routeLayers[active].getBounds();
+    map.fitBounds(bounds, { padding:[32,32], paddingTopLeft:[74,25], paddingBottomRight:[88,28], maxZoom:6, animate:false });
+  }
+  function render() {
+    for (const [id, layer] of Object.entries(routeLayers)) {
+      if (active === 'all' || active === id) layer.addTo(map);
+      else map.removeLayer(layer);
+    }
+    townLayer.clearLayers();
+    const compact = node.clientWidth < 450;
+    for (const [id, town] of Object.entries(towns)) {
+      if (active !== 'all' && !town.groups.includes(Number(active))) continue;
+      if (active === '1') continue;
+      const marker = L.circleMarker(town.xy, { radius:4.5, color:'#173449', weight:1.5, fillColor:'#fff', fillOpacity:1 });
+      const permanent = town.label !== false && !(compact && active === 'all' && ['hallsberg','boden','oulu','gavle','oslo'].includes(id));
+      marker.bindTooltip(town.name, { permanent, direction:town.direction || 'top', className:'nordic-town-label', offset:[0,0], opacity:1 });
+      marker.bindPopup(town.name);
+      marker.addTo(townLayer);
+    }
+    if (tileFailures <= 3) status.textContent = active === 'all' ? 'Alla fyra korridorer visas. Tryck på en ort för dess namn.' : 'Korridor ' + active + ' visas. Välj Alla korridorer för översikten.';
+    fitSelection();
+  }
+  root.querySelectorAll('input[name="nordic-corridor"]').forEach(input => input.addEventListener('change', () => { active = input.value;render(); }));
+  root.querySelector('.nordic-reset').addEventListener('click', fitSelection);
+  render();
+  if (window.ResizeObserver) {
+    let width = node.clientWidth;
+    new ResizeObserver(() => {
+      if (node.clientWidth !== width) { width = node.clientWidth;map.invalidateSize({ pan:false });render(); }
+    }).observe(node);
+  }
+})();
 </script>
 </body>
 </html>

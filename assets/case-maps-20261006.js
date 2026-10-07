@@ -117,6 +117,19 @@ window.InblickCaseFacets={"ee-milrem":{"topics":["sabotage"],"sectors":["industr
       requestAnimationFrame(()=>clone.querySelector('[data-popup-minimize]')?.focus());
     }
     document.addEventListener('keydown',event=>{if(event.key==='Escape' && caseModal)closeCaseModal(false);});
+    const popupPressEvent='PointerEvent' in window?'pointerdown':'mousedown';
+    document.addEventListener(popupPressEvent,event=>{
+      const fullButton=event.target.closest?.('[data-popup-fullscreen]');
+      if(fullButton && root.contains(fullButton)){
+        event.preventDefault();event.stopPropagation();event.stopImmediatePropagation();
+        const article=fullButton.closest('.thematic-popup');if(article)openCaseModal(article);
+        return;
+      }
+      const closeButton=event.target.closest?.('[data-popup-close]');
+      if(closeButton && root.contains(closeButton)){
+        event.preventDefault();event.stopPropagation();event.stopImmediatePropagation();closeCaseModal(true);
+      }
+    },true);
     document.addEventListener('click',event=>{
       const fullButton=event.target.closest?.('[data-popup-fullscreen]');
       if(fullButton && root.contains(fullButton)){

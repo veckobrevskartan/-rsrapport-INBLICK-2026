@@ -77,12 +77,46 @@ window.InblickCaseFacets={"ee-milrem":{"topics":["sabotage"],"sectors":["industr
     let map,layer,visible=[],filteredPoints=[],mapFailed=false;
     const markerByCase=new Map();
     const cards=new Map([...list.children].map(card=>[card.dataset.caseId,card]));
+    const filterPanel=document.createElement('details');
+    filterPanel.className='thematic-filter-panel';
+    const filterSummary=document.createElement('summary');
+    filterSummary.textContent='Filtrera och sök';
+    const filterBody=document.createElement('div');
+    filterBody.className='thematic-filter-body';
+    filterPanel.append(filterSummary,filterBody);
+    const firstFilterNode=root.querySelector('.thematic-controls');
+    firstFilterNode.before(filterPanel);
+    for(const selector of ['.thematic-controls','.thematic-options','.thematic-actions','.thematic-time-label','.thematic-timeline']){
+      const part=root.querySelector(selector);if(part)filterBody.append(part);
+    }
     const values=()=>Object.fromEntries(Object.entries(fields).map(([key,input])=>[key,input ? (input.type==='checkbox'?input.checked:input.value) : false]));
     function body(item,location) {
       const m=facets[item.id],kind=topic==='drone'?C.kinds[m.droneKind]:C.stages[m.sabotageStage];
       const consequence=m.consequence ? '<p><b>Konsekvens:</b> '+esc(m.consequence)+'</p>' : '';
-      return '<article class="thematic-popup"><strong>'+esc(item.title)+'</strong><p>'+esc(kind)+' · '+esc(C.evidence[m.evidence])+'</p>'+(location?'<p>'+esc(location.label)+' · '+esc(location.role)+'</p>':'')+'<p><b>Händelse:</b> '+esc(item.event)+'<br><b>Senaste redovisade besked:</b> '+esc(item.update)+'</p><p>'+esc(item.status)+'</p>'+consequence+'<p><b>Ansvar:</b> '+esc(C.actors[m.attribution])+'</p><p><a href="'+esc(item.source.url)+'" target="_blank" rel="noopener noreferrer">'+esc(item.source.label)+'</a> · <a href="#'+esc(topic+'-case-'+item.id)+'" data-theme-card="'+esc(item.id)+'">Läs fallkortet</a> · <a href="#'+esc(item.anchor)+'">Till analysen</a></p></article>';
+      return '<article class="thematic-popup"><div class="thematic-popup-actions"><button type="button" data-popup-fullscreen aria-label="Visa fallkortet i helskärm">Visa i helskärm</button><button type="button" data-popup-close aria-label="Stäng fallkortet">Stäng</button></div><div class="thematic-popup-body"><strong>'+esc(item.title)+'</strong><p>'+esc(kind)+' · '+esc(C.evidence[m.evidence])+'</p>'+(location?'<p>'+esc(location.label)+' · '+esc(location.role)+'</p>':'')+'<p><b>Händelse:</b> '+esc(item.event)+'<br><b>Senaste redovisade besked:</b> '+esc(item.update)+'</p><p>'+esc(item.status)+'</p>'+consequence+'<p><b>Ansvar:</b> '+esc(C.actors[m.attribution])+'</p><p><a href="'+esc(item.source.url)+'" target="_blank" rel="noopener noreferrer">'+esc(item.source.label)+'</a> · <a href="#'+esc(topic+'-case-'+item.id)+'" data-theme-card="'+esc(item.id)+'">Läs fallkortet</a> · <a href="#'+esc(item.anchor)+'">Till analysen</a></p></div></article>';
     }
+    let caseModal=null;
+    function closeCaseModal(closePopup) {
+      if(caseModal){caseModal.remove();caseModal=null;document.body.classList.remove('thematic-modal-open');}
+      if(closePopup && map)map.closePopup();
+    }
+    function openCaseModal(article) {
+      closeCaseModal(false);
+      const overlay=document.createElement('div');
+      overlay.className='thematic-case-modal';
+      overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-label','Falluppgifter i helskärm');
+      const dialog=document.createElement('div');dialog.className='thematic-case-modal-dialog';
+      const clone=article.cloneNode(true);
+      const fullButton=clone.querySelector('[data-popup-fullscreen]');
+      if(fullButton){delete fullButton.dataset.popupFullscreen;fullButton.dataset.popupMinimize='';fullButton.textContent='Minska';fullButton.setAttribute('aria-label','Minska fallkortet till kartan');}
+      dialog.append(clone);overlay.append(dialog);document.body.append(overlay);caseModal=overlay;document.body.classList.add('thematic-modal-open');
+      overlay.addEventListener('click',event=>{
+        if(event.target===overlay || event.target.closest('[data-popup-minimize]')){closeCaseModal(false);return;}
+        if(event.target.closest('[data-popup-close]'))closeCaseModal(true);
+      });
+      requestAnimationFrame(()=>clone.querySelector('[data-popup-minimize]')?.focus());
+    }
+    document.addEventListener('keydown',event=>{if(event.key==='Escape' && caseModal)closeCaseModal(false);});
     function draw() {
       if (!map) return;
       layer.clearLayers();markerByCase.clear();
@@ -93,7 +127,7 @@ window.InblickCaseFacets={"ee-milrem":{"topics":["sabotage"],"sectors":["industr
         const symbol=count>1?String(count):m.evidence==='dismissed'?'×':context?'◇':'';
         const cls='thematic-marker '+(context?'is-context ':'')+(m.evidence==='reported'?'is-reported ':'')+(m.evidence==='dismissed'?'is-dismissed ':'');
         const marker=L.marker([loc.lat,loc.lng],{title:count>1?count+' ärenden vid '+loc.label:item.title,keyboard:true,icon:L.divIcon({className:'thematic-marker-wrap',html:'<span class="'+cls+'" style="--point-color:'+colors[kind]+'">'+symbol+'</span>',iconSize:[28,28],iconAnchor:[14,14]})});
-        marker.bindPopup(group.map(p=>body(p.item,p.loc)).join('<hr>'),{maxWidth:370,maxHeight:400});
+        marker.bindPopup(group.map(p=>body(p.item,p.loc)).join('<hr>'),{className:'thematic-leaflet-popup',maxWidth:370,maxHeight:400,autoPanPadding:[18,18]});
         marker.bindTooltip(esc(count>1?count+' ärenden vid denna översiktsplats':item.title));marker.addTo(layer);
         for (const p of group) if (!markerByCase.has(p.item.id)) markerByCase.set(p.item.id,marker);
       }
@@ -128,6 +162,8 @@ window.InblickCaseFacets={"ee-milrem":{"topics":["sabotage"],"sectors":["industr
       root.querySelector('.thematic-count').textContent=visible.length+' ärenden · '+filteredPoints.length+' platsmarkeringar · '+(visible.length-mapped.size)+' utan markering i detta urval';
       index.querySelector('summary').textContent='Visa fall, status och källor ('+visible.length+' av '+topicCases.length+')';
       root.querySelector('.thematic-empty').hidden=visible.length!==0;
+      const activeCount=(f.region && f.region!=='europe'?1:0)+(f.period && f.period!=='developments'?1:0)+['country','kind','sector','evidence','actor','month','query'].filter(key=>String(f[key]||'').trim()).length+['context','war','industry'].filter(key=>f[key]).length;
+      filterSummary.textContent=activeCount?'Filtrera och sök ('+activeCount+' aktiva val)':'Filtrera och sök';
       for(const button of list.querySelectorAll('[data-theme-show]'))button.hidden=!mapped.has(button.dataset.themeShow);
       timeline(f);draw();
     }
@@ -136,6 +172,10 @@ window.InblickCaseFacets={"ee-milrem":{"topics":["sabotage"],"sectors":["industr
     root.querySelector('.thematic-timeline').addEventListener('click',event=>{const button=event.target.closest('[data-month]');if(!button)return;fields.month.value=fields.month.value===button.dataset.month?'':button.dataset.month;render();});
     root.querySelector('.thematic-fit').addEventListener('click',()=>{initializeMap();map?.invalidateSize({pan:false});draw();});
     root.addEventListener('click',event=>{
+      const closeButton=event.target.closest('[data-popup-close]');
+      if(closeButton){closeCaseModal(true);return;}
+      const fullButton=event.target.closest('[data-popup-fullscreen]');
+      if(fullButton){const article=fullButton.closest('.thematic-popup');if(article)openCaseModal(article);return;}
       const cardLink=event.target.closest('[data-theme-card]');
       if(cardLink){index.open=true;const card=cards.get(cardLink.dataset.themeCard);if(card){card.hidden=false;requestAnimationFrame(()=>card.scrollIntoView({block:'start',behavior:'auto'}));}}
       const button=event.target.closest('[data-theme-show]');if(!button)return;

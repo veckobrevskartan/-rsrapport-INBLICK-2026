@@ -95,6 +95,35 @@ window.InblickCaseFacets={"ee-milrem":{"topics":["sabotage"],"sectors":["industr
       const consequence=m.consequence ? '<p><b>Konsekvens:</b> '+esc(m.consequence)+'</p>' : '';
       return '<article class="thematic-popup"><div class="thematic-popup-actions"><button type="button" data-popup-fullscreen aria-label="Visa fallkortet i helskärm">Helskärm</button><a class="thematic-popup-source" href="'+esc(item.source.url)+'" target="_blank" rel="noopener noreferrer" aria-label="Öppna källan i ny flik">Källa</a><button type="button" data-popup-close aria-label="Stäng fallkortet">Stäng</button></div><div class="thematic-popup-body"><strong>'+esc(item.title)+'</strong><p>'+esc(kind)+' · '+esc(C.evidence[m.evidence])+'</p>'+(location?'<p>'+esc(location.label)+' · '+esc(location.role)+'</p>':'')+'<p><b>Händelse:</b> '+esc(item.event)+'<br><b>Senaste redovisade besked:</b> '+esc(item.update)+'</p><p>'+esc(item.status)+'</p>'+consequence+'<p><b>Ansvar:</b> '+esc(C.actors[m.attribution])+'</p><p><a href="'+esc(item.source.url)+'" target="_blank" rel="noopener noreferrer">'+esc(item.source.label)+'</a> · <a href="#'+esc(topic+'-case-'+item.id)+'" data-theme-card="'+esc(item.id)+'">Läs fallkortet</a> · <a href="#'+esc(item.anchor)+'">Till analysen</a></p></div></article>';
     }
+    const casePanel=document.createElement('section');
+    casePanel.className='thematic-map-card-panel';
+    casePanel.hidden=true;
+    casePanel.setAttribute('aria-live','polite');
+    casePanel.setAttribute('aria-label',topic==='drone'?'Drönarfall':'Sabotagefall');
+    document.body.append(casePanel);
+    function hideCasePanel(){
+      casePanel.hidden=true;casePanel.classList.remove('is-fullscreen');casePanel.innerHTML='';
+      document.body.classList.remove('thematic-modal-open');
+    }
+    function showCasePanel(html){
+      for(const other of document.querySelectorAll('.thematic-map-card-panel'))if(other!==casePanel)other.hidden=true;
+      casePanel.classList.remove('is-fullscreen');casePanel.innerHTML=html;casePanel.hidden=false;
+      document.body.classList.remove('thematic-modal-open');
+      requestAnimationFrame(()=>casePanel.querySelector('[data-popup-fullscreen]')?.focus());
+    }
+    casePanel.addEventListener('click',event=>{
+      const fullButton=event.target.closest('[data-popup-fullscreen]');
+      if(fullButton){
+        event.preventDefault();
+        const expanded=casePanel.classList.toggle('is-fullscreen');
+        fullButton.textContent=expanded?'Minska':'Helskärm';
+        fullButton.setAttribute('aria-label',expanded?'Minska fallkortet':'Visa fallkortet i helskärm');
+        document.body.classList.toggle('thematic-modal-open',expanded);
+        return;
+      }
+      if(event.target.closest('[data-popup-close]')){event.preventDefault();hideCasePanel();return;}
+      if(event.target.closest('a[href^="#"]'))hideCasePanel();
+    });
     let caseModal=null;
     function closeCaseModal(closePopup) {
       if(caseModal){caseModal.remove();caseModal=null;document.body.classList.remove('thematic-modal-open');}
@@ -116,7 +145,7 @@ window.InblickCaseFacets={"ee-milrem":{"topics":["sabotage"],"sectors":["industr
       });
       requestAnimationFrame(()=>clone.querySelector('[data-popup-minimize]')?.focus());
     }
-    document.addEventListener('keydown',event=>{if(event.key==='Escape' && caseModal)closeCaseModal(false);});
+    document.addEventListener('keydown',event=>{if(event.key==='Escape' && caseModal)closeCaseModal(false);if(event.key==='Escape' && !casePanel.hidden)hideCasePanel();});
     const popupPressEvent='PointerEvent' in window?'pointerdown':'mousedown';
     document.addEventListener(popupPressEvent,event=>{
       const fullButton=event.target.closest?.('[data-popup-fullscreen]');
@@ -152,7 +181,9 @@ window.InblickCaseFacets={"ee-milrem":{"topics":["sabotage"],"sectors":["industr
         const symbol=count>1?String(count):m.evidence==='dismissed'?'×':context?'◇':'';
         const cls='thematic-marker '+(context?'is-context ':'')+(m.evidence==='reported'?'is-reported ':'')+(m.evidence==='dismissed'?'is-dismissed ':'');
         const marker=L.marker([loc.lat,loc.lng],{title:count>1?count+' ärenden vid '+loc.label:item.title,keyboard:true,icon:L.divIcon({className:'thematic-marker-wrap',html:'<span class="'+cls+'" style="--point-color:'+colors[kind]+'">'+symbol+'</span>',iconSize:[28,28],iconAnchor:[14,14]})});
-        marker.bindPopup(group.map(p=>body(p.item,p.loc)).join('<hr>'),{className:'thematic-leaflet-popup',maxWidth:370,maxHeight:400,autoPanPadding:[18,18]});
+        const cardHtml=group.map(p=>body(p.item,p.loc)).join('<hr>');
+        marker._inblickCardHtml=cardHtml;
+        marker.on('click',()=>showCasePanel(cardHtml));
         marker.bindTooltip(esc(count>1?count+' ärenden vid denna översiktsplats':item.title));marker.addTo(layer);
         for (const p of group) if (!markerByCase.has(p.item.id)) markerByCase.set(p.item.id,marker);
       }
@@ -218,7 +249,7 @@ window.InblickCaseFacets={"ee-milrem":{"topics":["sabotage"],"sectors":["industr
       if(cardLink){index.open=true;const card=cards.get(cardLink.dataset.themeCard);if(card){card.hidden=false;requestAnimationFrame(()=>card.scrollIntoView({block:'start',behavior:'auto'}));}}
       const button=event.target.closest('[data-theme-show]');if(!button)return;
       initializeMap();const marker=markerByCase.get(button.dataset.themeShow);if(!marker)return;
-      node.scrollIntoView({block:'center',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});map.invalidateSize({pan:false});map.setView(marker.getLatLng(),8,{animate:false});marker.openPopup();
+      node.scrollIntoView({block:'center',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});map.invalidateSize({pan:false});map.setView(marker.getLatLng(),8,{animate:false});marker.fire('click');
     });
     root.querySelector('.thematic-download').addEventListener('click',()=>{
       const data={title:'INBLICK 2026 – '+(topic==='drone'?'drönarunderlag':'sabotageunderlag'),cutoff:'2026-10-06',scope:'Rapportens urval; inte heltäckande incidentstatistik',filters:values(),cases:visible.map(item=>({...item,mapFacets:facets[item.id]}))};

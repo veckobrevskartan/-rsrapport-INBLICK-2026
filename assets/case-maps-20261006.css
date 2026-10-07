@@ -69,13 +69,14 @@
 .thematic-map .thematic-leaflet-popup { max-width:calc(100% - 24px); }
 .thematic-map .thematic-leaflet-popup .leaflet-popup-content-wrapper { overflow:hidden; }
 .thematic-map .thematic-leaflet-popup .leaflet-popup-content,
-.thematic-map .thematic-leaflet-popup .leaflet-popup-scrolled { max-height:min(52dvh,320px)!important;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain; }
+.thematic-map .thematic-leaflet-popup .leaflet-popup-scrolled { max-height:min(62dvh,440px)!important;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain; }
 .thematic-map .thematic-leaflet-popup .leaflet-popup-content { width:min(320px,calc(100vw - 74px))!important;margin:0!important;padding:0 12px 12px;box-sizing:border-box; }
 .thematic-popup { overflow-wrap:anywhere; }
 .thematic-popup strong { display:block;font-size:.88rem;line-height:1.35; }
 .thematic-popup-actions { position:sticky;top:0;z-index:2;display:flex;justify-content:flex-end;gap:6px;margin:0 -12px 10px;padding:9px 10px 7px;background:#fff;border-bottom:1px solid #d0d8de; }
 .thematic-popup-actions button,
-.thematic-case-modal button { min-height:36px;padding:6px 10px;border:1px solid #8b6f1e;border-radius:4px;background:#f7f9fb;color:#5e4a0d;cursor:pointer;font:600 .72rem/1.2 var(--sans); }
+.thematic-popup-actions .thematic-popup-source,
+.thematic-case-modal button { min-height:36px;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;padding:6px 10px;border:1px solid #8b6f1e;border-radius:4px;background:#f7f9fb;color:#5e4a0d;cursor:pointer;font:600 .72rem/1.2 var(--sans);text-decoration:none; }
 .thematic-popup-actions button:focus-visible,
 .thematic-case-modal button:focus-visible { outline:2px solid #8b6f1e;outline-offset:2px; }
 body.thematic-modal-open { overflow:hidden; }
@@ -91,7 +92,7 @@ body.thematic-modal-open { overflow:hidden; }
   .thematic-filter-panel { margin:13px 0; }
   .thematic-filter-body { padding:0 10px 10px; }
   .thematic-map .thematic-leaflet-popup .leaflet-popup-content,
-  .thematic-map .thematic-leaflet-popup .leaflet-popup-scrolled { max-height:min(48dvh,245px)!important; }
+  .thematic-map .thematic-leaflet-popup .leaflet-popup-scrolled { max-height:min(60dvh,410px)!important; }
   .thematic-map .thematic-leaflet-popup .leaflet-popup-content { width:min(276px,calc(100vw - 64px))!important;padding:0 10px 10px; }
   .thematic-popup-actions { margin:0 -10px 9px;padding:8px; }
   .thematic-popup p { font-size:.72rem!important;line-height:1.42!important; }
@@ -100,3 +101,9 @@ body.thematic-modal-open { overflow:hidden; }
   .thematic-case-modal .thematic-popup strong { font-size:1.08rem; }
 }
 @media print { .thematic-filter-panel { border:0;background:none; }.thematic-filter-panel>summary,.thematic-popup-actions,.thematic-case-modal { display:none!important; }.thematic-filter-body { display:block!important;padding:0;border:0; } }
+
+@media(max-width:360px) {
+  .thematic-popup-actions { gap:4px; }
+  .thematic-popup-actions button,
+  .thematic-popup-actions .thematic-popup-source { padding:6px 7px;font-size:.68rem; }
+}

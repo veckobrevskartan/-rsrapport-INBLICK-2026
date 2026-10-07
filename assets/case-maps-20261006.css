@@ -1,0 +1,56 @@
+/* Thematic case maps use the report's typography and colours. */
+.thematic-explorer { margin:26px 0 32px;padding:20px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:5px;background:rgba(17,48,64,.25);max-width:100%;min-width:0; }
+.thematic-explorer .thematic-kicker { margin:0 0 7px;color:var(--gold);font:700 .68rem/1.4 var(--sans);letter-spacing:.09em;text-transform:uppercase; }
+.thematic-explorer h4 { margin:0 0 12px;font:400 1.45rem/1.3 var(--serif);color:var(--text); }
+.thematic-explorer .thematic-intro,.thematic-explorer .thematic-method { color:var(--muted);font:.83rem/1.65 var(--sans); }
+.thematic-controls { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:18px 0; }
+.thematic-controls label { display:flex;flex-direction:column;gap:5px;color:var(--text);font:.75rem/1.4 var(--sans);min-width:0; }
+.thematic-controls select,.thematic-controls input[type="search"] { width:100%;min-width:0;min-height:44px;background:#0c2034;color:var(--text);border:1px solid rgba(184,151,58,.45);border-radius:4px;padding:8px;font:.78rem var(--sans); }
+.thematic-search { grid-column:1/-1; }
+.thematic-options { display:flex;flex-wrap:wrap;gap:6px 18px;margin:12px 0; }
+.thematic-options label { display:inline-flex;align-items:center;gap:7px;min-height:38px;color:var(--muted);font:.76rem/1.5 var(--sans); }
+.thematic-options input { accent-color:var(--gold);width:17px;height:17px; }
+.thematic-explorer button { min-height:40px;background:var(--bg-soft);color:var(--gold);border:1px solid rgba(184,151,58,.55);border-radius:4px;padding:8px 12px;cursor:pointer;font:.78rem/1.4 var(--sans); }
+.thematic-explorer button:hover { background:var(--gold-soft); }
+.thematic-explorer button:focus-visible,.thematic-explorer select:focus-visible,.thematic-explorer input:focus-visible { outline:2px solid var(--gold);outline-offset:3px; }
+.thematic-actions { display:flex;flex-wrap:wrap;gap:8px;margin:12px 0; }
+.thematic-count { color:var(--gold)!important;font:600 .86rem/1.5 var(--sans)!important;margin:15px 0!important; }
+.thematic-map { height:500px;width:100%;background:#e3eaf0;border:1px solid var(--line);border-radius:4px;z-index:0;font:13px/1.45 var(--sans); }
+.thematic-map .leaflet-attribution-flag { display:none!important; }
+.thematic-map .leaflet-control-attribution { font-size:10px;color:#314657; }
+.thematic-map .leaflet-popup-content { color:#14283d; }
+.thematic-popup { font:.8rem/1.5 var(--sans); }
+.thematic-popup strong { color:#14283d; }
+.thematic-popup p { color:#14283d!important;font:.78rem/1.5 var(--sans)!important;margin:8px 0!important; }
+.thematic-popup a { color:#155375; }
+.thematic-popup hr { border:0;border-top:1px solid #d0d8de; }
+.thematic-marker-wrap { display:grid;place-items:center;background:none;border:0; }
+.thematic-marker { display:grid;place-items:center;width:24px;height:24px;border:2px solid #fff;border-radius:50%;background:var(--point-color,#1c7393);color:#fff;font:700 12px/1 var(--sans);box-shadow:0 1px 5px #0007; }
+.thematic-marker.is-reported { border:2px dashed var(--point-color);background:#fff;color:var(--point-color); }
+.thematic-marker.is-context { border-radius:3px;background:#fff;color:var(--point-color);border:2px solid var(--point-color); }
+.thematic-marker.is-dismissed { background:#fff;border:2px solid #626a76;color:#626a76;font-size:19px; }
+.thematic-legend { display:flex;flex-wrap:wrap;gap:10px 18px;margin:14px 0;color:var(--muted);font:.73rem/1.5 var(--sans); }
+.thematic-legend span { display:inline-flex;align-items:center;gap:7px; }
+.thematic-swatch { display:inline-block;width:11px;height:11px;border-radius:50%;background:var(--point-color); }
+.thematic-legend .legend-shape { width:15px;height:15px;box-shadow:none;font-size:12px; }
+.thematic-time-label { color:var(--quiet)!important;font:.74rem/1.4 var(--sans)!important;margin:16px 0 8px!important; }
+.thematic-timeline { display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px;align-items:end;margin:0 0 10px; }
+.thematic-timeline button { display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;padding:5px 1px;min-height:82px;font:.62rem/1.2 var(--sans);border-color:transparent; }
+.thematic-timeline button[aria-pressed="true"] { border-color:var(--gold);background:var(--gold-soft); }
+.timeline-value { color:var(--quiet); }
+.timeline-bar { display:block;width:60%;max-width:24px;background:var(--gold);opacity:.72;border-radius:2px 2px 0 0; }
+.thematic-index { margin:17px 0 0;padding:12px 14px;border:1px solid var(--line);background:rgba(17,48,64,.3); }
+.thematic-index>summary { color:var(--gold);cursor:pointer;font:600 .84rem/1.5 var(--sans); }
+.thematic-list { display:grid;gap:12px;margin-top:14px; }
+.thematic-card { padding:15px;background:var(--bg-card);border:1px solid var(--line);scroll-margin-top:90px; }
+.thematic-card h5 { margin:8px 0 11px;color:var(--text);font:400 1.12rem/1.35 var(--serif); }
+.thematic-card p { margin:0 0 9px;color:var(--muted);font:.79rem/1.6 var(--sans);overflow-wrap:anywhere; }
+.thematic-card .thematic-badges { color:var(--gold);font:.69rem/1.5 var(--sans); }
+.thematic-card .thematic-dates,.thematic-card .thematic-place { color:var(--quiet);font:.72rem/1.55 var(--sans); }
+.thematic-notice { padding:10px;background:var(--bg-soft);color:var(--text);font:.8rem/1.5 var(--sans); }
+.thematic-method-details { margin-top:12px;color:var(--muted);font:.75rem/1.6 var(--sans); }
+.thematic-method-details summary { cursor:pointer;color:var(--gold); }
+.thematic-method-details p { font:.75rem/1.6 var(--sans); }
+@media(max-width:720px) { .thematic-explorer { padding:14px; }.thematic-controls { grid-template-columns:repeat(2,minmax(0,1fr)); }.thematic-map { height:420px; } }
+@media(max-width:480px) { .thematic-explorer { padding:11px; }.thematic-controls { grid-template-columns:1fr; }.thematic-map { height:360px; }.thematic-timeline { grid-template-columns:repeat(6,minmax(0,1fr)); }.thematic-index { padding:10px; }.thematic-card { padding:11px; } }
+@media print { .thematic-controls,.thematic-options,.thematic-actions,.thematic-timeline,.thematic-card button { display:none!important; }.thematic-map { height:350px; }.thematic-explorer { break-inside:auto; }.thematic-card { break-inside:avoid; }.thematic-list { display:block; }.thematic-card[hidden] { display:none!important; } }

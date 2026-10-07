@@ -138,6 +138,19 @@ window.InblickCaseFacets={"ee-milrem":{"topics":["sabotage"],"sectors":["industr
       if (map || mapFailed) return;
       if (!window.L) {mapFailed=true;node.hidden=true;notice.hidden=false;notice.textContent='Kartstödet kunde inte laddas. Alla filter, fallkort och källor fungerar i listan.';return;}
       map=L.map(node,{scrollWheelZoom:false,tap:false,minZoom:2,maxZoom:13}).setView([55,12],4);
+      map.on('popupopen',event=>{
+        const popupElement=event.popup.getElement();
+        if(!popupElement)return;
+        L.DomEvent.disableClickPropagation(popupElement);
+        for(const button of popupElement.querySelectorAll('[data-popup-fullscreen]'))button.addEventListener('click',clickEvent=>{
+          clickEvent.preventDefault();clickEvent.stopPropagation();
+          const article=button.closest('.thematic-popup');if(article)openCaseModal(article);
+        });
+        for(const button of popupElement.querySelectorAll('[data-popup-close]'))button.addEventListener('click',clickEvent=>{
+          clickEvent.preventDefault();clickEvent.stopPropagation();closeCaseModal(true);
+        });
+        for(const link of popupElement.querySelectorAll('a'))link.addEventListener('click',clickEvent=>clickEvent.stopPropagation());
+      });
       layer=L.layerGroup().addTo(map);
       const tiles=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
       tiles.on('tileerror',()=>{notice.hidden=false;notice.textContent='Bakgrundskartan kunde inte laddas. Platsmarkeringar, fallkort och filter finns kvar.';});

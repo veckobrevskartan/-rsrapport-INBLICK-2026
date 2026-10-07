@@ -85,6 +85,23 @@
     .assessment { display: grid; grid-template-columns: 46px minmax(0,1fr); gap: 15px; padding: 18px 0; border-bottom: 1px solid var(--line); }
     .assessment::before { counter-increment: assessment; content: "0" counter(assessment); color: var(--gold); font: 1.1rem var(--serif); }
     .assessment p { margin: 0; color: var(--muted); }
+    .smob-factbox { margin: 26px 0 30px; padding: 20px; border: 1px solid rgba(184,151,58,.38); background: linear-gradient(145deg, rgba(34,49,68,.95), rgba(17,48,64,.8)); }
+    .smob-factbox h4 { margin: 0 0 8px; color: var(--gold); font: 600 .78rem/1.4 var(--sans); letter-spacing: .12em; text-transform: uppercase; }
+    .smob-factbox-intro { margin: 0 0 18px; color: var(--muted); font: .9rem/1.65 var(--sans); }
+    .smob-stat-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; }
+    .smob-stat { min-height: 104px; padding: 14px; border: 1px solid rgba(184,151,58,.22); background: rgba(10,22,40,.55); }
+    .smob-stat strong { display: block; color: var(--gold); font: 1.55rem/1.1 var(--serif); }
+    .smob-stat span { display: block; margin-top: 8px; color: var(--muted); font: .76rem/1.45 var(--sans); }
+    .smob-factbox-note { margin: 16px 0 0; color: var(--quiet); font: .77rem/1.6 var(--sans); }
+    .smob-factbox-note strong { color: var(--text); }
+    .smob-matrix { width: 100%; border-collapse: collapse; color: var(--muted); font: .82rem/1.6 var(--sans); }
+    .smob-matrix th, .smob-matrix td { padding: 12px 14px; text-align: left; vertical-align: top; border-top: 1px solid var(--line); }
+    .smob-matrix th { color: var(--text); font-weight: 600; }
+    .smob-method { margin: 22px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .smob-method summary { padding: 12px 0; cursor: pointer; color: var(--gold); font: 600 .82rem/1.5 var(--sans); }
+    .smob-method p { margin: 0 0 14px; color: var(--muted); font: .88rem/1.65 var(--sans); }
+    @media(max-width:700px) { .smob-stat-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .smob-matrix { min-width: 720px; } }
+    @media(max-width:480px) { .smob-stat-grid { grid-template-columns: 1fr; } }
     .method-box { padding: 24px; border: 1px solid var(--line); background: var(--bg-soft); }
     .method-box p { margin: 0 0 12px; color: var(--muted); }
     .method-box p:last-child { margin-bottom: 0; }
@@ -567,7 +584,7 @@
  <a href="#bedomningar">Samlad bedömning</a><a href="#lasanvisning">Läsanvisning</a>
  <a href="#varldsordning">01 · Världsordning</a><a class="toc-sub" href="#europeiskt-politiskt-landskap">Europas politiska handlingsutrymme</a><a class="toc-sub" href="#ryska-roda-linjer">Förhandlingarna om Ukraina</a>
  <a href="#sakerhetslage">02 · Europas säkerhetsläge</a><a class="toc-sub" href="#baltikum-sabotage">Baltikum: sabotage och ombud</a><a class="toc-sub" href="#tyskland-sabotage">Tyskland och Europas svar</a><a class="toc-sub" href="#ombud-sabotage">Från uppdrag till lokal handling</a><a class="toc-sub" href="#aktivistsabotage">Sabotage och aktivistmotiv</a>
- <a href="#sverige">03 · Hot mot Sverige</a><a class="toc-sub" href="#iran-ombud">Iran och kriminella ombud</a><a class="toc-sub" href="#valpaverkan">Valpåverkan</a><a class="toc-sub" href="#extremism-2026">Extremism och digitalt våld</a><a class="toc-sub" href="#fastigheter-sakerhet">Fastigheter och tillträde</a><a class="toc-sub" href="#fibersabotage-sverige">Fibersabotage och motståndskraft</a>
+ <a href="#sverige">03 · Hot mot Sverige</a><a class="toc-sub" href="#iran-ombud">Iran och kriminella ombud</a><a class="toc-sub" href="#organiserad-brottslighet">Organiserad brottslighet</a><a class="toc-sub" href="#valpaverkan">Valpåverkan</a><a class="toc-sub" href="#extremism-2026">Extremism och digitalt våld</a><a class="toc-sub" href="#fastigheter-sakerhet">Fastigheter och tillträde</a><a class="toc-sub" href="#fibersabotage-sverige">Fibersabotage och motståndskraft</a>
  <a href="#strategiska-domainer">04 · Förmåga och beroenden</a><a class="toc-sub" href="#civila-beroenden">Beredskapens civila flöden</a><a class="toc-sub" href="#nordiska-korridorer">Nordiska transportkorridorer</a><a class="toc-sub" href="#infor-2027">Samlad framåtblick</a><a href="#fallkarta">05 · Karta och fallförteckning</a><a href="#metod">06 · Metod och källor</a><a class="toc-sub" href="#sannolikhetsskala">Sannolikhetsgrader</a></aside>
 
     <main id="innehall">
@@ -1204,6 +1221,44 @@
           <p>I samma rapportering har SVT uppgett att aliaset också kopplas till ett planerat dåd mot det Malmöbaserade företaget Aimpoint, som tidigare sålt vapensikten till Israel. Separat dömdes en ungdom i maj för stämpling till grov allmänfarlig ödeläggelse i Malmö. Åklagarmyndighetens pressmeddelande namnger dock inte företaget eller fastställer en iransk beställare. Fallet är därför relevant som exempel på hur en svensk försvarsindustrileverantör kan hamna i en hotbild med internationell politisk laddning, samtidigt som den påstådda styrkedjan fortfarande måste beskrivas som uppgift och utredningsspår (<a href="https://www.svt.se/nyheter/inrikes/dante-peykar-misstanks-ligga-bakom-mordforsoket-pa-irankannaren-arvin-khoshnood">SVT:s uppgifter om Aimpoint</a>; <a href="https://www.aklagare.se/for-media/pressmeddelanden/2026/maj/dom-i-mal-om-forsok-till-mord-i-uddevalla-och-malmo/">Åklagarmyndighetens redogörelse för domen</a>).</p>
 </details>
           <p>Kriminella nätverk kan ge en statlig aktör tillgång till rekrytering, vapen, transporter och våldsberedda utförare utan en egen lokal organisation. En ung utförare kan känna till bara sitt uppdrag. Ett gripande undanröjer då inte nödvändigtvis hotet mot målet; brottsutredningen behöver förenas med fortsatt skydd och arbete mot beställarleden. Styrningen är olika väl belagd i de redovisade fallen.</p>
+
+          <h3 id="organiserad-brottslighet">Organiserad brottslighet som säkerhetshot och möjliggörare</h3>
+          <p>Organiserad brottslighet är inte samma sak som främmande makts underrättelseverksamhet. Men kriminella miljöer kan ge tillgång till personer, våld, transporter, falska identiteter, ekonomiska tjänster och lokalkännedom. För en statlig aktör kan den typen av tillgång sänka kostnaden för ett uppdrag och skapa avstånd till beställaren. För svenska myndigheter och företag innebär det att skyddet behöver omfatta både den direkta verksamheten och de miljöer som kan ge en angripare tillträde.</p>
+
+          <div class="smob-factbox" aria-labelledby="smob-factbox-title">
+            <h4 id="smob-factbox-title">SMOB 2026 · identifierade kontaktytor och riskmiljöer</h4>
+            <p class="smob-factbox-intro">SMOB-materialet synliggör överlappningar mellan lokalpolitik, bolag, upphandling, tillstånd och andra verksamhetsmiljöer.</p>
+            <div class="smob-stat-grid">
+              <div class="smob-stat"><strong>313</strong><span>Lokalpolitiska uppdrag i underlaget</span></div>
+              <div class="smob-stat"><strong>2 798</strong><span>Tillståndspliktiga aktörer</span></div>
+              <div class="smob-stat"><strong>87</strong><span>Identifierade riskföreträdare</span></div>
+              <div class="smob-stat"><strong>99</strong><span>Berörda verksamheter</span></div>
+              <div class="smob-stat"><strong>1 000+</strong><span>Bolag i analysmaterialet</span></div>
+              <div class="smob-stat"><strong>3,7 mdkr</strong><span>Fakturering i analyserade bolag, 2022–2024</span></div>
+            </div>
+            <p class="smob-factbox-note"><strong>Metodförbehåll:</strong> Siffrorna visar identifierade samband, aktörsmiljöer och riskindikatorer. De innebär inte att samtliga personer eller bolag är kriminella, infiltrerade eller ansvariga för korruption, jäv eller otillbörlig påverkan. Se även <a href="https://veckobrevskartan.github.io/INBLICK-Otillb-rlig-p-verkan/index.html">INBLICK:s fördjupning om otillbörlig påverkan</a>.</p>
+          </div>
+
+          <div class="case-table-wrap" tabindex="0" role="region" aria-label="Organiserad brottslighet som möjliggörare">
+            <table class="smob-matrix">
+              <caption>Fyra kontaktytor som behöver hållas isär</caption>
+              <thead><tr><th>Kontaktyta</th><th>Vad den kan möjliggöra</th><th>Vad underlaget inte automatiskt visar</th></tr></thead>
+              <tbody>
+                <tr><td>Rekrytering och våld</td><td>Utförare, hot, sabotage eller våld mot ett utpekat mål.</td><td>Att varje kriminellt nätverk arbetar för en statlig aktör.</td></tr>
+                <tr><td>Information och tillträde</td><td>Lokalkännedom, personuppgifter, arbetsplatsinformation eller fysisk åtkomst.</td><td>Att tillgång till information har utnyttjats brottsligt.</td></tr>
+                <tr><td>Bolag och ekonomi</td><td>Transporter, fakturering, tjänster, ägarstrukturer eller penningflöden.</td><td>Att bolagskopplingar i sig innebär penningtvätt, korruption eller jäv.</td></tr>
+                <tr><td>Legitimitet och lokal politik</td><td>Kontakter, inflytande, föreningsmiljöer och tillträde till beslutsprocesser.</td><td>Att ett politiskt uppdrag eller en föreningskontakt innebär infiltration.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <details class="smob-method">
+            <summary>SMOB:s studiepopulation och bredare aktörsmiljö</summary>
+            <p>I det bredare underlaget har cirka 50 165 personer identifierats i en inre kärna och cirka 224 390 i en utvidgad aktörsmiljö. Materialet innehåller även omkring 402 270 bolagskopplingar. Dessa nivåer beskriver urval och relationer i analysmaterialet, inte antal kriminella personer eller bevisade nätverk.</p>
+          </details>
+
+          <p><strong>Analytisk bedömning:</strong> Den säkerhetspolitiska betydelsen uppstår när flera led sammanfaller: en aktör får tillgång till en person eller plats, kan använda en teknisk eller ekonomisk infrastruktur och samtidigt behåller avstånd till den som ytterst gynnas. Under 2027 bör särskilt följas om nya fall visar samma kombination av rekrytering, informationsåtkomst, bolagsinfrastruktur och våldskapacitet – eller om de i stället kan förklaras av helt separata kriminella motiv.</p>
+          <p>För skyddsarbetet innebär det att kontrollen behöver följa relationer och åtkomst över tid. Leverantörsbyten, nya styrelseledamöter, ändrade uppdrag, sidoverksamheter, återkommande kontaktmönster och uttag av information kan vara mer relevanta än en enskild persons bakgrund. Samtidigt måste varje indikator prövas mot alternativa förklaringar och dokumenteras med sin faktiska bevisstyrka.</p>
           
 
  <h3 id="valpaverkan">Valet 2026: påverkansförsök och genomförande</h3>
@@ -1428,7 +1483,7 @@
 <li id="ref-sodertalje-dronarteknik">Isa, A. (2026, 15 april). <em>Drönarteknik misstänks i bombplaner – flera gripna.</em> Telgenytt. <a href="https://telgenytt.se/dronarteknik-misstanks-i-bombplaner-flera-gripna/">telgenytt.se</a>.</li>
 <li>Hallands Nyheter. (2026, 20 april; uppdaterad 22 april). <em>16 gripna inför olaglig kampsport i Kungsäter.</em> <a href="https://www.hn.se/nyheter/varberg/16-gripna-infor-olaglig-kampsport-i-kungsater.51c19040-1bc6-414a-8d78-8ce99e4f511b">www.hn.se</a>.</li>
 <li>Karlskoga kommun. (2026, 23 februari). <em>Skyddsobjekt.</em> <a href="https://karlskoga.se/kommun--politik/kris-och-sakerhet/skyddsobjekt.html">karlskoga.se</a>.</li>
-<li id="ref-almnas-atal">Länstidningen Södertälje. (2026, 3 oktober). <em>Bombmän greps på hotellet i Almnäs – planerade två dåd.</em> <a href="https://www.lt.se/sodertalje/bombman-greps-pa-hotellet-i-almnas-planerade-tva-dad/">lt.se</a>.</li><li id="ref-trollhattan-kameror">Omni. (2026, 19 februari). <em>Ryska hackare tog sig in i porttelefoner i Trollhättan.</em> <a href="https://omni.se/ryska-hackare-brot-sig-in-i-svenska-porttelefoner/a/oEWgrB">omni.se</a>.</li>
+<li id="ref-almnas-atal">Länstidningen Södertälje. (2026, 3 oktober). <em>Bombmän greps på hotellet i Almnäs – planerade två dåd.</em> <a href="https://www.lt.se/sodertalje/bombman-greps-pa-hotellet-i-almnas-planerade-tva-dad/">lt.se</a>.</li><li id="ref-trollhattan-kameror">Omni. (2026, 19 februari). <em>Ryska hackare tog sig in i porttelefoner i Trollhättan.</em> <a href="https://omni.se/ryska-hackare-brot-sig-in-i-svenska-porttelefoner/a/oEWgrB">omni.se</a>.</li><li id="ref-smob">Svensk OSINT. (2026). <em>INBLICK: Otillbörlig påverkan – SMOB-data och dokumenterade fall.</em> <a href="https://veckobrevskartan.github.io/INBLICK-Otillb-rlig-p-verkan/index.html">veckobrevskartan.github.io</a>.</li>
 <li id="ref-tjekdet-kameror">TjekDet. (2026, 8 januari). <em>Russiske hackere i massivt angreb på danske overvågningskameraer landet over.</em> <a href="https://www.tjekdet.dk/faktatjek/russiske-hackere-i-massivt-angreb-paa-danske-overvaagningskameraer-landet-over">tjekdet.dk</a>.</li>
 <li id="ref-aivd-ip-kameror">AIVD &amp; MIVD. (2026, 10 juli). <em>Cybersecurity advisory: Russian state actors are compromising IP cameras.</em> <a href="https://english.aivd.nl/documents/2026/07/10/brochure-cybersecurity-advisory-russian-state-actors-are-compromising-ip-cameras">aivd.nl</a>.</li><li id="ref-erna-moisejeva">ERR News. (2025, 26 augusti). <em>Estonian court hands dual citizen FSB collaborator 3-year prison sentence.</em> <a href="https://news.err.ee/1609779444/estonian-court-hands-dual-citizen-fsb-collaborator-3-year-prison-sentence">news.err.ee</a>.</li>
 <li>Metropolitan Police. (2026, 3 mars). <em>Drone gang behind majority of London prison drops jailed.</em> <a href="https://news.met.police.uk/news/drone-gang-behind-majority-of-london-prison-drops-jailed-506687">news.met.police.uk</a>.</li>

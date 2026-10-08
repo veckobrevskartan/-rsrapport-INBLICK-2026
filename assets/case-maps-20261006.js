@@ -251,10 +251,6 @@ window.InblickCaseFacets={"ee-milrem":{"topics":["sabotage"],"sectors":["industr
       initializeMap();const marker=markerByCase.get(button.dataset.themeShow);if(!marker)return;
       node.scrollIntoView({block:'center',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});map.invalidateSize({pan:false});map.setView(marker.getLatLng(),8,{animate:false});marker.fire('click');
     });
-    root.querySelector('.thematic-download').addEventListener('click',()=>{
-      const data={title:'INBLICK 2026 – '+(topic==='drone'?'drönarunderlag':'sabotageunderlag'),cutoff:'2026-10-06',scope:'Rapportens urval; inte heltäckande incidentstatistik',filters:values(),cases:visible.map(item=>({...item,mapFacets:facets[item.id]}))};
-      const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json;charset=utf-8'})),link=document.createElement('a');link.href=url;link.download='inblick_2026_'+topic+'_urval.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
-    });
     for(const control of root.querySelectorAll('input,select,button'))control.disabled=false;
     render();
     if(window.IntersectionObserver){const observer=new IntersectionObserver(entries=>{if(entries.some(entry=>entry.isIntersecting)){initializeMap();observer.disconnect();}},{rootMargin:'180px'});observer.observe(node);}else initializeMap();

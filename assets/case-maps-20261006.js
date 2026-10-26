@@ -229,7 +229,7 @@ window.InblickCaseFacets={"ee-milrem":{"topics":["sabotage"],"sectors":["industr
     function initializeMap() {
       if (map || mapFailed) return;
       if (!window.L) {mapFailed=true;node.hidden=true;notice.hidden=false;notice.textContent='Kartstödet kunde inte laddas. Alla filter, fallkort och källor fungerar i listan.';return;}
-      map=L.map(node,{scrollWheelZoom:false,tap:false,minZoom:2,maxZoom:13}).setView([55,12],4);
+      map=L.map(node,{scrollWheelZoom:true,tap:false,minZoom:2,maxZoom:13}).setView([55,12],4);
       map.on('popupopen',event=>{
         const popupElement=event.popup.getElement();
         if(!popupElement)return;

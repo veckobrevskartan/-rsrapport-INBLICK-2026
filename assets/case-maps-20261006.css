@@ -15,6 +15,13 @@
 .thematic-explorer button:focus-visible,.thematic-explorer select:focus-visible,.thematic-explorer input:focus-visible { outline:2px solid var(--gold);outline-offset:3px; }
 .thematic-actions { display:flex;flex-wrap:wrap;gap:8px;margin:12px 0; }
 .thematic-count { color:var(--gold)!important;font:600 .86rem/1.5 var(--sans)!important;margin:15px 0!important; }
+.thematic-year-layers { margin:12px 0 16px;padding:10px 12px 12px;border:1px solid rgba(184,151,58,.45);border-radius:4px;background:rgba(12,32,52,.72); }
+.thematic-year-layers legend { padding:0 6px;color:var(--gold);font:600 .76rem/1.4 var(--sans); }
+.thematic-year-layer-list { display:flex;flex-wrap:wrap;gap:7px; }
+.thematic-year-layer { display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:5px 10px;border:1px solid rgba(184,151,58,.35);border-radius:4px;color:var(--text);background:rgba(17,48,64,.45);font:.75rem/1.3 var(--sans);cursor:pointer; }
+.thematic-year-layer input { width:16px;height:16px;margin:0;accent-color:var(--gold); }
+.thematic-year-layer small { color:var(--muted);font-size:.66rem; }
+.thematic-year-layer:has(input:checked) { border-color:var(--gold);background:var(--gold-soft); }
 .thematic-map { height:500px;width:100%;background:#e3eaf0;border:1px solid var(--line);border-radius:4px;z-index:0;font:13px/1.45 var(--sans); }
 .thematic-map .leaflet-attribution-flag { display:none!important; }
 .thematic-map .leaflet-control-attribution { font-size:10px;color:#314657; }
@@ -130,3 +137,5 @@ body.thematic-modal-open { overflow:hidden; }
   .thematic-map-card-panel.is-fullscreen { width:100%;max-height:none;bottom:0; }
 }
 @media print { .thematic-map-card-panel { display:none!important; } }
+
+@media print { .thematic-year-layers { display:none!important; } }

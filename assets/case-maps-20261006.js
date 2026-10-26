@@ -67,6 +67,8 @@ window.InblickCaseFacets={"ee-milrem":{"topics":["sabotage"],"sectors":["industr
   'use strict';
   const C=window.InblickCaseMaps;
   const cases=JSON.parse(document.getElementById('annual-case-data').textContent);
+  const annualNote=document.querySelector('.fall-map-layer-note');
+  if(annualNote)annualNote.textContent=annualNote.textContent.replace(/\d+(?= händelser)/,String(cases.filter(item=>item.in2026&&!item.background).length));
   const facets=window.InblickCaseFacets;
   const esc=value=>String(value || '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const colors={observation:'#1c7393',transport:'#237c63',attack:'#b63838',preparation:'#a66b15',industry:'#795ba4',completed:'#b63838',attempt:'#a66b15',mixed:'#795ba4',unresolved:'#626a76'};

@@ -583,13 +583,14 @@
 <link rel="stylesheet" href="assets/case-maps-20261006.css?v=20261026b">
 
   <style id="annual-satellite-enhancements">
-.chapter-opening{position:relative;isolation:isolate;overflow:hidden;max-width:900px;margin:20px 0 30px;padding:20px;border:1px solid rgba(184,151,58,.34);border-radius:5px;background:#0A1628}
-.chapter-opening-bg{position:absolute;inset:0;z-index:-1;background-image:linear-gradient(90deg,rgba(10,22,40,.95) 0%,rgba(10,22,40,.88) 54%,rgba(10,22,40,.72) 100%),var(--chapter-bg);background-size:cover;background-position:center}
-.chapter-opening-content{position:relative;z-index:1}.chapter-opening-content h2{margin-top:0}
+.chapter-opening{position:relative;left:-314px;width:100vw;max-width:none;min-height:88vh;min-height:clamp(540px,88svh,980px);display:flex;flex-direction:column;justify-content:center;isolation:isolate;overflow:hidden;margin:20px 0 30px;padding:clamp(32px,7vh,88px) max(24px,calc(50vw - 620px));border:0;border-radius:0;background:#0A1628}
+@media(min-width:1281px){.chapter-opening{left:calc(326px - 50vw)}}
+.chapter-opening-bg{position:absolute;inset:0;z-index:-1;background-image:linear-gradient(90deg,rgba(10,22,40,.94) 0%,rgba(10,22,40,.78) 52%,rgba(10,22,40,.48) 100%),var(--chapter-bg);background-size:cover;background-position:center}
+.chapter-opening-content{position:relative;z-index:1;width:100%;max-width:var(--max);margin-inline:auto}.chapter-opening-content h2{margin-top:0}
 .chapter-opening .judgement{background:rgba(16,39,59,.88);backdrop-filter:blur(2px)}
-.chapter-opening-caption{position:relative;z-index:1;margin:10px 0 0;color:var(--quiet);font:.72rem/1.5 var(--sans)}
-.chapter-judgement .judgement-answer{grid-template-columns:132px minmax(0,1fr);grid-template-rows:auto 1fr;align-items:center;column-gap:20px;row-gap:7px}
-.chapter-meter{position:relative;grid-column:1;grid-row:1/span 2;display:block;width:132px;aspect-ratio:1;margin:auto}
+.chapter-opening-caption{position:relative;z-index:1;width:100%;max-width:var(--max);margin:12px auto 0;color:var(--quiet);font:.72rem/1.5 var(--sans)}
+.chapter-judgement .judgement-answer{grid-template-columns:150px minmax(0,1fr);grid-template-rows:auto 1fr;align-items:center;column-gap:24px;row-gap:7px}
+.chapter-meter{position:relative;grid-column:1;grid-row:1/span 2;display:block;width:150px;aspect-ratio:1;margin:auto}
 .chapter-meter svg{display:block;width:100%;height:100%}
 .chapter-meter-track,.chapter-meter-range{fill:none;stroke-width:9}.chapter-meter-track{stroke:rgba(242,240,233,.18);stroke-dasharray:100}
 .chapter-meter-range{stroke:var(--blue);stroke-linecap:round}
@@ -606,7 +607,9 @@
 .report-sat-video-frame{margin:0;min-width:0;display:flex;flex-direction:column;justify-content:center;background:#05070b}
 .report-sat-video-frame video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#05070b}
 .report-sat-video-frame figcaption{padding:8px 12px;color:var(--quiet);font:400 .7rem/1.5 var(--sans)}
-@media(max-width:720px){.chapter-opening{padding:14px}.chapter-opening-bg{background-image:linear-gradient(90deg,rgba(10,22,40,.96),rgba(10,22,40,.88)),var(--chapter-bg)}.chapter-judgement .judgement-answer{grid-template-columns:1fr;grid-template-rows:auto auto auto;row-gap:10px}.chapter-meter{grid-column:1;grid-row:1;width:116px}.chapter-judgement .likelihood{grid-column:1;grid-row:2;text-align:center}.chapter-judgement .judgement-conclusion{grid-column:1;grid-row:3}.report-sat-video{grid-template-columns:1fr}}
+@media(max-width:850px){.chapter-opening{left:-20px;min-height:88vh;min-height:clamp(520px,88svh,900px);padding:clamp(30px,7vh,76px) 24px}}
+@media(max-width:720px){.chapter-opening{padding:clamp(28px,6vh,56px) 18px}.chapter-opening-bg{background-image:linear-gradient(90deg,rgba(10,22,40,.94),rgba(10,22,40,.72)),var(--chapter-bg)}.chapter-judgement .judgement-answer{grid-template-columns:1fr;grid-template-rows:auto auto auto;row-gap:10px}.chapter-meter{grid-column:1;grid-row:1;width:132px}.chapter-judgement .likelihood{grid-column:1;grid-row:2;text-align:center}.chapter-judgement .judgement-conclusion{grid-column:1;grid-row:3}.report-sat-video{grid-template-columns:1fr}}
+@media(max-width:560px){.chapter-opening{left:-14px;min-height:88vh;min-height:clamp(520px,88svh,820px);padding:30px 14px}}
 @media(prefers-reduced-motion:reduce){.chapter-meter-range{transition:none!important}}
 </style>
 
@@ -704,7 +707,7 @@
   <div class="judgement chapter-judgement">
  <p class="judgement-label">Bedömningsfråga</p>
  <p class="judgement-question">Kommer Europa under 2027 att kunna bära sitt ökade säkerhetsansvar utan fortsatt tillgång till centrala amerikanska militära stödförmågor?</p>
- <p class="judgement-answer"><span class="chapter-meter" aria-hidden="true"><svg viewBox="0 0 120 120"><circle class="chapter-meter-track" cx="60" cy="60" r="48" pathLength="100"></circle><circle class="chapter-meter-range" cx="60" cy="60" r="48" pathLength="100" data-low="0" data-high="20" stroke-dasharray="20 80" stroke-dashoffset="0" transform="rotate(-90 60 60)"></circle></svg><span class="chapter-meter-center"><span class="chapter-meter-level">Tveksam</span><span class="chapter-meter-band">&lt;20 %</span></span></span><strong class="likelihood">Tveksam <span>&lt;20 %</span></strong><span class="judgement-conclusion">Europa väntas kunna ta större ansvar under 2027, men behöver fortfarande amerikanskt stöd för bland annat lufttankning, transporter och underrättelseinformation. Nya europeiska system behöver levereras, bemannas och övas tillsammans innan de kan ersätta dessa bidrag. Hur snabbt USA ställer sina resurser till förfogande i en kris är en ytterligare osäkerhet.</span></p>
+ <p class="judgement-answer"><span class="chapter-meter" aria-hidden="true"><svg viewBox="0 0 120 120"><circle class="chapter-meter-track" cx="60" cy="60" r="48" pathLength="100"></circle><circle class="chapter-meter-range" cx="60" cy="60" r="48" pathLength="100" data-fill="20" stroke-dasharray="0 100" stroke-dashoffset="0" transform="rotate(-90 60 60)"></circle></svg><span class="chapter-meter-center"><span class="chapter-meter-level">Tveksam</span><span class="chapter-meter-band">&lt;20 %</span></span></span><strong class="likelihood">Tveksam <span>&lt;20 %</span></strong><span class="judgement-conclusion">Europa väntas kunna ta större ansvar under 2027, men behöver fortfarande amerikanskt stöd för bland annat lufttankning, transporter och underrättelseinformation. Nya europeiska system behöver levereras, bemannas och övas tillsammans innan de kan ersätta dessa bidrag. Hur snabbt USA ställer sina resurser till förfogande i en kris är en ytterligare osäkerhet.</span></p>
  </div>
   </div>
   <p class="chapter-opening-caption">Tematisk illustration av internationella förhandlingar och säkerhetssamarbete. AI-genererad.</p>
@@ -913,7 +916,7 @@
   <div class="judgement chapter-judgement">
  <p class="judgement-label">Bedömningsfråga</p>
  <p class="judgement-question">Kommer krig och sabotage under 2027 att orsaka återkommande avbrott i Europas civila energi- och transportflöden som kräver omledning eller reparation?</p>
- <p class="judgement-answer"><span class="chapter-meter" aria-hidden="true"><svg viewBox="0 0 120 120"><circle class="chapter-meter-track" cx="60" cy="60" r="48" pathLength="100"></circle><circle class="chapter-meter-range" cx="60" cy="60" r="48" pathLength="100" data-low="80" data-high="100" stroke-dasharray="20 80" stroke-dashoffset="-80" transform="rotate(-90 60 60)"></circle></svg><span class="chapter-meter-center"><span class="chapter-meter-level">Sannolik</span><span class="chapter-meter-band">≥80 %</span></span></span><strong class="likelihood">Sannolik <span>≥80 %</span></strong><span class="judgement-conclusion">Återkommande avbrott som kräver omledning eller reparation bedöms som sannolika under 2027. Krigsskador och dokumenterade sabotage talar för ett fortsatt behov. Hur stora följderna blir för Sverige beror på vilka förbindelser som berörs, hur länge bortfallet varar och om reserverna räcker vid samtidiga behov.</span></p>
+ <p class="judgement-answer"><span class="chapter-meter" aria-hidden="true"><svg viewBox="0 0 120 120"><circle class="chapter-meter-track" cx="60" cy="60" r="48" pathLength="100"></circle><circle class="chapter-meter-range" cx="60" cy="60" r="48" pathLength="100" data-fill="80" stroke-dasharray="0 100" stroke-dashoffset="0" transform="rotate(-90 60 60)"></circle></svg><span class="chapter-meter-center"><span class="chapter-meter-level">Sannolik</span><span class="chapter-meter-band">≥80 %</span></span></span><strong class="likelihood">Sannolik <span>≥80 %</span></strong><span class="judgement-conclusion">Återkommande avbrott som kräver omledning eller reparation bedöms som sannolika under 2027. Krigsskador och dokumenterade sabotage talar för ett fortsatt behov. Hur stora följderna blir för Sverige beror på vilka förbindelser som berörs, hur länge bortfallet varar och om reserverna räcker vid samtidiga behov.</span></p>
  </div>
   </div>
   <p class="chapter-opening-caption">Tematisk illustration av hamn, järnväg och energiförsörjning. AI-genererad.</p>
@@ -1542,7 +1545,7 @@
   <div class="judgement chapter-judgement">
  <p class="judgement-label">Bedömningsfråga</p>
  <p class="judgement-question">Kommer rekryterade ombud och gränsöverskridande digitala nätverk att möjliggöra nya konkreta hotförsök mot mål i Sverige under 2027?</p>
- <p class="judgement-answer"><span class="chapter-meter" aria-hidden="true"><svg viewBox="0 0 120 120"><circle class="chapter-meter-track" cx="60" cy="60" r="48" pathLength="100"></circle><circle class="chapter-meter-range" cx="60" cy="60" r="48" pathLength="100" data-low="80" data-high="100" stroke-dasharray="20 80" stroke-dashoffset="-80" transform="rotate(-90 60 60)"></circle></svg><span class="chapter-meter-center"><span class="chapter-meter-level">Sannolik</span><span class="chapter-meter-band">≥80 %</span></span></span><strong class="likelihood">Sannolik <span>≥80 %</span></strong><span class="judgement-conclusion">Nya försök till informationsinhämtning, påverkan eller våldsplanering genom ombud och digitala nätverk är sannolika under 2027. Rekrytering över gränserna ger beställare möjlighet att försöka igen efter ett ingripande. Årets stoppade planer visar samtidigt att nya försök kan upptäckas och avvärjas.</span></p>
+ <p class="judgement-answer"><span class="chapter-meter" aria-hidden="true"><svg viewBox="0 0 120 120"><circle class="chapter-meter-track" cx="60" cy="60" r="48" pathLength="100"></circle><circle class="chapter-meter-range" cx="60" cy="60" r="48" pathLength="100" data-fill="80" stroke-dasharray="0 100" stroke-dashoffset="0" transform="rotate(-90 60 60)"></circle></svg><span class="chapter-meter-center"><span class="chapter-meter-level">Sannolik</span><span class="chapter-meter-band">≥80 %</span></span></span><strong class="likelihood">Sannolik <span>≥80 %</span></strong><span class="judgement-conclusion">Nya försök till informationsinhämtning, påverkan eller våldsplanering genom ombud och digitala nätverk är sannolika under 2027. Rekrytering över gränserna ger beställare möjlighet att försöka igen efter ett ingripande. Årets stoppade planer visar samtidigt att nya försök kan upptäckas och avvärjas.</span></p>
  </div>
   </div>
   <p class="chapter-opening-caption">Tematisk illustration av vardagsliv, transporter och kommunikation i en svensk stadsmiljö. AI-genererad.</p>
@@ -2880,7 +2883,7 @@
   <div class="judgement chapter-judgement">
  <p class="judgement-label">Bedömningsfråga</p>
  <p class="judgement-question">Kommer Sveriges beredskap vid slutet av 2027 fortfarande att ha kritiska luckor i skydd och uthållighet vid samtidiga störningar?</p>
- <p class="judgement-answer"><span class="chapter-meter" aria-hidden="true"><svg viewBox="0 0 120 120"><circle class="chapter-meter-track" cx="60" cy="60" r="48" pathLength="100"></circle><circle class="chapter-meter-range" cx="60" cy="60" r="48" pathLength="100" data-low="50" data-high="80" stroke-dasharray="30 70" stroke-dashoffset="-50" transform="rotate(-90 60 60)"></circle></svg><span class="chapter-meter-center"><span class="chapter-meter-level">Troligen</span><span class="chapter-meter-band">50–&lt;80 %</span></span></span><strong class="likelihood">Troligen <span>50–&lt;80 %</span></strong><span class="judgement-conclusion">Kritiska luckor i skydd och uthållighet bedöms troligen finnas kvar vid slutet av 2027. Skyddsbrister, uppbyggnaden av Sveriges utrikes underrättelsetjänst (UND) och långa leveranstider talar för det. Offlinebetalningar, hamnavtal och fungerande reserver kan samtidigt ge förbättringar innan de större projekten är färdiga.</span></p>
+ <p class="judgement-answer"><span class="chapter-meter" aria-hidden="true"><svg viewBox="0 0 120 120"><circle class="chapter-meter-track" cx="60" cy="60" r="48" pathLength="100"></circle><circle class="chapter-meter-range" cx="60" cy="60" r="48" pathLength="100" data-fill="79" stroke-dasharray="0 100" stroke-dashoffset="0" transform="rotate(-90 60 60)"></circle></svg><span class="chapter-meter-center"><span class="chapter-meter-level">Troligen</span><span class="chapter-meter-band">50–&lt;80 %</span></span></span><strong class="likelihood">Troligen <span>50–&lt;80 %</span></strong><span class="judgement-conclusion">Kritiska luckor i skydd och uthållighet bedöms troligen finnas kvar vid slutet av 2027. Skyddsbrister, uppbyggnaden av Sveriges utrikes underrättelsetjänst (UND) och långa leveranstider talar för det. Offlinebetalningar, hamnavtal och fungerande reserver kan samtidigt ge förbättringar innan de större projekten är färdiga.</span></p>
  </div>
   </div>
   <p class="chapter-opening-caption">Tematisk illustration av transporter, lagerhållning och elförsörjning. AI-genererad.</p>
@@ -3546,10 +3549,10 @@
 </script>
 
   <script id="annual-satellite-enhancements">
-(()=>{const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;const ranges=document.querySelectorAll(".chapter-meter-range[data-low][data-high]");
-if(!reduced&&"IntersectionObserver"in window){const observer=new IntersectionObserver(entries=>{for(const e of entries){if(!e.isIntersecting||e.intersectionRatio<.3)continue;const ring=e.target,low=Number(ring.dataset.low),high=Number(ring.dataset.high),span=high-low;ring.style.strokeDasharray="0 100";ring.style.strokeDashoffset="0";ring.style.transition="stroke-dasharray 1.7s cubic-bezier(.4,0,.2,1),stroke-dashoffset 1.7s cubic-bezier(.4,0,.2,1)";requestAnimationFrame(()=>{ring.style.strokeDasharray=span+" "+(100-span);ring.style.strokeDashoffset=String(-low)});observer.unobserve(ring)}},{threshold:[.3,.5]});ranges.forEach(r=>observer.observe(r))}
-const video=document.getElementById("annual-satellite-visualisering");if(video&&!reduced&&"IntersectionObserver"in window){const obs=new IntersectionObserver(entries=>{for(const e of entries){if(e.isIntersecting&&e.intersectionRatio>=.35)video.play().catch(()=>{});else video.pause()}},{threshold:[0,.35,.6]});obs.observe(video)}})();
-</script>
+(()=>{const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;const rings=[...document.querySelectorAll(".chapter-meter-range[data-fill]")];const finish=ring=>{const fill=Math.max(0,Math.min(100,Number(ring.dataset.fill)||0));ring.style.strokeDasharray=fill+" "+(100-fill);ring.style.strokeDashoffset="0"};
+if(reduced||!("IntersectionObserver"in window)){rings.forEach(finish)}else{const observer=new IntersectionObserver(entries=>{for(const entry of entries){if(!entry.isIntersecting||entry.intersectionRatio<.35)continue;const ring=entry.target;ring.style.transition="stroke-dasharray 1.8s cubic-bezier(.4,0,.2,1)";requestAnimationFrame(()=>requestAnimationFrame(()=>finish(ring)));observer.unobserve(ring)}},{threshold:[.35,.5]});rings.forEach(ring=>{ring.style.strokeDasharray="0 100";ring.style.strokeDashoffset="0";observer.observe(ring)})}
+const video=document.getElementById("annual-satellite-visualisering");if(video&&!reduced&&"IntersectionObserver"in window){const obs=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting&&entry.intersectionRatio>=.35)video.play().catch(()=>{});else video.pause()}},{threshold:[0,.35,.6]});obs.observe(video)}})();
+  </script>
 
 </body>
 </html>

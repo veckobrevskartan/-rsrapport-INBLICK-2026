@@ -706,6 +706,136 @@ html{overflow-x:clip}
 }
 </style>
 
+
+  <style id="report-visual-polish">
+    /* En enda vattenstämpel följer med innehållet; sektionskopiorna låg ovanpå varandra. */
+    .hero::after{background-image:none!important}
+    .chapter-opening-bg::after,
+    .report-summary::after,
+    #lasanvisning::after,#infor-2027::after,#metod::after,
+    #fallkarta::after{content:none!important;display:none!important}
+    .site-watermark{
+      z-index:2;
+      opacity:.026;
+      background-size:min(34vw,360px);
+      background-position:calc(50% + min(18vw,220px)) 46%;
+      transition:opacity .35s ease;
+    }
+    .site-watermark.is-muted{opacity:0}
+    @media(max-width:700px){
+      html{scroll-padding-top:98px}
+      body{font-size:15px;line-height:1.64}
+      .topbar-inner{
+        width:calc(100% - 28px);
+        min-height:0;
+        align-items:flex-start;
+        flex-direction:column;
+        justify-content:center;
+        gap:2px;
+        padding:5px 0 4px;
+      }
+      .brand{gap:6px;min-height:22px}
+      .brand-logo{width:78px;height:21px}
+      .brand-inblick{font-size:.94rem}
+      .brand-year{font-size:.46rem;letter-spacing:.09em}
+      .nav{
+        width:100%;
+        min-height:23px;
+        gap:13px;
+        padding:0;
+        scrollbar-width:none;
+        overscroll-behavior-x:contain;
+      }
+      .nav::-webkit-scrollbar,.toc::-webkit-scrollbar{display:none}
+      .nav a{font-size:.7rem;line-height:1.35}
+      .layout{padding-top:10px;gap:8px}
+      .toc{
+        top:50px;
+        width:100%;
+        max-height:none;
+        overflow-x:auto;
+        overflow-y:hidden;
+        flex-wrap:nowrap;
+        gap:6px;
+        padding:4px 7px;
+        scrollbar-width:none;
+        overscroll-behavior-x:contain;
+      }
+      .toc a{min-height:36px;padding:7px 9px;font-size:.72rem}
+      .toc .toc-sub{padding-left:9px}
+      .hero{min-height:350px;padding:38px 0 32px}
+      .hero h1{font-size:clamp(2.25rem,10.8vw,3.8rem);line-height:1.08;margin:14px 0}
+      .hero-meta{gap:8px 14px;margin-top:20px}
+      .intro{margin-bottom:32px;font-size:1rem}
+      .section{padding:28px 0 34px}
+      .longform p{font-size:.97rem;line-height:1.72}
+      .fall-controls{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+      .fall-search,.fall-actions{grid-column:1/-1}
+      .site-watermark{background-size:190px auto;background-position:calc(50% + 68px) 50%;opacity:.022}
+      .site-watermark.is-muted{opacity:0}
+    }
+    @media(max-width:560px){
+      html{scroll-padding-top:92px}
+      .shell,.topbar-inner{width:calc(100% - 24px)}
+      .topbar-inner{padding:4px 0 3px}
+      .brand-logo{width:72px;height:20px}
+      .brand-inblick{font-size:.9rem}
+      .brand-year{font-size:.43rem;letter-spacing:.07em}
+      .nav{gap:12px;min-height:21px}
+      .nav a{font-size:.67rem}
+      .layout{padding-top:7px}
+      .toc{top:47px;width:calc(100% + 24px);max-width:none;margin-inline:-12px;padding:3px 8px;gap:5px}
+      .toc a{min-height:34px;padding:6px 8px;font-size:.69rem}
+      .hero{min-height:320px;padding:30px 0 28px}
+      .hero h1{font-size:clamp(2.1rem,10vw,3.2rem)}
+      .hero-lead{font-size:1rem}
+      .chapter-opening{
+        left:-12px;
+        width:100vw;
+        min-height:clamp(470px,76svh,720px);
+        margin:14px 0 22px;
+        padding:28px 14px;
+      }
+      .chapter-opening-bg{
+        background-image:linear-gradient(180deg,rgba(10,22,40,.74) 0%,rgba(10,22,40,.84) 74%,#0A1628 100%),var(--chapter-bg);
+        background-position:center 42%;
+      }
+      .chapter-opening-content h2{font-size:clamp(1.9rem,8.7vw,2.6rem)}
+      .chapter-opening .judgement{padding:14px}
+      .chapter-opening-caption{font-size:.68rem}
+      .report-summary{padding:20px 14px}
+      .fall-controls{grid-template-columns:1fr}
+      .fall-search,.fall-actions{grid-column:1}
+      #annual-case-map,#nordic-corridor-map,#hormuz-map{
+        height:min(60svh,500px);
+        min-height:360px;
+      }
+      #fallkarta::before{height:510px;background-position:58% 42%}
+      #infor-2027::before{height:540px;background-position:56% 42%}
+      .report-sat-video{margin:20px 0 28px}
+      .report-sat-video-copy{padding:18px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .site-watermark{transition:none}
+    }
+  </style>
+  <script id="single-watermark-map-behavior">
+    (()=> {
+      const mark=document.querySelector('.site-watermark');
+      const maps=[...document.querySelectorAll('#annual-case-map,#nordic-corridor-map,#hormuz-map')];
+      if(!mark||!maps.length||!('IntersectionObserver' in window))return;
+      const visible=new Set();
+      const observer=new IntersectionObserver(entries=>{
+        for(const entry of entries){
+          if(entry.isIntersecting)visible.add(entry.target);
+          else visible.delete(entry.target);
+        }
+        mark.classList.toggle('is-muted',visible.size>0);
+      },{threshold:.01});
+      maps.forEach(map=>observer.observe(map));
+    })();
+  </script>
+
 </head>
 <body>
   <div class="site-watermark" aria-hidden="true"></div>

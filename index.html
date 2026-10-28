@@ -639,6 +639,37 @@ html{overflow-x:clip}
   .chapter-opening{padding-left:0;padding-right:0}
   .chapter-opening-content,.chapter-opening-caption{width:min(946px,calc(100vw - max(314px,calc(50vw - 326px)) - 32px));max-width:946px;margin-left:max(314px,calc(50vw - 326px));margin-right:0}
 }
+/* Let the opening image span the viewport while keeping its text in the reading column. */
+@media(min-width:851px){
+  .report-summary{left:-314px;width:100vw;max-width:none;padding-left:max(314px,calc(50vw - 326px));padding-right:max(24px,calc(50vw - 620px))}
+}
+@media(min-width:1281px){.report-summary{left:calc(326px - 50vw)}}
+@media(max-width:850px){
+  .report-summary{left:-20px;width:100vw;max-width:none;padding-left:20px;padding-right:20px}
+}
+@media(max-width:560px){
+  .report-summary{left:-14px;width:100vw;padding:22px 14px;background-position:center}
+}
+/* Repeat the INBLICK fingerprint over photography and in key reading sections. */
+.hero::after{background-image:url("https://veckobrevskartan.github.io/INBLICK-Otillb-rlig-p-verkan/assets/svensk-osint-fingeravtryck.png");background-size:contain;background-position:center;background-repeat:no-repeat;opacity:.09;mix-blend-mode:screen}
+.chapter-opening-bg::after{content:"";position:absolute;inset:0;background:url("https://veckobrevskartan.github.io/INBLICK-Otillb-rlig-p-verkan/assets/svensk-osint-fingeravtryck.png") 78% 46%/min(38vw,440px) auto no-repeat;opacity:.075;mix-blend-mode:screen;pointer-events:none}
+.chapter-opening[aria-labelledby="h-varldsordning"] .chapter-opening-bg::after{background-position:82% 38%}
+.chapter-opening[aria-labelledby="h-sakerhetslage"] .chapter-opening-bg::after{background-position:72% 56%}
+.chapter-opening[aria-labelledby="h-sverige"] .chapter-opening-bg::after{background-position:84% 44%}
+.chapter-opening[aria-labelledby="h-strategiska-domainer"] .chapter-opening-bg::after{background-position:76% 34%}
+.report-summary::after{content:"";position:absolute;z-index:0;top:18px;right:max(24px,calc(50vw - 620px));width:min(38vw,440px);aspect-ratio:1;background:url("https://veckobrevskartan.github.io/INBLICK-Otillb-rlig-p-verkan/assets/svensk-osint-fingeravtryck.png") center/contain no-repeat;opacity:.075;mix-blend-mode:screen;pointer-events:none}
+#lasanvisning,#infor-2027,#metod{position:relative;isolation:isolate}
+#lasanvisning::after,#infor-2027::after,#metod::after{content:"";position:absolute;z-index:0;top:6%;right:0;width:min(32vw,360px);aspect-ratio:1;background:url("https://veckobrevskartan.github.io/INBLICK-Otillb-rlig-p-verkan/assets/svensk-osint-fingeravtryck.png") center/contain no-repeat;opacity:.045;mix-blend-mode:screen;pointer-events:none}
+#lasanvisning>*,#infor-2027>*,#metod>*{position:relative;z-index:1}
+@media(max-width:850px){
+  .chapter-opening-bg::after{background-size:230px auto;background-position:92% 22%;opacity:.06}
+  .report-summary::after{right:18px;width:min(44vw,250px);top:24px;opacity:.055}
+  #lasanvisning::after,#infor-2027::after,#metod::after{width:min(38vw,240px);opacity:.035}
+}
+@media(max-width:560px){
+  .report-summary::after{right:12px;width:185px;top:18px}
+  .chapter-opening-bg::after{background-size:190px auto}
+}
 </style>
 
 </head>

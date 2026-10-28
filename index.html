@@ -716,7 +716,7 @@ html{overflow-x:clip}
     #fallkarta::after{content:none!important;display:none!important}
     .site-watermark{
       z-index:2;
-      opacity:.026;
+      opacity:.02;
       background-size:min(34vw,360px);
       background-position:calc(50% + min(18vw,220px)) 46%;
       transition:opacity .35s ease;
@@ -771,7 +771,7 @@ html{overflow-x:clip}
       .longform p{font-size:.97rem;line-height:1.72}
       .fall-controls{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
       .fall-search,.fall-actions{grid-column:1/-1}
-      .site-watermark{background-size:190px auto;background-position:calc(50% + 68px) 50%;opacity:.022}
+      .site-watermark{background-size:190px auto;background-position:calc(50% + 68px) 50%;opacity:.018}
       .site-watermark.is-muted{opacity:0}
     }
     @media(max-width:560px){
@@ -818,21 +818,37 @@ html{overflow-x:clip}
     @media(prefers-reduced-motion:reduce){
       .site-watermark{transition:none}
     }
+
+    /* Dämpa bilddetaljerna så de binder ihop med den mörka rapportytan. */
+    #fallkarta::before{
+      background-image:linear-gradient(180deg,rgba(10,22,40,.80) 0%,rgba(10,22,40,.85) 68%,#0A1628 100%),url("https://raw.githubusercontent.com/veckobrevskartan/INBLICK-Arktis-och-sateliter/main/bg-earth-observation-hamn.png");
+    }
+    #infor-2027::before{
+      background-image:linear-gradient(180deg,rgba(10,22,40,.82) 0%,rgba(10,22,40,.87) 68%,#0A1628 100%),url("https://raw.githubusercontent.com/veckobrevskartan/INBLICK-Arktis-och-sateliter/main/bg-norden-infrastruktur.png");
+    }
+    @media(max-width:850px){
+      #fallkarta::before{background-image:linear-gradient(180deg,rgba(10,22,40,.84) 0%,rgba(10,22,40,.86) 68%,#0A1628 100%),url("https://raw.githubusercontent.com/veckobrevskartan/INBLICK-Arktis-och-sateliter/main/bg-earth-observation-hamn.png")}
+      #infor-2027::before{background-image:linear-gradient(180deg,rgba(10,22,40,.84) 0%,rgba(10,22,40,.88) 68%,#0A1628 100%),url("https://raw.githubusercontent.com/veckobrevskartan/INBLICK-Arktis-och-sateliter/main/bg-norden-infrastruktur.png")}
+    }
   </style>
   <script id="single-watermark-map-behavior">
     (()=> {
-      const mark=document.querySelector('.site-watermark');
-      const maps=[...document.querySelectorAll('#annual-case-map,#nordic-corridor-map,#hormuz-map')];
-      if(!mark||!maps.length||!('IntersectionObserver' in window))return;
-      const visible=new Set();
-      const observer=new IntersectionObserver(entries=>{
-        for(const entry of entries){
-          if(entry.isIntersecting)visible.add(entry.target);
-          else visible.delete(entry.target);
-        }
-        mark.classList.toggle('is-muted',visible.size>0);
-      },{threshold:.01});
-      maps.forEach(map=>observer.observe(map));
+      const init=()=>{
+        const mark=document.querySelector('.site-watermark');
+        const maps=[...document.querySelectorAll('#annual-case-map,#nordic-corridor-map,#hormuz-map')];
+        if(!mark||!maps.length||!('IntersectionObserver' in window))return;
+        const visible=new Set();
+        const observer=new IntersectionObserver(entries=>{
+          for(const entry of entries){
+            if(entry.isIntersecting)visible.add(entry.target);
+            else visible.delete(entry.target);
+          }
+          mark.classList.toggle('is-muted',visible.size>0);
+        },{threshold:.01});
+        maps.forEach(map=>observer.observe(map));
+      };
+      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});
+      else init();
     })();
   </script>
 

@@ -43,7 +43,10 @@
     .nav a { color: var(--muted); text-decoration: none; font-size: .78rem; white-space: nowrap; }
     .nav a:hover { color: var(--gold); }
     .shell { width: min(var(--max), calc(100% - 40px)); margin: auto; }
-    .hero { min-height: 520px; padding: 84px 0 72px; display: grid; align-content: center; border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
+    .hero { min-height: 520px; padding: 84px 0 72px; display: grid; align-content: center; border-bottom: 1px solid var(--line); position: relative; isolation: isolate; overflow: visible; }
+    .hero::before { content: ""; position: absolute; z-index: -1; inset: 0; left: 50%; width: 100vw; transform: translateX(-50%); background-image: linear-gradient(90deg, rgba(10,22,40,.95) 0%, rgba(10,22,40,.86) 58%, rgba(10,22,40,.74) 100%), url("https://raw.githubusercontent.com/veckobrevskartan/INBLICK-Arktis-och-sateliter/main/bg-summary-noder-karta.png"); background-size: cover; background-position: center 48%; pointer-events: none; }
+    .hero::after { z-index: 0; }
+    .hero > * { position: relative; z-index: 1; }
     .hero::after { content: ""; position: absolute; width: 420px; height: 420px; border: 1px solid rgba(210,180,111,.2); border-radius: 50%; right: 2%; top: 8%; box-shadow: 0 0 0 48px rgba(210,180,111,.025), 0 0 0 96px rgba(210,180,111,.018); pointer-events: none; }
     .eyebrow { color: var(--gold); font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
     h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
@@ -611,7 +614,27 @@ html{overflow-x:clip}
 @media(max-width:850px){.chapter-opening{left:-20px;min-height:88vh;min-height:clamp(520px,88svh,900px);padding:clamp(30px,7vh,76px) 24px}}
 @media(max-width:720px){.chapter-opening{padding:clamp(28px,6vh,56px) 18px}.chapter-opening-bg{background-image:linear-gradient(90deg,rgba(10,22,40,.94),rgba(10,22,40,.72)),var(--chapter-bg)}.chapter-judgement .judgement-answer{grid-template-columns:1fr;grid-template-rows:auto auto auto;row-gap:10px}.chapter-meter{grid-column:1;grid-row:1;width:132px}.chapter-judgement .likelihood{grid-column:1;grid-row:2;text-align:center}.chapter-judgement .judgement-conclusion{grid-column:1;grid-row:3}.report-sat-video{grid-template-columns:1fr}}
 @media(max-width:560px){.chapter-opening{left:-14px;min-height:88vh;min-height:clamp(520px,88svh,820px);padding:30px 14px}}
+
 @media(prefers-reduced-motion:reduce){.chapter-meter-range{transition:none!important}}
+/* Keep the contents menu legible above full-bleed chapter photography. */
+.layout{isolation:isolate}
+.toc{z-index:9;transform:translateX(-20px);align-self:start;max-height:calc(100svh - 118px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;padding:16px 13px;border:1px solid var(--line);border-left:2px solid var(--gold);background:rgba(10,22,40,.96);box-shadow:0 12px 30px rgba(0,0,0,.24);backdrop-filter:blur(10px)}
+.toc a{overflow-wrap:anywhere}
+/* Give the opening assessment its own subdued, tinted scene. */
+.report-summary{position:relative;isolation:isolate;margin-bottom:18px;padding:clamp(22px,4vw,42px);border:1px solid var(--line);background-image:linear-gradient(105deg,rgba(10,22,40,.91),rgba(10,22,40,.86)),url("https://raw.githubusercontent.com/veckobrevskartan/INBLICK-Arktis-och-sateliter/main/bg-andoya-kust-satellit.png");background-size:cover;background-position:center 46%}
+.report-summary>.section-kicker,.report-summary>h2,.report-summary>.section-intro,.report-summary>.chapter-context,.report-summary>.report-route,.report-summary>.longform{position:relative;z-index:1}
+@media(max-width:850px){
+  .toc{position:sticky;top:64px;z-index:9;transform:none;display:flex;flex-wrap:nowrap;gap:8px;max-width:100%;max-height:none;overflow-x:auto;overflow-y:hidden;padding:9px 12px;border:1px solid var(--line);background:rgba(10,22,40,.97);box-shadow:0 8px 22px rgba(0,0,0,.28);scrollbar-width:thin;white-space:nowrap}
+  .toc a{display:block;flex:0 0 auto;min-height:38px;padding:8px 10px;border:1px solid rgba(210,180,111,.22);background:rgba(16,39,59,.94);font-size:.76rem;white-space:nowrap;overflow-wrap:normal}
+  .toc .toc-sub{padding-left:10px}
+  .report-summary{background-image:linear-gradient(105deg,rgba(10,22,40,.94),rgba(10,22,40,.9)),url("https://raw.githubusercontent.com/veckobrevskartan/INBLICK-Arktis-och-sateliter/main/bg-andoya-kust-satellit.png")}
+  .hero::before{background-image:linear-gradient(180deg,rgba(10,22,40,.88),rgba(10,22,40,.82)),url("https://raw.githubusercontent.com/veckobrevskartan/INBLICK-Arktis-och-sateliter/main/bg-summary-noder-karta.png")}
+}
+@media(max-width:560px){
+  .toc{top:102px;width:calc(100% + 28px);max-width:none;margin-inline:-14px;padding-inline:12px}
+  .hero{min-height:400px}
+  .report-summary{padding:22px 16px;background-position:center}
+}
 </style>
 
 </head>

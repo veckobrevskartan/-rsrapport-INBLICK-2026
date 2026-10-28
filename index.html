@@ -581,6 +581,63 @@
   </style>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="assets/case-maps-20261006.css?v=20261026b">
+
+  <style id="annual-satellite-enhancements">
+    .report-sat-outlook { margin:28px 0 34px; padding:24px; border:1px solid var(--line); border-left:4px solid var(--gold); background:var(--bg-card); color:var(--text); }
+    .report-sat-kicker { margin:0 0 8px; color:var(--gold); font:600 .67rem/1.5 var(--sans); letter-spacing:.14em; text-transform:uppercase; }
+    .report-sat-heading { margin:0 0 16px; color:var(--text); font:600 clamp(1.2rem,2.4vw,1.55rem)/1.2 var(--serif); }
+    .report-sat-question { margin:0 0 18px; padding:14px 18px; border-left:3px solid var(--gold); background:rgba(255,255,255,.035); color:var(--text); font:500 1rem/1.6 var(--serif); }
+    .report-sat-rows { display:grid; gap:1px; border:1px solid var(--line); background:var(--line); }
+    .report-sat-row { display:grid; grid-template-columns:minmax(132px,180px) minmax(0,1fr); gap:24px; align-items:center; padding:22px; background:var(--bg); }
+    .report-sat-ring { position:relative; width:min(100%,150px); aspect-ratio:1; margin:auto; }
+    .report-sat-ring svg { width:100%; height:100%; display:block; }
+    .report-sat-ring-bg { fill:none; stroke:rgba(255,255,255,.15); stroke-width:10; }
+    .report-sat-ring-fill { fill:none; stroke-width:10; stroke-linecap:round; }
+    .report-sat-ring-fill.main { stroke:var(--gold); }
+    .report-sat-ring-fill.secondary { stroke:#91b4cb; }
+    .report-sat-ring-center { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+    .report-sat-value { color:var(--gold); font:900 2.35rem/1 var(--serif); }
+    .report-sat-row.secondary .report-sat-value { color:#91b4cb; }
+    .report-sat-unit { color:var(--muted); font:500 .62rem/1.4 var(--sans); letter-spacing:.14em; text-transform:uppercase; }
+    .report-sat-badge { display:inline-block; margin:0 0 10px; padding:6px 10px; color:#101b2b; background:var(--gold); font:700 .62rem/1.4 var(--sans); letter-spacing:.11em; text-transform:uppercase; }
+    .report-sat-row.secondary .report-sat-badge { color:var(--text); background:#415c72; }
+    .report-sat-verdict { margin:0 0 9px; color:var(--text); font:700 1.2rem/1.25 var(--serif); }
+    .report-sat-band { color:var(--gold); font:500 .78rem/1.4 var(--sans); }
+    .report-sat-row.secondary .report-sat-band { color:#a8c6d8; }
+    .report-sat-summary { margin:0; color:var(--muted); font:400 .92rem/1.68 var(--sans); }
+    .report-sat-scale { margin-top:14px; padding:18px; border:1px solid var(--line); background:var(--bg); }
+    .report-sat-scale-row { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; }
+    .report-sat-scale-band { padding:9px 6px; border:1px solid var(--line); text-align:center; color:var(--muted); }
+    .report-sat-scale-band strong { display:block; color:var(--text); font:600 .86rem/1.3 var(--serif); }
+    .report-sat-scale-band small { display:block; margin-top:3px; color:var(--quiet); font:500 .61rem/1.35 var(--sans); }
+    .report-sat-scale-band.active-main { border-color:var(--gold); background:var(--gold); color:#101b2b; }
+    .report-sat-scale-band.active-main strong,.report-sat-scale-band.active-main small { color:#101b2b; }
+    .report-sat-scale-band.active-sub { border-color:#91b4cb; background:rgba(145,180,203,.09); }
+    .report-sat-scale-band.active-sub strong,.report-sat-scale-band.active-sub small { color:#c8d9e5; }
+    .report-sat-note { margin:12px 0 0; color:var(--quiet); font:400 .76rem/1.65 var(--sans); }
+    .report-sat-source-link { display:inline-block; margin-top:12px; color:#e5c85d; font:600 .78rem/1.5 var(--sans); }
+    .report-sat-video { margin:28px 0 36px; display:grid; grid-template-columns:minmax(260px,.78fr) minmax(300px,1.22fr); background:var(--bg-card); border:1px solid var(--line); overflow:hidden; }
+    .report-sat-video-copy { display:flex; flex-direction:column; justify-content:center; padding:24px; }
+    .report-sat-video-copy h4 { margin:0 0 12px; color:var(--text); font:700 clamp(1.15rem,2vw,1.45rem)/1.2 var(--serif); }
+    .report-sat-video-copy p { margin:0 0 14px; color:var(--muted); font:400 .9rem/1.72 var(--sans); }
+    .report-sat-video-copy p:last-child { margin-bottom:0; }
+    .report-sat-video-copy a { color:#e5c85d; }
+    .report-sat-video-frame { margin:0; min-width:0; display:flex; flex-direction:column; justify-content:center; background:#05070b; }
+    .report-sat-video-frame video { display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:contain; background:#05070b; }
+    .report-sat-video-frame figcaption { padding:8px 12px; color:var(--quiet); font:400 .7rem/1.5 var(--sans); }
+    @media(max-width:720px) {
+      .report-sat-outlook { padding:16px; }
+      .report-sat-row { grid-template-columns:1fr; gap:14px; padding:18px; }
+      .report-sat-ring { width:132px; }
+      .report-sat-scale { padding:12px; }
+      .report-sat-scale-row { grid-template-columns:repeat(2,1fr); }
+      .report-sat-video { grid-template-columns:1fr; }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      .report-sat-ring-fill { transition:none!important; }
+    }
+  </style>
+
 </head>
 <body>
   <div class="site-watermark" aria-hidden="true"></div>
@@ -3021,7 +3078,71 @@
 <p>Den 30 september beskrev den norska kommunikationsmyndigheten <a href="https://nkom.no/aktuelt/tema-frekvensforum-2026">Nkom</a> ett arbete med att minska beroendet av satellitsignaler: <a href="https://www.linkedin.com/feed/update/urn:li:activity:7508822384351719426">en markbaserad tjänst för exakt tid</a>. Exakt tid behövs bland annat i mobilnät, kraftsystem och finansiella tjänster. Nkoms besked gäller en planerad reservtjänst.</p>
           <p>En reserv behöver fungera även när den ordinarie tjänstens svaghet utnyttjas. Ett annat satellitnät kan hjälpa vid ett leverantörsbeslut, men ge mindre skydd om båda tjänsterna behöver samma markstation eller förbindelse. Kommunikation, positionering och exakt tid har dessutom olika användningsområden. Ett alternativ för en av funktionerna ersätter inte automatiskt de andra.</p>
 
- <h3 id="ravaror-halvledare">Råvaror och halvledare: från tillgång till fungerande leveranskedjor</h3>
+ 
+          <aside class="report-sat-outlook" aria-labelledby="report-sat-outlook-title">
+            <p class="report-sat-kicker">Långsiktig utblick · bedömningshorisont 2036</p>
+            <h4 class="report-sat-heading" id="report-sat-outlook-title">Privata aktörer, statlig kontroll och tillsyn</h4>
+            <blockquote class="report-sat-question">Hur sannolikt är det att NATO-staters underrättelseförmåga fram till 2036 fortfarande vilar på ett praktiskt oåterkalleligt beroende av privata satellit-, data- och analysaktörer, utan att staterna samtidigt har etablerat tillräcklig regulatorisk kontroll, demokratisk tillsyn och operativ förmåga att styra beroendet?</blockquote>
+            <div class="report-sat-rows">
+              <div class="report-sat-row">
+                <div class="report-sat-ring" role="img" aria-label="Huvudbedömning: sannolik, 80 procent">
+                  <svg viewBox="0 0 140 140" aria-hidden="true">
+                    <circle class="report-sat-ring-bg" cx="70" cy="70" r="54"></circle>
+                    <circle class="report-sat-ring-fill main" data-target="80" cx="70" cy="70" r="54" stroke-dasharray="339.29" stroke-dashoffset="67.86" transform="rotate(-90 70 70)"></circle>
+                  </svg>
+                  <div class="report-sat-ring-center" aria-hidden="true"><span class="report-sat-value" data-value="80">80</span><span class="report-sat-unit">Sannolikhet</span></div>
+                </div>
+                <div>
+                  <span class="report-sat-badge">Huvudbedömning</span>
+                  <p class="report-sat-verdict">Sannolik <span class="report-sat-band">(&gt;80 %)</span></p>
+                  <p class="report-sat-summary">NATO-staters underrättelseförmåga vilar 2036 fortfarande i praktiken på privata aktörer för själva förmågan. Beroendet är inte ett framtida tillstånd som kan förhindras, utan ett pågående faktum som befästs till 2030 och kvarstår till 2036. Europa kommer ikapp delvis, men förmågan förblir privat.</p>
+                </div>
+              </div>
+              <div class="report-sat-row secondary">
+                <div class="report-sat-ring" role="img" aria-label="Delbedömning: troligen, 75 procent">
+                  <svg viewBox="0 0 140 140" aria-hidden="true">
+                    <circle class="report-sat-ring-bg" cx="70" cy="70" r="54"></circle>
+                    <circle class="report-sat-ring-fill secondary" data-target="75" cx="70" cy="70" r="54" stroke-dasharray="339.29" stroke-dashoffset="84.82" transform="rotate(-90 70 70)"></circle>
+                  </svg>
+                  <div class="report-sat-ring-center" aria-hidden="true"><span class="report-sat-value" data-value="75">75</span><span class="report-sat-unit">Sannolikhet</span></div>
+                </div>
+                <div>
+                  <span class="report-sat-badge">Delbedömning</span>
+                  <p class="report-sat-verdict">Troligen <span class="report-sat-band">(55–75 %)</span></p>
+                  <p class="report-sat-summary">Tillräcklig regulatorisk kontroll och demokratisk tillsyn hinner inte etableras till 2036. Detta ben är mer osäkert: ett decennium ger reellt utrymme för EU och NATO att komma ikapp. Bedömningen stöds av flera faktorer men innebörden kan inte tolkas entydigt.</p>
+                </div>
+              </div>
+            </div>
+            <div class="report-sat-scale">
+              <div class="report-sat-scale-row" aria-label="Försvarsmaktens sannolikhetsskala">
+                <div class="report-sat-scale-band"><strong>Tveksam</strong><small>&lt;20 %</small></div>
+                <div class="report-sat-scale-band"><strong>Möjligen</strong><small>25–50 %</small></div>
+                <div class="report-sat-scale-band active-sub"><strong>Troligen</strong><small>55–75 %</small></div>
+                <div class="report-sat-scale-band active-main"><strong>Sannolik</strong><small>&gt;80 %</small></div>
+              </div>
+              <p class="report-sat-note">Skalan är Försvarsmaktens sannolikhetsuttryck (R UND 2022), som motsvarar AJP-2.1. Sannolik och Troligen uttrycker subjektiva underrättelsebedömningar, inte matematiskt framräknad sannolikhet.</p>
+            </div>
+            <a class="report-sat-source-link" href="https://veckobrevskartan.github.io/INBLICK-Arktis-och-sateliter/#bedomning">Läs hela bedömningsunderlaget med källor</a>
+          </aside>
+
+          <div class="report-sat-video">
+            <div class="report-sat-video-copy">
+              <p class="report-sat-kicker">Satellitövervakning · rörlig visualisering</p>
+              <h4>En snabbt växande kommersiell marknad</h4>
+              <p>Stater har historiskt haft monopol på satellitbaserade övervakningsförmågor. Det monopolet är upplöst. Den globala rymdekonomin uppgick till <a href="https://atlasinstitute.org/the-privatisation-of-persistent-surveillance-risks-and-opportunities-for-natos-space-strategy/" target="_blank" rel="noopener noreferrer">613 miljarder US-dollar år 2024</a>, varav den kommersiella sektorn stod för 78 procent. Marknadsvärdet för satellitövervakningstjänster beräknas växa från 6,8 miljarder dollar år 2024 till <a href="https://marketintelo.com/report/satellite-surveillance-services-market" target="_blank" rel="noopener noreferrer">18,3 miljarder dollar år 2033</a>. Tillväxten drivs av sjunkande uppskjutningskostnader, miniaturiserad satellithårdvara och kommersiella marknader.</p>
+              <p><a href="https://veckobrevskartan.github.io/INBLICK-Arktis-och-sateliter/#fenomenet">Öppna hela satellitfördjupningen</a></p>
+            </div>
+            <figure class="report-sat-video-frame">
+              <video id="annual-satellite-visualisering" controls muted playsinline loop preload="metadata" aria-label="Rörlig visualisering av satelliternas utveckling">
+                <source src="https://veckobrevskartan.github.io/INBLICK-Arktis-och-sateliter/satelliter_egen_visualisering.mp4" type="video/mp4">
+                <source src="https://veckobrevskartan.github.io/INBLICK-Arktis-och-sateliter/satelliter_egen_visualisering.mov" type="video/quicktime">
+                Din webbläsare kan inte spela upp satellitfilmen. <a href="https://veckobrevskartan.github.io/INBLICK-Arktis-och-sateliter/#fenomenet">Visa källsidan</a>.
+              </video>
+              <figcaption>Rörlig visualisering om satelliternas utveckling. Filmen pausas när den lämnar skärmens synfält.</figcaption>
+            </figure>
+          </div>
+
+          <h3 id="ravaror-halvledare">Råvaror och halvledare: från tillgång till fungerande leveranskedjor</h3>
 
           <p>Elektronik, sensorer, energisystem och försvarsmateriel behöver mineral och metaller som ofta bryts eller förädlas i ett fåtal länder. EU-kommissionen anger att Kina står för hela EU:s tillgång på tunga sällsynta jordartsmetaller. EU:s förordning om kritiska råmaterial innehåller därför mål för utvinning, bearbetning och återvinning inom unionen till 2030. Den framtida produktionen återstår att bygga upp (Europeiska kommissionen, 2026).</p>
           <p>Tillgången påverkas också av exportregler. Kina förde den 24 april upp <a href="https://www.linkedin.com/posts/svensk-osint_china-restricts-dual-use-exports-to-seven-activity-7453391875048189952-ABBO">sju EU-enheter, däribland Hensoldt och FN Herstal</a> på sin kontrollista för produkter med dubbla användningsområden. Den 24 juli följde <a href="https://www.linkedin.com/feed/update/urn:li:activity:7487061793706663937">ytterligare 14 enheter, bland dem Rheinmetall</a>. <a href="https://www.mofcom.gov.cn/zfxxgk/gkml/art/2026/art_1030ba86ac374a129893d701ee7bde9b.html">Aprilbeslutet</a> och <a href="https://www.mofcom.gov.cn/zwgk/zcfb/art/2026/art_2c9a32aa73bf4f5ea80ffa83e62fb259.html">julibeslutet</a> förbjuder leveranser av kontrollerade produkter till de namngivna mottagarna. Åtgärderna riktas alltså mot utvalda företag och organisationer, snarare än mot all råvaruexport till EU.</p>
@@ -3498,6 +3619,59 @@
   openAnchoredChapter();
 })();
 </script>
+
+  <script id="annual-satellite-enhancements">
+  (() => {
+    const outlook = document.querySelector(".report-sat-outlook");
+    if (outlook && "IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const observer = new IntersectionObserver(entries => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting || entry.intersectionRatio < 0.25) continue;
+          for (const ring of outlook.querySelectorAll(".report-sat-ring-fill[data-target]")) {
+            const target = Number(ring.dataset.target);
+            const circumference = 2 * Math.PI * 54;
+            const value = ring.closest(".report-sat-ring").querySelector("[data-value]");
+            ring.style.strokeDasharray = circumference.toFixed(2);
+            ring.style.strokeDashoffset = circumference.toFixed(2);
+            if (value) value.textContent = "0";
+            requestAnimationFrame(() => {
+              ring.style.strokeDashoffset = (circumference * (1 - target / 100)).toFixed(2);
+            });
+            if (value) {
+              const start = performance.now();
+              const duration = 1600;
+              const countFrame = now => {
+                const progress = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                value.textContent = String(Math.round(target * eased));
+                if (progress < 1) requestAnimationFrame(countFrame);
+              };
+              requestAnimationFrame(countFrame);
+            }
+          }
+          observer.disconnect();
+          break;
+        }
+      }, { threshold: [0.25, 0.5] });
+      observer.observe(outlook);
+    }
+
+    const video = document.getElementById("annual-satellite-visualisering");
+    if (video && "IntersectionObserver" in window) {
+      const videoObserver = new IntersectionObserver(entries => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.35) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        }
+      }, { threshold: [0, 0.35, 0.6] });
+      videoObserver.observe(video);
+    }
+  })();
+  </script>
+
 </body>
 </html>
 

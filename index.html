@@ -897,6 +897,70 @@ html{overflow-x:clip}
       .fall-map-guide>.source-note{padding-bottom:12px;font-size:.8rem}
     }
   </style>
+  <style id="scenario-comparison-styles">
+    #scenario-compare{max-width:1000px;margin:26px 0 34px;padding:clamp(15px,2.6vw,24px);border:1px solid rgba(184,151,58,.34);background:linear-gradient(135deg,rgba(17,48,64,.86),rgba(14,30,56,.78))}
+    .scenario-compare-intro{margin:0 0 15px;color:var(--muted);font:.9rem/1.6 var(--sans)}
+    .scenario-compare-intro strong{display:block;margin-bottom:3px;color:var(--gold);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase}
+    .scenario-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 14px}
+    .scenario-choice-input{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .scenario-choice{display:flex;align-items:center;gap:10px;min-height:72px;padding:11px 12px;border:1px solid var(--line);background:rgba(10,22,40,.62);color:var(--muted);cursor:pointer;transition:border-color .18s ease,background-color .18s ease}
+    .scenario-choice:hover{border-color:rgba(184,151,58,.65)}
+    .scenario-choice-input:checked+.scenario-choice{border-color:var(--gold);background:rgba(184,151,58,.12);color:var(--text)}
+    .scenario-choice-input:focus-visible+.scenario-choice{outline:3px solid var(--gold);outline-offset:3px}
+    .scenario-choice-number{display:grid;place-items:center;flex:0 0 30px;width:30px;height:30px;border:1px solid rgba(184,151,58,.42);border-radius:50%;color:var(--gold);font:600 .72rem/1 var(--sans)}
+    .scenario-choice-input:checked+.scenario-choice .scenario-choice-number{background:var(--gold);color:#101b2b}
+    .scenario-choice strong,.scenario-choice small{display:block}
+    .scenario-choice strong{font:500 .88rem/1.35 var(--serif)}
+    .scenario-choice small{margin-top:3px;color:var(--quiet);font:.68rem/1.35 var(--sans)}
+    .scenario-panel{display:none;padding:clamp(14px,2vw,20px);border:1px solid rgba(184,151,58,.24);background:rgba(10,22,40,.58)}
+    #scenario-compare:has(#scenario-base:checked) .scenario-panel[data-scenario-panel="base"],
+    #scenario-compare:has(#scenario-strain:checked) .scenario-panel[data-scenario-panel="strain"],
+    #scenario-compare:has(#scenario-resilience:checked) .scenario-panel[data-scenario-panel="resilience"]{display:block}
+    .scenario-panel h4{margin:0 0 8px;color:var(--text);font:400 clamp(1.15rem,2vw,1.4rem)/1.3 var(--serif)}
+    .scenario-panel>p{margin:0 0 16px;color:var(--muted);font:.86rem/1.6 var(--sans)}
+    .scenario-dimensions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+    .scenario-dimension{min-width:0;padding:13px;border-left:2px solid var(--gold);background:rgba(17,48,64,.46)}
+    .scenario-dimension h5{margin:0 0 6px;color:var(--gold);font:700 .67rem/1.4 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+    .scenario-dimension p{margin:0;color:var(--muted);font:.8rem/1.58 var(--sans)}
+    .scenario-links{display:flex;flex-wrap:wrap;gap:7px 18px;margin-top:15px;padding-top:12px;border-top:1px solid var(--line)}
+    .scenario-links a{font:600 .74rem/1.45 var(--sans)}
+    .scenario-caveat{margin:12px 0 0;color:var(--quiet);font:.72rem/1.55 var(--sans)}
+    .scenario-narrative{margin:10px 0;border:1px solid var(--line);background:rgba(14,30,56,.42)}
+    .scenario-narrative>summary{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:48px;padding:11px 14px;color:var(--text);cursor:pointer;list-style:none;font:400 1.1rem/1.35 var(--serif)}
+    .scenario-narrative>summary::-webkit-details-marker{display:none}
+    .scenario-narrative>summary::after{content:"Visa resonemang  +";flex:0 0 auto;color:var(--gold);font:600 .7rem/1.4 var(--sans)}
+    .scenario-narrative[open]>summary::after{content:"Dölj resonemang  −"}
+    .scenario-narrative>div{padding:2px 14px 4px}
+    .scenario-narrative>div p:last-child{margin-bottom:12px}
+    .assessment-revision{max-width:900px;margin:30px 0 18px;border:1px solid rgba(184,151,58,.38);background:rgba(17,48,64,.54)}
+    .assessment-revision>summary{display:flex;align-items:center;min-height:52px;padding:13px 16px;color:var(--gold);cursor:pointer;list-style:none;font:600 .9rem/1.45 var(--sans)}
+    .assessment-revision>summary::-webkit-details-marker{display:none}
+    .assessment-revision>summary::after{content:"+";margin-left:auto;padding-left:14px;font:1.2rem/1 var(--sans)}
+    .assessment-revision[open]>summary::after{content:"−"}
+    .assessment-revision-content{padding:0 16px 16px}
+    .assessment-revision-content>p{margin:0 0 13px;color:var(--muted);font:.85rem/1.65 var(--sans)}
+    .assessment-revision-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+    .assessment-revision-grid a{display:block;padding:12px;border:1px solid var(--line);background:rgba(10,22,40,.55);color:var(--muted);text-decoration:none;font:.78rem/1.5 var(--sans)}
+    .assessment-revision-grid a:hover{border-color:var(--gold);color:var(--text)}
+    .assessment-revision-grid strong{display:block;margin-bottom:4px;color:var(--gold);font:500 1rem/1.35 var(--serif)}
+    @supports not selector(:has(*)){
+      .scenario-choices{display:none}
+      .scenario-panel{display:block;margin-top:10px}
+    }
+    @media(max-width:700px){
+      #scenario-compare{margin:22px 0 28px;padding:14px}
+      .scenario-choices{grid-template-columns:1fr;gap:6px}
+      .scenario-choice{min-height:48px;padding:8px 10px}
+      .scenario-choice small{display:none}
+      .scenario-dimensions{grid-template-columns:1fr;gap:7px}
+      .scenario-dimension{padding:11px 12px}
+      .scenario-links{display:grid;gap:8px}
+      .scenario-narrative>summary{align-items:flex-start;font-size:1rem}
+      .scenario-narrative>summary::after{font-size:.64rem}
+      .assessment-revision-grid{grid-template-columns:1fr}
+    }
+    @media(prefers-reduced-motion:reduce){.scenario-choice{transition:none}}
+  </style>
   <script id="mobile-map-disclosures">
     (()=>{
       const init=()=>{
@@ -1136,7 +1200,7 @@ html{overflow-x:clip}
 
           <div class="chapter-conclusion"><h3 id="c1-arets-utveckling">Större europeiskt ansvar, fortsatt behov av USA</h3>
 <p>Europa har under året tagit över mer ledningsansvar, fördjupat kärnvapensamarbetet och inlett nya materielprojekt. Förändringarna kan göra det möjligt att lösa fler uppgifter inom Nato. De ersätter ännu inte den bredd av amerikanska stödfunktioner som krävs för ett mer självständigt europeiskt försvar. Förmågan växer först när beställda system kan användas av utbildad personal och försörjas över tid.</p>
-<p>För Sverige behöver planeringen därför utgå från vilka resurser de allierade faktiskt kan ställa till förfogande och när de kan användas. Fortsatta leveranser och gemensamma övningar kan hålla samarbetet fungerande även under politiska motsättningar. Försenade beslut eller snävare villkor kan däremot lämna en uppgift utan tillräckligt stöd, trots att de formella avtalen består.</p><details class="judgement-support"><summary>Bedömningsgrunder och vad som kan ändra slutsatsen</summary><p><strong>Bärande skäl:</strong> Europa tar över fler militära uppgifter och investerar i bland annat spaningsflyg och robotförsvar. IISS beskriver samtidigt kvarstående brister i stödfunktioner och uthållighet. Nya system behöver levereras, bemannas och övas tillsammans innan de kan ersätta amerikanska bidrag. De europeiska kärnvapensamarbetena kompletterar också ett fortsatt amerikanskt stöd. Därför bedöms Europas möjlighet att bära de centrala försvarsuppgifterna utan USA under 2027 som tveksam, under 20 procent.</p><p><strong>Vad kan ändra bedömningen?</strong> Snabbare europeiska leveranser och övningar som visar att länderna kan klara krävande uppgifter utan USA skulle stärka möjligheten till självständighet. Det gäller särskilt lufttankning, transporter, underrättelseinformation, robotförsvar och långvarig precisionsbekämpning. En mer begränsad uppgift kan också kräva mindre amerikanskt stöd. Sannolikhetsgraden är en kvalitativ bedömning, inte en matematisk beräkning.</p></details></div>
+<p>För Sverige behöver planeringen därför utgå från vilka resurser de allierade faktiskt kan ställa till förfogande och när de kan användas. Fortsatta leveranser och gemensamma övningar kan hålla samarbetet fungerande även under politiska motsättningar. Försenade beslut eller snävare villkor kan däremot lämna en uppgift utan tillräckligt stöd, trots att de formella avtalen består.</p><details class="judgement-support" id="review-varldsordning"><summary>Bedömningsgrunder och vad som kan ändra slutsatsen</summary><p><strong>Bärande skäl:</strong> Europa tar över fler militära uppgifter och investerar i bland annat spaningsflyg och robotförsvar. IISS beskriver samtidigt kvarstående brister i stödfunktioner och uthållighet. Nya system behöver levereras, bemannas och övas tillsammans innan de kan ersätta amerikanska bidrag. De europeiska kärnvapensamarbetena kompletterar också ett fortsatt amerikanskt stöd. Därför bedöms Europas möjlighet att bära de centrala försvarsuppgifterna utan USA under 2027 som tveksam, under 20 procent.</p><p><strong>Vad kan ändra bedömningen?</strong> Snabbare europeiska leveranser och övningar som visar att länderna kan klara krävande uppgifter utan USA skulle stärka möjligheten till självständighet. Det gäller särskilt lufttankning, transporter, underrättelseinformation, robotförsvar och långvarig precisionsbekämpning. En mer begränsad uppgift kan också kräva mindre amerikanskt stöd. Sannolikhetsgraden är en kvalitativ bedömning, inte en matematisk beräkning.</p></details></div>
 <details class="chapter-refs report-disclosure report-references" aria-labelledby="refs-varldsordning">
 <summary id="refs-varldsordning">Referenser</summary>
 <div class="reference-body">
@@ -1723,7 +1787,7 @@ html{overflow-x:clip}
           <aside class="judgement" id="sakerhetslage-eskalering" aria-labelledby="sakerhetslage-eskalering-rubrik">
             <p class="judgement-label" id="sakerhetslage-eskalering-rubrik">Vad som skulle skärpa bedömningen</p>
             <p>Bekräftade samtidiga angrepp mot flera reservvägar eller angrepp som hindrar reparatörer från att arbeta skulle tala för större och mer utdragna konsekvenser. Fler verifierade angrepp med sprängladdade drönare mot bemannade anläggningar skulle också öka faran för personalen. Rapportens urval visar varför sådana förlopp behöver hanteras, men ger inget mått på hur ofta de kommer att inträffa.</p>
-          </aside><details class="judgement-support"><summary>Bedömningsgrunder och vad som kan ändra slutsatsen</summary><p><strong>Bärande skäl:</strong> Dokumenterade krigsskador och sabotage har krävt omledning och reparation av civila energi- och transportflöden. Kriget och myndigheternas hotbedömningar talar för att sådana behov återkommer under 2027. Återkommande avbrott bedöms därför som sannolika, minst 80 procent. Avvärjda planer och genomförda reparationer visar samtidigt att följderna kan begränsas. Graden avser återkommande avbrott i Europa, inte att ett långvarigt svenskt försörjningsavbrott är sannolikt.</p><p><strong>Omprövning:</strong> Varaktigt färre krigsskador och en belagt minskad sabotageförmåga skulle försvaga bedömningen om återkommande avbrott. En vapenvila får betydelse om den också ger färre skador och säkrare tillträde för reparatörer. Bättre reservvägar och snabbare reparationer minskar framför allt följderna. Kortare avbrott kan innebära bättre motståndskraft även om reparationer fortfarande behövs. Kapacitetsbortfall, samtidiga skador och tid till återställd funktion visar hur stora följderna blir.</p></details></div>
+          </aside><details class="judgement-support" id="review-sakerhetslage"><summary>Bedömningsgrunder och vad som kan ändra slutsatsen</summary><p><strong>Bärande skäl:</strong> Dokumenterade krigsskador och sabotage har krävt omledning och reparation av civila energi- och transportflöden. Kriget och myndigheternas hotbedömningar talar för att sådana behov återkommer under 2027. Återkommande avbrott bedöms därför som sannolika, minst 80 procent. Avvärjda planer och genomförda reparationer visar samtidigt att följderna kan begränsas. Graden avser återkommande avbrott i Europa, inte att ett långvarigt svenskt försörjningsavbrott är sannolikt.</p><p><strong>Omprövning:</strong> Varaktigt färre krigsskador och en belagt minskad sabotageförmåga skulle försvaga bedömningen om återkommande avbrott. En vapenvila får betydelse om den också ger färre skador och säkrare tillträde för reparatörer. Bättre reservvägar och snabbare reparationer minskar framför allt följderna. Kortare avbrott kan innebära bättre motståndskraft även om reparationer fortfarande behövs. Kapacitetsbortfall, samtidiga skador och tid till återställd funktion visar hur stora följderna blir.</p></details></div>
 <details class="chapter-refs report-disclosure report-references" aria-labelledby="refs-sakerhetslage">
 <summary id="refs-sakerhetslage">Referenser</summary>
 <div class="reference-body">
@@ -3051,7 +3115,7 @@ html{overflow-x:clip}
 
         <div class="chapter-conclusion">
 <h3 id="c3-arets-utveckling">Flera vägar till svenska mål</h3>
-<p>Årets svenska fall visar flera sätt att nå ett mål: en underrättelsekontakt kan söka information, ett kriminellt nätverk kan förmedla en våldsbeställning och ett kontonätverk kan sprida vilseledande innehåll. Ingripandena mot den ryska operationen, våldsrekryteringen och Holiday visar att verksamheten kan avbrytas. Exemplen belägger olika metoder och motåtgärder, inte en gemensam ledning bakom hoten.</p><p>Nya försök under 2027 bedöms ändå som sannolika, eftersom beställare kan rekrytera andra personer och fortsätta uppdrag över gränserna. Ett stoppat försök kan skydda det omedelbara målet, medan ett mer varaktigt resultat kräver att nätverket förlorar tillgång till utförare, information eller platsen det vill nå. För unga som redan pressas behöver även hoten hanteras så att de kan lämna uppdragen.</p><details class="judgement-support"><summary>Bedömningsgrunder och vad som kan ändra slutsatsen</summary><p><strong>Bärande skäl:</strong> Säpos redovisning av statliga ombud och den avbrutna ryska operationen visar konkret verksamhet mot Sverige. Grimm visar fortsatt rekrytering till kriminella våldsuppdrag trots omfattande ingripanden. Brås studie beskriver hur kontakterna kan övergå i hot och styrning. Därför bedöms sannolikheten för nya konkreta försök under 2027 till minst 80 procent. Myndigheternas ingripanden talar samtidigt för att flera försök kan begränsas. Bedömningen gäller förekomsten av nya försök, inte ett visst attentat eller en gemensam ledning bakom alla hotmiljöer.</p><p><strong>Vad kan ändra bedömningen?</strong> Den skulle försvagas om beställar- och rekryteringsnätverk varaktigt upplöses, nya uppdrag blir färre och tillgången till känsliga mål minskar. Den skulle stärkas om rekryteringen snabbt återkommer eller andra tar över stoppade uppdrag. Enstaka gripanden och färre synliga annonser ger däremot inte hela svaret: det behövs också kunskap om huruvida uppdragen faktiskt upphör.</p></details></div>
+<p>Årets svenska fall visar flera sätt att nå ett mål: en underrättelsekontakt kan söka information, ett kriminellt nätverk kan förmedla en våldsbeställning och ett kontonätverk kan sprida vilseledande innehåll. Ingripandena mot den ryska operationen, våldsrekryteringen och Holiday visar att verksamheten kan avbrytas. Exemplen belägger olika metoder och motåtgärder, inte en gemensam ledning bakom hoten.</p><p>Nya försök under 2027 bedöms ändå som sannolika, eftersom beställare kan rekrytera andra personer och fortsätta uppdrag över gränserna. Ett stoppat försök kan skydda det omedelbara målet, medan ett mer varaktigt resultat kräver att nätverket förlorar tillgång till utförare, information eller platsen det vill nå. För unga som redan pressas behöver även hoten hanteras så att de kan lämna uppdragen.</p><details class="judgement-support" id="review-sverige"><summary>Bedömningsgrunder och vad som kan ändra slutsatsen</summary><p><strong>Bärande skäl:</strong> Säpos redovisning av statliga ombud och den avbrutna ryska operationen visar konkret verksamhet mot Sverige. Grimm visar fortsatt rekrytering till kriminella våldsuppdrag trots omfattande ingripanden. Brås studie beskriver hur kontakterna kan övergå i hot och styrning. Därför bedöms sannolikheten för nya konkreta försök under 2027 till minst 80 procent. Myndigheternas ingripanden talar samtidigt för att flera försök kan begränsas. Bedömningen gäller förekomsten av nya försök, inte ett visst attentat eller en gemensam ledning bakom alla hotmiljöer.</p><p><strong>Vad kan ändra bedömningen?</strong> Den skulle försvagas om beställar- och rekryteringsnätverk varaktigt upplöses, nya uppdrag blir färre och tillgången till känsliga mål minskar. Den skulle stärkas om rekryteringen snabbt återkommer eller andra tar över stoppade uppdrag. Enstaka gripanden och färre synliga annonser ger däremot inte hela svaret: det behövs också kunskap om huruvida uppdragen faktiskt upphör.</p></details></div>
 <details class="chapter-refs report-disclosure report-references" aria-labelledby="refs-sverige">
 <summary id="refs-sverige">Referenser</summary>
 <div class="reference-body">
@@ -3384,7 +3448,7 @@ html{overflow-x:clip}
  </div>
         <div class="chapter-conclusion"><h3 id="c4-samtidiga-behov">Samtidiga behov avgör uthålligheten</h3>
 <p>Sverige går in i 2027 med vissa lösningar som kan ge nytta tidigt och andra som kräver flera års uppbyggnad. Offlinebetalningar och avtalet om Halmstads hamn är konkreta steg. MTFA:s inventering visar samtidigt en skyddsbrist, och UND ska byggas upp medan underrättelsearbetet fortsätter. De längre projekten kan stärka beredskapen senare, men ersätter inte behoven av personal, skydd och fungerande reserver under övergången.</p>
-<p>Uthålligheten avgörs särskilt när flera verksamheter behöver samma resurser. Ett reservsystem som använder samma el, kommunikation eller personal som den ordinarie lösningen kan falla bort samtidigt med den. Om en hamn däremot kan ta över ett flöde, en butik fortsätta sälja nödvändiga varor eller en reparationsgrupp återställa en förbindelse i tid minskar följderna av störningen. Det öppna underlaget visar inte alla befintliga reserver. Bedömningen av kvarstående luckor behöver därför vägas mot de lösningar som redan fungerar och vad genomförandet tillför under året.</p><details class="judgement-support"><summary>Bedömningsgrunder och vad som kan ändra slutsatsen</summary><p><strong>Bärande skäl:</strong> MTFA har identifierat en brist i skyddet av totalförsvarsviktig civil verksamhet. Must-chefens varning gäller risken för ett tillfälligt tapp när UND byggs upp, och flera större projekt har tidplaner efter 2027. Dessa förhållanden talar för att kritiska luckor troligen kvarstår. Offlinebetalningar, hamnavtal, samverkan och tillgängliga reserver kan samtidigt minska sårbarheter tidigare. Brist på offentliga uppgifter om en reserv är inte belägg för att den saknas.</p><p><strong>Omprövning:</strong> Dokumenterat fungerande skydd, bemannad reparationsförmåga och fortsatt drift när flera system störs samtidigt skulle tala för att luckorna minskat. En övergång till UND med bibehållen verksamhet och kortare leveranstider skulle också försvaga bedömningen. Med en kritisk lucka avses här en brist som kan hindra en prioriterad funktion och som inte kan kompenseras i tid med tillgängliga alternativ.</p></details></div>
+<p>Uthålligheten avgörs särskilt när flera verksamheter behöver samma resurser. Ett reservsystem som använder samma el, kommunikation eller personal som den ordinarie lösningen kan falla bort samtidigt med den. Om en hamn däremot kan ta över ett flöde, en butik fortsätta sälja nödvändiga varor eller en reparationsgrupp återställa en förbindelse i tid minskar följderna av störningen. Det öppna underlaget visar inte alla befintliga reserver. Bedömningen av kvarstående luckor behöver därför vägas mot de lösningar som redan fungerar och vad genomförandet tillför under året.</p><details class="judgement-support" id="review-formaga"><summary>Bedömningsgrunder och vad som kan ändra slutsatsen</summary><p><strong>Bärande skäl:</strong> MTFA har identifierat en brist i skyddet av totalförsvarsviktig civil verksamhet. Must-chefens varning gäller risken för ett tillfälligt tapp när UND byggs upp, och flera större projekt har tidplaner efter 2027. Dessa förhållanden talar för att kritiska luckor troligen kvarstår. Offlinebetalningar, hamnavtal, samverkan och tillgängliga reserver kan samtidigt minska sårbarheter tidigare. Brist på offentliga uppgifter om en reserv är inte belägg för att den saknas.</p><p><strong>Omprövning:</strong> Dokumenterat fungerande skydd, bemannad reparationsförmåga och fortsatt drift när flera system störs samtidigt skulle tala för att luckorna minskat. En övergång till UND med bibehållen verksamhet och kortare leveranstider skulle också försvaga bedömningen. Med en kritisk lucka avses här en brist som kan hindra en prioriterad funktion och som inte kan kompenseras i tid med tillgängliga alternativ.</p></details></div>
 <details class="chapter-refs report-disclosure report-references" aria-labelledby="refs-strategiska-domainer">
 <summary id="refs-strategiska-domainer">Referenser</summary>
 <div class="reference-body">
@@ -3454,18 +3518,66 @@ html{overflow-x:clip}
   <div class="longform">
     <p>Sveriges handlingsutrymme under 2027 beror både på hur säkerhetsläget utvecklas och på hur snabbt nya resurser kan tas i bruk. <a href="#bedomningar">De fyra kapitelbedömningarna</a> beskriver fortsatt amerikanskt beroende, störda energi- och transportflöden, nya hotförsök samt kvarstående beredskapsluckor. Scenarierna nedan prövar hur dessa förhållanden kan samverka. Det första ligger närmast rapportens samlade resonemang. Scenarierna har inga egna sannolikhetsgrader och anger inte sannolikheten för att flera belastningar inträffar samtidigt.</p>
 
+    <div class="scenario-compare" id="scenario-compare">
+      <p class="scenario-compare-intro" id="scenario-compare-label"><strong>Pröva tre utvecklingsförlopp</strong>Välj ett förlopp för att jämföra vad det skulle kunna innebära för energi, transporter och svensk beredskap.</p>
+      <div class="scenario-choices" role="radiogroup" aria-labelledby="scenario-compare-label">
+        <input class="scenario-choice-input" type="radio" name="scenario-compare" id="scenario-base" checked>
+        <label class="scenario-choice" for="scenario-base"><span class="scenario-choice-number" aria-hidden="true">01</span><span><strong>Små marginaler</strong><small>Uppbyggnaden fortsätter</small></span></label>
+        <input class="scenario-choice-input" type="radio" name="scenario-compare" id="scenario-strain">
+        <label class="scenario-choice" for="scenario-strain"><span class="scenario-choice-number" aria-hidden="true">02</span><span><strong>Samtidiga störningar</strong><small>Reserverna pressas</small></span></label>
+        <input class="scenario-choice-input" type="radio" name="scenario-compare" id="scenario-resilience">
+        <label class="scenario-choice" for="scenario-resilience"><span class="scenario-choice-number" aria-hidden="true">03</span><span><strong>Större uthållighet</strong><small>Mer handlingsutrymme</small></span></label>
+      </div>
+      <div class="scenario-panels">
+        <section class="scenario-panel" data-scenario-panel="base" aria-labelledby="scenario-panel-base">
+          <h4 id="scenario-panel-base">Uppbyggnaden fortsätter med små marginaler</h4>
+          <p>Förmågan växer stegvis. Angrepp och avbrott återkommer, men reparationer, omledning och tillgängliga reserver håller oftast verksamheten i gång.</p>
+          <div class="scenario-dimensions">
+            <div class="scenario-dimension"><h5>Energi</h5><p>Avbrott kan återkomma medan reparationsförmåga och reservrutiner dämpar följderna.</p></div>
+            <div class="scenario-dimension"><h5>Transporter</h5><p>Kapaciteten förbättras, men civila flöden, allierade förstärkningar och Ukrainastöd delar på resurser.</p></div>
+            <div class="scenario-dimension"><h5>Beredskap</h5><p>Lager, tillgängliga hamnar och fungerande reservrutiner ger viss marginal medan större projekt tar tid.</p></div>
+          </div>
+          <nav class="scenario-links" aria-label="Följ upp små marginaler"><a href="#indicator-flows">Följ energi- och transportflöden</a><a href="#indicator-resilience">Följ skydd, reserver och reparation</a><a href="#fallkarta">Öppna dokumenterade fall på kartan</a></nav>
+        </section>
+        <section class="scenario-panel" data-scenario-panel="strain" aria-labelledby="scenario-panel-strain">
+          <h4 id="scenario-panel-strain">Samtidiga störningar överbelastar reserverna</h4>
+          <p>Flera bortfall sammanfaller med förseningar eller svagare samordning. Följderna uppstår genom att system påverkar varandra, även utan en gemensam beställare bakom händelserna.</p>
+          <div class="scenario-dimensions">
+            <div class="scenario-dimension"><h5>Energi</h5><p>Störningar i el eller digitala system kan göra alternativa transportvägar svårare att använda.</p></div>
+            <div class="scenario-dimension"><h5>Transporter</h5><p>Förseningar gör att civila varor, förstärkningar och Ukrainastöd konkurrerar om kvarvarande kapacitet.</p></div>
+            <div class="scenario-dimension"><h5>Beredskap</h5><p>Återställningen pressas om reparatörer saknar framkomliga vägar, kommunikation eller material.</p></div>
+          </div>
+          <nav class="scenario-links" aria-label="Följ samtidiga störningar"><a href="#indicator-flows">Följ energi- och transportflöden</a><a href="#indicator-resilience">Följ skydd, reserver och reparation</a><a href="#fallkarta">Öppna dokumenterade fall på kartan</a></nav>
+        </section>
+        <section class="scenario-panel" data-scenario-panel="resilience" aria-labelledby="scenario-panel-resilience">
+          <h4 id="scenario-panel-resilience">Större uthållighet ger mer handlingsutrymme</h4>
+          <p>Leveranser tas i bruk, samverkan fungerar och reserver räcker även när flera verksamheter behöver dem. Hoten kan bestå samtidigt som följderna begränsas bättre.</p>
+          <div class="scenario-dimensions">
+            <div class="scenario-dimension"><h5>Energi</h5><p>Fungerande reserver och snabbare återställning gör att prioriterade verksamheter kan fortsätta.</p></div>
+            <div class="scenario-dimension"><h5>Transporter</h5><p>Avbrotten blir kortare och förstärkningar och förnödenheter når fram i tid.</p></div>
+            <div class="scenario-dimension"><h5>Beredskap</h5><p>Tillgänglig personal och materiel ger större utrymme för utbildning, lagerpåfyllnad och underhåll.</p></div>
+          </div>
+          <nav class="scenario-links" aria-label="Följ större uthållighet"><a href="#indicator-flows">Följ energi- och transportflöden</a><a href="#indicator-resilience">Följ skydd, reserver och reparation</a><a href="#fallkarta">Öppna dokumenterade fall på kartan</a></nav>
+        </section>
+      </div>
+      <p class="scenario-caveat">Scenarierna är villkorade sätt att pröva utvecklingen. De har inga egna sannolikhetsgrader.</p>
+    </div>
+
     <h3 id="scenarier-2027">Tre möjliga utvecklingsförlopp</h3>
-    <h4 id="scenario-uppbyggnad">1. Uppbyggnaden fortsätter med små marginaler</h4>
+    <details class="scenario-narrative"><summary id="scenario-uppbyggnad">1. Uppbyggnaden fortsätter med små marginaler</summary><div>
     <p>Sverige och de europeiska allierade fortsätter att bygga ut sitt försvar och sin beredskap. Nya leveranser och praktiska avtal ger successivt bättre tillgång till materiel och transporter, medan större projekt och organisationsförändringar tar längre tid. Amerikanska stödförmågor behövs fortfarande. Angrepp och avbrott återkommer, men ingripanden, reparationer och omledning gör att verksamheter oftast kan fortsätta.</p>
     <p>För Sverige blir följden återkommande prioriteringar mellan nationell beredskap, allierade förstärkningar och stöd till Ukraina. Samma personal, verkstäder, reservdelar och transportresurser kan behövas för flera uppgifter. Kapaciteten växer, men det finns begränsat utrymme för ytterligare förseningar eller samtidiga behov. Lager, tillgängliga hamnar och fungerande reservrutiner kan ge nytta medan den större uppbyggnaden pågår.</p>
+    </div></details>
 
-    <h4 id="scenario-samtidiga-storningar">2. Samtidiga störningar överbelastar reserverna</h4>
+    <details class="scenario-narrative"><summary id="scenario-samtidiga-storningar">2. Samtidiga störningar överbelastar reserverna</summary><div>
     <p>I detta förlopp sammanfaller störningar i flera system med svagare politisk samordning eller försenade leveranser. Om en transportled faller bort samtidigt som el eller digitala system störs kan även omledningen bli svår att använda. Reparatörer behöver då framkomliga vägar, kommunikation och material för att kunna återställa det som skadats.</p>
     <p>För Sverige kan civila varor, militära förstärkningar och Ukrainastöd börja konkurrera om samma kvarvarande kapacitet. Leveranser försenas och resurser behöver flyttas mellan uppgifter. Om amerikanskt stöd samtidigt begränsas innan europeisk ersättning finns tillgänglig blir marginalerna ännu mindre. Belastningen uppstår här genom flera sammanfallande bortfall; den förutsätter inte en gemensam beställare bakom alla händelser.</p>
+    </div></details>
 
-    <h4 id="scenario-battre-uthallighet">3. Större uthållighet ger mer handlingsutrymme</h4>
+    <details class="scenario-narrative"><summary id="scenario-battre-uthallighet">3. Större uthållighet ger mer handlingsutrymme</summary><div>
     <p>Europeiska leveranser tas i bruk, samarbetet fungerar och reserver räcker även när flera verksamheter behöver dem. Avbrott kan då bli kortare och fler uppdrag fullföljas trots fortsatt hot. Om konfliktintensiteten samtidigt minskar får Sverige och de allierade mer utrymme att utbilda personal, fylla lager och genomföra eftersatt underhåll.</p>
     <p>För Sverige märks förbättringen genom att prioriterade verksamheter fortsätter fungera och att förstärkningar och förnödenheter når fram i tid. En vapenvila i Ukraina kan minska den akuta belastningen, men dess långsiktiga betydelse beror på säkerhetsvillkoren och Rysslands möjlighet att återuppbygga eller omfördela styrkor. Om hotförmågan består behöver det lugnare läget användas för att minska kända brister.</p>
+    </div></details>
 
     <h3 id="indikatorer-2027">Tecken som stärker eller försvagar bedömningarna</h3>
     <p>Uppföljningen utgår från vad som levereras, kan användas och fungerar under belastning. Tabellen anger konkreta tecken och hur de ska tolkas i förhållande till kapitelbedömningarna.</p>
@@ -3474,15 +3586,27 @@ html{overflow-x:clip}
         <caption>Vad som behöver följas under 2027</caption>
         <thead><tr><th scope="col">Område</th><th scope="col">Observerbara tecken</th><th scope="col">Betydelse för bedömningen</th></tr></thead>
         <tbody>
-          <tr><th scope="row"><a href="#varldsordning">Europeiskt handlingsutrymme</a></th><td>Levererade system, utbildad personal och tillgängliga förmågor för bland annat lufttankning, transporter och underrättelser. Genomförda beslut om finansiering, Ukrainastöd och samarbete, särskilt efter politiska förändringar som det franska presidentvalet.</td><td>Europeiska resurser som faktiskt kan ersätta amerikanskt stöd talar för större självständighet. Amerikanska begränsningar utan fungerande ersättning ökar utsattheten. Budgetbesked eller opinionsförändringar visar inte ensamma att beroendet har minskat.</td></tr>
-          <tr><th scope="row"><a href="#sakerhetslage">Energi- och transportflöden</a></th><td>Avbrottens varaktighet, hur stora flöden som kan ledas om och tiden till återställning. Tillgång till reparatörer, reservdelar och säkert tillträde, även när flera förbindelser berörs.</td><td>Återkommande dokumenterade avbrott som kräver omledning eller reparation stödjer kapitel 2:s bedömning. Kortare avbrott och användbara reservvägar talar samtidigt för bättre motståndskraft. Långa eller samtidiga bortfall utan ersättningskapacitet ökar följderna för Sverige.</td></tr>
-          <tr><th scope="row"><a href="#sverige">Hotförsök mot Sverige</a></th><td>Belagda uppdrag, nya rekryteringar och kontakter mellan beställare och utförare. Senare utredningsbesked, åtal och domar samt dokumenterade ingripanden som hindrar fortsatt verksamhet.</td><td>Fortsatt rekrytering och nya konkreta uppdrag stödjer bedömningen om nya försök. Varaktigt brutna beställar- eller rekryteringsled talar emot den. Antalet offentliga ärenden behöver bedömas tillsammans med vad som har upptäckts och avvärjts.</td></tr>
-          <tr><th scope="row"><a href="#strategiska-domainer">Underrättelseförmåga under reformen</a></th><td>Bemanning, ansvarsfördelning och fungerande informationsöverföring när Sveriges utrikes underrättelsetjänst, UND, inleder verksamheten. Redovisade uppföljningar av kontinuitet och eventuella överlämningsproblem.</td><td>En övergång med bibehållen inhämtning och samverkan försvagar farhågan om ett tillfälligt kapacitetstapp. Bemanningsbrister eller avbrott i informationsflöden stärker den. Uppgifter som saknas offentligt lämnar frågan öppen.</td></tr>
-          <tr><th scope="row"><a href="#strategiska-domainer">Skydd, reserver och reparation</a></th><td>Genomförda skyddsåtgärder och resultat från avbrott eller övningar med samtidig påverkan på el, kommunikation och transporter. Tillgänglig personal, materiel och prioriteringar inom <a href="https://www.regeringen.se/pressmeddelanden/2026/09/regeringen-forbereder-aterupprattandet-av-sveriges-bygg--och-reparationsberedskap/">byggnads- och reparationsberedskapen</a>.</td><td>Fortsatt drift och återställning inom verksamhetens tidskrav talar för att luckor minskat. Reserver som inte räcker till eller faller bort med ordinarie system talar för kvarstående brister. En delredovisning eller ett nytt avtal behöver följas av uppgifter om vad som faktiskt är tillgängligt.</td></tr>
+          <tr id="indicator-europe"><th scope="row"><a href="#varldsordning">Europeiskt handlingsutrymme</a></th><td>Levererade system, utbildad personal och tillgängliga förmågor för bland annat lufttankning, transporter och underrättelser. Genomförda beslut om finansiering, Ukrainastöd och samarbete, särskilt efter politiska förändringar som det franska presidentvalet.</td><td>Europeiska resurser som faktiskt kan ersätta amerikanskt stöd talar för större självständighet. Amerikanska begränsningar utan fungerande ersättning ökar utsattheten. Budgetbesked eller opinionsförändringar visar inte ensamma att beroendet har minskat.</td></tr>
+          <tr id="indicator-flows"><th scope="row"><a href="#sakerhetslage">Energi- och transportflöden</a></th><td>Avbrottens varaktighet, hur stora flöden som kan ledas om och tiden till återställning. Tillgång till reparatörer, reservdelar och säkert tillträde, även när flera förbindelser berörs.</td><td>Återkommande dokumenterade avbrott som kräver omledning eller reparation stödjer kapitel 2:s bedömning. Kortare avbrott och användbara reservvägar talar samtidigt för bättre motståndskraft. Långa eller samtidiga bortfall utan ersättningskapacitet ökar följderna för Sverige.</td></tr>
+          <tr id="indicator-threats"><th scope="row"><a href="#sverige">Hotförsök mot Sverige</a></th><td>Belagda uppdrag, nya rekryteringar och kontakter mellan beställare och utförare. Senare utredningsbesked, åtal och domar samt dokumenterade ingripanden som hindrar fortsatt verksamhet.</td><td>Fortsatt rekrytering och nya konkreta uppdrag stödjer bedömningen om nya försök. Varaktigt brutna beställar- eller rekryteringsled talar emot den. Antalet offentliga ärenden behöver bedömas tillsammans med vad som har upptäckts och avvärjts.</td></tr>
+          <tr id="indicator-und"><th scope="row"><a href="#strategiska-domainer">Underrättelseförmåga under reformen</a></th><td>Bemanning, ansvarsfördelning och fungerande informationsöverföring när Sveriges utrikes underrättelsetjänst, UND, inleder verksamheten. Redovisade uppföljningar av kontinuitet och eventuella överlämningsproblem.</td><td>En övergång med bibehållen inhämtning och samverkan försvagar farhågan om ett tillfälligt kapacitetstapp. Bemanningsbrister eller avbrott i informationsflöden stärker den. Uppgifter som saknas offentligt lämnar frågan öppen.</td></tr>
+          <tr id="indicator-resilience"><th scope="row"><a href="#strategiska-domainer">Skydd, reserver och reparation</a></th><td>Genomförda skyddsåtgärder och resultat från avbrott eller övningar med samtidig påverkan på el, kommunikation och transporter. Tillgänglig personal, materiel och prioriteringar inom <a href="https://www.regeringen.se/pressmeddelanden/2026/09/regeringen-forbereder-aterupprattandet-av-sveriges-bygg--och-reparationsberedskap/">byggnads- och reparationsberedskapen</a>.</td><td>Fortsatt drift och återställning inom verksamhetens tidskrav talar för att luckor minskat. Reserver som inte räcker till eller faller bort med ordinarie system talar för kvarstående brister. En delredovisning eller ett nytt avtal behöver följas av uppgifter om vad som faktiskt är tillgängligt.</td></tr>
         </tbody>
       </table>
     </div>
     <p>Färre angrepp och mindre skada är olika förbättringar. Om en skadad förbindelse snabbt ersätts kan försörjningen fungera bättre även när nya angrepp fortsätter. På motsvarande sätt kan fler upptäckta uppdrag visa att ingripandena blivit effektivare. För att bedöma om hotet minskar behövs också kunskap om vilka förmågor, kontakter och rekryteringsvägar som har slagits ut.</p>
+    <details class="assessment-revision">
+      <summary>Vad skulle kunna ändra rapportens bedömningar?</summary>
+      <div class="assessment-revision-content">
+        <p>Slutsatserna kan omprövas när ny information visar att förmåga faktiskt har tagits i bruk, att hot eller nätverk varaktigt förändrats eller att kritiska verksamheter klarar belastning bättre eller sämre.</p>
+        <nav class="assessment-revision-grid" aria-label="Uppgifter som kan ändra respektive bedömning">
+          <a href="#review-varldsordning"><strong>Europeiska förmågor</strong>Leveranser, bemanning och övningar som visar om centrala uppgifter kan lösas med mindre amerikanskt stöd.</a>
+          <a href="#review-sakerhetslage"><strong>Avbrott och återställning</strong>Varaktigt färre skador, användbara reservvägar och tiden till fungerande flöden.</a>
+          <a href="#review-sverige"><strong>Hotförsök och rekrytering</strong>Om uppdrag och rekryteringsvägar fortsätter, bryts eller ersätts av nya.</a>
+          <a href="#review-formaga"><strong>Skydd och beredskap</strong>Fungerande reserver, reparationsförmåga och kontinuitet under underrättelsereformen.</a>
+        </nav>
+      </div>
+    </details>
   </div>
 </section>
 
@@ -3857,7 +3981,3 @@ const video=document.getElementById("annual-satellite-visualisering");if(video&&
 
 </body>
 </html>
-
-
-
-

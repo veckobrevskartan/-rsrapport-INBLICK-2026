@@ -583,60 +583,32 @@
 <link rel="stylesheet" href="assets/case-maps-20261006.css?v=20261026b">
 
   <style id="annual-satellite-enhancements">
-    .report-sat-outlook { margin:28px 0 34px; padding:24px; border:1px solid var(--line); border-left:4px solid var(--gold); background:var(--bg-card); color:var(--text); }
-    .report-sat-kicker { margin:0 0 8px; color:var(--gold); font:600 .67rem/1.5 var(--sans); letter-spacing:.14em; text-transform:uppercase; }
-    .report-sat-heading { margin:0 0 16px; color:var(--text); font:600 clamp(1.2rem,2.4vw,1.55rem)/1.2 var(--serif); }
-    .report-sat-question { margin:0 0 18px; padding:14px 18px; border-left:3px solid var(--gold); background:rgba(255,255,255,.035); color:var(--text); font:500 1rem/1.6 var(--serif); }
-    .report-sat-rows { display:grid; gap:1px; border:1px solid var(--line); background:var(--line); }
-    .report-sat-row { display:grid; grid-template-columns:minmax(132px,180px) minmax(0,1fr); gap:24px; align-items:center; padding:22px; background:var(--bg); }
-    .report-sat-ring { position:relative; width:min(100%,150px); aspect-ratio:1; margin:auto; }
-    .report-sat-ring svg { width:100%; height:100%; display:block; }
-    .report-sat-ring-bg { fill:none; stroke:rgba(255,255,255,.15); stroke-width:10; }
-    .report-sat-ring-fill { fill:none; stroke-width:10; stroke-linecap:round; }
-    .report-sat-ring-fill.main { stroke:var(--gold); }
-    .report-sat-ring-fill.secondary { stroke:#91b4cb; }
-    .report-sat-ring-center { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-    .report-sat-value { color:var(--gold); font:900 2.35rem/1 var(--serif); }
-    .report-sat-row.secondary .report-sat-value { color:#91b4cb; }
-    .report-sat-unit { color:var(--muted); font:500 .62rem/1.4 var(--sans); letter-spacing:.14em; text-transform:uppercase; }
-    .report-sat-badge { display:inline-block; margin:0 0 10px; padding:6px 10px; color:#101b2b; background:var(--gold); font:700 .62rem/1.4 var(--sans); letter-spacing:.11em; text-transform:uppercase; }
-    .report-sat-row.secondary .report-sat-badge { color:var(--text); background:#415c72; }
-    .report-sat-verdict { margin:0 0 9px; color:var(--text); font:700 1.2rem/1.25 var(--serif); }
-    .report-sat-band { color:var(--gold); font:500 .78rem/1.4 var(--sans); }
-    .report-sat-row.secondary .report-sat-band { color:#a8c6d8; }
-    .report-sat-summary { margin:0; color:var(--muted); font:400 .92rem/1.68 var(--sans); }
-    .report-sat-scale { margin-top:14px; padding:18px; border:1px solid var(--line); background:var(--bg); }
-    .report-sat-scale-row { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; }
-    .report-sat-scale-band { padding:9px 6px; border:1px solid var(--line); text-align:center; color:var(--muted); }
-    .report-sat-scale-band strong { display:block; color:var(--text); font:600 .86rem/1.3 var(--serif); }
-    .report-sat-scale-band small { display:block; margin-top:3px; color:var(--quiet); font:500 .61rem/1.35 var(--sans); }
-    .report-sat-scale-band.active-main { border-color:var(--gold); background:var(--gold); color:#101b2b; }
-    .report-sat-scale-band.active-main strong,.report-sat-scale-band.active-main small { color:#101b2b; }
-    .report-sat-scale-band.active-sub { border-color:#91b4cb; background:rgba(145,180,203,.09); }
-    .report-sat-scale-band.active-sub strong,.report-sat-scale-band.active-sub small { color:#c8d9e5; }
-    .report-sat-note { margin:12px 0 0; color:var(--quiet); font:400 .76rem/1.65 var(--sans); }
-    .report-sat-source-link { display:inline-block; margin-top:12px; color:#e5c85d; font:600 .78rem/1.5 var(--sans); }
-    .report-sat-video { margin:28px 0 36px; display:grid; grid-template-columns:minmax(260px,.78fr) minmax(300px,1.22fr); background:var(--bg-card); border:1px solid var(--line); overflow:hidden; }
-    .report-sat-video-copy { display:flex; flex-direction:column; justify-content:center; padding:24px; }
-    .report-sat-video-copy h4 { margin:0 0 12px; color:var(--text); font:700 clamp(1.15rem,2vw,1.45rem)/1.2 var(--serif); }
-    .report-sat-video-copy p { margin:0 0 14px; color:var(--muted); font:400 .9rem/1.72 var(--sans); }
-    .report-sat-video-copy p:last-child { margin-bottom:0; }
-    .report-sat-video-copy a { color:#e5c85d; }
-    .report-sat-video-frame { margin:0; min-width:0; display:flex; flex-direction:column; justify-content:center; background:#05070b; }
-    .report-sat-video-frame video { display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:contain; background:#05070b; }
-    .report-sat-video-frame figcaption { padding:8px 12px; color:var(--quiet); font:400 .7rem/1.5 var(--sans); }
-    @media(max-width:720px) {
-      .report-sat-outlook { padding:16px; }
-      .report-sat-row { grid-template-columns:1fr; gap:14px; padding:18px; }
-      .report-sat-ring { width:132px; }
-      .report-sat-scale { padding:12px; }
-      .report-sat-scale-row { grid-template-columns:repeat(2,1fr); }
-      .report-sat-video { grid-template-columns:1fr; }
-    }
-    @media(prefers-reduced-motion:reduce) {
-      .report-sat-ring-fill { transition:none!important; }
-    }
-  </style>
+.chapter-opening{position:relative;isolation:isolate;overflow:hidden;max-width:900px;margin:20px 0 30px;padding:20px;border:1px solid rgba(184,151,58,.34);border-radius:5px;background:#0A1628}
+.chapter-opening-bg{position:absolute;inset:0;z-index:-1;background-image:linear-gradient(90deg,rgba(10,22,40,.95) 0%,rgba(10,22,40,.88) 54%,rgba(10,22,40,.72) 100%),var(--chapter-bg);background-size:cover;background-position:center}
+.chapter-opening-content{position:relative;z-index:1}.chapter-opening-content h2{margin-top:0}
+.chapter-opening .judgement{background:rgba(16,39,59,.88);backdrop-filter:blur(2px)}
+.chapter-opening-caption{position:relative;z-index:1;margin:10px 0 0;color:var(--quiet);font:.72rem/1.5 var(--sans)}
+.chapter-judgement .judgement-answer{grid-template-columns:132px minmax(0,1fr);grid-template-rows:auto 1fr;align-items:center;column-gap:20px;row-gap:7px}
+.chapter-meter{position:relative;grid-column:1;grid-row:1/span 2;display:block;width:132px;aspect-ratio:1;margin:auto}
+.chapter-meter svg{display:block;width:100%;height:100%}
+.chapter-meter-track,.chapter-meter-range{fill:none;stroke-width:9}.chapter-meter-track{stroke:rgba(242,240,233,.18);stroke-dasharray:100}
+.chapter-meter-range{stroke:var(--blue);stroke-linecap:round}
+.chapter-meter-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px}
+.chapter-meter-level{color:var(--text);font:600 .82rem/1.25 var(--serif)}
+.chapter-meter-band{margin-top:4px;color:var(--blue);font:500 .65rem/1.3 var(--sans)}
+.chapter-judgement .likelihood{grid-column:2;grid-row:1;margin:0;color:var(--blue);font-size:1rem}
+.chapter-judgement .judgement-conclusion{grid-column:2;grid-row:2}
+.report-sat-video{margin:28px 0 36px;display:grid;grid-template-columns:minmax(260px,.78fr) minmax(300px,1.22fr);background:var(--bg-card);border:1px solid var(--line);overflow:hidden}
+.report-sat-video-copy{display:flex;flex-direction:column;justify-content:center;padding:24px}
+.report-sat-video-copy h4{margin:0 0 12px;color:var(--text);font:700 clamp(1.15rem,2vw,1.45rem)/1.2 var(--serif)}
+.report-sat-video-copy p{margin:0 0 14px;color:var(--muted);font:400 .9rem/1.72 var(--sans)}
+.report-sat-video-copy p:last-child{margin-bottom:0}.report-sat-video-copy a{color:#e5c85d}
+.report-sat-video-frame{margin:0;min-width:0;display:flex;flex-direction:column;justify-content:center;background:#05070b}
+.report-sat-video-frame video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#05070b}
+.report-sat-video-frame figcaption{padding:8px 12px;color:var(--quiet);font:400 .7rem/1.5 var(--sans)}
+@media(max-width:720px){.chapter-opening{padding:14px}.chapter-opening-bg{background-image:linear-gradient(90deg,rgba(10,22,40,.96),rgba(10,22,40,.88)),var(--chapter-bg)}.chapter-judgement .judgement-answer{grid-template-columns:1fr;grid-template-rows:auto auto auto;row-gap:10px}.chapter-meter{grid-column:1;grid-row:1;width:116px}.chapter-judgement .likelihood{grid-column:1;grid-row:2;text-align:center}.chapter-judgement .judgement-conclusion{grid-column:1;grid-row:3}.report-sat-video{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.chapter-meter-range{transition:none!important}}
+</style>
 
 </head>
 <body>
@@ -725,18 +697,18 @@
 
         </section>
 <section class="section" id="varldsordning" aria-labelledby="h-varldsordning">
-        <div class="section-kicker">01 · Geopolitisk ram · lägesbild 26 oktober 2026</div>
-        <h2 id="h-varldsordning">Världsordning i förändring</h2>
-        <div class="judgement chapter-judgement">
+        <div class="chapter-opening" style="--chapter-bg:url('assets/kapitel-varldsordning.webp')" role="group" aria-labelledby="h-varldsordning">
+  <div class="chapter-opening-bg" role="img" aria-label="Illustration av delegationer vid ett förhandlingsbord i ett internationellt mötesrum i skymning."></div>
+  <div class="chapter-opening-content"><div class="section-kicker">01 · Geopolitisk ram · lägesbild 26 oktober 2026</div>
+  <h2 id="h-varldsordning">Världsordning i förändring</h2>
+  <div class="judgement chapter-judgement">
  <p class="judgement-label">Bedömningsfråga</p>
  <p class="judgement-question">Kommer Europa under 2027 att kunna bära sitt ökade säkerhetsansvar utan fortsatt tillgång till centrala amerikanska militära stödförmågor?</p>
- <p class="judgement-answer"><strong class="likelihood">Tveksam <span>&lt;20 %</span></strong><span class="judgement-conclusion">Europa väntas kunna ta större ansvar under 2027, men behöver fortfarande amerikanskt stöd för bland annat lufttankning, transporter och underrättelseinformation. Nya europeiska system behöver levereras, bemannas och övas tillsammans innan de kan ersätta dessa bidrag. Hur snabbt USA ställer sina resurser till förfogande i en kris är en ytterligare osäkerhet.</span></p>
+ <p class="judgement-answer"><span class="chapter-meter" aria-hidden="true"><svg viewBox="0 0 120 120"><circle class="chapter-meter-track" cx="60" cy="60" r="48" pathLength="100"></circle><circle class="chapter-meter-range" cx="60" cy="60" r="48" pathLength="100" data-low="0" data-high="20" stroke-dasharray="20 80" stroke-dashoffset="0" transform="rotate(-90 60 60)"></circle></svg><span class="chapter-meter-center"><span class="chapter-meter-level">Tveksam</span><span class="chapter-meter-band">&lt;20 %</span></span></span><strong class="likelihood">Tveksam <span>&lt;20 %</span></strong><span class="judgement-conclusion">Europa väntas kunna ta större ansvar under 2027, men behöver fortfarande amerikanskt stöd för bland annat lufttankning, transporter och underrättelseinformation. Nya europeiska system behöver levereras, bemannas och övas tillsammans innan de kan ersätta dessa bidrag. Hur snabbt USA ställer sina resurser till förfogande i en kris är en ytterligare osäkerhet.</span></p>
  </div>
-
-        <figure class="chapter-photo" id="kapitelbild-varldsordning">
-          <img src="assets/kapitel-varldsordning.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Illustration av delegationer vid ett förhandlingsbord i ett internationellt mötesrum i skymning.">
-          <figcaption>Tematisk illustration av internationella förhandlingar och säkerhetssamarbete. AI-genererad.</figcaption>
-        </figure>
+  </div>
+  <p class="chapter-opening-caption">Tematisk illustration av internationella förhandlingar och säkerhetssamarbete. AI-genererad.</p>
+</div>
 <details class="chapter-full"><summary>Läs hela kapitlet</summary><div class="chapter-full-content">
 
 
@@ -934,19 +906,18 @@
 </section>
 
       <section class="section" id="sakerhetslage" aria-labelledby="h-sakerhetslage">
-        <div class="section-kicker">02 · Krig, avskräckning och geografiska samband · lägesbild 27 oktober 2026</div>
-        <h2 id="h-sakerhetslage">Krig och säkerhet i Europas närområde</h2>
-        <div class="judgement chapter-judgement">
+        <div class="chapter-opening" style="--chapter-bg:url('assets/kapitel-europas-sakerhetslage.webp')" role="group" aria-labelledby="h-sakerhetslage">
+  <div class="chapter-opening-bg" role="img" aria-label="Illustration av godståg, hamnkranar, lastfartyg och energiinfrastruktur i en nordisk hamnmiljö."></div>
+  <div class="chapter-opening-content"><div class="section-kicker">02 · Krig, avskräckning och geografiska samband · lägesbild 27 oktober 2026</div>
+  <h2 id="h-sakerhetslage">Krig och säkerhet i Europas närområde</h2>
+  <div class="judgement chapter-judgement">
  <p class="judgement-label">Bedömningsfråga</p>
  <p class="judgement-question">Kommer krig och sabotage under 2027 att orsaka återkommande avbrott i Europas civila energi- och transportflöden som kräver omledning eller reparation?</p>
- <p class="judgement-answer"><strong class="likelihood">Sannolik <span>≥80 %</span></strong><span class="judgement-conclusion">Återkommande avbrott som kräver omledning eller reparation bedöms som sannolika under 2027. Krigsskador och dokumenterade sabotage talar för ett fortsatt behov. Hur stora följderna blir för Sverige beror på vilka förbindelser som berörs, hur länge bortfallet varar och om reserverna räcker vid samtidiga behov.</span></p>
+ <p class="judgement-answer"><span class="chapter-meter" aria-hidden="true"><svg viewBox="0 0 120 120"><circle class="chapter-meter-track" cx="60" cy="60" r="48" pathLength="100"></circle><circle class="chapter-meter-range" cx="60" cy="60" r="48" pathLength="100" data-low="80" data-high="100" stroke-dasharray="20 80" stroke-dashoffset="-80" transform="rotate(-90 60 60)"></circle></svg><span class="chapter-meter-center"><span class="chapter-meter-level">Sannolik</span><span class="chapter-meter-band">≥80 %</span></span></span><strong class="likelihood">Sannolik <span>≥80 %</span></strong><span class="judgement-conclusion">Återkommande avbrott som kräver omledning eller reparation bedöms som sannolika under 2027. Krigsskador och dokumenterade sabotage talar för ett fortsatt behov. Hur stora följderna blir för Sverige beror på vilka förbindelser som berörs, hur länge bortfallet varar och om reserverna räcker vid samtidiga behov.</span></p>
  </div>
-
-
-        <figure class="chapter-photo" id="kapitelbild-europas-sakerhetslage">
-          <img src="assets/kapitel-europas-sakerhetslage.webp" width="1672" height="940" loading="lazy" decoding="async" alt="Illustration av godståg, hamnkranar, lastfartyg och energiinfrastruktur i en nordisk hamnmiljö.">
-          <figcaption>Tematisk illustration av hamn, järnväg och energiförsörjning. AI-genererad.</figcaption>
-        </figure>
+  </div>
+  <p class="chapter-opening-caption">Tematisk illustration av hamn, järnväg och energiförsörjning. AI-genererad.</p>
+</div>
 <details class="chapter-full"><summary>Läs hela kapitlet</summary><div class="chapter-full-content">
 
 
@@ -1564,20 +1535,18 @@
 </section>
 
       <section class="section" id="sverige" aria-labelledby="h-sverige">
-        <div class="section-kicker">03 · Hot, aktörer och metoder · lägesbild 27 oktober 2026</div>
-        <h2 id="h-sverige">Hot och påverkan mot Sverige</h2>
-        <div class="judgement chapter-judgement">
+        <div class="chapter-opening" style="--chapter-bg:url('assets/kapitel-hot-mot-sverige.webp')" role="group" aria-labelledby="h-sverige">
+  <div class="chapter-opening-bg" role="img" aria-label="Illustration av människor, spårvagn, byggnader och kommunikationsantenner i en svensk stadsmiljö i skymning."></div>
+  <div class="chapter-opening-content"><div class="section-kicker">03 · Hot, aktörer och metoder · lägesbild 27 oktober 2026</div>
+  <h2 id="h-sverige">Hot och påverkan mot Sverige</h2>
+  <div class="judgement chapter-judgement">
  <p class="judgement-label">Bedömningsfråga</p>
  <p class="judgement-question">Kommer rekryterade ombud och gränsöverskridande digitala nätverk att möjliggöra nya konkreta hotförsök mot mål i Sverige under 2027?</p>
- <p class="judgement-answer"><strong class="likelihood">Sannolik <span>≥80 %</span></strong><span class="judgement-conclusion">Nya försök till informationsinhämtning, påverkan eller våldsplanering genom ombud och digitala nätverk är sannolika under 2027. Rekrytering över gränserna ger beställare möjlighet att försöka igen efter ett ingripande. Årets stoppade planer visar samtidigt att nya försök kan upptäckas och avvärjas.</span></p>
+ <p class="judgement-answer"><span class="chapter-meter" aria-hidden="true"><svg viewBox="0 0 120 120"><circle class="chapter-meter-track" cx="60" cy="60" r="48" pathLength="100"></circle><circle class="chapter-meter-range" cx="60" cy="60" r="48" pathLength="100" data-low="80" data-high="100" stroke-dasharray="20 80" stroke-dashoffset="-80" transform="rotate(-90 60 60)"></circle></svg><span class="chapter-meter-center"><span class="chapter-meter-level">Sannolik</span><span class="chapter-meter-band">≥80 %</span></span></span><strong class="likelihood">Sannolik <span>≥80 %</span></strong><span class="judgement-conclusion">Nya försök till informationsinhämtning, påverkan eller våldsplanering genom ombud och digitala nätverk är sannolika under 2027. Rekrytering över gränserna ger beställare möjlighet att försöka igen efter ett ingripande. Årets stoppade planer visar samtidigt att nya försök kan upptäckas och avvärjas.</span></p>
  </div>
-
-
-
-        <figure class="chapter-photo" id="kapitelbild-hot-mot-sverige">
-          <img src="assets/kapitel-hot-mot-sverige.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Illustration av människor, spårvagn, byggnader och kommunikationsantenner i en svensk stadsmiljö i skymning.">
-          <figcaption>Tematisk illustration av vardagsliv, transporter och kommunikation i en svensk stadsmiljö. AI-genererad.</figcaption>
-        </figure>
+  </div>
+  <p class="chapter-opening-caption">Tematisk illustration av vardagsliv, transporter och kommunikation i en svensk stadsmiljö. AI-genererad.</p>
+</div>
 <details class="chapter-full"><summary>Läs hela kapitlet</summary><div class="chapter-full-content">
 
 
@@ -2904,18 +2873,18 @@
 </section>
 
       <section class="section" id="strategiska-domainer" aria-labelledby="h-strategiska-domainer">
-        <div class="section-kicker">04 · Försvar, beredskap och försörjning · lägesbild 27 oktober 2026</div>
-        <h2 id="h-strategiska-domainer">Svensk förmåga och strategiska beroenden</h2>
-        <div class="judgement chapter-judgement">
+        <div class="chapter-opening" style="--chapter-bg:url('assets/kapitel-formaga-beroenden.webp')" role="group" aria-labelledby="h-strategiska-domainer">
+  <div class="chapter-opening-bg" role="img" aria-label="Illustration av godståg, lagerbyggnader, lastbilar och elförsörjning vid en nordisk järnvägsknut i gryning."></div>
+  <div class="chapter-opening-content"><div class="section-kicker">04 · Försvar, beredskap och försörjning · lägesbild 27 oktober 2026</div>
+  <h2 id="h-strategiska-domainer">Svensk förmåga och strategiska beroenden</h2>
+  <div class="judgement chapter-judgement">
  <p class="judgement-label">Bedömningsfråga</p>
  <p class="judgement-question">Kommer Sveriges beredskap vid slutet av 2027 fortfarande att ha kritiska luckor i skydd och uthållighet vid samtidiga störningar?</p>
- <p class="judgement-answer"><strong class="likelihood">Troligen <span>50–&lt;80 %</span></strong><span class="judgement-conclusion">Kritiska luckor i skydd och uthållighet bedöms troligen finnas kvar vid slutet av 2027. Skyddsbrister, uppbyggnaden av Sveriges utrikes underrättelsetjänst (UND) och långa leveranstider talar för det. Offlinebetalningar, hamnavtal och fungerande reserver kan samtidigt ge förbättringar innan de större projekten är färdiga.</span></p>
+ <p class="judgement-answer"><span class="chapter-meter" aria-hidden="true"><svg viewBox="0 0 120 120"><circle class="chapter-meter-track" cx="60" cy="60" r="48" pathLength="100"></circle><circle class="chapter-meter-range" cx="60" cy="60" r="48" pathLength="100" data-low="50" data-high="80" stroke-dasharray="30 70" stroke-dashoffset="-50" transform="rotate(-90 60 60)"></circle></svg><span class="chapter-meter-center"><span class="chapter-meter-level">Troligen</span><span class="chapter-meter-band">50–&lt;80 %</span></span></span><strong class="likelihood">Troligen <span>50–&lt;80 %</span></strong><span class="judgement-conclusion">Kritiska luckor i skydd och uthållighet bedöms troligen finnas kvar vid slutet av 2027. Skyddsbrister, uppbyggnaden av Sveriges utrikes underrättelsetjänst (UND) och långa leveranstider talar för det. Offlinebetalningar, hamnavtal och fungerande reserver kan samtidigt ge förbättringar innan de större projekten är färdiga.</span></p>
  </div>
-
-        <figure class="chapter-photo" id="kapitelbild-formaga-beroenden">
-          <img src="assets/kapitel-formaga-beroenden.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Illustration av godståg, lagerbyggnader, lastbilar och elförsörjning vid en nordisk järnvägsknut i gryning.">
-          <figcaption>Tematisk illustration av transporter, lagerhållning och elförsörjning. AI-genererad.</figcaption>
-        </figure>
+  </div>
+  <p class="chapter-opening-caption">Tematisk illustration av transporter, lagerhållning och elförsörjning. AI-genererad.</p>
+</div>
 <details class="chapter-full"><summary>Läs hela kapitlet</summary><div class="chapter-full-content">
 
 
@@ -3079,51 +3048,7 @@
           <p>En reserv behöver fungera även när den ordinarie tjänstens svaghet utnyttjas. Ett annat satellitnät kan hjälpa vid ett leverantörsbeslut, men ge mindre skydd om båda tjänsterna behöver samma markstation eller förbindelse. Kommunikation, positionering och exakt tid har dessutom olika användningsområden. Ett alternativ för en av funktionerna ersätter inte automatiskt de andra.</p>
 
  
-          <aside class="report-sat-outlook" aria-labelledby="report-sat-outlook-title">
-            <p class="report-sat-kicker">Långsiktig utblick · bedömningshorisont 2036</p>
-            <h4 class="report-sat-heading" id="report-sat-outlook-title">Privata aktörer, statlig kontroll och tillsyn</h4>
-            <blockquote class="report-sat-question">Hur sannolikt är det att NATO-staters underrättelseförmåga fram till 2036 fortfarande vilar på ett praktiskt oåterkalleligt beroende av privata satellit-, data- och analysaktörer, utan att staterna samtidigt har etablerat tillräcklig regulatorisk kontroll, demokratisk tillsyn och operativ förmåga att styra beroendet?</blockquote>
-            <div class="report-sat-rows">
-              <div class="report-sat-row">
-                <div class="report-sat-ring" role="img" aria-label="Huvudbedömning: sannolik, 80 procent">
-                  <svg viewBox="0 0 140 140" aria-hidden="true">
-                    <circle class="report-sat-ring-bg" cx="70" cy="70" r="54"></circle>
-                    <circle class="report-sat-ring-fill main" data-target="80" cx="70" cy="70" r="54" stroke-dasharray="339.29" stroke-dashoffset="67.86" transform="rotate(-90 70 70)"></circle>
-                  </svg>
-                  <div class="report-sat-ring-center" aria-hidden="true"><span class="report-sat-value" data-value="80">80</span><span class="report-sat-unit">Sannolikhet</span></div>
-                </div>
-                <div>
-                  <span class="report-sat-badge">Huvudbedömning</span>
-                  <p class="report-sat-verdict">Sannolik <span class="report-sat-band">(&gt;80 %)</span></p>
-                  <p class="report-sat-summary">NATO-staters underrättelseförmåga vilar 2036 fortfarande i praktiken på privata aktörer för själva förmågan. Beroendet är inte ett framtida tillstånd som kan förhindras, utan ett pågående faktum som befästs till 2030 och kvarstår till 2036. Europa kommer ikapp delvis, men förmågan förblir privat.</p>
-                </div>
-              </div>
-              <div class="report-sat-row secondary">
-                <div class="report-sat-ring" role="img" aria-label="Delbedömning: troligen, 75 procent">
-                  <svg viewBox="0 0 140 140" aria-hidden="true">
-                    <circle class="report-sat-ring-bg" cx="70" cy="70" r="54"></circle>
-                    <circle class="report-sat-ring-fill secondary" data-target="75" cx="70" cy="70" r="54" stroke-dasharray="339.29" stroke-dashoffset="84.82" transform="rotate(-90 70 70)"></circle>
-                  </svg>
-                  <div class="report-sat-ring-center" aria-hidden="true"><span class="report-sat-value" data-value="75">75</span><span class="report-sat-unit">Sannolikhet</span></div>
-                </div>
-                <div>
-                  <span class="report-sat-badge">Delbedömning</span>
-                  <p class="report-sat-verdict">Troligen <span class="report-sat-band">(55–75 %)</span></p>
-                  <p class="report-sat-summary">Tillräcklig regulatorisk kontroll och demokratisk tillsyn hinner inte etableras till 2036. Detta ben är mer osäkert: ett decennium ger reellt utrymme för EU och NATO att komma ikapp. Bedömningen stöds av flera faktorer men innebörden kan inte tolkas entydigt.</p>
-                </div>
-              </div>
-            </div>
-            <div class="report-sat-scale">
-              <div class="report-sat-scale-row" aria-label="Försvarsmaktens sannolikhetsskala">
-                <div class="report-sat-scale-band"><strong>Tveksam</strong><small>&lt;20 %</small></div>
-                <div class="report-sat-scale-band"><strong>Möjligen</strong><small>25–50 %</small></div>
-                <div class="report-sat-scale-band active-sub"><strong>Troligen</strong><small>55–75 %</small></div>
-                <div class="report-sat-scale-band active-main"><strong>Sannolik</strong><small>&gt;80 %</small></div>
-              </div>
-              <p class="report-sat-note">Skalan är Försvarsmaktens sannolikhetsuttryck (R UND 2022), som motsvarar AJP-2.1. Sannolik och Troligen uttrycker subjektiva underrättelsebedömningar, inte matematiskt framräknad sannolikhet.</p>
-            </div>
-            <a class="report-sat-source-link" href="https://veckobrevskartan.github.io/INBLICK-Arktis-och-sateliter/#bedomning">Läs hela bedömningsunderlaget med källor</a>
-          </aside>
+          
 
           <div class="report-sat-video">
             <div class="report-sat-video-copy">
@@ -3621,56 +3546,10 @@
 </script>
 
   <script id="annual-satellite-enhancements">
-  (() => {
-    const outlook = document.querySelector(".report-sat-outlook");
-    if (outlook && "IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      const observer = new IntersectionObserver(entries => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting || entry.intersectionRatio < 0.25) continue;
-          for (const ring of outlook.querySelectorAll(".report-sat-ring-fill[data-target]")) {
-            const target = Number(ring.dataset.target);
-            const circumference = 2 * Math.PI * 54;
-            const value = ring.closest(".report-sat-ring").querySelector("[data-value]");
-            ring.style.strokeDasharray = circumference.toFixed(2);
-            ring.style.strokeDashoffset = circumference.toFixed(2);
-            if (value) value.textContent = "0";
-            requestAnimationFrame(() => {
-              ring.style.strokeDashoffset = (circumference * (1 - target / 100)).toFixed(2);
-            });
-            if (value) {
-              const start = performance.now();
-              const duration = 1600;
-              const countFrame = now => {
-                const progress = Math.min((now - start) / duration, 1);
-                const eased = 1 - Math.pow(1 - progress, 3);
-                value.textContent = String(Math.round(target * eased));
-                if (progress < 1) requestAnimationFrame(countFrame);
-              };
-              requestAnimationFrame(countFrame);
-            }
-          }
-          observer.disconnect();
-          break;
-        }
-      }, { threshold: [0.25, 0.5] });
-      observer.observe(outlook);
-    }
-
-    const video = document.getElementById("annual-satellite-visualisering");
-    if (video && "IntersectionObserver" in window) {
-      const videoObserver = new IntersectionObserver(entries => {
-        for (const entry of entries) {
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.35) {
-            video.play().catch(() => {});
-          } else {
-            video.pause();
-          }
-        }
-      }, { threshold: [0, 0.35, 0.6] });
-      videoObserver.observe(video);
-    }
-  })();
-  </script>
+(()=>{const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;const ranges=document.querySelectorAll(".chapter-meter-range[data-low][data-high]");
+if(!reduced&&"IntersectionObserver"in window){const observer=new IntersectionObserver(entries=>{for(const e of entries){if(!e.isIntersecting||e.intersectionRatio<.3)continue;const ring=e.target,low=Number(ring.dataset.low),high=Number(ring.dataset.high),span=high-low;ring.style.strokeDasharray="0 100";ring.style.strokeDashoffset="0";ring.style.transition="stroke-dasharray 1.7s cubic-bezier(.4,0,.2,1),stroke-dashoffset 1.7s cubic-bezier(.4,0,.2,1)";requestAnimationFrame(()=>{ring.style.strokeDasharray=span+" "+(100-span);ring.style.strokeDashoffset=String(-low)});observer.unobserve(ring)}},{threshold:[.3,.5]});ranges.forEach(r=>observer.observe(r))}
+const video=document.getElementById("annual-satellite-visualisering");if(video&&!reduced&&"IntersectionObserver"in window){const obs=new IntersectionObserver(entries=>{for(const e of entries){if(e.isIntersecting&&e.intersectionRatio>=.35)video.play().catch(()=>{});else video.pause()}},{threshold:[0,.35,.6]});obs.observe(video)}})();
+</script>
 
 </body>
 </html>

@@ -744,35 +744,28 @@ html{overflow-x:clip}
     }
     .site-watermark.is-muted{opacity:0}
     @media(max-width:700px){
-      html{scroll-padding-top:98px}
+      html{scroll-padding-top:82px}
       .hero::after{content:none!important;display:none!important}
       body{font-size:15px;line-height:1.64}
       .topbar-inner{
         width:calc(100% - 28px);
         min-height:0;
-        align-items:flex-start;
-        flex-direction:column;
-        justify-content:center;
-        gap:2px;
+        align-items:center;
+        flex-direction:row;
+        justify-content:flex-start;
+        gap:0;
         padding:5px 0 4px;
       }
       .brand{gap:6px;min-height:22px}
       .brand-logo{width:78px;height:21px}
       .brand-inblick{font-size:.94rem}
       .brand-year{font-size:.46rem;letter-spacing:.09em}
-      .nav{
-        width:100%;
-        min-height:23px;
-        gap:13px;
-        padding:0;
-        scrollbar-width:none;
-        overscroll-behavior-x:contain;
-      }
+      .nav{display:none}
       .nav::-webkit-scrollbar,.toc::-webkit-scrollbar{display:none}
       .nav a{font-size:.7rem;line-height:1.35}
       .layout{padding-top:10px;gap:8px}
       .toc{
-        top:50px;
+        top:33px;
         width:100%;
         max-height:none;
         overflow-x:auto;
@@ -797,16 +790,14 @@ html{overflow-x:clip}
       .site-watermark.is-muted{opacity:0}
     }
     @media(max-width:560px){
-      html{scroll-padding-top:92px}
+      html{scroll-padding-top:78px}
       .shell,.topbar-inner{width:calc(100% - 24px)}
       .topbar-inner{padding:4px 0 3px}
       .brand-logo{width:72px;height:20px}
       .brand-inblick{font-size:.9rem}
       .brand-year{font-size:.43rem;letter-spacing:.07em}
-      .nav{gap:12px;min-height:21px}
-      .nav a{font-size:.67rem}
       .layout{padding-top:7px}
-      .toc{top:47px;width:calc(100% + 24px);max-width:none;margin-inline:-12px;padding:3px 8px;gap:5px}
+      .toc{top:31px;width:calc(100% + 24px);max-width:none;margin-inline:-12px;padding:3px 8px;gap:5px}
       .toc a{min-height:34px;padding:6px 8px;font-size:.69rem}
       .hero{min-height:320px;padding:30px 0 28px}
       .hero h1{font-size:clamp(2.1rem,10vw,3.2rem)}
@@ -920,6 +911,20 @@ html{overflow-x:clip}
     }
   </style>
   <style id="scenario-comparison-styles">
+    .scenario-basis{max-width:1000px;margin:18px 0 20px;padding:15px 17px;border-left:3px solid var(--gold);background:rgba(17,48,64,.54)}
+    .scenario-basis strong{display:block;margin-bottom:5px;color:var(--gold);font:700 .69rem/1.4 var(--sans);letter-spacing:.13em;text-transform:uppercase}
+    .scenario-basis p{margin:0;color:var(--muted);font:.88rem/1.65 var(--sans)}
+    .scenario-axes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;max-width:1000px;margin:0 0 18px}
+    .scenario-axis{padding:12px 13px;border:1px solid var(--line);background:rgba(10,22,40,.46)}
+    .scenario-axis strong{display:block;margin-bottom:5px;color:var(--text);font:500 .92rem/1.35 var(--serif)}
+    .scenario-axis span{display:block;color:var(--quiet);font:.74rem/1.5 var(--sans)}
+    .scenario-method{max-width:1000px;margin:0 0 24px;border:1px solid var(--line);background:rgba(14,30,56,.38)}
+    .scenario-method>summary{display:flex;align-items:center;min-height:45px;padding:10px 13px;color:var(--gold);cursor:pointer;list-style:none;font:600 .78rem/1.45 var(--sans)}
+    .scenario-method>summary::-webkit-details-marker{display:none}
+    .scenario-method>summary::after{content:"+";margin-left:auto;padding-left:12px;font:1.05rem/1 var(--sans)}
+    .scenario-method[open]>summary::after{content:"−"}
+    .scenario-method>div{padding:0 14px 13px;color:var(--muted);font:.82rem/1.65 var(--sans)}
+    .scenario-method p{margin:0 0 9px}.scenario-method p:last-child{margin-bottom:0}
     #scenario-compare{max-width:1000px;margin:26px 0 34px;padding:clamp(15px,2.6vw,24px);border:1px solid rgba(184,151,58,.34);background:linear-gradient(135deg,rgba(17,48,64,.86),rgba(14,30,56,.78))}
     .scenario-compare-intro{margin:0 0 15px;color:var(--muted);font:.9rem/1.6 var(--sans)}
     .scenario-compare-intro strong{display:block;margin-bottom:3px;color:var(--gold);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase}
@@ -940,7 +945,7 @@ html{overflow-x:clip}
     #scenario-compare:has(#scenario-resilience:checked) .scenario-panel[data-scenario-panel="resilience"]{display:block}
     .scenario-panel h4{margin:0 0 8px;color:var(--text);font:400 clamp(1.15rem,2vw,1.4rem)/1.3 var(--serif)}
     .scenario-panel>p{margin:0 0 16px;color:var(--muted);font:.86rem/1.6 var(--sans)}
-    .scenario-dimensions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+    .scenario-dimensions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
     .scenario-dimension{min-width:0;padding:13px;border-left:2px solid var(--gold);background:rgba(17,48,64,.46)}
     .scenario-dimension h5{margin:0 0 6px;color:var(--gold);font:700 .67rem/1.4 var(--sans);letter-spacing:.12em;text-transform:uppercase}
     .scenario-dimension p{margin:0;color:var(--muted);font:.8rem/1.58 var(--sans)}
@@ -954,6 +959,15 @@ html{overflow-x:clip}
     .scenario-narrative[open]>summary::after{content:"Dölj resonemang  −"}
     .scenario-narrative>div{padding:2px 14px 4px}
     .scenario-narrative>div p:last-child{margin-bottom:12px}
+    .scenario-sequence{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:14px 0 16px;padding:0;list-style:none;counter-reset:scenario-step}
+    .scenario-sequence li{position:relative;min-width:0;padding:34px 11px 11px;border:1px solid var(--line);background:rgba(10,22,40,.46);color:var(--muted);font:.76rem/1.55 var(--sans);counter-increment:scenario-step}
+    .scenario-sequence li::before{content:counter(scenario-step);position:absolute;top:9px;left:10px;display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--gold);color:#101b2b;font:700 .64rem/1 var(--sans)}
+    .scenario-sequence li::after{content:"→";position:absolute;z-index:2;right:-8px;top:50%;transform:translateY(-50%);color:var(--gold);font:700 .8rem/1 var(--sans)}
+    .scenario-sequence li:last-child::after{content:none}
+    .scenario-sequence strong{display:block;margin-bottom:4px;color:var(--text);font:600 .75rem/1.35 var(--sans)}
+    .scenario-breakpoint{padding:10px 12px;border-left:2px solid var(--gold);background:rgba(184,151,58,.08);color:var(--muted);font:.8rem/1.58 var(--sans)}
+    .scenario-breakpoint strong{color:var(--gold)}
+    .indicator-table td::before{display:none}
     .assessment-revision{max-width:900px;margin:30px 0 18px;border:1px solid rgba(184,151,58,.38);background:rgba(17,48,64,.54)}
     .assessment-revision>summary{display:flex;align-items:center;min-height:52px;padding:13px 16px;color:var(--gold);cursor:pointer;list-style:none;font:600 .9rem/1.45 var(--sans)}
     .assessment-revision>summary::-webkit-details-marker{display:none}
@@ -970,6 +984,8 @@ html{overflow-x:clip}
       .scenario-panel{display:block;margin-top:10px}
     }
     @media(max-width:700px){
+      .scenario-axes{grid-template-columns:1fr;gap:6px}
+      .scenario-basis{padding:13px 14px}
       #scenario-compare{margin:22px 0 28px;padding:14px}
       .scenario-choices{grid-template-columns:1fr;gap:6px}
       .scenario-choice{min-height:48px;padding:8px 10px}
@@ -979,6 +995,19 @@ html{overflow-x:clip}
       .scenario-links{display:grid;gap:8px}
       .scenario-narrative>summary{align-items:flex-start;font-size:1rem}
       .scenario-narrative>summary::after{font-size:.64rem}
+      .scenario-sequence{grid-template-columns:1fr;gap:6px}
+      .scenario-sequence li{padding:10px 11px 10px 39px}
+      .scenario-sequence li::before{top:11px;left:11px}
+      .scenario-sequence li::after{content:"↓";right:auto;top:auto;bottom:-7px;left:18px;transform:none}
+      .indicator-table{min-width:0}
+      .indicator-table thead{display:none}
+      .indicator-table,.indicator-table tbody,.indicator-table tr,.indicator-table th,.indicator-table td{display:block;width:100%}
+      .indicator-table tr{margin:0 0 10px;border-bottom:1px solid rgba(184,151,58,.34);background:rgba(10,22,40,.35)}
+      .indicator-table th,.indicator-table td{border-top:0;padding:10px 12px}
+      .indicator-table th{background:rgba(17,48,64,.55);font-size:.88rem}
+      .indicator-table td::before{display:block;margin-bottom:4px;color:var(--gold);font:700 .62rem/1.35 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+      .indicator-table td:first-of-type::before{content:"Observera"}
+      .indicator-table td:nth-of-type(2)::before{content:"Tolkning"}
       .assessment-revision-grid{grid-template-columns:1fr}
     }
     @media(prefers-reduced-motion:reduce){.scenario-choice{transition:none}}
@@ -3550,94 +3579,136 @@ html{overflow-x:clip}
   <div class="section-kicker">Fördjupad framåtblick</div>
   <h2 id="h-infor-2027">Scenarier och indikatorer inför 2027</h2>
   <div class="longform">
-    <p>Sveriges handlingsutrymme under 2027 beror på säkerhetsläget, de allierades beslut och vilka svenska förmågor som faktiskt kan användas. <a href="#bedomningar">De fyra kapitelbedömningarna</a> gäller Europas beroende av amerikanskt stöd, angrepp mot samhällsviktiga funktioner, rekrytering till nya hotförsök och kvarstående luckor i svensk beredskap. Scenarierna visar hur dessa utvecklingslinjer kan påverka ledning, samhällsviktig drift och uthållighet. Det första ligger närmast rapportens samlade bedömning. Scenarierna har inga egna sannolikhetsgrader.</p>
+    <p>Scenarierna prövar hur <a href="#bedomningar">rapportens fyra kapitelbedömningar</a> kan samverka under 2027. De förenar Europas beroende av amerikanska stödförmågor, återkommande angrepp mot samhällsviktiga funktioner, rekrytering till nya hotförsök och Sveriges pågående förmågeuppbyggnad. Det första är ett referensförlopp som ligger närmast rapportens samlade bedömning. De två andra visar vad som händer om belastningen ökar eller om beslut och planer ger större effekt än i referensförloppet. Inget av scenarierna har en egen sannolikhetsgrad.</p>
+
+    <div class="scenario-basis"><strong>Analytisk utgångspunkt</strong><p>Följderna växer när flera störningar träffar samma beroenden innan den första skadan har återställts. Antalet registrerade incidenter säger mindre än deras varaktighet, samtidighet och effekt på verksamheten. El, kommunikation, digital identitet, betalningar, satellittjänster och personal är både egna funktioner och stöd till andra. En reservlösning ger uthållighet först när den har annan kraftförsörjning eller förbindelse, kan bemannas och har prövats under belastning.</p></div>
+    <div class="scenario-axes" aria-label="Tre faktorer som varierar mellan scenarierna">
+      <div class="scenario-axis"><strong>Störningsbelastning</strong><span>Från avgränsade avbrott med tid för återställning till flera samtidiga eller utdragna bortfall.</span></div>
+      <div class="scenario-axis"><strong>Operativ svensk förmåga</strong><span>Från beslut och organisationsbygge till bemannade, övade reserver med fungerande reparation och ledning.</span></div>
+      <div class="scenario-axis"><strong>Allierad tillgänglighet</strong><span>Från amerikanskt och europeiskt stöd som finns när det efterfrågas till förmågor som är bundna, försenade eller prioriteras till andra områden.</span></div>
+    </div>
+    <details class="scenario-method"><summary>Så har scenarierna byggts</summary><div>
+      <p>Scenarierna kombinerar ett omvärldsläge med en händelsekedja. Det följer <a href="https://www.foi.se/rapportsammanfattning?reportNo=FOI-R--4434--SE">FOI:s metod för scenarier i planering för civilt försvar</a>: förtydliga hotbilden, välj scenariobyggstenar, formulera förlopp och kvalitetssäkra dem mot planeringsfrågan. Syftet är att hitta åtgärder som är användbara i flera möjliga utvecklingar, inte att förutsäga en enda framtid.</p>
+      <p>Byggstenarna kommer från rapportens dokumenterade fall och från <a href="https://www.mcf.se/sv/publikationer/nationell-risk--och-sarbarhetsbedomning-nrsb-2025/">Nationell risk- och sårbarhetsbedömning 2025</a>. Sambanden har prövats mot <a href="https://nato.int/en/about-us/official-texts-and-resources/official-texts/2026/09/15/2026-resilience-baseline-requirements">Natos resilienskrav 2026</a>, som uttryckligen behandlar kaskadeffekter, civilt stöd till militära operationer, reparation, rymdberoenden och konkurrens om civila och militära resurser. <a href="https://commission.europa.eu/topics/preparedness_en">EU:s beredskapsstrategi</a> och <a href="https://www.oecd.org/en/publications/foresight-toolkit-for-resilient-public-policy_bcdd9304-en.html">OECD:s metodstöd för strategisk framsyn</a> har använts för att hålla scenarierna sektorsövergripande och göra indikatorerna möjliga att följa.</p>
+    </div></details>
 
     <div class="scenario-compare" id="scenario-compare">
-      <p class="scenario-compare-intro" id="scenario-compare-label"><strong>Pröva tre utvecklingsförlopp</strong>Välj ett förlopp för att jämföra vad det innebär för ledning och information, samhällsviktig drift samt personal och försörjning.</p>
+      <p class="scenario-compare-intro" id="scenario-compare-label"><strong>Jämför tre utvecklingsförlopp</strong>Välj ett scenario för att se hur samma beroenden kan ge olika följder för hotbild, ledning, samhällsviktig drift och resurser.</p>
       <div class="scenario-choices" role="radiogroup" aria-labelledby="scenario-compare-label">
         <input class="scenario-choice-input" type="radio" name="scenario-compare" id="scenario-base" checked>
-        <label class="scenario-choice" for="scenario-base"><span class="scenario-choice-number" aria-hidden="true">01</span><span><strong>Små marginaler</strong><small>Uppbyggnaden fortsätter</small></span></label>
+        <label class="scenario-choice" for="scenario-base"><span class="scenario-choice-number" aria-hidden="true">01</span><span><strong>Små marginaler</strong><small>Återkommande störningar</small></span></label>
         <input class="scenario-choice-input" type="radio" name="scenario-compare" id="scenario-strain">
-        <label class="scenario-choice" for="scenario-strain"><span class="scenario-choice-number" aria-hidden="true">02</span><span><strong>Samtidiga störningar</strong><small>Reserverna pressas</small></span></label>
+        <label class="scenario-choice" for="scenario-strain"><span class="scenario-choice-number" aria-hidden="true">02</span><span><strong>Sammansatt belastning</strong><small>Flera system påverkas</small></span></label>
         <input class="scenario-choice-input" type="radio" name="scenario-compare" id="scenario-resilience">
-        <label class="scenario-choice" for="scenario-resilience"><span class="scenario-choice-number" aria-hidden="true">03</span><span><strong>Större uthållighet</strong><small>Mer handlingsutrymme</small></span></label>
+        <label class="scenario-choice" for="scenario-resilience"><span class="scenario-choice-number" aria-hidden="true">03</span><span><strong>Övad uthållighet</strong><small>Snabbare återställning</small></span></label>
       </div>
       <div class="scenario-panels">
         <section class="scenario-panel" data-scenario-panel="base" aria-labelledby="scenario-panel-base">
-          <h4 id="scenario-panel-base">Uppbyggnaden fortsätter med små marginaler</h4>
-          <p>Förmågan växer stegvis. Angrepp och avbrott återkommer, men reservrutiner, ingripanden och reparationer håller oftast verksamheten i gång.</p>
+          <h4 id="scenario-panel-base">Återkommande störningar, små marginaler</h4>
+          <p>De flesta händelser förblir avgränsade, men de återkommer tillräckligt ofta för att binda personal, reservmateriel och ledningskapacitet. Förmågan förbättras, men inte lika snabbt som uppgifterna tillkommer.</p>
           <div class="scenario-dimensions">
-            <div class="scenario-dimension"><h5>Ledning och information</h5><p>UND etableras och myndigheterna delar information, men överlämningar och gemensamma system har små marginaler.</p></div>
-            <div class="scenario-dimension"><h5>Samhällsviktig drift</h5><p>El, vård, betalningar och kommunikation kan fortsätta med reservkraft, manuella rutiner och avgränsade reservlösningar.</p></div>
-            <div class="scenario-dimension"><h5>Personal och försörjning</h5><p>Personal, lager, reservdelar och transportkapacitet räcker för prioriterade uppgifter men ger litet utrymme för nya behov.</p></div>
+            <div class="scenario-dimension"><h5>Hot och påverkan</h5><p>Rekryteringsförsök, intrång, sabotageförberedelser och störningar fortsätter. Flera försök stoppas, men varje ärende kräver spaning, skydd och uppföljning.</p></div>
+            <div class="scenario-dimension"><h5>Ledning och information</h5><p>UND startar med fortsatt inhämtning och analys, men överföring av personal, behörigheter och partnersamarbeten lämnar liten reserv vid hög belastning.</p></div>
+            <div class="scenario-dimension"><h5>Samhällsviktig drift</h5><p>Reservkraft, manuella rutiner och alternativa förbindelser håller prioriterad verksamhet i gång, medan ordinarie service och underhåll skjuts upp.</p></div>
+            <div class="scenario-dimension"><h5>Personal och försörjning</h5><p>Samma tekniker, drivmedel, datakanaler, vårdresurser och reservdelar behövs för civil drift, nationellt försvar och allierade uppgifter.</p></div>
           </div>
-          <nav class="scenario-links" aria-label="Följ upp små marginaler"><a href="#indicator-und">Följ underrättelse och ledning</a><a href="#indicator-flows">Följ samhällsviktig drift</a><a href="#indicator-resilience">Följ skydd, reserver och reparation</a></nav>
+          <nav class="scenario-links" aria-label="Följ upp små marginaler"><a href="#indicator-support">Följ allierad tillgänglighet</a><a href="#indicator-und">Följ UND:s kontinuitet</a><a href="#indicator-continuity">Följ reservdriften</a><a href="#indicator-priorities">Följ resursprioriteringen</a></nav>
         </section>
         <section class="scenario-panel" data-scenario-panel="strain" aria-labelledby="scenario-panel-strain">
-          <h4 id="scenario-panel-strain">Samtidiga störningar överbelastar reserverna</h4>
-          <p>Flera bortfall sammanfaller med förseningar eller svagare samordning. Följderna uppstår genom att system påverkar varandra, även utan en gemensam beställare bakom händelserna.</p>
+          <h4 id="scenario-panel-strain">Samtidiga bortfall och konkurrerande behov</h4>
+          <p>Störningar sammanfaller innan återställningen är klar. Följderna växer när de träffar samma beroenden, även om de har olika orsaker och utförare.</p>
           <div class="scenario-dimensions">
-            <div class="scenario-dimension"><h5>Ledning och information</h5><p>Störda förbindelser och oklar ansvarsfördelning fördröjer lägesbild, prioriteringar och gemensamma beslut.</p></div>
-            <div class="scenario-dimension"><h5>Samhällsviktig drift</h5><p>El- och digitala avbrott träffar vård, betalningar, vattenförsörjning och kommunikation samtidigt.</p></div>
-            <div class="scenario-dimension"><h5>Personal och försörjning</h5><p>Tekniker, vårdpersonal, drivmedel, reservdelar och transportkapacitet måste fördelas mellan flera akuta behov.</p></div>
+            <div class="scenario-dimension"><h5>Hot och påverkan</h5><p>Fysiska angrepp, cyberstörningar och rekryterade ombud riktas mot olika delar av systemet. Vilseledande uppgifter utnyttjar osäkerheten om orsak och omfattning.</p></div>
+            <div class="scenario-dimension"><h5>Ledning och information</h5><p>Störda förbindelser, ofullständig lägesbild och oklara prioriteringar fördröjer beslut om var reservkraft, skydd och reparationsresurser ska sättas in.</p></div>
+            <div class="scenario-dimension"><h5>Samhällsviktig drift</h5><p>Ett regionalt elavbrott påverkar mobilnät och teknisk styrning. Kommunikationsbortfallet försvårar betalningar, journaler, larm och fördelning av resurser.</p></div>
+            <div class="scenario-dimension"><h5>Personal och försörjning</h5><p>Tekniker, vårdpersonal, drivmedel, reservdelar och säkert tillträde räcker inte samtidigt till återställning, samhällsservice och värdlandsstöd.</p></div>
           </div>
-          <nav class="scenario-links" aria-label="Följ samtidiga störningar"><a href="#indicator-und">Följ underrättelse och ledning</a><a href="#indicator-flows">Följ samhällsviktig drift</a><a href="#indicator-resilience">Följ skydd, reserver och reparation</a></nav>
+          <nav class="scenario-links" aria-label="Följ samtidiga störningar"><a href="#indicator-continuity">Följ kaskadeffekter</a><a href="#indicator-command">Följ lägesbilden</a><a href="#indicator-space">Följ GNSS och satellittjänster</a><a href="#indicator-restoration">Följ återställningen</a><a href="#indicator-priorities">Följ konkurrerande behov</a></nav>
         </section>
         <section class="scenario-panel" data-scenario-panel="resilience" aria-labelledby="scenario-panel-resilience">
-          <h4 id="scenario-panel-resilience">Större uthållighet ger mer handlingsutrymme</h4>
-          <p>Leveranser tas i bruk, samverkan fungerar och reserver räcker även när flera verksamheter behöver dem. Hoten kan bestå samtidigt som följderna begränsas bättre.</p>
+          <h4 id="scenario-panel-resilience">Övad uthållighet begränsar följderna</h4>
+          <p>Incidenter fortsätter, men fel isoleras, reserver kopplas in och resurser omfördelas innan störningen sprids till fler verksamheter.</p>
           <div class="scenario-dimensions">
-            <div class="scenario-dimension"><h5>Ledning och information</h5><p>UND och övriga myndigheter delar skyddsvärd information utan avbrott och kan fatta gemensamma beslut i tid.</p></div>
-            <div class="scenario-dimension"><h5>Samhällsviktig drift</h5><p>Övad reservkraft, alternativa kommunikationsvägar och manuella rutiner håller vård, betalningar och teknisk drift i gång.</p></div>
-            <div class="scenario-dimension"><h5>Personal och försörjning</h5><p>Bemannade reparationsresurser, lager och fungerande logistik räcker för både civila och militära uppgifter.</p></div>
+            <div class="scenario-dimension"><h5>Hot och påverkan</h5><p>Fler rekryteringskedjor och förberedelser upptäcks före genomförandet. Skyddet av sekundära mål och reparationsplatser anpassas efter den gemensamma lägesbilden.</p></div>
+            <div class="scenario-dimension"><h5>Ledning och information</h5><p>UND:s övergång fungerar, beslutskedjorna är övade och myndigheter samt operatörer delar handlingsbar information över skyddade förbindelser.</p></div>
+            <div class="scenario-dimension"><h5>Samhällsviktig drift</h5><p>Reservkraft med säkrad bränslepåfyllning, alternativa kommunikations- och tidskällor samt manuella rutiner håller vård, betalningar och teknisk drift i gång.</p></div>
+            <div class="scenario-dimension"><h5>Personal och försörjning</h5><p>Namngivna reparationsresurser, avtal, lager och förberedda tillträdesbeslut gör att civila och militära behov kan hanteras utan att samma resurs dubbelräknas.</p></div>
           </div>
-          <nav class="scenario-links" aria-label="Följ större uthållighet"><a href="#indicator-und">Följ underrättelse och ledning</a><a href="#indicator-flows">Följ samhällsviktig drift</a><a href="#indicator-resilience">Följ skydd, reserver och reparation</a></nav>
+          <nav class="scenario-links" aria-label="Följ större uthållighet"><a href="#indicator-und">Följ UND:s kontinuitet</a><a href="#indicator-command">Följ ledningen</a><a href="#indicator-continuity">Följ reservdriften</a><a href="#indicator-restoration">Följ reparationstiden</a><a href="#indicator-supply">Följ leverantörsberoenden</a></nav>
         </section>
       </div>
-      <p class="scenario-caveat">Scenarierna är villkorade sätt att pröva utvecklingen. De har inga egna sannolikhetsgrader.</p>
+      <p class="scenario-caveat">Förloppen är analytiska stresstest, inte prognoser. Samtidiga störningar kan ha olika orsaker och utförare.</p>
     </div>
 
     <h3 id="scenarier-2027">Tre möjliga utvecklingsförlopp</h3>
-    <details class="scenario-narrative"><summary id="scenario-uppbyggnad">1. Uppbyggnaden fortsätter med små marginaler</summary><div>
-    <p>Sverige och de europeiska allierade fortsätter att bygga ut sitt försvar och sin beredskap. UND inleder verksamheten, nya system tas stegvis i bruk och ansvar för skydd, försörjning och reparation blir tydligare. Amerikanska stödförmågor behövs fortfarande. Angrepp och avbrott återkommer, men ingripanden, reservrutiner och reparationer gör att prioriterade verksamheter oftast kan fortsätta.</p>
-    <p>För Sverige innebär detta återkommande prioriteringar mellan vård och annan samhällsservice, nationellt försvar, allierade uppgifter och stöd till Ukraina. Samma personal, datakanaler, reservkraft, verkstäder, reservdelar och transportresurser kan behövas på flera håll. Förmågan växer, men det finns begränsat utrymme för förseningar eller flera samtidiga behov.</p>
+    <details class="scenario-narrative"><summary id="scenario-uppbyggnad">1. Återkommande störningar, små marginaler</summary><div>
+    <ol class="scenario-sequence" aria-label="Händelsekedja i scenario ett">
+      <li><strong>Förmågor byggs under drift</strong>UND startar, regioner övar reservdrift och masskadeledning och reparationsberedskapen organiseras samtidigt som ordinarie uppgifter fortsätter.</li>
+      <li><strong>Avgränsade störningar återkommer</strong>El, kommunikation, betalningar, GNSS eller en leverantörstjänst faller bort lokalt eller under begränsad tid.</li>
+      <li><strong>Reserverna håller</strong>Reservkraft, manuella rutiner och alternativa förbindelser bär prioriterad verksamhet, men kräver personal och omfördelning.</li>
+      <li><strong>Eftersläpningen växer</strong>Underhåll, utbildning och ordinarie verksamhet skjuts upp. Nästa incident möts med mindre vila och färre fria resurser.</li>
+    </ol>
+    <p>Amerikanska stödförmågor finns kvar men är inte alltid tillgängliga med kort varsel. Europeiska system levereras stegvis, men utbildning, integration och beredskap tar längre tid. Sverige kan därför fullfölja de viktigaste uppgifterna i Norden och Polen, stödja Ukraina och hålla samhällsviktig verksamhet i gång, men genom återkommande omprioriteringar.</p>
+    <p>Hotförsök mot Sverige fortsätter. Polisen och säkerhetsmyndigheterna stoppar flera utförare och rekryteringsförsök, men beställare och digitala kontaktvägar finns ofta kvar. Belastningen syns därför även när ett angrepp aldrig genomförs: skydd förstärks, personal binds i utredningar och reservrutiner aktiveras oftare.</p>
+    <p class="scenario-breakpoint"><strong>Brytpunkt:</strong> Förloppet går mot scenario 2 om en ny störning inträffar innan personal, reservmateriel och ordinarie drift har återhämtats. Det går mot scenario 3 om upprepade övningar och verkliga avbrott visar kortare återställningstid utan att andra prioriterade verksamheter måste stängas ned.</p>
     </div></details>
 
-    <details class="scenario-narrative"><summary id="scenario-samtidiga-storningar">2. Samtidiga störningar överbelastar reserverna</summary><div>
-    <p>I detta förlopp sammanfaller störningar i flera system med svagare politisk samordning eller försenade leveranser. Avbrott i el och kommunikation försvårar lägesbild, journalföring, betalningar och teknisk styrning. Vård, myndighetsledning och reparationsarbete behöver då samma reservkraft, säkra förbindelser och personal.</p>
-    <p>För Sverige uppstår konkurrens om tekniker, vårdpersonal, drivmedel, reservdelar, lager och transportkapacitet. Resurser flyttas mellan uppgifter och återställningen tar längre tid. Om amerikanskt stöd samtidigt begränsas innan europeisk ersättning finns tillgänglig blir även de militära marginalerna mindre. De sammanfallande bortfallen behöver inte ha samma beställare för att tillsammans få stora följder.</p>
+    <details class="scenario-narrative"><summary id="scenario-samtidiga-storningar">2. Samtidiga bortfall och konkurrerande behov</summary><div>
+    <ol class="scenario-sequence" aria-label="Händelsekedja i scenario två">
+      <li><strong>Belastningen är redan hög</strong>Elbehov, vård, militär beredskap och stöd till allierade använder samma personal, drivmedel och kommunikationsresurser.</li>
+      <li><strong>Två beroenden faller bort</strong>En fysisk skada eller ett fel påverkar regional elförsörjning samtidigt som fiber, en molntjänst, betalningsinfrastruktur eller satellitbaserad kommunikation störs.</li>
+      <li><strong>Följderna sprids</strong>Mobilnät, digital identitet, journaler, larm, betalningar, vattenförsörjning och teknisk styrning får gemensamma problem. GNSS- eller tidsstörningar försvårar vissa reservförfaranden.</li>
+      <li><strong>Återställning blir en prioriteringsfråga</strong>Samma tekniker, skydd, reservdelar och säkra förbindelser behövs på flera skadeplatser och i både civila och militära uppgifter.</li>
+    </ol>
+    <p>Den första skadan behöver inte vara stor. Följderna växer när reservkraft saknar uthållig bränslepåfyllning, när en alternativ förbindelse går genom samma knutpunkt eller när behörig personal inte kan nå anläggningen. Betalningar kan fungera offline samtidigt som butiken saknar el, varor eller personal. Ett sjukhus kan ha reservkraft men ändå förlora journalåtkomst, kommunikation eller leveranser av läkemedel.</p>
+    <p>En osäker lägesbild skapar ytterligare friktion. Motstridiga uppgifter om vattenkvalitet, betalningar och skadeorsak ökar trycket på 112, kommunernas kontaktvägar och bankernas kundtjänster. Rekryterade utförare kan samtidigt riktas mot reparationsplatser, reservsystem eller andra svagt skyddade mål. Om amerikanska stödförmågor prioriteras till ett annat område måste europeiska och svenska resurser täcka fler uppgifter än planerat. Resultatet blir längre avbrott, uppskjuten vård och underhåll samt hårdare prioritering mellan befolkningens behov, nationellt försvar och värdlandsstöd.</p>
+    <p class="scenario-breakpoint"><strong>Brytpunkt:</strong> Scenario 2 är på väg att förverkligas när reservdrift eller reparation inte längre håller verksamhetens egen tidsgräns och resurser måste tas från en annan prioriterad funktion. Då har ett avgränsat fel blivit ett systemproblem.</p>
     </div></details>
 
-    <details class="scenario-narrative"><summary id="scenario-battre-uthallighet">3. Större uthållighet ger mer handlingsutrymme</summary><div>
-    <p>Europeiska leveranser tas i bruk, skyddad informationsdelning fungerar och reserver räcker även när flera verksamheter behöver dem. Vård och annan samhällsservice kan fortsätta under avbrott, samtidigt som militära uppgifter fullföljs. Kortare återställningstider ger Sverige och de allierade mer utrymme att utbilda personal, fylla lager och genomföra eftersatt underhåll.</p>
-    <p>För Sverige märks förbättringen genom snabbare beslut, färre avbrott i prioriterade verksamheter och tillräckliga resurser för både civila och militära behov. En vapenvila i Ukraina kan minska den akuta belastningen, men dess långsiktiga betydelse beror på säkerhetsvillkoren och Rysslands möjlighet att återuppbygga eller omfördela styrkor. Ett lugnare läge behöver användas för att minska de brister som fortfarande finns.</p>
+    <details class="scenario-narrative"><summary id="scenario-battre-uthallighet">3. Övad uthållighet begränsar följderna</summary><div>
+    <ol class="scenario-sequence" aria-label="Händelsekedja i scenario tre">
+      <li><strong>Ansvar och resurser är fördelade</strong>Aktörer, mandat, reservpersonal, avtal, lager och prioriteringsregler är beslutade innan störningen inträffar.</li>
+      <li><strong>Reserverna är prövade</strong>Reservkraft har bränsle och service, alternativa förbindelser är oberoende och manuella rutiner har använts i övning.</li>
+      <li><strong>Felet isoleras</strong>Gemensam lägesbild och skyddade datakanaler gör att driftoperatörer, myndigheter och försvar kan avgränsa bortfallet och skydda reparationsarbetet.</li>
+      <li><strong>Återställningen går snabbare</strong>Prioriterad verksamhet fortsätter och resurser kan flyttas vidare utan att en ny kritisk brist skapas på den första platsen.</li>
+    </ol>
+    <p>UND:s övergång genomförs utan att inhämtning, analys eller partnersamarbeten tappar kontinuitet. Rekryteringskedjor och förberedelser upptäcks tidigare, vilket gör att skydd kan riktas mot både det tänkta målet och de reparations- eller reservfunktioner som annars skulle bli nästa svaga punkt. Europeiska förmågor blir tillgängliga i större omfattning och minskar konkurrensen om vissa amerikanska resurser, även om beroendet inte försvinner under 2027.</p>
+    <p>Kortare avbrott och färre följdfel visar förbättringen även när incidenterna fortsätter. Ett avbrott kan fortfarande slå ut en anläggning, men alternativa kommunikationsvägar, tidkällor, betalningsrutiner och bemannade reparationsresurser hindrar att samma störning stoppar vård, ledning och försörjning samtidigt. Förberedda prioriteringar gör det möjligt att stödja allierade utan att samma drivmedel, vårdplats eller tekniker räknas som tillgänglig för flera uppgifter.</p>
+    <p class="scenario-breakpoint"><strong>Brytpunkt:</strong> Förloppet kräver dokumenterade resultat från övningar eller verkliga störningar. Nya planer, avtal och leveranser räcker inte om resurserna saknar bemanning, skydd, bränsle, reservdelar eller mandat att användas.</p>
     </div></details>
 
     <h3 id="indikatorer-2027">Tecken som stärker eller försvagar bedömningarna</h3>
-    <p>Uppföljningen utgår från vad som levereras, kan användas och fungerar under belastning. Tabellen anger konkreta tecken och hur de ska tolkas i förhållande till kapitelbedömningarna.</p>
+    <p>Indikatorerna skiljer mellan beslut, tillgänglig förmåga och verifierad effekt. En leverans är inte operativ förrän den har personal, uppgift, underhåll och fungerande samband. En reserv är inte verifierad förrän den har burit verksamheten under övning eller ett verkligt avbrott.</p>
     <div class="case-table-wrap" role="region" aria-label="Indikatorer inför 2027" tabindex="0">
-      <table class="case-table">
+      <table class="case-table indicator-table">
         <caption>Vad som behöver följas under 2027</caption>
-        <thead><tr><th scope="col">Område</th><th scope="col">Observerbara tecken</th><th scope="col">Betydelse för bedömningen</th></tr></thead>
+        <thead><tr><th scope="col">Område</th><th scope="col">Observera</th><th scope="col">Tolkning</th></tr></thead>
         <tbody>
-          <tr id="indicator-europe"><th scope="row"><a href="#varldsordning">Europeiskt handlingsutrymme</a></th><td>Levererade system, utbildad personal och tillgängliga förmågor för bland annat lufttankning, transporter och underrättelser. Genomförda beslut om finansiering, Ukrainastöd och samarbete, särskilt efter politiska förändringar som det franska presidentvalet.</td><td>Europeiska resurser som faktiskt kan ersätta amerikanskt stöd talar för större självständighet. Amerikanska begränsningar utan fungerande ersättning ökar utsattheten. Budgetbesked eller opinionsförändringar visar inte ensamma att beroendet har minskat.</td></tr>
-          <tr id="indicator-flows"><th scope="row"><a href="#sakerhetslage">Samhällsviktig drift och återställning</a></th><td>Avbrottens varaktighet och omfattning inom el, kommunikation, betalningar, vård, industriproduktion och transporter. Tid till reservdrift och reparation samt tillgång till personal, reservdelar och säkert tillträde.</td><td>Återkommande dokumenterade skador eller avbrott stödjer kapitel 2:s bedömning. Fungerande reservdrift och kortare återställningstider begränsar följderna. Långa eller samtidiga bortfall som träffar flera verksamheter ökar utsattheten.</td></tr>
-          <tr id="indicator-threats"><th scope="row"><a href="#sverige">Hotförsök mot Sverige</a></th><td>Belagda uppdrag, nya rekryteringar och kontakter mellan beställare och utförare. Senare utredningsbesked, åtal och domar samt dokumenterade ingripanden som hindrar fortsatt verksamhet.</td><td>Fortsatt rekrytering och nya konkreta uppdrag stödjer bedömningen om nya försök. Varaktigt brutna beställar- eller rekryteringsled talar emot den. Antalet offentliga ärenden behöver bedömas tillsammans med vad som har upptäckts och avvärjts.</td></tr>
-          <tr id="indicator-und"><th scope="row"><a href="#strategiska-domainer">Underrättelseförmåga under reformen</a></th><td>Bemanning, ansvarsfördelning och fungerande informationsöverföring när Sveriges utrikes underrättelsetjänst, UND, inleder verksamheten. Redovisade uppföljningar av kontinuitet och eventuella överlämningsproblem.</td><td>En övergång med bibehållen inhämtning och samverkan försvagar farhågan om ett tillfälligt kapacitetstapp. Bemanningsbrister eller avbrott i informationsflöden stärker den. Uppgifter som saknas offentligt lämnar frågan öppen.</td></tr>
-          <tr id="indicator-resilience"><th scope="row"><a href="#strategiska-domainer">Skydd, reserver och reparation</a></th><td>Genomförda skyddsåtgärder och resultat från avbrott eller övningar med samtidig påverkan på el, vård, kommunikation, betalningar och försörjning. Tillgänglig personal, materiel och prioriteringar inom <a href="https://www.regeringen.se/pressmeddelanden/2026/09/regeringen-forbereder-aterupprattandet-av-sveriges-bygg--och-reparationsberedskap/">byggnads- och reparationsberedskapen</a>.</td><td>Fortsatt drift och återställning inom verksamhetens tidskrav talar för att luckor minskat. Reserver som inte räcker till eller faller bort med ordinarie system talar för kvarstående brister. En delredovisning eller ett nytt avtal behöver följas av uppgifter om vad som faktiskt är tillgängligt.</td></tr>
+          <tr id="indicator-support"><th scope="row"><a href="#varldsordning">Allierade stödförmågor</a></th><td>Bemanning, övningsresultat och faktisk tillgänglighet för amerikanska och europeiska förmågor inom lufttankning, luftförsvar, underrättelser, ledning och långräckviddig förstärkning. Beställningar och leveranser följs separat.</td><td>Europeiska enheter som kan lösa uppgiften utan amerikansk förstärkning minskar beroendet. Ett politiskt stödbesked utan tillgängliga förband eller stödresurser gör det inte.</td></tr>
+          <tr id="indicator-und"><th scope="row"><a href="#underrattelsereformen">UND:s kontinuitet</a></th><td>Bemanning, överförda behörigheter, säkra system, inhämtning, analysleveranser och fungerande samarbete med FRA, Försvarsmakten, Säpo och utländska partner efter den 1 januari 2027.</td><td>Bibehållna leveranser och gemensamma ärenden under hög belastning talar för en fungerande övergång. Försenade behörigheter, vakanta nyckelroller eller avbrott i informationsflöden visar ett kapacitetstapp.</td></tr>
+          <tr id="indicator-threats"><th scope="row"><a href="#sverige">Rekrytering och beställarkedjor</a></th><td>Nya belagda uppdrag, digitala rekryteringsvägar, betalningsflöden och kontakter mellan beställare och utförare. Följ om ingripanden når kontaktpersoner och beställare eller endast den senast rekryterade utföraren.</td><td>Fler upptäckta försök kan betyda högre hot, bättre upptäckt eller båda. Varaktigt brutna rekryterings- och betalningskedjor är ett starkare tecken på minskad operativ förmåga än antalet gripanden.</td></tr>
+          <tr id="indicator-command"><th scope="row"><a href="#inledning-foljder-sverige">Ledning, lägesbild och information</a></th><td>Tid till en gemensam lägesbild, tillgång till skyddade förbindelser, motstridiga besked mellan ansvariga aktörer och möjligheten att nå allmänheten när ordinarie mobil- och internettjänster är störda.</td><td>Snabba beslut och samstämmiga besked som fortfarande når berörda verksamheter och invånare begränsar följdfelen. Parallella lägesbilder, oklara mandat eller information som endast finns i utslagna kanaler förlänger avbrottet.</td></tr>
+          <tr id="indicator-continuity"><th scope="row"><a href="#civila-beroenden">Reservdrift i samhällsviktig verksamhet</a></th><td>Tid till inkopplad reservkraft och alternativ kommunikation, faktisk drifttid, bränslepåfyllning, manuella rutiner och vilka vård-, betalnings-, vatten- eller ledningsfunktioner som ändå faller bort.</td><td>Reservdrift inom verksamhetens tidskrav och utan samma felkälla som ordinarie system visar uthållighet. Reserver som startar men inte kan försörjas, bemannas eller kommunicera flyttar bara avbrottet framåt.</td></tr>
+          <tr id="indicator-restoration"><th scope="row"><a href="#forsorjningsberedskap">Reparation och återställning</a></th><td>Vad <a href="https://www.regeringen.se/regeringsuppdrag/2026/09/uppdrag-till-myndigheten-for-civilt-forsvar-att-utveckla-nationell-samordning-av-byggnads--och-reparationsberedskapen/">delredovisningen den 1 mars och slutredovisningen den 30 april</a> leder till i form av namngivna resurser, inställelsetider, avtal, lager, skydd och tillträde.</td><td>Kortare verifierad återställningstid och resurser som kan användas på flera platser talar för scenario 3. Organisationsskisser utan bemanning eller materiel lämnar bristen kvar.</td></tr>
+          <tr id="indicator-space"><th scope="row"><a href="#satelliter">Satellit, GNSS och exakt tid</a></th><td>Störningarnas geografiska omfattning och varaktighet, påverkan på mobilnät, kraftsystem, sjöfart och finansiella tjänster samt om oberoende markbaserade tids-, navigations- och kommunikationslösningar fungerar.</td><td>Ett andra satellitnät minskar bara beroendet om markstationer, fiber, el och leverantörsstyrning inte sammanfaller. Fungerande alternativ för både kommunikation, positionering och tid talar för större uthållighet.</td></tr>
+          <tr id="indicator-priorities"><th scope="row"><a href="#strategiska-domainer">Civil–militär prioritering</a></th><td>Övningar och avtal som visar vem som får drivmedel, vårdplatser, datakapacitet, tekniker, skydd och reservdelar när civila verksamheter, Försvarsmakten och allierade efterfrågar samma resurs.</td><td>Förhandsbeslutade prioriteringar och resurser som inte dubbelräknas minskar beslutstiden. Oklara mandat eller planer där samma resurs förekommer hos flera mottagare ökar risken för scenario 2.</td></tr>
+          <tr id="indicator-supply"><th scope="row"><a href="#ravaror-halvledare">Kritiska varor och leverantörer</a></th><td>Faktiska ledtider, lagernivåernas uthållighet, alternativa leverantörer, prövade exitplaner och tillgång till läkemedel, bränsle, elektronik, transformatorer och andra svårersatta reservdelar.</td><td>Ett avtal eller en alternativ leverantör ger effekt först när varan är godkänd och kan levereras i tid. Samma underleverantör, programvara eller förädlingsled kan göra två alternativ beroende av samma flaskhals.</td></tr>
+          <tr id="indicator-payments"><th scope="row"><a href="#digitala-betalningar">Betalningar och digitala tjänster</a></th><td>Resultat från kontinuitetstester, tid till återställning, beroenden till administratörer och moln- eller betaltjänstleverantörer samt om offlinebetalning fungerar tillsammans med el, personal och varuflöden.</td><td>Kritiska processer som fortsätter under systemåterställning visar motståndskraft. Tester som endast visar att en teknisk reserv startar säger mindre om hela tjänsten kan användas av verksamheten.</td></tr>
         </tbody>
       </table>
     </div>
-    <p>Färre angrepp och mindre skada är olika förbättringar. Om en skadad funktion snabbt ersätts kan verksamheten fortsätta även när nya angrepp sker. Fler upptäckta uppdrag kan samtidigt visa att ingripandena blivit effektivare. För att bedöma om hotet minskar behövs också kunskap om vilka förmågor, kontakter och rekryteringsvägar som har slagits ut.</p>
+    <p>Tre tidsserier behöver följas var för sig: <em>hottrycket</em>, <em>störningens effekt på verksamheten</em> och <em>tiden till återställning</em>. Ett år med fler upptäckta försök men färre genomförda angrepp kan visa bättre upptäckt. Ett år med lika många angrepp men kortare avbrott kan visa bättre motståndskraft. Tillsammans visar serierna vilket scenario utvecklingen närmar sig.</p>
     <details class="assessment-revision">
       <summary>Vad skulle kunna ändra rapportens bedömningar?</summary>
       <div class="assessment-revision-content">
-        <p>Slutsatserna kan omprövas när ny information visar att förmåga faktiskt har tagits i bruk, att hot eller nätverk varaktigt förändrats eller att kritiska verksamheter klarar belastning bättre eller sämre.</p>
+        <p>Bedömningarna omprövas när ny information visar att en förmåga har tagits i bruk, att ett nätverk har förlorat eller återfått operativ kapacitet eller att samhällsviktig verksamhet klarar belastning bättre eller sämre än tidigare.</p>
         <nav class="assessment-revision-grid" aria-label="Uppgifter som kan ändra respektive bedömning">
-          <a href="#review-varldsordning"><strong>Europeiska förmågor</strong>Leveranser, bemanning och övningar som visar om krävande uppgifter kan lösas med mindre amerikanskt stöd.</a>
-          <a href="#review-sakerhetslage"><strong>Avbrott och återställning</strong>Varaktigt färre skador, fungerande reservdrift och kortare återställningstider.</a>
-          <a href="#review-sverige"><strong>Hotförsök och rekrytering</strong>Om uppdrag och rekryteringsvägar fortsätter, bryts eller ersätts av nya.</a>
-          <a href="#review-formaga"><strong>Skydd och beredskap</strong>Fungerande reserver, reparationsförmåga och kontinuitet under underrättelsereformen.</a>
+          <a href="#indicator-support"><strong>Allierad tillgänglighet</strong>Operativa europeiska förmågor eller minskad amerikansk tillgänglighet som förändrar Europas faktiska handlingsutrymme.</a>
+          <a href="#indicator-threats"><strong>Hotnätverkens förmåga</strong>Om beställare, kontaktvägar och betalningskedjor fortsätter, bryts eller ersätts.</a>
+          <a href="#indicator-command"><strong>Ledning och information</strong>Hur snabbt ansvariga aktörer kan skapa en gemensam lägesbild, fatta prioriteringsbeslut och nå berörda verksamheter och invånare.</a>
+          <a href="#indicator-continuity"><strong>Drift under avbrott</strong>Om vård, el, kommunikation, betalningar och ledning kan fortsätta inom sina tidskrav.</a>
+          <a href="#indicator-restoration"><strong>Bemannad återställning</strong>Reparationsresurser, lager, skydd och mandat som fungerar samtidigt på flera platser.</a>
+          <a href="#indicator-supply"><strong>Försörjningens uthållighet</strong>Om lager, alternativa leverantörer och exitplaner håller när flera verksamheter efterfrågar samma varor och tjänster.</a>
         </nav>
       </div>
     </details>

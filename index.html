@@ -1080,6 +1080,96 @@ html{overflow-x:clip}
     })();
   </script>
 
+  <style id="topic-visuals">
+    /* Breda ämnesöppningar bryter de långa textpartierna utan att göra
+       illustrationerna till sakuppgifter. Rubriken förblir vanlig HTML-text. */
+    .longform h3.topic-visual,
+    .longform h4.topic-visual{
+      --topic-position:center;
+      position:relative;
+      left:0;
+      display:flex;
+      align-items:flex-end;
+      width:calc(100% + min(156px,14vw));
+      max-width:946px;
+      min-height:clamp(235px,28vw,330px);
+      margin:clamp(48px,7vw,74px) 0 25px;
+      padding:clamp(24px,4vw,42px);
+      overflow:hidden;
+      border:1px solid rgba(184,151,58,.42);
+      background-image:
+        linear-gradient(180deg,rgba(10,22,40,.16) 0%,rgba(10,22,40,.38) 44%,rgba(10,22,40,.94) 100%),
+        linear-gradient(90deg,rgba(10,22,40,.76) 0%,rgba(10,22,40,.18) 68%),
+        var(--topic-bg);
+      background-size:cover;
+      background-position:var(--topic-position);
+      box-shadow:0 18px 42px rgba(0,0,0,.24);
+      color:#f2f0e9;
+      font:400 clamp(1.7rem,3.15vw,2.65rem)/1.08 var(--serif);
+      text-wrap:balance;
+      text-shadow:0 2px 18px rgba(0,0,0,.82);
+      isolation:isolate;
+    }
+    .longform h4.topic-visual{
+      min-height:clamp(215px,25vw,300px);
+      font-size:clamp(1.55rem,2.7vw,2.25rem);
+    }
+    .longform h3.topic-visual::after,
+    .longform h4.topic-visual::after{
+      content:"";
+      position:absolute;
+      top:18px;
+      left:clamp(24px,4vw,42px);
+      width:46px;
+      height:2px;
+      background:#e5c85d;
+      box-shadow:0 1px 8px rgba(0,0,0,.9);
+    }
+    .topic-arctic{--topic-bg:url("assets/topic-nato-gronland-usa.webp");--topic-position:center 54%}
+    .topic-politics{--topic-bg:url("assets/topic-europeisk-partipolitik.webp");--topic-position:center 48%}
+    .topic-deterrence{--topic-bg:url("assets/topic-nordisk-avskrackning.webp");--topic-position:center 53%}
+    .topic-ukraine{--topic-bg:url("assets/topic-ukraina-forhandlingar.webp");--topic-position:center 48%}
+    .topic-baltic{--topic-bg:url("assets/topic-ostersjon-infrastruktur.webp");--topic-position:center 52%}
+    .topic-sabotage{--topic-bg:url("assets/topic-sabotage-ombud.webp");--topic-position:center 52%}
+    .topic-influence{--topic-bg:url("assets/topic-valpaverkan-oro.webp");--topic-position:center 50%}
+    .topic-resilience{--topic-bg:url("assets/topic-civil-beredskap.webp");--topic-position:center 50%}
+    .topic-space{--topic-bg:url("assets/topic-rymdtjanster.webp");--topic-position:center 48%}
+    .topic-chips{--topic-bg:url("assets/topic-halvledare-forsorjning.webp");--topic-position:center 50%}
+    .topic-scenarios{--topic-bg:url("assets/topic-scenarier-2027.webp");--topic-position:center 50%}
+    @media(max-width:700px){
+      .longform h3.topic-visual,
+      .longform h4.topic-visual{
+        left:-12px;
+        width:100vw;
+        max-width:none;
+        min-height:clamp(250px,72vw,360px);
+        margin:42px 0 22px;
+        padding:25px 20px;
+        border-right:0;
+        border-left:0;
+        background-image:
+          linear-gradient(180deg,rgba(10,22,40,.2) 0%,rgba(10,22,40,.46) 48%,rgba(10,22,40,.96) 100%),
+          var(--topic-bg);
+        background-position:var(--topic-position);
+        font-size:clamp(1.65rem,7.3vw,2.25rem);
+      }
+      .longform h4.topic-visual{min-height:clamp(230px,66vw,330px);font-size:clamp(1.5rem,6.7vw,2rem)}
+      .longform h3.topic-visual::after,
+      .longform h4.topic-visual::after{top:16px;left:20px;width:38px}
+    }
+    @media print{
+      .longform h3.topic-visual,
+      .longform h4.topic-visual{
+        min-height:150px;
+        width:100%;
+        margin:26px 0 16px;
+        break-after:avoid;
+        -webkit-print-color-adjust:exact;
+        print-color-adjust:exact;
+      }
+    }
+  </style>
+
 </head>
 <body>
   <div class="site-watermark" aria-hidden="true"></div>
@@ -1221,7 +1311,7 @@ html{overflow-x:clip}
             <text class="label" x="480" y="436" text-anchor="middle">Sveriges säkerhetspolitiska val</text>
           </svg>
         </figure>
-        </div></div><div class="longform"><h3>USA och den transatlantiska relationen</h3>
+        </div></div><div class="longform"><h3 class="topic-visual topic-arctic">USA och den transatlantiska relationen</h3>
 
           <p><a href="https://media.defense.gov/2026/Jan/23/2003864773/-1/-1/0/2026-NATIONAL-DEFENSE-STRATEGY.PDF">USA:s nationella försvarsstrategi för 2026</a> anger fyra prioriteringar: försvar av hemlandet, avskräckning av Kina, större ansvar för allierade och en starkare försvarsindustri. <a href="https://www.linkedin.com/posts/svensk-osint_national-defense-strategy-activity-7420970034044428288-Vgco">Strategin framhåller också amerikansk tillgång till Grönland och Panamakanalen</a>. Europeiska allierade måste därför planera för att amerikanska flygplan, fartyg och andra resurser kan behövas i andra regioner samtidigt som en kris pågår i Europa.</p>
           <p id="usa-styrkeataganden-2026"><a href="https://apnews.com/live/trump-administration-updates-06-03-2026">Associated Press rapporterade den 3 juni att USA:s Europakommando, EUCOM, hade minskat sina styrkeåtaganden i Natos beredskapsplanering</a>. Andra allierade förväntades bidra med mer flyg och fler fartyg när USA reserverade resurser för andra regioner. Några exakta förändringar offentliggjordes inte. Det offentliga beskedet gäller vilka styrkor USA lovar Nato i en kris, inte en redovisad förflyttning av förband som redan finns i Europa (Finley, 2026).</p>
@@ -1239,7 +1329,7 @@ html{overflow-x:clip}
           <p id="karnvapensamarbetets-utveckling"><a href="https://www.presidentti.fi/en/joint-statement-on-finlands-participation-in-french-forward-deterrence/">Finland anslöt sig den 14 september till Frankrikes initiativ om framskjuten avskräckning, Forward Deterrence</a>, med en planerad gemensam styrgrupp. <a href="https://valtioneuvosto.fi/-/236553176/puolustusministeri-hakkanen-suomi-liittyy-ranskan-eurooppalaiseen-ydinpelotealoitteeseen">Finlands försvarsministerium klargjorde att Frankrike behåller beslutanderätten och inte ger Finland ett kärnvapenparaply</a>. Samarbetet innebär därmed närmare strategisk dialog, men ingen automatisk fransk garanti att använda kärnvapen till Finlands försvar (Finlands presidentkansli, 2026; Finlands försvarsministerium, 2026).</p>
           <p>Samarbetet har också gått vidare till gemensam militär träning. <a href="https://www.gov.uk/government/news/uk-france-deepen-nuclear-defence-ties-in-first-joint-exercise">Storbritanniens försvarsministerium uppgav den 23 oktober att brittiska Typhoon-plan för första gången deltagit i en fransk kärnvapenflygövning</a>. Under övningen Rummy den 20–21 oktober eskorterade de franska Rafale-plan som simulerade ett kärnvapenuppdrag. Inga kärnvapen ingick. Frankrike och Storbritannien behåller var sin nationell beslutanderätt, men har nu övat på att samverka vid denna typ av uppdrag (Ministry of Defence, 2026).</p>
           <p>De europeiska initiativen ersätter inte Natos kärnvapenplanering. <a href="https://www.nato.int/en/news-and-events/articles/news/2026/10/22/nato-high-level-group-meets-in-helsinki">Alliansens kärnvapenrådgivare möttes i Helsingfors den 21 oktober</a> för att diskutera modernisering och planering. De franska samarbetena och den brittisk-franska övningen kompletterar därmed en allians där USA fortfarande bidrar till kärnvapenavskräckningen (Nato, 2026).</p>
-          <h3 id="europeiskt-politiskt-landskap">Hur val och partipolitik kan ändra försvarssamarbetet</h3>
+          <h3 class="topic-visual topic-politics" id="europeiskt-politiskt-landskap">Hur val och partipolitik kan ändra försvarssamarbetet</h3>
           <p>Försvarsplanerna kräver politiskt stöd över flera år. Därför spelar utvecklingen för Alternative für Deutschland, AfD, i Tyskland, Rassemblement national, RN, i Frankrike och det brittiska partiet Reform UK roll även för Sverige. Partierna söker inflytande på olika sätt och driver delvis olika politik. Gemensamt är att förändringar i dessa tre länder kan påverka finansieringen av Ukrainastödet, samarbetet inom Nato och villkoren för svenska försvarsinsatser.</p>
           <p>Ett allierat beslut kan falla på tre punkter: budgeten godkänns inte, leveransen fördröjs eller känslig information delas inte. Varje sådan begränsning kan stoppa en svensk försvarsuppgift även om Natoavtalet och de bilaterala avtalen består.</p>
 
@@ -1261,7 +1351,7 @@ html{overflow-x:clip}
           <p>AfD har också använt parlamentariska verktyg för att motsätta sig stöd till Ukraina. Partiet <a href="https://www.linkedin.com/posts/svensk-osint_deutscher-bundestag-antrag-will-gaskraftwerk-activity-7464028635633643521-OBfP">ville stoppa överlåtelsen av ett gaseldat kraftverk i Lubmin</a>. <a href="https://www.bundestag.de/dokumente/textarchiv/2026/kw21-de-lubmin-1178606">Förbundsdagen hänvisade förslaget till utskott den 22 maj</a>. Det redovisade beskedet gäller behandling av motionen; något beslut att stoppa överlåtelsen framgår inte där (Deutscher Bundestag, 2026).</p>
           <p>Partiets rättsliga ställning är samtidigt omstridd. <a href="https://recht.nulegal.eu/rechtsprechung/vg-koeln/2026-02-26/13-l-1109-25">Förvaltningsdomstolen i Köln beslutade den 26 februari</a> att den tyska säkerhetstjänsten BfV tills vidare inte fick behandla den nationella AfD-organisationen som säkerställt högerextremistisk. Det tillfälliga beslutet gäller i väntan på prövning i första instans. Bedömningar av enskilda delstatsorganisationer omfattas av andra prövningar (Verwaltungsgericht Köln, 2026).</p>
 
-          <h4 class="political-subheading">Frankrike: presidentval, parlament och avskräckning</h4>
+          <h4 class="political-subheading topic-visual topic-deterrence">Frankrike: presidentval, parlament och avskräckning</h4>
           <p>I Frankrike kan presidentvalet 2027 direkt förändra den politiska ledningen för en europeisk kärnvapenmakt. RN har haft ett <a href="https://www.linkedin.com/feed/update/urn:li:activity:7498284707206361088">starkt opinionsläge inför valet</a>. I <a href="https://www.ifopgroup.com/wp-content/uploads/2026/08/122732-resultats-ensemble.pdf">Ifop-Fiducials mätning den 24–25 augusti</a> fick Marine Le Pen 33–35 procent i de testade kandidatfälten för första omgången. Mätningen visar stödet i dessa alternativ, medan en valseger även kräver att hon klarar en eventuell andra valomgång (Ifop-Fiducial, 2026).</p><p>Le Pen sade i en intervju med <a href="https://www.ft.com/content/9acc4f6f-2faa-4ac1-aa7b-42166d677316">Financial Times</a> att hon, om hon blir president, skulle avsluta Frankrikes finansiella stöd till Ukraina efter sex månader. <a href="https://www.france24.com/en/europe/20261015-france-can-no-longer-finance-ukraine-far-right-candidate-marine-le-pen-says">France 24 återgav också beskedet</a>. Vallöftet gör stödet till en konkret stridsfråga inför 2027. Om det genomförs kan andra europeiska länder behöva täcka en större del av Ukrainas behov.</p>
           <p><a href="https://www.lemonde.fr/en/france/article/2026/10/25/marine-le-pen-vows-to-restore-rule-of-law-at-presidential-campaign-kickoff_6763891_7.html">Le Pen inledde presidentvalskampanjen i Orléans den 25 oktober</a>. Hon lyfte lag och ordning samt starkare statlig auktoritet som huvudteman (Le Monde med AFP, 2026).</p>
           <p>Hennes möjlighet att kandidera har påverkats av rättsprocessen om EU-parlamentsmedel. <a href="https://lcp.fr/actualites/marine-le-pen-condamnee-mais-pas-ecartee-de-la-presidentielle-le-recit-depuis-la-cour-d">Paris appellationsdomstol fastställde hennes skuld den 7 juli</a>, men kortade den ovillkorliga delen av valbarhetsförbudet till 15 månader. Den tiden hade då redan löpt ut. Domen omfattade även ett års ovillkorligt fängelse, med möjlighet till elektronisk övervakning. <a href="https://lcp.fr/actualites/ce-soir-je-suis-candidate-a-l-election-presidentielle-annonce-marine-le-pen-438886">Samma kväll meddelade Le Pen att hon avsåg att kandidera 2027 och gå vidare till kassationsdomstolen</a> (Marchal, 2026; LCP, 2026).</p>
@@ -1283,7 +1373,7 @@ html{overflow-x:clip}
           <p>Även USA försöker påverka Europas politiska riktning. <a href="https://www.whitehouse.gov/wp-content/uploads/2025/12/2025-National-Security-Strategy.pdf">Den amerikanska nationella säkerhetsstrategin från 2025</a> välkomnar inflytandet för vad dokumentet kallar patriotiska europeiska partier och förespråkar motstånd inom Europa mot dess nuvarande kurs. USA gör detta öppet genom ett officiellt strategidokument. De ryska kampanjerna ovan använder dolda eller vilseledande kanaler. Aktörerna och metoderna är olika även när deras budskap i enskilda frågor pekar åt samma håll (The White House, 2025).</p>
           <p>Sociala plattformar påverkar dessutom vilket innehåll användare möter. <a href="https://news.sky.com/story/how-sky-news-investigated-xs-algorithm-for-political-bias-13463916">Sky News undersökte nio nya X-konton i november 2025</a> och fann att rekommendationsflödena förstärkte högerorienterat och extremistiskt innehåll. Experimentet visar vad dessa konton exponerades för. Det mätte inte om användarna ändrade uppfattning eller hur rekommendationerna påverkade ett valresultat (Sky News Data and Forensics Unit, 2025).</p>
           <p>De tre länderna visar hur politiska beslut kan påverka olika delar av ett försvarssamarbete. I Tyskland gäller frågan bland annat vem som får del av känsliga planer. I Frankrike kan presidentvalet ändra villkoren för avskräckning och Ukrainastöd. I Storbritannien avgör budgetar och fortsatta leveranser hur åtagandena omsätts i handling. Ett allierat land kan ha de resurser Sverige behöver men ändå begränsa när och hur de får användas.</p>
-          <h3 id="ryska-roda-linjer">Förhandlingarna om Ukraina och Europas säkerhetsvillkor</h3>
+          <h3 class="topic-visual topic-ukraine" id="ryska-roda-linjer">Förhandlingarna om Ukraina och Europas säkerhetsvillkor</h3>
 
           <p>Den 5 september reste Donald Trumps sändebud Steve Witkoff och Jared Kushner till Moskva för samtal med Vladimir Putin. Mötet varade omkring tre timmar. Dagen därpå fortsatte de till Kyiv, där de träffade Volodymyr Zelenskyj och även deltog i samtal med företrädare för Frankrike, Storbritannien och Tyskland. Förhandlingsspåret omfattade därmed både direktkontakter mellan Washington och Moskva och konsultationer med Ukraina och europeiska partner (<a href="https://www.osw.waw.pl/en/publikacje/analyses/2026-09-07/witkoff-and-kushner-moscow-and-kyiv-white-house-resumes-peace">Rodkiewicz et al., 2026</a>).</p>
           <p>Kontakterna mellan Washington och Moskva hade föregåtts av diskussioner om ryska ”röda linjer”. Enligt <a href="https://www.aa.com.tr/en/russia-ukraine-war/us-special-envoy-says-possible-peace-talks-in-next-3-weeks-may-lead-to-putin-zelenskyy-summit/3837142">Anadolus rapportering den 22 februari</a> sade Witkoff att Putin varit tydlig med sina krav och motiv. Witkoff försvarade samtalen som nödvändiga för att förstå motparten. Kraven är Rysslands förhandlingspositioner, inte internationellt erkända begränsningar av Ukrainas rätt att fatta egna beslut (Eruygur, 2026).</p>
@@ -1434,7 +1524,7 @@ html{overflow-x:clip}
           </svg>
         </figure>
 
-        </div></div><div class="longform"><h3>Ukraina och Ryssland: krigets uthållighet och Europas stöd</h3>
+        </div></div><div class="longform"><h3 class="topic-visual topic-ukraine">Ukraina och Ryssland: krigets uthållighet och Europas stöd</h3>
 
           <p>Ryssland kan bygga ny militär förmåga även om striderna i Ukraina avtar. <a href="https://www.forsvarsmakten.se/contentassets/aaf80ccf99ad476caef74fa179cbc010/must-arsoversikt-2025.pdf">Militära underrättelse- och säkerhetstjänsten, Must, bedömde i februari</a> att Ryssland redan kunde <a href="https://www.linkedin.com/posts/svensk-osint_must-allvarligt-och-konkret-ryskt-hot-mot-activity-7429440558890377217-z4FJ">genomföra ett begränsat väpnat angrepp i Sveriges närområde</a>. På tre till fem års sikt skulle landet kunna angripa större militära enheter eller ta avgränsade områden. Det är en bedömning av vad Ryssland kan göra, inte ett besked om att ett angrepp har beslutats. En vapenvila på ryska villkor kan enligt Must frigöra resurser för upprustning, medan sanktioner och ekonomiska problem kan bromsa den.</p>
           <p><a href="https://raport.valisluureamet.ee/2026/en/5-russian-armed-forces/5-2-russia-expands-large-calibre-ammunition-production-and-stockpiles-for-potential-future-conflicts/">Estlands utrikesunderrättelsetjänst uppskattar i sin rapport för 2026</a> att Ryssland under 2025 producerade omkring sju miljoner artillerigranater, granatkastarprojektiler och raketer i de kalibrar rapporten räknar. Import från Iran och Nordkorea bidrar till försörjningen. Ryssland försöker också köpa västlig industriutrustning genom mellanhänder. Ukrainas <a href="https://war-sanctions.gur.gov.ua/en/components">databas War &amp; Sanctions</a> dokumenterar <a href="https://www.linkedin.com/feed/update/urn:li:activity:7478799233073135616">utländska komponenter i ryska vapen</a>. Databasen visar att komponenterna finns i vapnen, men inte om tillverkarna kände till den ryska slutanvändningen.</p>
@@ -1446,7 +1536,7 @@ html{overflow-x:clip}
           <p id="ukraina-elnat-karnsakerhet"><a href="https://www.iaea.org/newscenter/pressreleases/update-372-iaea-director-general-statement-on-situation-in-ukraine">Internationella atomenergiorganet IAEA rapporterade den 23 oktober</a> att en skada vid Zaporizjzjas då enda fungerande externa kraftledning hade reparerats under en lokalt överenskommen vapenvila. Arbetet hade tillfälligt behövt avbrytas av säkerhetsskäl. Även andra kärnkraftverk hade drabbats av nätstörningar, sänkt reaktoreffekt och ett tillfälligt fullständigt elavbrott vid en inspekterad transformatorstation. Anläggningarna fortsatte att fungera efter de senaste angreppen; någon kärnkraftsolycka redovisades inte (IAEA, 2026).</p>
           <p>Vid Zaporizjzja räckte det inte att ha tekniker och reservdelar. Personalen behövde en lokal vapenvila för att nå kraftledningen och arbeta utan beskjutning. Samma problem kan förlänga andra avbrott: resurserna finns, men reparatörerna kommer inte fram.</p>
 
-          <h3 id="ostersjon">Östersjön: skydd av infrastruktur och fungerande förbindelser</h3>
+          <h3 class="topic-visual topic-baltic" id="ostersjon">Östersjön: skydd av infrastruktur och fungerande förbindelser</h3>
 
           <p>I Östersjön delar handel, energiförsörjning och datatrafik utrymme med militär verksamhet. Efter skador på kritisk undervattensinfrastruktur startade Nato <a href="https://www.nato.int/en/what-we-do/operations-and-missions/natos-maritime-activities">Baltic Sentry</a> 2025. Fartyg, patrullflyg och marina drönare används för att stärka övervakningen. Utredningarna av vem som orsakat de enskilda skadorna sker parallellt med denna ökade närvaro (Nato, 2025).</p>
           <p id="baltikum-aktivt-luftforsvar">Den ökade beredskapen har också inneburit aktiv bekämpning. <a href="https://www.lsm.lv/raksts/zinas/latvija/08.06.2026-latvija-pirmo-reizi-notriec-no-arzemem-ielidojusu-dronu.a650545/">Lettlands försvarsmakt uppgav den 8 juni att allierat stridsflyg skjutit ned en utländsk drönare i Latgale</a>. Det var den första sådana nedskjutningen i lettiskt luftrum och befolkningen varnades. Försvarsmakten hänvisade till rysk elektromagnetisk krigföring som orsak till avvikelsen, men drönarens ursprung och typ var då ännu inte slutligt klarlagda. Något avsiktligt ryskt angrepp mot Lettland fastställdes inte i beskedet (LSM &amp; Spundiņa, 2026).</p>
@@ -1465,7 +1555,7 @@ html{overflow-x:clip}
 <summary>Intressanta fall under året</summary>
 <p>Svenska myndigheter <a href="https://www.linkedin.com/posts/svensk-osint_fartyg-bordat-i-%C3%B6stersj%C3%B6n-polismyndigheten-activity-7435748342091014144-m_Js">bordade fartyget Caffa utanför Trelleborg den 6 mars</a>. Det togs senare i beslag inom ramen för internationell rättslig hjälp om misstänkt transport av stulet ukrainskt spannmål. <a href="https://www.linkedin.com/feed/update/urn:li:activity:7478797425449639936">Frågan om överlämnande till Ukraina prövades i domstol</a>. Efter <a href="https://www.sverigesradio.se/artikel/hogsta-domstolen-fartyget-caffa-kan-lamnas-till-ukraina">Högsta domstolens besked, rapporterat den 6 augusti</a>, stod tillståndet till överlämnande fast. Det fysiska överlämnandet har inte verifierats i de citerade uppgifterna. Ärendet gäller misstänkta spannmålstransporter, inte sabotage.</p><p>Även landförbindelser har skadats. <a href="https://www.linkedin.com/posts/svensk-osint_sabotage-stoppade-t%C3%A5gtrafiken-p%C3%A5-fredagen-activity-7474032310921629697-kGoh">Kabelkapningen i Ylöjärvi den 19 juni</a> stoppade tåg mellan Tammerfors och Seinäjoki i flera timmar. Den 26 juni kapades telekablar i Malmi i Helsingfors. <a href="https://poliisi.fi/en/-/nbi-investigates-cable-severing-cases">Finlands centralkriminalpolis bekräftade den 30 juni att båda skadorna var avsiktliga</a>. Myndigheten utredde grov skadegörelse och, i Malmi, störning av telekommunikation. Någon beställare eller något motiv angavs inte.</p>
 <p>Finland utredde under hösten även misstänkta intrång i riksdagsledamöters bostäder. <a href="https://poliisi.fi/en/-/the-police-have-launched-a-preliminary-inquiry-into-a-security-matter-concerning-members-of-parliament">Polisen uppgav den 1 oktober</a> att utredningen inletts efter information från riksdagen och fortfarande var i ett tidigt skede. Någon gärningsperson, motivbild eller koppling till främmande makt hade inte offentliggjorts (<a href="https://yle.fi/a/74-20249362">Yle, 2026</a>).</p> </details>
-          <h3>Arktis: militär närvaro och tvister om ryska tillgångar</h3>
+          <h3 class="topic-visual topic-arctic">Arktis: militär närvaro och tvister om ryska tillgångar</h3>
 
 <p>USA, Danmark och Grönland <a href="https://www.linkedin.com/feed/update/urn:li:activity:7508419395371728897">undertecknade ett nytt försvarsavtal den 22 september</a>. Narsarsuaq och Mestersvig pekas ut som planerade försvarsområden. <a href="https://stm.dk/presse/pressemoedearkiv/2026/pressemoede-den-22-september-2026/">Danmarks statsministerium framhöll dansk suveränitet, grönländskt självbestämmande och Natoanknytningen</a>. Avtalet beskrivs närmare i kapitel 1 (Statsministeriet, 2026).</p>
           <p>Att kunna använda baser i Arktis kräver särskilda resurser. Avstånd, kyla, mörker och begränsade transportvägar försvårar både övervakning och försörjning. Nato lanserade <a href="https://www.nato.int/en/what-we-do/deterrence-and-defence/strengthening-natos-eastern-flank">Arctic Sentry</a> i februari. I september tränade över 400 militärer från omkring tio Natoländer på Grönland under den danskledda övningen Arctic Shield. <a href="https://www.linkedin.com/feed/update/urn:li:activity:7506954652257755136">Svenska hemvärnssoldater deltog också</a>. Övningarna ger erfarenhet av de förhållanden som allierade kan behöva verka under (Danish Defence, 2026; Nato, 2026).</p>
@@ -1565,7 +1655,7 @@ html{overflow-x:clip}
 <p id="gaslager-vinter-2027"><a href="https://www.reuters.com/business/energy/europe-set-another-year-high-gas-prices-reserves-hit-lows-2026-10-12/">Reuters rapporterade den 12 oktober</a> att Hormuzkrisen hade begränsat LNG-exporten från Qatar och Förenade arabemiraten. Analytiker räknade med att Europas gaslager skulle vara fyllda till 75–78 procent den 1 november, omkring tio procentenheter under femårsgenomsnittet. Det ger mindre marginaler under vintern och gör lagren svårare att fylla inför nästa vinter, även om gasen fortsätter att levereras.</p>
           <p>För Sverige är de första följderna sannolikt högre priser på energi, frakt, försäkringar och industrins insatsvaror. Kabelhoten i Persiska viken kan dessutom beröra internet-, betalnings- och molntjänster som används av svenska företag. Kostnader och digital verksamhet kan påverkas utan att någon svensk anläggning angrips.</p>
 
- <h3 id="baltikum-sabotage">Baltikum: sabotage mot försvarsindustri och förbindelser</h3>
+ <h3 class="topic-visual topic-sabotage" id="baltikum-sabotage">Baltikum: sabotage mot försvarsindustri och förbindelser</h3>
 
           <p>De baltiska ärendena berör flera delar av stödet till Ukraina: försvarsföretag, järnvägar, pakettransporter och människor kring leveranserna. Myndigheter har i flera fall pekat ut ryska intressen eller underrättelsetjänster. Bevisläget sträcker sig från misstankar och åtal till en fällande dom. Flera besked under 2026 gäller dessutom angrepp från 2024 eller 2025; de är rättsliga utvecklingar under året och ska inte räknas som nya angrepp 2026.</p>
 
@@ -2033,7 +2123,7 @@ html{overflow-x:clip}
 
         <div class="longform chapter-context"><p>Under 2026 framträdde tre skilda hotspår. Säpo avbröt enligt egen uppgift en rysk underrättelseoperation. Polisen ingrep mot nätverk som rekryterade unga till våld på beställning. Myndigheter och redaktioner upptäckte falska nyhetsklipp och samordnade konton under valrörelsen. Händelserna hade inte en gemensam ledning, men uppdragsgivarna kunde i samtliga fall verka på avstånd.</p><p>Ett ombud utför ett uppdrag åt någon som inte vill synas själv. Det kan vara en person vid en beskickning, en kriminell mellanhand eller en ung utförare som bara känner till nästa kontakt i kedjan. Digitala plattformar används för att hitta personer, lämna instruktioner, hota och betala. Där möts statliga intressen och kriminella metoder, även när syftet och beställaren är olika.</p></div>
 
- <div class="longform"><h3>Hotbilden: statliga intressen möter svenska samhällsfunktioner</h3>
+ <div class="longform"><h3 class="topic-visual topic-sabotage">Hotbilden: statliga intressen möter svenska samhällsfunktioner</h3>
 
           <p><a href="https://www.sakerhetspolisen.se/om-sakerhetspolisen/publikationer/sakerhetspolisens-lagesbilder/sakerhetspolisen-2025-2026/ryssland-kina-och-iran.html">Säkerhetspolisens lägesbild 2025–2026</a> pekar ut Ryssland, Kina och Iran som de största statliga säkerhetshoten mot Sverige. Säkerhetspolisen, ofta kallad Säpo, beskriver olika intressen bakom hoten. Ryssland ägnar sig åt underrättelseinhämtning och påverkan och bedöms utgöra ett sabotagehot. Kina söker bland annat teknik och strategiska tillgångar. Iranska säkerhetstjänster har kartlagt och utsatt oppositionella i Sverige för hot och påtryckningar (Säkerhetspolisen, 2026a).</p>
           <p>Den direkta kunden behöver inte vara den slutliga användaren. <a href="https://www.sakerhetspolisen.se/om-sakerhetspolisen/publikationer/sakerhetspolisens-lagesbilder/sakerhetspolisen-2025-2026/olovlig-teknikanskaffning.html">Säpo beskriver misstänkta upplägg där teknik köpts i Sverige och förts till Ryssland genom företag i tredje land</a>. En leverantör måste därför kunna kontrollera vem som äger mellanleden, vart varan skickas vidare och vad den ska användas till (Säkerhetspolisen, 2026b).</p>
@@ -2141,7 +2231,7 @@ html{overflow-x:clip}
  <details class="report-disclosure case-collection"><summary>Jönköping: misstänkt sprängplan mot en person</summary>
 <p id="radhusparken-jkp"><strong>Jönköping – misstänkt sprängplan mot en person.</strong> Ett skarpt farligt föremål hittades i Rådhusparken den 24 augusti. En 35-årig man häktades den 28 augusti på sannolika skäl misstänkt för förberedelse till grov allmänfarlig ödeläggelse och grovt brott mot lagen om brandfarliga och explosiva varor. <a href="https://www.svt.se/nyheter/lokalt/jonkoping/farliga-foremalet-i-radhusparken-var-riktat-mot-en-person">Polisen uppgav att föremålet var avsett mot en person</a>. Enligt Sveriges Radio den 3 september blev mannen kvar i häktet efter hovrättsbeslut. Åklagaren uppgav att det då saknades misstanke om koppling till valrörelsen eller en politiker. Någon senare dom har inte verifierats i de citerade uppgifterna.</p>
 </details>
-<h3 id="valpaverkan">Valet 2026: påverkansförsök och genomförande</h3>
+<h3 class="topic-visual topic-influence" id="valpaverkan">Valet 2026: påverkansförsök och genomförande</h3>
           <p>Inför valet förberedde sig myndigheter och redaktioner på falska uppgifter, kapade avsändare och koordinerade konton. <a href="https://www.regeringen.se/pressmeddelanden/2026/07/nationell-strategi-ska-starka-sveriges-psykologiska-forsvar/">Regeringens strategi för psykologiskt försvar, presenterad den 28 juli</a>, omfattar bland annat myndighetskommunikation, mediernas beredskap och motståndskraft mot vilseledande påverkan. Under valrörelsen prövades delar av det arbetet i skarpt läge.</p>
 <p>Den 18 augusti publicerades sju fabricerade videoklipp på X inom ungefär en timme. De såg ut som inslag från etablerade medier och innehöll bland annat falska uppgifter om valfusk. <a href="https://www.linkedin.com/posts/svensk-osint_proryskt-trolln%C3%A4tverk-riktar-in-sig-p%C3%A5-svenska-activity-7495907799051165698-mCAe">Analysgruppen Antibot4Navalny kopplade spridningsmönstret till kampanjen Matrjosjka</a>, även kallad Operation Overload. SVT verifierade att klippen var falska. Kontona taggade journalister och redaktioner för att få spridning och tvinga fram faktagranskning (SVT Nyheter, 2026).</p><p>Myndigheten för psykologiskt försvar, MPF, beskrev en annan metod i <a href="https://mpf.se/publikationer/publikationer/2026-08-31-natverket-holiday--ett-exempel-pa-hur-ai-anvands-for-otillborlig-informationspaverkan">rapporten om nätverket Holiday</a>. Omkring 1 200 konton på X publicerade över 50 000 inlägg, kommentarer och delningar under 2025 och 2026. MPF bedömde att en statlig aktör hade köpt nätverket från ett företag i Östasien, men namngav inte staten. Kontona spred polariserande innehåll om svenska samhällsfrågor. Samtliga stängdes efter samverkan mellan MPF och Post- och telestyrelsen, PTS (MPF, 2026).</p><p>Matrjosjka lånade mediernas avsändare. Holiday använde många konton för att få ett budskap att se brett förankrat ut. Granskningarna visar hur kampanjerna arbetade, men inte hur många väljare de påverkade. De belägger inte heller en gemensam beställare.</p><p><a href="https://mpf.se/om-oss/nyheter/2026/2026-09-14-inga-storre-informations--eller-cyberangrepp-mot-svenska-valet">MPF och Nationellt cybersäkerhetscenter bedömde dagen efter valet</a> att det hade genomförts utan större cyberangrepp eller koordinerad informationspåverkan från främmande makt. MPF hade före valet bedömt att Sverige inte var en prioriterad måltavla. Utfallet visar att valet inte stördes allvarligt. Det säger mindre om hur skyddet skulle klara en större och mer samlad operation.</p>
 <details class="report-disclosure case-collection"><summary>Europeiska exempel på vilseledande innehåll</summary>
@@ -2156,7 +2246,7 @@ html{overflow-x:clip}
 </details>
 <p>Fördjupning: <a href="https://veckobrevskartan.github.io/INBLICK-informationskrigsf-ring-valet-2026/">analysen av valpåverkan</a> och <a href="https://www.linkedin.com/feed/update/urn:li:activity:7506961547898896384">skillnaderna mellan Holiday och Matrjosjka</a>.</p>
 
- <h3 id="extremism-2026">Våldsbejakande extremism i en orolig omvärld</h3>
+ <h3 class="topic-visual topic-influence" id="extremism-2026">Våldsbejakande extremism i en orolig omvärld</h3>
 
           <p>Krig och politiska konflikter utanför Sverige används i extremistisk propaganda för att peka ut fiender och motivera våld. Rekrytering, uppmuntran och planering kan ske i nätforum även när en person senare agerar ensam. <a href="https://www.sakerhetspolisen.se/ovriga-sidor/nyheter/nyheter/2026-02-10-bedomning-av-terrorhotet-2026.html">Nationellt centrum för terrorhotbedömning, NCT, som samlar bedömningar från Säpo, FRA och Must, uppgav i februari</a> att attentatshotet under 2026 främst kom från ensamagerande inom våldsbejakande islamism och högerextremism (Säkerhetspolisen, 2026c). Årets rättsfall omfattar även vänsterextremt våld och hot mot politiker.</p>
 
@@ -2221,7 +2311,7 @@ html{overflow-x:clip}
 
           <span id="kameror-skyddsobjekt"></span>
 
- <h3 id="fastigheter-sakerhet">Fastigheter och tillträde nära känslig verksamhet</h3>
+ <h3 class="topic-visual topic-sabotage" id="fastigheter-sakerhet">Fastigheter och tillträde nära känslig verksamhet</h3>
 
           <p>Säkerhetsfrågan är vad en plats ger tillgång till. En fastighet nära en militär anläggning, hamn, flygplats eller viktig försörjning kan ge fri sikt, utrymme för teknisk utrustning och möjlighet att vistas länge i området. Bedömningen måste därför omfatta den verkliga kontrollen över platsen och hur den används. Ägarens nationalitet eller fastighetens läge är inte i sig bevis för spioneri.</p>
           <p><a href="https://www.regeringen.se/pressmeddelanden/2026/06/en-ny-utredning-for-att-kunna-avbryta-fastighetsinnehav-som-hotar-sveriges-sakerhet/">Regeringen tillsatte den 8 juni en utredning</a> om nya möjligheter att expropriera fastigheter till skydd för Sveriges säkerhet. Expropriation innebär att staten med stöd av lag kan ta över ett innehav mot ersättning. Utredningen ska lämna sitt förslag senast den 31 mars 2027; någon ny befogenhet hade inte införts under rapportåret.</p>
@@ -2303,7 +2393,7 @@ html{overflow-x:clip}
 
           <p>Andøya-fallet i kartan omfattar både ett hus och en 22 ton tung mobil satellitmottagare som beslagtogs innan den togs i drift. Fastigheten gav en möjlig etableringsplats; den tekniska utrustningen visar vad platsen skulle kunna användas till. Sambandet mellan polära satellitbanor, markstationer och läget i norr behandlas i <a href="https://veckobrevskartan.github.io/INBLICK-Arktis-och-sateliter/">INBLICK: Satelliter och Arktis</a>.</p>
 
-          <h3 id="fibersabotage-sverige">Fibersabotage: ett avbrott som drabbade flera tjänster</h3>
+          <h3 class="topic-visual topic-baltic" id="fibersabotage-sverige">Fibersabotage: ett avbrott som drabbade flera tjänster</h3>
           <p>I september 2025 saboterades flera fiberkabelskåp i Eskilstuna och Kvicksund. <a href="https://www.eem.se/om-oss/aktuellt-och-press/aktuellt/sabotage-mot-fiberkabelskap-stor-internet">Eskilstuna Energi och Miljö uppgav</a> att stora delar av Eskilstuna och tidigare hela Kvicksund förlorade internet. <a href="https://www.svt.se/nyheter/lokalt/sormland/sabotage-mot-kabelskap-stort-internetavbrott-i-eskilstuna">SVT:s uppföljning</a> beskrev nära 2 000 drabbade kunder, störningar i 4G- och 5G-nät och problem vid flera vårdcentraler i Strängnäs. Den som förlorade sin fasta anslutning kunde inte räkna med att mobilnätet fungerade som reserv.</p>
           <p><a href="https://www.svt.se/nyheter/lokalt/sormland/foretagare-doms-till-fangelse-efter-fibersabotage">Stockholms tingsrätt dömde den 25 september 2026 en man till två år och sex månaders fängelse</a>, enligt SVT:s referat. Domen omfattade elva fall av sabotage och elva fall av skadegörelse i Eskilstuna, Katrineholm, Västerås och Västervik. Rätten bedömde gärningarna som spontana och utan planering. <a href="https://www.svt.se/nyheter/lokalt/sormland/sabotagemal-flyttades-skalen-hemligstamplas-med-hanvisning-till-rikets-sakerhet">Skälen till att målet tidigare flyttats till Stockholm hade sekretessbelagts med hänvisning till rikets säkerhet</a>, men vanlig polis, inte Säpo, utredde brotten. Någon främmande styrning fastställdes inte. Domen visar att även enkla ingrepp utan omfattande planering kan ge stora samhällseffekter.</p>
 
@@ -3419,7 +3509,7 @@ html{overflow-x:clip}
   <figcaption id="dependency-caption">Analytisk sambandsbild med utvalda beroenden och ett illustrativt förlopp. Källor: <a href="https://www.regeringen.se/informationsmaterial/2026/07/nationell-strategi-for----forsorjningsberedskap-for-totalforsvarsperioden-20252030/">Regeringens försörjningsstrategi (2026)</a> och <a href="https://www.nato.int/en/about-us/official-texts-and-resources/official-texts/2026/09/15/2026-resilience-baseline-requirements">Natos krav på motståndskraft (2026)</a>.</figcaption>
 </figure>
 
-        </div></div><div class="longform"><h3>Nato: militära uppgifter vilar på civila system</h3>
+        </div></div><div class="longform"><h3 class="topic-visual topic-resilience">Nato: militära uppgifter vilar på civila system</h3>
 
           <p>Sverige har två sammanhängande uppgifter i norra Europa: att bidra med egna förband och att kunna ta emot allierad förstärkning. Under <a href="https://www.regeringen.se/artiklar/2026/03/pal-jonson-besokte-ovningen-cold-response-2026/">Cold Response 26</a> övade allierade styrkor rörelser från Sverige till norra Finland. I juni etablerades Natos framskjutna närvaro i Finland. Den svenska stridsgruppen utgår från Boden och ska kunna förstärka Finland och verka på Nordkalotten (<a href="https://www.regeringen.se/pressmeddelanden/2026/06/svensk-trupp-stalls-under-natobefal-inom-ramen-for-flf-finland/">Regeringskansliet, 2026f</a>).</p>
           <p><a href="https://www.regeringen.se/regeringens-politik/totalforsvar/forsvarsbeslutet-20252030/">Försvarsbeslutet</a> anger att Sverige ska stödja allierade operationer på eller från svenskt territorium. Det kräver hamnar, flygplatser, vägar och järnvägar, men också skyddad ledning, luftövervakning, drivmedel, underhåll, sjukvård och fungerande datautbyte. Flera av dessa resurser används samtidigt av civila verksamheter och det svenska försvaret.</p>
@@ -3455,7 +3545,7 @@ html{overflow-x:clip}
 </figure>
 
  <p>Drivmedel behövs för förband, reservkraft och civila transporter. Den 22 juli godkände Nordatlantiska rådet <a href="https://www.linkedin.com/feed/update/urn:li:activity:7486367599421931520">Natos plan för drivmedelsförsörjning</a>, med investeringar om 27 miljarder euro i lager, distribution och nya ledningar. <a href="https://nato.int/en/news-and-events/articles/news/2026/07/22/north-atlantic-council-approves-nato-funding-for-upcoming-years-agrees-fuel-supply-chain-plan">Beslutet</a> gäller en fortsatt utbyggnad. Under 2027 måste verksamheterna därför fortfarande förlita sig på befintliga lager och distributionsvägar.</p>
-          <h3 id="underrattelsereformen">Underrättelseförmåga: UND startar under pågående arbete</h3>
+          <h3 class="topic-visual topic-scenarios" id="underrattelsereformen">Underrättelseförmåga: UND startar under pågående arbete</h3>
 
           <p>Sveriges utrikes underrättelsetjänst, UND, ska från den 1 januari 2027 inhämta, bearbeta och analysera information om förhållanden utanför Sverige. <a href="https://www.riksdagen.se/sv/dokument-och-lagar/dokument/betankande/sveriges-utrikes-underrattelsetjanst_hd01uu24/">Riksdagen godkände den 13 augusti de lagändringar som krävs för myndighetsstarten</a>. <a href="https://www.regeringen.se/informationsmaterial/2026/09/nationell-underrattelsestrategi/">Den nationella underrättelsestrategin</a> anger prioriteringarna, men myndigheten behöver också personal, säkra system, informationsåtkomst och fungerande samarbete med andra myndigheter.</p>
                     <p>Must-chefen Thomas Nilsson <a href="https://www.linkedin.com/feed/update/urn:li:activity:7475973201743892480">varnade i juni för ett tillfälligt tapp i förmågan när UND byggs upp</a>. Risken uppstår om personal flyttas innan den nya organisationen fungerar, om en uppgift faller mellan gammalt och nytt ansvar eller om pågående inhämtning tappar tillgång till information.</p>
@@ -3485,7 +3575,7 @@ html{overflow-x:clip}
           <figcaption>Planer och beslut är steg i uppbyggnaden. De visar inte i sig att förmågan är fullt införd, samövad eller uthållig.</figcaption>
         </figure>
 
- <h3 id="forsorjningsberedskap">Försörjning, skydd och reparation: från beslut till beredskap</h3>
+ <h3 class="topic-visual topic-resilience" id="forsorjningsberedskap">Försörjning, skydd och reparation: från beslut till beredskap</h3>
 
           <p>Regeringens första <a href="https://www.regeringen.se/informationsmaterial/2026/07/nationell-strategi-for----forsorjningsberedskap-for-totalforsvarsperioden-20252030/">nationella strategi för försörjningsberedskap</a> beslutades den 30 juli. Den ska förbereda Sverige för tre problem: att en vara inte kommer fram, att marknaden slutar fungera som vanligt och att tillgången inte räcker till alla. De 19 åtgärderna omfattar bland annat tidig varning, analyser av beroenden, lager, kontinuitetsplanering och prioritering vid brist. Företag måste delta eftersom de producerar, lagrar, säljer och transporterar en stor del av det som behövs (Regeringskansliet, 2026b).</p>
           <p>Den 2 september undertecknade de nordiska länderna en <a href="https://regeringen.se/pressmeddelanden/2026/09/nordisk-deklaration-om-forsorjningsberedskap-undertecknad/">deklaration om gemensam försörjningsberedskap</a>. Samarbetet kan ge Sverige tillgång till produktion, lager och tjänster i grannländerna. Men ett läkemedel, en reservdel eller en tekniker som behövs i Sverige kan samtidigt behövas där. Avtal, gemensamma prioriteringar och möjlighet att genomföra leveransen avgör om stödet finns när flera länder är belastade.</p>
@@ -3522,7 +3612,7 @@ html{overflow-x:clip}
           <p><a href="https://www.riksbank.se/en-gb/press-and-published/notices-and-press-releases/press-releases/2026/offline-card-payments--the-options-are-now-expanding/">Riksbanken meddelade den 1 juli att möjligheten till offlinebetalningar med kort utökats</a> för köp av bland annat livsmedel, läkemedel och drivmedel vid bemannade stationer. Lösningen omfattar huvuddelen av de Visa- och Mastercardkort för vuxna som ingår i överenskommelsen. Den kräver fysiskt kort och pinkod; offlinebetalning med Swish var fortfarande under utredning vid beskedet.</p>
 <p>De köp som omfattas kan genomföras trots ett kommunikationsavbrott. Det ger en konkret reservmöjlighet. Butiken behöver fortfarande el, personal och varor för att kunna hålla öppet.</p>
 
-          <h3 id="tyskland-efter-avbrottet">Tyskland: ett verkligt avbrott blottlade följdfelen</h3>
+          <h3 class="topic-visual topic-sabotage" id="tyskland-efter-avbrottet">Tyskland: ett verkligt avbrott blottlade följdfelen</h3>
 
           <p>Tysklands värde som jämförelse ligger i den öppna efteranalysen. Två riktade bränder mot Berlins elinfrastruktur går att följa från skadan till de åtgärder som följde. I september 2025 blev bland annat teknikparken Adlershof utan el i mer än två dygn. I januari 2026 drabbades omkring 100&nbsp;000 människor, 45&nbsp;000 hushåll och drygt 2&nbsp;000 verksamheter när starkströmskablar sattes i brand vid Teltowkanalen. Elen var tillbaka för alla den 7 januari (<a href="https://www.berlin.de/sen/energie/resilienz-kritischer-infrastrukturen-in-berlin/">Land Berlin, 2026</a>).</p>
 
@@ -3547,7 +3637,7 @@ html{overflow-x:clip}
 
           <p>För Sverige är den användbara frågan inte bara om ett objekt är bevakat. En reservplan behöver ange vilka mobilmaster som får el, bränsle och reparatörstillträde, vilka byggnader som kan värmas och drivas fristående och vem som får omfördela personal och materiel när flera verksamheter behöver samma resurser. Berlins erfarenhet flyttar därmed fokus från det första skyddet till förmågan att hålla tjänsten i gång och återställa den.</p>
 
-          <h3 id="satelliter">Rymdtjänster: tid, positionering, lägesbilder och kommunikation</h3>
+          <h3 class="topic-visual topic-space" id="satelliter">Rymdtjänster: tid, positionering, lägesbilder och kommunikation</h3>
 
           <p>Rymdtjänster används i verksamheter som sällan beskrivs som rymdverksamhet. Mobilnät behöver gemensam tid för att hålla basstationer synkroniserade. Kraftsystem använder tid och frekvens i övervakning och styrning. Banker och handelsplatser tidsstämplar transaktioner. Räddningsinsatser, lantmäteri, jordbruk, sjöfart och flyg använder satellitbaserad positionering. Satellitbilder och väderdata bidrar till varningar och skadebedömningar vid bränder, översvämningar, torka och andra nödlägen.</p>
           <p>Globala satellitnavigeringssystem, GNSS, levererar position, navigering och tid. GPS är ett av systemen; EU:s Galileo, ryska GLONASS och kinesiska BeiDou är andra. En verksamhet kan vara beroende av GNSS utan att själv äga en mottagare. Beroendet kan ligga i ett mobilnät, ett styrsystem, en datatjänst eller utrustning från en leverantör.</p>
@@ -3627,7 +3717,7 @@ html{overflow-x:clip}
             </figure>
           </div>
 
-          <h3 id="ravaror-halvledare">Råvaror och halvledare: från tillgång till fungerande leveranskedjor</h3>
+          <h3 class="topic-visual topic-chips" id="ravaror-halvledare">Råvaror och halvledare: från tillgång till fungerande leveranskedjor</h3>
 
           <p>Elektronik, sensorer, energisystem och försvarsmateriel behöver mineral och metaller som ofta bryts eller förädlas i ett fåtal länder. EU-kommissionen anger att Kina står för hela EU:s tillgång på tunga sällsynta jordartsmetaller. EU:s förordning om kritiska råmaterial innehåller därför mål för utvinning, bearbetning och återvinning inom unionen till 2030. Den framtida produktionen återstår att bygga upp (Europeiska kommissionen, 2026).</p>
           <p>Tillgången påverkas också av exportregler. Kina förde den 24 april upp <a href="https://www.linkedin.com/posts/svensk-osint_china-restricts-dual-use-exports-to-seven-activity-7453391875048189952-ABBO">sju EU-enheter, däribland Hensoldt och FN Herstal</a> på sin kontrollista för produkter med dubbla användningsområden. Den 24 juli följde <a href="https://www.linkedin.com/feed/update/urn:li:activity:7487061793706663937">ytterligare 14 enheter, bland dem Rheinmetall</a>. <a href="https://www.mofcom.gov.cn/zfxxgk/gkml/art/2026/art_1030ba86ac374a129893d701ee7bde9b.html">Aprilbeslutet</a> och <a href="https://www.mofcom.gov.cn/zwgk/zcfb/art/2026/art_2c9a32aa73bf4f5ea80ffa83e62fb259.html">julibeslutet</a> förbjuder leveranser av kontrollerade produkter till de namngivna mottagarna. Kontrollerna gäller de namngivna företagen och organisationerna, inte all råvaruexport till EU.</p>
@@ -3781,7 +3871,7 @@ html{overflow-x:clip}
       <p class="scenario-caveat">Förloppen är analytiska stresstest, inte prognoser. Samtidiga störningar kan ha olika orsaker och utförare.</p>
     </div>
 
-    <h3 id="scenarier-2027">Tre möjliga utvecklingsförlopp</h3>
+    <h3 class="topic-visual topic-scenarios" id="scenarier-2027">Tre möjliga utvecklingsförlopp</h3>
     <details class="scenario-narrative"><summary id="scenario-uppbyggnad">1. Återkommande störningar, små marginaler</summary><div>
     <ol class="scenario-sequence" aria-label="Händelsekedja i scenario ett">
       <li><strong>Förmågor byggs under drift</strong>UND startar, regioner övar reservdrift och masskadeledning och reparationsberedskapen organiseras samtidigt som ordinarie uppgifter fortsätter.</li>

@@ -758,6 +758,31 @@ html{overflow-x:clip}
 }
 </style>
 
+  <style id="germany-lessons-styles">
+    .germany-lessons{margin:26px 0 24px;border:1px solid rgba(184,151,58,.38);background:linear-gradient(145deg,rgba(16,39,59,.94),rgba(10,22,40,.98));overflow:hidden}
+    .germany-lessons>header{padding:20px 22px 17px;border-bottom:1px solid var(--line)}
+    .germany-lessons-kicker{display:block;margin-bottom:4px;color:var(--gold);font:700 .65rem/1.4 var(--sans);letter-spacing:.15em;text-transform:uppercase}
+    .germany-lessons h4{margin:0 0 7px;color:var(--text);font:700 clamp(1.14rem,2vw,1.45rem)/1.25 var(--serif)}
+    .germany-lessons>header p{max-width:760px;margin:0;color:var(--muted);font:.84rem/1.62 var(--sans)}
+    .germany-lessons ol{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0;padding:0;list-style:none}
+    .germany-lessons li{position:relative;min-width:0;padding:20px 19px 22px;border-right:1px solid var(--line)}
+    .germany-lessons li:last-child{border-right:0}
+    .germany-lessons time{display:block;margin-bottom:11px;color:var(--gold);font:700 .65rem/1.3 var(--sans);letter-spacing:.13em;text-transform:uppercase}
+    .germany-lessons strong{display:block;margin-bottom:8px;color:var(--text);font:700 .98rem/1.35 var(--serif)}
+    .germany-lessons li span{display:block;color:var(--muted);font:.78rem/1.62 var(--sans)}
+    .germany-lessons figcaption{padding:11px 22px;border-top:1px solid var(--line);color:var(--quiet);font:.69rem/1.55 var(--sans)}
+    .germany-lessons a{color:#e5c85d}
+    @media(max-width:720px){
+      .germany-lessons ol{grid-template-columns:1fr}
+      .germany-lessons li{padding:17px 17px 19px;border-right:0;border-bottom:1px solid var(--line)}
+      .germany-lessons li:last-child{border-bottom:0}
+    }
+    @media(max-width:520px){
+      .germany-lessons>header{padding:17px 16px 15px}
+      .germany-lessons figcaption{padding:10px 16px}
+    }
+    @media print{.germany-lessons{break-inside:avoid}.germany-lessons ol{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  </style>
 
   <style id="report-visual-polish">
     /* En enda vattenstämpel följer med innehållet; sektionskopiorna låg ovanpå varandra. */
@@ -2280,49 +2305,9 @@ html{overflow-x:clip}
 
           <h3 id="fibersabotage-sverige">Fibersabotage: ett avbrott som drabbade flera tjänster</h3>
           <p>I september 2025 saboterades flera fiberkabelskåp i Eskilstuna och Kvicksund. <a href="https://www.eem.se/om-oss/aktuellt-och-press/aktuellt/sabotage-mot-fiberkabelskap-stor-internet">Eskilstuna Energi och Miljö uppgav</a> att stora delar av Eskilstuna och tidigare hela Kvicksund förlorade internet. <a href="https://www.svt.se/nyheter/lokalt/sormland/sabotage-mot-kabelskap-stort-internetavbrott-i-eskilstuna">SVT:s uppföljning</a> beskrev nära 2 000 drabbade kunder, störningar i 4G- och 5G-nät och problem vid flera vårdcentraler i Strängnäs. Den som förlorade sin fasta anslutning kunde inte räkna med att mobilnätet fungerade som reserv.</p>
-          <p><a href="https://www.svt.se/nyheter/lokalt/sormland/foretagare-doms-till-fangelse-efter-fibersabotage">Stockholms tingsrätt dömde den 25 september 2026 en man till två år och sex månaders fängelse</a>, enligt SVT:s referat. Domen omfattade elva fall av sabotage och elva fall av skadegörelse i Eskilstuna, Katrineholm, Västerås och Västervik. Rätten bedömde gärningarna som spontana och utan planering. <a href="https://www.svt.se/nyheter/lokalt/sormland/sabotagemal-flyttades-skalen-hemligstamplas-med-hanvisning-till-rikets-sakerhet">Skälen till att målet tidigare flyttats till Stockholm hade sekretessbelagts med hänvisning till rikets säkerhet</a>, men vanlig polis, inte Säpo, utredde brotten. Någon främmande styrning fastställdes inte. Domen visar att även enkla ingrepp utan omfattande planering kan ge stora samhällseffekter.</p>
-
-          <h4>Vad avgör hur allvarligt ett avbrott blir?</h4>
-          <div class="case-table-wrap" tabindex="0" role="region" aria-label="Följindikatorer för fiber- och kommunikationsavbrott, kan rullas i sidled">
-            <table>
-              <thead><tr><th>Fråga</th><th>Mätbar indikator</th><th>Varför den behövs</th></tr></thead>
-              <tbody>
-                <tr><td>Konsekvens</td><td>Drabbade samhällsfunktioner, kunder och mobilmaster.</td><td>Ett litet fysiskt ingrepp kan slå mot flera tjänster samtidigt.</td></tr>
-                <tr><td>Redundans</td><td>Andel vård-, larm- och ledningsfunktioner med en verkligt separat reservförbindelse.</td><td>En reserv som delar samma kabelstråk eller knutpunkt kan falla samtidigt.</td></tr>
-                <tr><td>Återställning</td><td>Tid till lokalisering, provisorisk tjänst och full drift; tillgång till reparatörer och reservmateriel.</td><td>Strategisk effekt avgörs ofta mer av avbrottets längd än av själva skadan.</td></tr>
-                <tr><td>Attribuering</td><td>Vad som är dom, myndighetsbedömning, brottsmisstanke respektive öppen fråga.</td><td>Säkerhetsåtgärder måste kunna sättas in utan att en okänd gärningsman automatiskt tillskrivs en stat.</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <p>Fast och mobil uppkoppling gav inte oberoende reservvägar när samma fiberskada påverkade båda. En fungerande reserv måste gå genom ett annat kabelstråk eller en annan knutpunkt. Vård, larm och ledning behöver dessutom öva på att arbeta utan nät medan felet lokaliseras och repareras.</p>
-
-          <h3 id="vardagsteknik">Cyberhot, kameror och drönare: sårbarheter i sam
-... 171191 bytes omitted ...
-Vation &amp; Defence 2026 i Wien genom att blockera en väg när deltagare anlände till konferensen. Enligt Palästinaforum Austria ska blockaden ha varat omkring en timme och aktivister därefter ha gripits och förts till PAZ Rossauer Lände, men dessa uppgifter är i nuläget inte oberoende bekräftade av polis eller etablerade medier. Bekräftat är att protester mot konferensen var öppet utlysta. Attac Österreich kallade till en kundgebung den 21 maj klockan 08.00–10.00 vid busshållplatsen 72A Haidestraße, i direkt anslutning till Wiener Werkshallen där … Senare rättsligt utfall är inte verifierat här.</p>
-<p><b>Ansvar:</b> Aktör eller beställare inte fastställd</p>
-<p class="thematic-place">Wiener Werkshallen, Wien (Ungefärlig ort eller område enligt veckobrevskartan; inte exakt händelsepunkt)</p><p><a href="https://www.linkedin.com/feed/update/urn:li:activity:7463186728028106753" target="_blank" rel="noopener noreferrer">Svensk OSINT – veckobrevsinlägg</a> · <a href="#dronarkarta">Till avsnittet</a></p>
-<button type="button" data-theme-show="drone-weekly-209-2026-05-21" disabled>Visa på kartan</button></article>
-<article class="thematic-card" data-case-id="drone-weekly-211-2026-06-08" id="drone-case-drone-weekly-211-2026-06-08">
-<p class="thematic-badges">Lettland · Observation eller intrång · Rapporterad uppgift</p>
-<h5>NATO sköt ned drönare över Lettland</h5><p class="thematic-dates"><b>Underlagsdatum:</b> 2026-06-08 · Händelsedatum och originalkällans publiceringsdatum är inte separat verifierade.</p><p>Veckobrevsunderlaget återger: Franska Rafale-plan inom NATO:s Baltic Air Policing sköt ned en utländsk drönare som tagit sig in i lettiskt luftrum nära gränsen mot Ryssland. Lettland kopplade händelsen till rysk elektronisk krigföring, men drönaren var ännu inte offentligt identifierad som rysk. Senare rättsligt utfall är inte verifierat här.</p>
-<p><b>Ansvar:</b> Aktör eller beställare inte fastställd</p>
-<p class="thematic-place">Bērzgale, Rēzekne kommun (Ungefärlig ort eller område enligt veckobrevskartan; inte exakt händelsepunkt)</p><p><a href="https://www.linkedin.com/feed/update/urn:li:activity:7469832616620253185" target="_blank" rel="noopener noreferrer">Svensk OSINT – veckobrevsinlägg</a> · <a href="#dronarkarta">Till avsnittet</a></p>
-<button type="button" data-theme-show="drone-weekly-211-2026-06-08" disabled>Visa på kartan</button></article>
-<article class="thematic-card" data-case-id="drone-weekly-214-2026-06-14" id="drone-case-drone-weekly-214-2026-06-14">
-<p class="thematic-badges">USA · Planering eller teknikfynd · Myndighetsbekräftad händelse eller myndighetsärende</p>
-<h5>Åtalet om drönar- och skjutattentat vid UFC-galan</h5><p><b>Händelse:</b> Påstådd planering från maj inför evenemanget 14 juni 2026<br><b>Senaste redovisade besked:</b> Federalt åtal offentliggjort i juli 2026</p><p class="thematic-dates">Källans publiceringsdatum: 2026-07 · Underlagsdatum: 2026-06-14</p><p>USA:s justitiedepartement redovisade åtal mot åtta personer för en påstådd plan mot UFC Freedom 250 vid Vita huset. Åtalet omfattade bland annat resurser och drönare för attentatsplanering. Åtalet fastställer inte skuld eller ett genomfört drönarangrepp.</p>
-<p><b>Konsekvens:</b> Åtal om en avvärjd plan. Händelsen är ett förberedelseärende.</p><p><b>Ansvar:</b> Aktör eller beställare inte fastställd</p>
-<p class="thematic-place">Vita huset, Washington DC (Ungefärlig ort eller område enligt veckobrevskartan; inte exakt händelsepunkt)</p><p><a href="https://www.justice.gov/opa/pr/federal-grand-jury-indicts-8-men-conspiracies-related-plot-attack-ufc-freedom-250-event" target="_blank" rel="noopener noreferrer">U.S. Department of Justice, juli 2026</a> · <a href="#dronarkarta">Till avsnittet</a></p>
-<button type="button" data-theme-show="drone-weekly-214-2026-06-14" disabled>Visa på kartan</button></article>
-<article class="thematic-card" data-case-id="drone-weekly-223-2026-06-10" id="drone-case-drone-weekly-223-2026-06-10">
-<p class="thematic-badges">Estland · Observation eller intrång · Rapporterad uppgift</p>
-<h5>Attackdrönare med sprängämnen hittades i södra Estland</h5><p class="thematic-dates"><b>Underlagsdatum:</b> 2026-06-10 · Händelsedatum och originalkällans publiceringsdatum är inte separat verifierade.</p><p>Veckobrevsunderlaget återger: En boende hittade en militär attackdrönare med omkring fem kilo sprängämnen i högt gräs i Rõuge kommun. Farkosten kan vara samma drönare som estniskt flygvapen tidigare upptäckte med radar. Senare rättsligt utfall är inte verifierat här.</p>
-<p><b>Ansvar:</b> Ansvarspåstående eller rapporterad misstanke</p>
-<p class="thematic-place">Rõuge kommun (Ungefärlig ort eller område enligt veckobrevskartan; inte exakt händelsepunkt)</p><p><a href="https://www.linkedin.com/feed/update/urn:li:activity:7474818369985228800" target="_blank" rel="noopener noreferrer">Svensk OSINT – veckobrevsinlägg</a> · <a href="#dronarkarta">Till avsnittet</a></p>
-<button type="button" data-theme-show="drone-weekly-223-2026-06-10" disabled>Visa på kartan</button></article>
-<article class="thematic-card" data-case-id="drone-weekly-224-2026-05-29" id="drone-case-drone-weekly-224-2026-05-29">
-<p class="thematic-badges">Rumänien · Angrepp eller misstänkt angrepp · Rapporterad uppgift</p>
-<h5>Rysk drönare träffade flerbostadshus i Galați</h5><p class="thematic-dates"><b>Underlagsdatum:</b> 2026-05-29 · Händelsedatum och originalkällans publiceringsdatum är inte separat verifierade.</p><p>Veckobrevsunderlaget återger: En drönare som rumänska myndigheter identifierat som rysk tog sig in i rumänskt luftrum och träffade ett flerbostadshus i Galați. Två personer skadades och omkring 70 boende evakuerades efter en explosion och brand. Senare rättsligt utfall är inte verifierat här.</p>
+          <p><a href="https://www.svt.se/nyheter/lokalt/sormland/foretagare-doms-till-fangelse-efter-fibersabotage">Stockholms tingsrätt dömde den 25 september 2026 en man till två år och sex månaders fängelse</a>, enligt SVT:s referat. Domen omfattade elva fall av sabotage och elva fall av skadegörelse i Eskilstuna, Katrineholm, Västerås och Västervik. Rätten bedömde gärningarna som spontana och utan planering. <a href="https://www.svt.se/nyheter/lokalt/sormland/sabotagemal-flyttades-skalen-hemligstamplas-med-hanvisning-till-rikets-sakerhet">Skälen till att målet tidigare flyttats till Stock
+... 179040 bytes omitted ...
+e evakuerades efter en explosion och brand. Senare rättsligt utfall är inte verifierat här.</p>
 <p><b>Ansvar:</b> Ansvarspåstående eller rapporterad misstanke</p>
 <p class="thematic-place">Galați (Ungefärlig ort eller område enligt veckobrevskartan; inte exakt händelsepunkt)</p><p><a href="https://www.linkedin.com/feed/update/urn:li:activity:7475836526891794432" target="_blank" rel="noopener noreferrer">Svensk OSINT – veckobrevsinlägg</a> · <a href="#dronarkarta">Till avsnittet</a></p>
 <button type="button" data-theme-show="drone-weekly-224-2026-05-29" disabled>Visa på kartan</button></article>
@@ -2831,6 +2816,31 @@ Vation &amp; Defence 2026 i Wien genom att blockera en väg när deltagare anlä
           <p><a href="https://www.riksbank.se/en-gb/press-and-published/notices-and-press-releases/press-releases/2026/offline-card-payments--the-options-are-now-expanding/">Riksbanken meddelade den 1 juli att möjligheten till offlinebetalningar med kort utökats</a> för köp av bland annat livsmedel, läkemedel och drivmedel vid bemannade stationer. Lösningen omfattar huvuddelen av de Visa- och Mastercardkort för vuxna som ingår i överenskommelsen. Den kräver fysiskt kort och pinkod; offlinebetalning med Swish var fortfarande under utredning vid beskedet.</p>
 <p>De köp som omfattas kan genomföras trots ett kommunikationsavbrott. Det ger en konkret reservmöjlighet. Butiken behöver fortfarande el, personal och varor för att kunna hålla öppet.</p>
 
+          <h3 id="tyskland-efter-avbrottet">Tyskland: ett verkligt avbrott blottlade följdfelen</h3>
+
+          <p>Tysklands värde som jämförelse ligger i den öppna efteranalysen. Två riktade bränder mot Berlins elinfrastruktur går att följa från skadan till de åtgärder som följde. I september 2025 blev bland annat teknikparken Adlershof utan el i mer än två dygn. I januari 2026 drabbades omkring 100&nbsp;000 människor, 45&nbsp;000 hushåll och drygt 2&nbsp;000 verksamheter när starkströmskablar sattes i brand vid Teltowkanalen. Elen var tillbaka för alla den 7 januari (<a href="https://www.berlin.de/sen/energie/resilienz-kritischer-infrastrukturen-in-berlin/">Land Berlin, 2026</a>).</p>
+
+          <figure class="germany-lessons" aria-labelledby="germany-lessons-title" aria-describedby="germany-lessons-caption">
+            <header>
+              <span class="germany-lessons-kicker">Europeisk jämförelse</span>
+              <h4 id="germany-lessons-title">Från kabelbrand till nya krav</h4>
+              <p>Angreppet stannade inte i elnätet. Det slog vidare mot uppvärmning, telefoni, internet, nödnummer och myndigheternas varningar.</p>
+            </header>
+            <ol>
+              <li><time datetime="2025-09">September 2025</time><strong>Adlershof förlorar elen</strong><span>Skador på två högspänningsmaster lämnar teknikparken utan el i mer än två dygn och prövar reservkraft och återställning.</span></li>
+              <li><time datetime="2026-01">Januari 2026</time><strong>Flera system faller samtidigt</strong><span>Elavbrottet i sydvästra Berlin slår även mot värme, fast telefoni, mobilnät och internet. I början går det inte alltid att ringa nödnummer eller ta emot varningar.</span></li>
+              <li><time datetime="2026-08">Mars–augusti 2026</time><strong>Lagkrav följs av praktiska åtgärder</strong><span>KRITIS-lagen träder i kraft. Berlin beslutar därefter om reservkraft, bättre larmkedjor och snabbare tillträde för reparatörer vid stadens mobilmaster.</span></li>
+            </ol>
+            <figcaption id="germany-lessons-caption">Förloppet bygger på Berlins redovisning av elavbrotten och stadens <a href="https://www.berlin.de/rbmskzl/aktuelles/pressemitteilungen/2026/pressemitteilung.1701581.php">åtgärdsplan för kommunikationsnäten</a>.</figcaption>
+          </figure>
+
+          <details class="report-disclosure case-collection" id="c4-tyskland-efteranalys"><summary>Vad Berlin och den tyska staten ändrade efter avbrottet</summary><div class="case-collection-body">
+            <p>Berlins senat tog först fram 66 åtgärdsförslag och tillsatte därefter en oberoende expertgrupp. I augusti enades staden och de fyra stora mobiloperatörerna om tolv åtgärder. Stadens beredskapspunkter ska få mobiltäckning och laddning för telefoner. Larmkedjorna ska kortas, reparationspersonal ska snabbare få tillträde till omkring 3&nbsp;300 mobilmaster och fler master ska kunna få reservkraft. Delar av arbetet löper in i 2027 (<a href="https://www.berlin.de/rbmskzl/aktuelles/pressemitteilungen/2026/pressemitteilung.1638016.php">Land Berlin, 27 januari 2026</a>; <a href="https://www.berlin.de/rbmskzl/aktuelles/pressemitteilungen/2026/pressemitteilung.1701581.php">Land Berlin, 11 augusti 2026</a>).</p>
+            <p>På förbundsnivå trädde KRITIS-Dachgesetz i kraft den 17 mars. Lagen samlar fysisk motståndskraft i sektorer som energi, telekommunikation, vatten, vård, livsmedel, finans, offentlig förvaltning och rymd. Den kräver riskanalyser, motståndskraftsåtgärder och incidentrapportering när operatörerna har registrerats. <a href="https://www.bbk.bund.de/DE/Themen/Kritische-Infrastrukturen/Strategien-und-rechtlicher-Rahmen/KRITISDachG/FAQ/faq_node.html">BBK:s genomförandestatus</a> visar samtidigt att föreskrifterna som avgränsar vilka anläggningar som omfattas och hur kraven ska tillämpas fortfarande tas fram. Lagen har trätt i kraft, men föreskrifterna och flera operatörskrav återstår.</p>
+          </div></details>
+
+          <p>För Sverige är den användbara frågan inte bara om ett objekt är bevakat. En reservplan behöver ange vilka mobilmaster som får el, bränsle och reparatörstillträde, vilka byggnader som kan värmas och drivas fristående och vem som får omfördela personal och materiel när flera verksamheter behöver samma resurser. Berlins erfarenhet flyttar därmed fokus från det första skyddet till förmågan att hålla tjänsten i gång och återställa den.</p>
+
           <h3 id="satelliter">Rymdtjänster: tid, positionering, lägesbilder och kommunikation</h3>
 
           <p>Rymdtjänster används i verksamheter som sällan beskrivs som rymdverksamhet. Mobilnät behöver gemensam tid för att hålla basstationer synkroniserade. Kraftsystem använder tid och frekvens i övervakning och styrning. Banker och handelsplatser tidsstämplar transaktioner. Räddningsinsatser, lantmäteri, jordbruk, sjöfart och flyg använder satellitbaserad positionering. Satellitbilder och väderdata bidrar till varningar och skadebedömningar vid bränder, översvämningar, torka och andra nödlägen.</p>
@@ -2924,7 +2934,7 @@ Vation &amp; Defence 2026 i Wien genom att blockera en väg när deltagare anlä
  </div>
         <div class="chapter-conclusion"><h3 id="c4-samtidiga-behov">Flera funktioner måste hålla samtidigt</h3>
 <p>Sverige går in i 2027 med en fungerande offlinefunktion för vissa kortbetalningar, nya planer för försörjning, en regional pilot för beredskapssjukhus och beslut om hur underrättelse- och reparationsförmågan ska byggas upp. Samtidigt är bevakningen av totalförsvarsviktig civil verksamhet otillräcklig för höjd beredskap, vårdpiloten ännu inte ett nationellt system, reparationsorganisationen inte färdig och UND mitt i sin etablering. GlobalEye återstår att testa före leverans och den nya isbrytaren ska levereras 2029. Ingen av dem är en operativ förstärkning under 2027 i det granskade underlaget.</p>
-<p>Den svåra situationen uppstår när flera verksamheter behöver samma reservkraft, datakanal, tekniker eller reservdel. Då räcker det inte att en enskild butik kan ta kort offline eller att en myndighet har en reservlokal. El, vård, kommunikation, skyddad informationsdelning, betalningar, lager och reparation måste fungera tillsammans och vara bemannade tillräckligt länge. Flera av systemen använder dessutom rymdtjänster för tid, positionering eller lägesbilder. En reservförbindelse för internet hjälper inte om verksamheten i stället har förlorat sin tidsreferens eller positionsdata.</p><details class="judgement-support" id="review-formaga"><summary>Bedömningsgrunder och vad som kan ändra slutsatsen</summary><p><strong>Bärande skäl:</strong> MTFA har konstaterat att skyddet och bevakningen av totalförsvarsviktig civil verksamhet inte är dimensionerade för höjd beredskap eller krig. Vid ingången av 2027 ska resurser och ansvar för byggnads- och reparationsberedskapen fortfarande identifieras, och något nationellt koncept för beredskapssjukhus är ännu inte lämnat. Must-chefen har dessutom varnat för ett tillfälligt tapp när UND byggs upp. Offlinebetalningar och andra avgränsade reserver minskar vissa sårbarheter men täcker inte hela behovet.</p><p><strong>Det som skulle sänka bedömningen:</strong> övningar där flera samhällsviktiga verksamheter samtidigt visar att de kan arbeta med reservkraft, alternativa kommunikationsvägar, oberoende tids- och positionskällor samt manuella rutiner; bemannade reparationsresurser med tillgång till materiel; vård som kan ta emot fler skadade utan att den vanliga vården upphör; samt en övergång till UND utan avbrott i inhämtning, analys och informationsdelning.</p></details></div>
+<p>Den svåra situationen uppstår när flera verksamheter behöver samma reservkraft, datakanal, tekniker eller reservdel. Då räcker det inte att en enskild butik kan ta kort offline eller att en myndighet har en reservlokal. El, vård, kommunikation, skyddad informationsdelning, betalningar, lager och reparation måste fungera tillsammans och vara bemannade tillräckligt länge. Berlins elavbrott visade hur värme, mobilnät, nödnummer och varningar kan försvagas av samma skada. Flera av systemen använder dessutom rymdtjänster för tid, positionering eller lägesbilder. En reservförbindelse för internet hjälper inte om verksamheten i stället har förlorat sin tidsreferens eller positionsdata.</p><details class="judgement-support" id="review-formaga"><summary>Bedömningsgrunder och vad som kan ändra slutsatsen</summary><p><strong>Bärande skäl:</strong> MTFA har konstaterat att skyddet och bevakningen av totalförsvarsviktig civil verksamhet inte är dimensionerade för höjd beredskap eller krig. Vid ingången av 2027 ska resurser och ansvar för byggnads- och reparationsberedskapen fortfarande identifieras, och något nationellt koncept för beredskapssjukhus är ännu inte lämnat. Must-chefen har dessutom varnat för ett tillfälligt tapp när UND byggs upp. Offlinebetalningar och andra avgränsade reserver minskar vissa sårbarheter men täcker inte hela behovet.</p><p><strong>Det som skulle sänka bedömningen:</strong> övningar där flera samhällsviktiga verksamheter samtidigt visar att de kan arbeta med reservkraft, alternativa kommunikationsvägar, oberoende tids- och positionskällor samt manuella rutiner; bemannade reparationsresurser med tillgång till materiel; vård som kan ta emot fler skadade utan att den vanliga vården upphör; samt en övergång till UND utan avbrott i inhämtning, analys och informationsdelning.</p></details></div>
 <details class="chapter-refs report-disclosure report-references" aria-labelledby="refs-strategiska-domainer">
 <summary id="refs-strategiska-domainer">Referenser</summary>
 <div class="reference-body">
@@ -2943,6 +2953,10 @@ Vation &amp; Defence 2026 i Wien genom att blockera en väg när deltagare anlä
 <li id="ref-c4-google-airgap-updates">Google Cloud. (2026, uppdaterad 26 oktober). <em>Security – Google Distributed Cloud air-gapped.</em> Avsnittet Upgrade and update system. <a href="https://docs.cloud.google.com/distributed-cloud/hosted/docs/latest/gdcag/security" target="_blank" rel="noopener noreferrer">docs.cloud.google.com</a>.</li>
 <li>Konnekt. (2026, 17 augusti). <em>Ny rapport: Nord-Norge, Nord-Sverige og Finland mangler kompetansen som trengs for fremtidens beredskap og vekst.</em> Jernbanedirektoratet. <a href="https://www.jernbanedirektoratet.no/konnekt/nyheter/ny-rapport-nord-norge-nord-sverige-og-finland-mangler-kompetansen-som-trengs-for-fremtidens-beredskap-og-vekst/" target="_blank" rel="noopener noreferrer">jernbanedirektoratet.no</a>.</li>
 <li>Land Berlin. (2026, uppdaterad 16 oktober). <em>Cyberangriff auf das Landesnetz: Informationen für Bürgerinnen und Bürger.</em> <a href="https://www.berlin.de/cyberangriff/informationen-fuer-buergerinnen-und-buerger/" target="_blank" rel="noopener noreferrer">berlin.de</a>.</li>
+<li>Land Berlin. (2026). <em>Resilienz kritischer Infrastrukturen in Berlin: Fragen und Antworten.</em> <a href="https://www.berlin.de/sen/energie/resilienz-kritischer-infrastrukturen-in-berlin/" target="_blank" rel="noopener noreferrer">berlin.de</a>.</li>
+<li>Land Berlin. (2026, 27 januari). <em>Bilanz und Maßnahmenpaket zur Nachbereitung der Großschadenslage nach dem Anschlag auf das Stromnetz im Berliner Südwesten.</em> <a href="https://www.berlin.de/rbmskzl/aktuelles/pressemitteilungen/2026/pressemitteilung.1638016.php" target="_blank" rel="noopener noreferrer">berlin.de</a>.</li>
+<li>Land Berlin. (2026, 11 augusti). <em>Berlin stärkt die Widerstandsfähigkeit seiner Kommunikationsnetze.</em> <a href="https://www.berlin.de/rbmskzl/aktuelles/pressemitteilungen/2026/pressemitteilung.1701581.php" target="_blank" rel="noopener noreferrer">berlin.de</a>.</li>
+<li>Bundesamt für Bevölkerungsschutz und Katastrophenhilfe. (2026). <em>FAQ zum KRITIS-Dachgesetz.</em> <a href="https://www.bbk.bund.de/DE/Themen/Kritische-Infrastrukturen/Strategien-und-rechtlicher-Rahmen/KRITISDachG/FAQ/faq_node.html" target="_blank" rel="noopener noreferrer">bbk.bund.de</a>.</li>
 <li>Polisen i Finland. (2026, 21 oktober). <em>Special forces to conduct training exercises for challenging maritime scenarios off the coast of Helsinki, involving helicopters and other authorities.</em> <a href="https://poliisi.fi/en/-/special-forces-to-conduct-training-exercises-for-challenging-maritime-scenarios-off-the-coast-of-helsinki-involving-helicopters-and-other-authorities" target="_blank" rel="noopener noreferrer">poliisi.fi</a>.</li>
 <li>Europeiska kommissionen. (2026). <em>Critical raw materials.</em> <a href="https://single-market-economy.ec.europa.eu/sectors/raw-materials/areas-specific-interest/critical-raw-materials_en">single-market-economy.ec.europa.eu</a>.</li>
 <li>Copernicus In Situ. (2026). <em>Copernicus Emergency Management Service: Space component and services.</em> Europeiska kommissionen. <a href="https://insitu.copernicus.eu/state-of-play/space-component-and-services/emergency" target="_blank" rel="noopener noreferrer">copernicus.eu</a>.</li>

@@ -1192,6 +1192,7 @@ html{overflow-x:clip}
     }
 </style>
 
+  <link rel="stylesheet" href="assets/report-search.css">
 </head>
 <body>
   <div class="site-watermark" aria-hidden="true"></div>
@@ -1199,9 +1200,26 @@ html{overflow-x:clip}
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brand" href="#start" aria-label="Svensk OSINT, INBLICK årsrapport 2026"><img class="brand-logo" src="https://veckobrevskartan.github.io/INBLICK-Otillb-rlig-p-verkan/assets/svensk-osint-logo.png" alt="Svensk OSINT"><span class="brand-inblick">INBLICK</span><span class="brand-year">ÅRSRAPPORT · 2026</span></a>
-      <nav class="nav" aria-label="Huvudnavigation"><a href="#bedomningar">Bedömning</a><a href="#fallkarta">Fallkarta</a><a href="#varldsordning">Världsordning</a><a href="#sakerhetslage">Säkerhetsläge</a><a href="#sverige">Hot mot Sverige</a><a href="#strategiska-domainer">Förmåga</a><a href="#metod">Metod</a></nav>
+      <nav class="nav" aria-label="Huvudnavigation"><a href="#report-search">Sök</a><a href="#bedomningar">Bedömning</a><a href="#fallkarta">Fallkarta</a><a href="#varldsordning">Världsordning</a><a href="#sakerhetslage">Säkerhetsläge</a><a href="#sverige">Hot mot Sverige</a><a href="#strategiska-domainer">Förmåga</a><a href="#metod">Metod</a></nav>
     </div>
   </header>
+
+  <section class="report-search shell" id="report-search" aria-label="Sök i hela rapporten">
+    <form role="search" id="report-search-form">
+      <label for="report-search-input">Sök i rapporten</label>
+      <div class="report-search-controls">
+        <input id="report-search-input" type="search" placeholder="Sök exempelvis Tyskland, satelliter eller betalningar" autocomplete="off" aria-controls="report-search-results" aria-describedby="report-search-help">
+        <button type="submit">Sök</button>
+      </div>
+      <p id="report-search-help">Sök i hela texten, även i fördjupningar och fall. Flera sökord begränsar träffarna.</p>
+    </form>
+    <div id="report-search-results" hidden>
+      <p id="report-search-status" role="status" aria-live="polite"></p>
+      <ol id="report-search-list"></ol>
+      <button type="button" id="report-search-more" hidden>Visa fler träffar</button>
+    </div>
+    <noscript>Aktivera JavaScript för att söka i rapporten. Du kan också använda webbläsarens textsökning.</noscript>
+  </section>
 
   <section class="hero shell" id="start" aria-labelledby="sidtitel">
     <div class="eyebrow">Svensk OSINT · Årsrapport</div>
@@ -4510,5 +4528,6 @@ html{overflow-x:clip}
 })();
   </script>
 
+  <script src="assets/report-search.js"></script>
 </body>
 </html>

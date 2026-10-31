@@ -937,9 +937,8 @@ html{overflow-x:clip}
       transform:translateY(-1px);
     }
     .chapter-full > summary::after{font-size:1.55rem}
-    .chapter-full-text{display:grid;gap:3px}
-    .chapter-full-kicker{color:var(--blue);font:700 .62rem/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase}
-    .chapter-full-text strong{color:var(--gold);font:700 1rem/1.35 var(--sans)}
+    .chapter-full-text{display:grid;gap:5px}
+    .chapter-full-text strong{color:var(--gold);font:700 clamp(1.25rem,2vw,1.45rem)/1.2 var(--sans)}
     .chapter-full-text small{color:var(--muted);font:400 .76rem/1.45 var(--sans)}
     .fall-about,.fall-filter-panel,.fall-map-guide{margin:16px 0}
     .fall-about>summary,.fall-filter-panel>summary,.fall-map-guide>summary{display:none}
@@ -949,7 +948,7 @@ html{overflow-x:clip}
     @media(max-width:700px){
       .chapter-full{margin:18px 0 26px}
       .chapter-full>summary{min-height:82px;padding:14px 15px}
-      .chapter-full-text strong{font-size:.96rem}
+      .chapter-full-text strong{font-size:1.25rem}
       .chapter-full-text small{max-width:34ch;font-size:.73rem}
       .fall-about,.fall-filter-panel,.fall-map-guide{margin:11px 0;border:1px solid var(--line);background:rgba(17,48,64,.38)}
       .fall-about>summary,.fall-filter-panel>summary,.fall-map-guide>summary{
@@ -1178,17 +1177,9 @@ html{overflow-x:clip}
     .report-discover-copy strong{display:block;color:var(--text);font:400 1.35rem/1.2 var(--serif)}
     .report-discover-copy span{display:block;color:var(--muted);font:.88rem/1.6 var(--sans);margin-top:10px}
     .report-discover-copy em{display:block;color:var(--gold);font:600 .82rem/1.5 var(--sans);font-style:normal;margin-top:14px}
-    .chapter-shortcuts{max-width:790px;display:flex;gap:10px;flex-wrap:wrap;margin:25px 0 18px}
-    .chapter-shortcuts a{padding:11px 15px;border:1px solid var(--line);color:var(--gold);font:600 .86rem/1.4 var(--sans);text-decoration:none;background:rgba(13,31,49,.94)}
-    .chapter-shortcuts a:hover,.chapter-shortcuts a:focus-visible{border-color:var(--gold)}
-    .toc-featured{padding-bottom:12px;margin-bottom:10px;border-bottom:1px solid var(--line)}
-    .toc-featured-label{display:block;color:var(--gold);font:700 .62rem/1.5 var(--sans);text-transform:uppercase;letter-spacing:.1em;margin:0 0 6px}
-    .toc-featured a{border-left:2px solid var(--gold);padding-left:9px;margin:5px 0}
     @media(max-width:700px){
       .report-discover-grid{grid-template-columns:1fr}
       .report-discover-card img{height:170px}
-      .chapter-shortcuts{display:grid;grid-template-columns:1fr}
-      .chapter-shortcuts a{padding:13px 15px}
     }
 </style>
 
@@ -1208,10 +1199,10 @@ html{overflow-x:clip}
     <form role="search" id="report-search-form">
       <label for="report-search-input">Sök i rapporten</label>
       <div class="report-search-controls">
-        <input id="report-search-input" type="search" placeholder="Sök exempelvis Tyskland, satelliter eller betalningar" autocomplete="off" aria-controls="report-search-results" aria-describedby="report-search-help">
+        <input id="report-search-input" type="search" placeholder="Sök ämne, land, organisation eller händelse" autocomplete="off" aria-controls="report-search-results" aria-describedby="report-search-help">
         <button type="submit">Sök</button>
       </div>
-      <p id="report-search-help">Sök i hela texten, även i fördjupningar och fall. Flera sökord begränsar träffarna.</p>
+      <p id="report-search-help">Sök i hela texten, även i kapiteltexter och fall. Flera sökord begränsar träffarna.</p>
     </form>
     <div id="report-search-results" hidden>
       <p id="report-search-status" role="status" aria-live="polite"></p>
@@ -1314,7 +1305,7 @@ html{overflow-x:clip}
   </div>
   <p class="chapter-opening-caption">Tematisk illustration av internationella förhandlingar och säkerhetssamarbete. AI-genererad.</p>
 </div>
-<details class="chapter-full"><summary><span class="chapter-full-text"><span class="chapter-full-kicker">Fördjupning</span><strong>Läs hela kapitlet</strong><small>Bedömning, analys, fall och källor</small></span></summary><div class="chapter-full-content">
+<details class="chapter-full"><summary><span class="chapter-full-text"><strong>Läs hela kapitlet</strong><small>Bedömning, analys, fall och källor</small></span></summary><div class="chapter-full-content">
 
 
         <div class="longform chapter-context"><p>Under 2026 förändrades det transatlantiska samarbetet i två riktningar. USA minskade de styrkor som landet lovar Nato i en kris, medan europeiska länder tog över ledningen av tre operativa Natohögkvarter och startade nya projekt för spaningsflyg och robotförsvar. Konflikten om Grönland skadade förtroendet mellan USA och Danmark, men slutade också i ett avtal om fortsatt och utökad amerikansk användning av baser på ön. Frankrike fördjupade samtidigt kärnvapensamarbetet med Sverige och Finland, och franska och brittiska flygförband övade tillsammans.</p><p>För Sverige finns två problem inför 2027. Europeiska ersättningar för amerikanska stödfunktioner är ännu inte färdiga, och allierat stöd kräver politiska beslut i Washington, Berlin, Paris och London. Tysk delstatspolitik kan påverka tillgången till känsliga Natoplaner. Det franska presidentvalet kan ändra villkoren för Ukrainastöd och kärnvapensamarbete. Brittiska budgetbeslut kan påverka leveranser och försvarsåtaganden. Utanför Nato bygger Kina och BRICS-länderna samarbeten om betalningar, teknik och reformer av internationella institutioner. Det påverkar Europas möjligheter att vinna stöd för sanktioner och exportkontroller.</p></div>
@@ -1525,7 +1516,7 @@ html{overflow-x:clip}
   </div>
   <p class="chapter-opening-caption">Tematisk illustration av samhällsviktig infrastruktur i ett europeiskt hamn- och industriområde. AI-genererad.</p>
 </div>
-<details class="chapter-full"><summary><span class="chapter-full-text"><span class="chapter-full-kicker">Fördjupning</span><strong>Läs hela kapitlet</strong><small>Bedömning, analys, fall och källor</small></span></summary><div class="chapter-full-content">
+<details class="chapter-full"><summary><span class="chapter-full-text"><strong>Läs hela kapitlet</strong><small>Bedömning, analys, fall och källor</small></span></summary><div class="chapter-full-content">
 
 
         <div class="longform chapter-context"><p>Under 2026 slog kriget mot Ukrainas elnät och mot civil sjöfart i Svarta havet. I andra delar av Europa skadades el-, järnvägs- och teleanläggningar, medan myndigheter stoppade planer mot försvarsföretag. Flera regeringar pekade ut ryska tjänster eller ryska intressen, men bevisläget skiljer sig mellan fallen: några har lett till dom, andra befinner sig i utredning eller bygger på underrättelsebedömningar.</p><p>Svenska verksamheter kan påverkas genom flera kedjor. Ett elavbrott kan stoppa sjukhus, verkstäder och digitala tjänster. En skadad kabel kan påverka betalningar, ledning och kommunikation. Angrepp mot försvarsföretag eller deras personal kan försena både Ukrainastöd och svensk upprustning. Följderna blir större när flera verksamheter behöver samma reservkraft, tekniker eller alternativa förbindelse.</p>
@@ -2167,7 +2158,7 @@ html{overflow-x:clip}
   </div>
   <p class="chapter-opening-caption">Tematisk illustration av vardagsliv och samhällsfunktioner i en svensk stadsmiljö. AI-genererad.</p>
 </div>
-<details class="chapter-full"><summary><span class="chapter-full-text"><span class="chapter-full-kicker">Fördjupning</span><strong>Läs hela kapitlet</strong><small>Bedömning, analys, fall och källor</small></span></summary><div class="chapter-full-content">
+<details class="chapter-full"><summary><span class="chapter-full-text"><strong>Läs hela kapitlet</strong><small>Bedömning, analys, fall och källor</small></span></summary><div class="chapter-full-content">
 
 
         <div class="longform chapter-context"><p>Under 2026 framträdde tre skilda hotspår. Säpo avbröt enligt egen uppgift en rysk underrättelseoperation. Polisen ingrep mot nätverk som rekryterade unga till våld på beställning. Myndigheter och redaktioner upptäckte falska nyhetsklipp och samordnade konton under valrörelsen. Händelserna hade inte en gemensam ledning, men uppdragsgivarna kunde i samtliga fall verka på avstånd.</p><p>Ett ombud utför ett uppdrag åt någon som inte vill synas själv. Det kan vara en person vid en beskickning, en kriminell mellanhand eller en ung utförare som bara känner till nästa kontakt i kedjan. Digitala plattformar används för att hitta personer, lämna instruktioner, hota och betala. Där möts statliga intressen och kriminella metoder, även när syftet och beställaren är olika.</p></div>
@@ -3509,8 +3500,7 @@ html{overflow-x:clip}
   </div>
   <p class="chapter-opening-caption">Tematisk illustration av samhällsviktig drift och försörjning i norra Sverige. AI-genererad.</p>
 </div>
-<nav class="chapter-shortcuts" aria-label="Gå direkt till fördjupningarna i kapitel 4"><a href="#tyskland-efter-avbrottet">Tyskland: erfarenheter och nya åtgärder →</a><a href="#satelliter">Rymdtjänster och satellitberoenden →</a></nav>
-<details class="chapter-full"><summary><span class="chapter-full-text"><span class="chapter-full-kicker">Fördjupning</span><strong>Läs hela kapitlet</strong><small>Bedömning, analys, fall och källor</small></span></summary><div class="chapter-full-content">
+<details class="chapter-full"><summary><span class="chapter-full-text"><strong>Läs hela kapitlet</strong><small>Bedömning, analys, fall och källor</small></span></summary><div class="chapter-full-content">
 
 
         <div class="longform chapter-context"><p>Svensk beredskap bygger på att myndigheter och företag kan upptäcka hot, dela skyddsvärd information, hålla el och kommunikation i gång, genomföra betalningar, skydda personal och anläggningar samt reparera det som skadas. Dessa förmågor behövs i vård, livsmedelsförsörjning, myndighetsledning och militär verksamhet.</p><p>Under 2026 fattades flera beslut som ska stärka dessa funktioner. Offlinebetalningar kan redan användas vid vissa kommunikationsavbrott. Försörjningsstrategin anger vad staten och näringslivet ska förbereda, och fyra regioner ska pröva planeringen för beredskapssjukhus. UND ska börja arbeta den 1 januari 2027, medan byggnads- och reparationsberedskapen fortfarande organiseras. GlobalEye-flygplanet och den nya isbrytaren är beställda men ännu inte i tjänst. Kapitelbedömningen utgår från vilka förmågor som kan bemannas, skyddas och användas under 2027.</p></div>
@@ -4376,12 +4366,6 @@ html{overflow-x:clip}
   };
 
   const fragment=document.createDocumentFragment();
-  const featured=document.createElement('div');featured.className='toc-featured';
-  const featuredLabel=document.createElement('span');featuredLabel.className='toc-featured-label';featuredLabel.textContent='Gå direkt till';featured.append(featuredLabel);
-  for(const [id,label] of [['tyskland-efter-avbrottet','Tysklands erfarenheter'],['satelliter','Rymdtjänster och satelliter']]){
-    const a=link(id,label);a.dataset.groupLabel='04 · Förmåga och beroenden';featured.append(a);
-  }
-  fragment.append(featured);
   for(const group of groups){
     const section=document.getElementById(group.id);
     if(!section)continue;

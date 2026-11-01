@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-01",
+  "method": "built-in image_gen",
+  "classification": "Tematiska AI-genererade illustrationer. Bilderna dokumenterar inte verkliga händelser eller identifierade anläggningar.",
+  "images": [
+    {
+      "prompt": "Use case: photorealistic-natural. Asset type: wide 16:9 chapter background for a Swedish security and intelligence annual report, European security situation. Create a sober photographic thematic illustration of European critical systems under pressure: an elevated view over a coastal European city at blue hour, foreground high-voltage substation with a few maintenance engineers, middle distance a telecommunications mast and industrial production buildings, distant shoreline. Realistic contemporary infrastructure and ordinary working conditions. No trains, railway tracks, locomotives or stations. No identifiable real incident, no battle or explosions, no flags, labels, readable words, logos or watermark. Muted blue grey and dark green, natural amber work lights, realistic documentary lighting, broad composition that stays understandable with a dark text overlay. Landscape 16:9.",
+      "file": "assets/kapitel-europeiska-samhallssystem-v2.webp",
+      "method": "built-in image_gen",
+      "purpose": "Tematisk AI-genererad illustration; inte dokumentation av en verklig händelse."
+    },
+    {
+      "prompt": "Use case: photorealistic-natural. Asset type: wide 16:9 background for chapter on Swedish civil preparedness and strategic dependencies. Create a sober realistic photographic thematic illustration of a Nordic hospital and the technical systems keeping it working at dawn: modern hospital building, an ambulance outside an ordinary service entrance, visible backup generator housing, utility technicians at service equipment, subtle telecommunications equipment on roof. Emphasize healthcare, electricity and communications. Realistic everyday scene with professional staff, no emergency casualties. No trains, railway tracks, stations, cargo terminals or ships. No readable text, logos, national flags or watermark. Muted Nordic blue grey, warm lit hospital windows, wide composition suitable for dark overlay and editorial report. Landscape 16:9.",
+      "file": "assets/kapitel-civila-funktioner-v2.webp",
+      "method": "built-in image_gen",
+      "purpose": "Tematisk AI-genererad illustration; inte dokumentation av en verklig händelse."
+    },
+    {
+      "prompt": "Use case: photorealistic-natural. Asset type: 16:9 chapter opening illustration for European infrastructure resilience in a Swedish security report. A realistic utility maintenance team works at a high-voltage substation beside a telecommunications service van and carefully laid fibre cable equipment in wet winter evening conditions. Main subject: electricity repair and restoring communications, experienced technicians in correct practical workwear and helmets, transformer equipment and cable reels. No trains, railways, railway stations, container port or locomotives. No danger spectacle, no sparks, no flames, no weapons, no readable text, logos or watermark. Sober documentary photography, slate blue sky, practical amber lamps, believable details. Leave some calm space at the bottom for a caption overlay. Landscape 16:9.",
+      "file": "assets/chapter-entry-el-tele-reparation-v2.webp",
+      "method": "built-in image_gen",
+      "purpose": "Tematisk AI-genererad illustration; inte dokumentation av en verklig händelse."
+    },
+    {
+      "prompt": "Use case: photorealistic-natural. Asset type: wide photographic section banner, civil systems and NATO preparedness for Swedish annual security report. A realistic Nordic hospital technical corridor and service area: a healthcare preparedness coordinator and an electrical technician reviewing a paper equipment checklist beside closed backup-power cabinets, a glimpse of a hospital service entrance in the background. Show the ordinary human work connecting healthcare, power supply and civil emergency preparedness. No military combat, no trains, rail tracks, train station, cargo port or lorries. No legible text, logo or watermark. Natural subdued blue grey and restrained warm lighting, authentic candid editorial photography. Wide 16:9 composition that works as a darkened banner.",
+      "file": "assets/topic-civil-vard-beredskap-v2.webp",
+      "method": "built-in image_gen",
+      "purpose": "Tematisk AI-genererad illustration; inte dokumentation av en verklig händelse."
+    },
+    {
+      "prompt": "Use case: photorealistic-natural. Asset type: wide 16:9 photographic banner on restoring European essential services after disruptions. A realistic municipal water treatment pumping facility at dusk, two utility engineers inspect control and power equipment, large clean pipes and a compact backup generator visible, European residential district softly visible beyond the facility. Focus on water supply, electricity and qualified repair staff. No railway, train, tracks, port, goods wagons or transport terminal. No identifiable disaster, explosions or damaged public landmarks. Muted blue green palette and natural warm task lighting, documentary photographic thematic illustration for a serious Swedish security report. No readable text, logos or watermarks.",
+      "file": "assets/topic-europa-aterstallning-v2.webp",
+      "method": "built-in image_gen",
+      "purpose": "Tematisk AI-genererad illustration; inte dokumentation av en verklig händelse."
+    },
+    {
+      "prompt": "Use case: photorealistic-natural. Asset type: wide 16:9 section banner for Swedish supply security and repair capacity. Realistic civil preparedness distribution storeroom with orderly shelves of sealed medical supplies, clean neutral packaging, spare pumps and electrical replacement components in separate clearly organized racks. Two ordinary warehouse and utility staff checking inventory with a clipboard, anonymous ordinary professional adults. Convey availability of medicines, replacement equipment and staff needed to keep essential services working. No railway tracks, trains, locomotives, train stations or shipping containers. No readable text, brands, military weapons, logos or watermark. Sober documentary photography, muted cool colours with restrained warm work lights, wide natural composition suitable for dark text overlay.",
+      "file": "assets/topic-forsorjning-reservdelar-v2.webp",
+      "method": "built-in image_gen",
+      "purpose": "Tematisk AI-genererad illustration; inte dokumentation av en verklig händelse."
+    }
+  ]
+}

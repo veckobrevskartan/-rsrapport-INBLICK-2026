@@ -146,6 +146,46 @@
     .order-map .synthesis { fill: #e5c85d; font: 700 21px var(--sans); letter-spacing: .04em; }
     .order-map .supra { fill: #b8973a; font: 700 13px var(--sans); letter-spacing: .15em; }
     @media (max-width: 560px) { .order-map { padding: 12px; margin-inline: -4px; } .order-map figcaption { font-size: .76rem; } }
+    .year-timeline { margin: 30px 0 36px; padding: 24px; border: 1px solid var(--line); background: linear-gradient(145deg, rgba(17,48,64,.78), rgba(14,30,56,.9)); }
+    .year-timeline-header { max-width: 800px; margin-bottom: 12px; }
+    .year-timeline-kicker { display: block; margin-bottom: 7px; color: var(--gold); font: 700 .68rem/1.4 var(--sans); letter-spacing: .14em; text-transform: uppercase; }
+    .year-timeline h4 { margin: 0 0 8px; color: var(--text); font: 500 clamp(1.45rem,3vw,2rem)/1.2 var(--serif); }
+    .year-timeline-header p { margin: 0; color: var(--muted); font: .84rem/1.6 var(--sans); }
+    .year-timeline-scroll { overflow-x: auto; padding: 0 2px 8px; scrollbar-color: rgba(184,151,58,.55) transparent; }
+    .year-timeline-track { position: relative; display: grid; grid-auto-flow: column; grid-auto-columns: 235px; gap: 14px; min-width: max-content; margin: 0; padding: 28px 0 4px; list-style: none; }
+    .year-timeline-track::before { content: ""; position: absolute; top: 10px; right: 0; left: 0; height: 2px; background: linear-gradient(90deg, #b8973a, rgba(184,151,58,.28)); }
+    .year-timeline-track li { position: relative; display: flex; width: 235px; min-height: 230px; flex-direction: column; padding: 17px 17px 18px; border: 1px solid rgba(184,151,58,.3); background: rgba(9,25,42,.9); }
+    .year-timeline-track li::before { content: ""; position: absolute; top: -24px; left: 16px; width: 10px; height: 10px; border: 3px solid #0f263d; border-radius: 50%; background: #e5c85d; box-shadow: 0 0 0 1px rgba(229,200,93,.45); }
+    .year-timeline time { display: block; margin-bottom: 8px; color: #f1d977; font: 700 .7rem/1.35 var(--sans); letter-spacing: .09em; text-transform: uppercase; }
+    .year-timeline-scope { display: inline-block; margin-bottom: 10px; padding: 4px 7px; border: 1px solid rgba(184,151,58,.3); color: var(--quiet); font: 700 .61rem/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; }
+    .year-timeline h5 { margin: 0 0 8px; color: var(--text); font: 500 1.1rem/1.25 var(--serif); }
+    .year-timeline li p { margin: 0 0 13px; color: var(--muted); font: .76rem/1.55 var(--sans); }
+    .year-timeline a { display: inline-block; margin-top: auto; color: #e5c85d; font: 700 .72rem/1.4 var(--sans); }
+    .year-timeline figcaption { margin-top: 13px; color: var(--quiet); font: .76rem/1.55 var(--sans); }
+    .report-changelog { margin-top: 18px; border: 1px solid rgba(184,151,58,.38); background: rgba(12,31,49,.78); }
+    .report-changelog summary { cursor: pointer; padding: 13px 16px; color: var(--text); font: 700 .78rem/1.4 var(--sans); }
+    .report-changelog summary::marker { color: var(--gold); }
+    .report-changelog-body { padding: 0 16px 15px; border-top: 1px solid var(--line); }
+    .report-changelog-body p { margin: 12px 0 7px; color: var(--quiet); font: .72rem/1.5 var(--sans); }
+    .report-changelog-body ul { margin: 0; padding-left: 19px; color: var(--muted); font: .78rem/1.55 var(--sans); }
+    .report-changelog-body li + li { margin-top: 6px; }
+    .report-changelog-status { color: #f1d977; font-weight: 700; }
+    @media (max-width: 650px) {
+      .year-timeline { margin-inline: -4px; padding: 18px 14px; }
+      .year-timeline-scroll { overflow: visible; }
+      .year-timeline-track { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: 1fr; gap: 12px; min-width: 0; padding: 0 0 0 20px; }
+      .year-timeline-track::before { top: 0; bottom: 0; left: 5px; width: 2px; height: auto; }
+      .year-timeline-track li { width: auto; min-height: 0; }
+      .year-timeline-track li::before { top: 19px; left: -20px; }
+    }
+    @media print {
+      .year-timeline { break-inside: avoid; }
+      .year-timeline-scroll { overflow: visible; }
+      .year-timeline-track { grid-auto-flow: row; grid-template-columns: repeat(3,1fr); min-width: 0; padding-top: 8px; }
+      .year-timeline-track::before, .year-timeline-track li::before { display: none; }
+      .year-timeline-track li { width: auto; min-height: 0; }
+      .report-changelog[open] { break-inside: avoid; }
+    }
     .corridor-figure { margin: 18px 0 24px; border-left: 2px solid var(--gold); padding: 10px 14px; background: rgba(17,48,64,.55); }
     .corridor-figure summary { color: var(--gold); cursor: pointer; font-size: .9rem; }
     .corridor-figure figure { margin: 14px 0 4px; }
@@ -1420,7 +1460,24 @@ html{overflow-x:clip}
 
 
 </section>
-<section class="intro" id="lasanvisning"><p><strong>Rapporten kan läsas på två nivåer.</strong> Den samlade bedömningen ger slutsatserna. Under <em>Läs hela kapitlet</em> finns underlag, fall, motargument och källor samt de omständigheter som kan ändra bedömningen.</p><p>Fallkartan är ett sökbart register över dokumenterade ärenden. Metodavsnittet förklarar urvalet, källvärderingen och sannolikhetsskalan.</p><p class="source-note">Bildrubriker och dekorativa bakgrunder är AI-genererade tematiska illustrationer.</p></section><section class="section fall-explorer" id="fallkarta" aria-labelledby="h-fallkarta">
+<section class="intro" id="lasanvisning">
+  <p><strong>Rapporten kan läsas på två nivåer.</strong> Den samlade bedömningen ger slutsatserna. Under <em>Läs hela kapitlet</em> finns underlag, fall, motargument och källor samt de omständigheter som kan ändra bedömningen.</p>
+  <p>Fallkartan är ett sökbart register över dokumenterade ärenden. Metodavsnittet förklarar urvalet, källvärderingen och sannolikhetsskalan.</p>
+  <p class="source-note">Bildrubriker och dekorativa bakgrunder är AI-genererade tematiska illustrationer.</p>
+  <details class="report-changelog" id="andringar-i-versionen">
+    <summary>Ändringar i versionen · 1 november 2026</summary>
+    <div class="report-changelog-body">
+      <p>Jämfört med föregående publicerade arbetsversion:</p>
+      <ul>
+        <li>den klickbara beroendebilden länkar el, kommunikation, vård och betalningar till konkreta fall,</li>
+        <li>återkommande resonemang om reservkraft, personal och reparation har kortats och samlats,</li>
+        <li>den svenska tidslinjen har utvidgats med centrala europeiska händelser och länkar till analysen,</li>
+        <li>flera återkommande järnvägsmotiv har ersatts med egna tematiska illustrationer av vård, el, kommunikation och försörjning.</li>
+      </ul>
+      <p><span class="report-changelog-status">Bedömningar:</span> inga sannolikhetsgrader har ändrats i denna redaktionella uppdatering.</p>
+    </div>
+  </details>
+</section><section class="section fall-explorer" id="fallkarta" aria-labelledby="h-fallkarta">
           <div class="section-kicker">Fallbilaga · register uppdaterat till och med 30 oktober 2026</div><h2 id="h-fallkarta">Dokumenterade fall på kartan</h2>
           <details class="fall-about" open><summary>Urval och metod · 272 poster</summary>
 <p><strong>Fallregistret omfattar 272 poster: 88 händelser under 2026, 87 historiska fall med relevanta besked 2026 och 97 äldre bakgrundsposter.</strong> Kartans standardlager visar bara händelser som inträffade under 2026. Historiska fall och bakgrund kan slås på separat i lagerkontrollen på kartan. Fallregistret är ett redaktionellt urval, inte heltäckande statistik över unika händelser. Nya poster från hybrid- och veckoregister har tagits med först när källor beskriver en konkret handling, ett konkret försök eller en avgränsad påverkansoperation med strategisk relevans; registeretiketten ensam räcker inte. Sammanhängande operationer kan samlas i en post. Händelse, anklagelse och attribution skiljs åt, och osäkerhet samt ungefärliga platsangivelser markeras. Det kvantitativa jämförelseurvalet är fortsatt fryst vid 6 oktober 2026; registertilläggen ändrar inte baslinjen.</p>
@@ -3892,27 +3949,72 @@ html{overflow-x:clip}
 <p>UND behöver kunna koppla samman uppgifter som först finns på olika håll: ett ovanligt teknikinköp, en diplomatisk kontakt, en betalning eller en person med koppling till ett kriminellt nätverk. Om ansvar och behörigheter är oklara under övergången kan samma uppgifter stanna i skilda system eller nå beslutsfattarna för sent.</p>
 <details class="report-disclosure case-collection" id="c4-tysk-underrattelsereform"><summary>Jämförelse: Tysklands underrättelsereform</summary><div class="case-collection-body"><p>Även <a href="https://www.linkedin.com/feed/update/urn:li:activity:7493643729413603328">Tysklands underrättelsereform</a> gäller möjligheten att agera mot hot. Den tyska regeringen godkände den 12 augusti ett lagförslag med utökade befogenheter för utrikesunderrättelsetjänsten BND och den inrikes säkerhetstjänsten BfV, bland annat för aktiva cyberåtgärder under särskilda förutsättningar. Beskedet gäller regeringens lagförslag. En färdig lag och genomförandet av de nya befogenheterna är senare steg.</p></div></details>
 
-          <figure class="order-map" aria-label="Tidslinje över svensk säkerhetsutveckling 2026–2027">
-          <svg viewBox="0 0 960 250" role="img" aria-labelledby="sverige-timeline-title sverige-timeline-desc">
-            <title id="sverige-timeline-title">Svensk säkerhetsutveckling 2026–2027</title>
-            <desc id="sverige-timeline-desc">Från Cold Response i mars och Natos framskjutna närvaro i Finland i juni till den svenska försörjningsstrategin, nordisk deklaration och underrättelsestrategi under sommaren och hösten. Sveriges utrikes underrättelsetjänst ska börja arbeta den 1 januari 2027.</desc>
-            <defs><marker id="sverige-timeline-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#b8973a"/></marker></defs>
-            <text x="30" y="28" class="supra">BESLUT, ÖVNINGAR OCH NYA STRUKTURER</text>
-            <path class="flow" d="M58 86 L906 86" marker-end="url(#sverige-timeline-arrow)"/>
-            <circle cx="90" cy="86" r="8" fill="#e5c85d"/><circle cx="282" cy="86" r="8" fill="#e5c85d"/><circle cx="474" cy="86" r="8" fill="#e5c85d"/><circle cx="666" cy="86" r="8" fill="#e5c85d"/><circle cx="858" cy="86" r="8" fill="#e5c85d"/>
-            <text x="90" y="66" text-anchor="middle" class="label">MARS 2026</text>
-            <text x="282" y="66" text-anchor="middle" class="label">JUNI 2026</text>
-            <text x="474" y="66" text-anchor="middle" class="label">JULI–SEPT</text>
-            <text x="666" y="66" text-anchor="middle" class="label">SEPTEMBER</text>
-            <text x="858" y="66" text-anchor="middle" class="label">1 JAN 2027</text>
-            <text x="90" y="122" text-anchor="middle" class="detail"><tspan x="90">Cold Response</tspan><tspan x="90" dy="23">övade rörelser</tspan><tspan x="90" dy="23">över gränserna</tspan></text>
-            <text x="282" y="122" text-anchor="middle" class="detail"><tspan x="282">Natos närvaro</tspan><tspan x="282" dy="23">i Finland – svensk</tspan><tspan x="282" dy="23">styrka från Boden</tspan></text>
-            <text x="474" y="122" text-anchor="middle" class="detail"><tspan x="474">Försörjningsstrategi</tspan><tspan x="474" dy="23">och nordiskt</tspan><tspan x="474" dy="23">samarbetsåtagande</tspan></text>
-            <text x="666" y="122" text-anchor="middle" class="detail"><tspan x="666">Underrättelse-</tspan><tspan x="666" dy="23">strategi och</tspan><tspan x="666" dy="23">gemensam riktning</tspan></text>
-            <text x="858" y="122" text-anchor="middle" class="detail"><tspan x="858">UND planeras</tspan><tspan x="858" dy="23">inleda sin</tspan><tspan x="858" dy="23">verksamhet</tspan></text>
-          </svg>
-          <figcaption>Planer och beslut är steg i uppbyggnaden. De visar inte i sig att förmågan är fullt införd, samövad eller uthållig.</figcaption>
-        </figure>
+          <figure class="year-timeline" id="arslinje-2026" aria-labelledby="arslinje-2026-title">
+            <header class="year-timeline-header">
+              <span class="year-timeline-kicker">Året i ett sammanhang · Sverige och Europa</span>
+              <h4 id="arslinje-2026-title">2026: beslut, angrepp och nya strukturer</h4>
+              <p>Tidslinjen kopplar svenska beslut till de europeiska händelser som förändrade hotbilden, försörjningen och kraven på uthållighet. Varje punkt leder vidare till rapportens analys.</p>
+            </header>
+            <div class="year-timeline-scroll" role="region" aria-label="Kronologisk tidslinje, kan rullas i sidled" tabindex="0">
+              <ol class="year-timeline-track">
+                <li>
+                  <time datetime="2026-01-26">26 januari</time><span class="year-timeline-scope">Europa</span>
+                  <h5>EU beslutar om stegvis stopp för rysk gas</h5>
+                  <p>Beslutet ökar betydelsen av andra leverantörer samtidigt som störningar kring Hormuz pressar priser och lager.</p>
+                  <a href="#gaslager-vinter-2027">Till energianalysen →</a>
+                </li>
+                <li>
+                  <time datetime="2026-03">Mars</time><span class="year-timeline-scope">Sverige · Norden</span>
+                  <h5>Cold Response övar förstärkning över gränserna</h5>
+                  <p>Övningen prövar rörelser genom Sverige till norra Finland och gör civila stödsystem till en del av Natos förmåga.</p>
+                  <a href="#strategiska-domainer-nato-militara-uppgifter-vilar-pa-civila-system">Till Natoanalysen →</a>
+                </li>
+                <li>
+                  <time datetime="2026-06-16">16 juni</time><span class="year-timeline-scope">Europa</span>
+                  <h5>Tyskland öppnar GAZ Hybrid</h5>
+                  <p>Det gemensamma centret ska föra samman arbetet mot sabotage, spioneri och desinformation.</p>
+                  <a href="#tyskland-sabotage">Till Tysklandsavsnittet →</a>
+                </li>
+                <li>
+                  <time datetime="2026-07-30">30 juli</time><span class="year-timeline-scope">Sverige</span>
+                  <h5>Nationell försörjningsstrategi beslutas</h5>
+                  <p>Strategin omfattar beroenden, lager, kontinuitetsplanering och prioritering när tillgången inte räcker till alla.</p>
+                  <a href="#forsorjningsberedskap">Till försörjningsanalysen →</a>
+                </li>
+                <li>
+                  <time datetime="2026-08-10">10 augusti</time><span class="year-timeline-scope">Sverige</span>
+                  <h5>Säpo avbryter en SVR-styrd operation</h5>
+                  <p>Myndigheten beskriver inhämtning och påverkan via en agent vid en utländsk beskickning.</p>
+                  <a href="#rysk-underrattelseoperation">Till hotanalysen →</a>
+                </li>
+                <li>
+                  <time datetime="2026-09-01">1–2 september</time><span class="year-timeline-scope">Europa · Sverige</span>
+                  <h5>Tyskland attribuerar Leipzig/Halle-försöket</h5>
+                  <p>Regeringen pekar ut Ryssland. EU, Nato och Sverige följer med politiska och säkerhetspolitiska svar.</p>
+                  <a href="#tyskland-sabotage">Till analysen av Europas svar →</a>
+                </li>
+                <li>
+                  <time datetime="2026-09-02">2 september</time><span class="year-timeline-scope">Sverige · Norden</span>
+                  <h5>Försörjning och reparation får nya ramar</h5>
+                  <p>Nordiska länder undertecknar en deklaration och Sverige inleder uppbyggnaden av byggnads- och reparationsberedskap.</p>
+                  <a href="#forsorjningsberedskap">Till beredskapsanalysen →</a>
+                </li>
+                <li>
+                  <time datetime="2026-10-08">8 oktober</time><span class="year-timeline-scope">Europa</span>
+                  <h5>EU förlänger sanktionerna mot hybrida aktiviteter</h5>
+                  <p>Åtgärderna gäller till oktober 2027, medan gemensamt drönarskydd och praktisk motståndskraft fortfarande byggs ut.</p>
+                  <a href="#eu-hybridatgarder-2026">Till åtgärdsanalysen →</a>
+                </li>
+                <li>
+                  <time datetime="2027-01-01">1 januari 2027</time><span class="year-timeline-scope">Sverige</span>
+                  <h5>UND ska inleda sin verksamhet</h5>
+                  <p>Den nya myndigheten måste ta över personal, behörigheter och samarbeten utan att pågående inhämtning och analys avbryts.</p>
+                  <a href="#underrattelsereformen">Till underrättelseanalysen →</a>
+                </li>
+              </ol>
+            </div>
+            <figcaption>Tidslinjen skiljer mellan inträffade händelser, beslut och planerade myndighetsstarter. Ett beslut visar inte i sig att förmågan är fullt införd, bemannad eller övad.</figcaption>
+          </figure>
 
  <h3 class="topic-visual topic-resilience" id="forsorjningsberedskap" style="--topic-bg:url('assets/topic-forsorjning-reservdelar-v2.webp');--topic-position:center;">Försörjning, skydd och reparation: från beslut till beredskap</h3>
 
@@ -4775,6 +4877,15 @@ html{overflow-x:clip}
 </script>
 <script id="report-folding-script">
 (function () {
+  function settleOn(target) {
+    const align = () => target.scrollIntoView({ block:'start', behavior:'auto' });
+    requestAnimationFrame(() => {
+      align();
+      requestAnimationFrame(align);
+    });
+    window.setTimeout(align, 180);
+    window.setTimeout(align, 700);
+  }
   function reveal(id, scroll) {
     let target;
     try { target = document.getElementById(decodeURIComponent(id)); }
@@ -4786,7 +4897,7 @@ html{overflow-x:clip}
       if (!parent.open) { parent.open = true; changed = true; }
       parent = parent.parentElement ? parent.parentElement.closest('details') : null;
     }
-    if (changed && scroll) requestAnimationFrame(() => target.scrollIntoView({ block:'start', behavior:'auto' }));
+    if (scroll && (changed || location.hash)) settleOn(target);
   }
   function currentHash() { if (location.hash) reveal(location.hash.slice(1), true); }
   document.addEventListener('click', event => {

@@ -436,11 +436,14 @@
     .dependency-grid { display:grid;grid-template-columns:minmax(0,1fr) 72px minmax(0,1fr);grid-template-areas:"power drift digital" "traffic label orders" "transport resources supply";gap:0;align-items:stretch; }
     .dependency-power { grid-area:power; }.dependency-digital { grid-area:digital; }.dependency-transport { grid-area:transport; }.dependency-supply { grid-area:supply; }
     .dependency-edge-drift { grid-area:drift; }.dependency-edge-traffic { grid-area:traffic; }.dependency-edge-orders { grid-area:orders; }.dependency-edge-resources { grid-area:resources; }
-    .dependency-node { min-width:0;padding:16px;border:1px solid rgba(184,151,58,.38);border-top:3px solid var(--gold);background:rgba(10,22,40,.66); }
-    .civil-dependencies .dependency-node h5 { display:flex;align-items:baseline;gap:10px;margin:0 0 10px;color:var(--text);font:500 1.18rem/1.25 var(--serif); }
-    .dependency-node h5 span { flex:none;color:var(--blue);font:700 .7rem/1.4 var(--sans);letter-spacing:.06em; }
-    .civil-dependencies .dependency-node p { margin:0;color:var(--muted);font:.85rem/1.55 var(--sans); }
-    .civil-dependencies .dependency-node .dependency-needs { margin-top:12px;padding-top:10px;border-top:1px solid var(--line);color:var(--quiet);font:.76rem/1.5 var(--sans); }
+    .dependency-node { min-width:0;width:100%;padding:16px;border:1px solid rgba(184,151,58,.38);border-top:3px solid var(--gold);background:rgba(10,22,40,.66);color:inherit;text-align:left;cursor:pointer;transition:border-color .18s ease,background .18s ease,box-shadow .18s ease,transform .18s ease; }
+    .dependency-node:hover { border-color:rgba(229,200,93,.78);background:rgba(20,43,61,.9);transform:translateY(-1px); }
+    .dependency-node:focus-visible { outline:3px solid rgba(98,174,209,.72);outline-offset:3px; }
+    .dependency-node[aria-pressed="true"] { border-color:var(--gold);background:linear-gradient(145deg,rgba(34,68,85,.96),rgba(15,39,58,.96));box-shadow:0 0 0 2px rgba(184,151,58,.2),0 12px 28px rgba(0,0,0,.18); }
+    .civil-dependencies .dependency-node-title { display:flex;align-items:baseline;gap:10px;margin:0 0 10px;color:var(--text);font:500 1.18rem/1.25 var(--serif); }
+    .dependency-node-title > span { flex:none;color:var(--blue);font:700 .7rem/1.4 var(--sans);letter-spacing:.06em; }
+    .civil-dependencies .dependency-node-copy { display:block;margin:0;color:var(--muted);font:.85rem/1.55 var(--sans); }
+    .civil-dependencies .dependency-node .dependency-needs { display:block;margin-top:12px;padding-top:10px;border-top:1px solid var(--line);color:var(--quiet);font:.76rem/1.5 var(--sans); }
     .dependency-needs strong { color:var(--text);font-weight:600; }
     .dependency-edge { display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:0;text-align:center;color:var(--blue);padding:7px 4px; }
     .dependency-edge b { font:400 1.8rem/1 var(--sans); }
@@ -458,6 +461,13 @@
     .dependency-cascade strong,.dependency-cascade li span { display:block; }
     .dependency-cascade strong { margin-bottom:5px;color:var(--text);font:600 .8rem/1.4 var(--sans); }
     .dependency-cascade li span { color:var(--muted);font:.75rem/1.5 var(--sans); }
+    .dependency-switcher { margin-top:20px;padding-top:16px;border-top:1px solid rgba(184,151,58,.4); }
+    .civil-dependencies .dependency-instruction { margin:0 0 13px;color:var(--quiet);font:.76rem/1.55 var(--sans); }
+    .dependency-instruction strong { color:#acd9cc;font-weight:600; }
+    .dependency-panel[hidden] { display:none; }
+    .dependency-panel .dependency-cascade { margin-top:0;padding-top:0;border-top:0; }
+    .dependency-case-link { margin:12px 0 0;padding:10px 12px;border-left:2px solid var(--blue);background:rgba(98,174,209,.07);color:var(--muted);font:.76rem/1.55 var(--sans); }
+    .dependency-case-link a { font-weight:650; }
     .dependency-reserves { display:grid;grid-template-columns:125px minmax(0,1fr);gap:12px;align-items:start;margin-top:16px;padding:13px 14px;border-left:3px solid #7cbaab;background:rgba(124,186,171,.09); }
     .dependency-reserves > strong { color:#acd9cc;font:600 .76rem/1.55 var(--sans); }
     .civil-dependencies .dependency-reserves p { margin:0;color:var(--muted);font:.78rem/1.55 var(--sans); }
@@ -469,9 +479,10 @@
       .dependency-grid { grid-template-columns:minmax(0,1fr);grid-template-areas:"power" "digital" "transport" "supply";gap:12px; }
       .dependency-edge,.dependency-map-label { display:none; }
       .dependency-node { padding:17px 15px; }
-      .civil-dependencies .dependency-node h5 { font-size:1.28rem; }
-      .civil-dependencies .dependency-node p { font-size:.98rem;line-height:1.6; }
+      .civil-dependencies .dependency-node-title { font-size:1.28rem; }
+      .civil-dependencies .dependency-node-copy { font-size:.98rem;line-height:1.6; }
       .civil-dependencies .dependency-node .dependency-needs { font-size:.87rem; }
+      .civil-dependencies .dependency-instruction { font-size:.88rem; }
       .dependency-cascade-heading { display:block; }
       .dependency-cascade-heading > span { display:block;margin-top:5px;font-size:.78rem; }
       .dependency-cascade ol { grid-template-columns:minmax(0,1fr);gap:26px; }
@@ -479,6 +490,7 @@
       .dependency-cascade li + li::before { content:"↓";left:50%;top:-22px;transform:translateX(-50%); }
       .dependency-cascade strong { font-size:.98rem; }
       .dependency-cascade li span { font-size:.9rem; }
+      .dependency-case-link { font-size:.9rem; }
       .dependency-reserves { grid-template-columns:minmax(0,1fr);gap:6px; }
       .dependency-reserves > strong { font-size:.88rem; }
       .civil-dependencies .dependency-reserves p { font-size:.91rem; }
@@ -488,6 +500,8 @@
       .civil-dependencies { background:transparent; }
       .dependency-node { break-inside:avoid; }
       .dependency-cascade,.dependency-reserves { break-inside:avoid; }
+      .dependency-panel[hidden] { display:block !important; }
+      .dependency-panel + .dependency-panel { margin-top:16px; }
     }
     /* Public Nordic transport strategy: schematic corridors, not capacity estimates. */
     .nordic-corridors { width:100%;max-width:790px;min-width:0;margin:28px 0 30px;padding:20px;border:1px solid rgba(184,151,58,.5);background:linear-gradient(145deg,#102d3e,#0d1e34);overflow-wrap:anywhere; }
@@ -2705,7 +2719,7 @@ html{overflow-x:clip}
           <p>Regeringen offentliggjorde den 15 april uppgifter om <a href="https://www.linkedin.com/posts/svensk-osint_proryskt-angreppsf%C3%B6rs%C3%B6k-mot-svenskt-v%C3%A4rmeverk-activity-7450094948307214336-LS97?utm_source=share&amp;utm_medium=member_ios&amp;rcm=ACoAADjG1qsB-0UCM_-IZE_s41MHtz1tWTArOik">ett angreppsförsök mot ett svenskt värmeverk under 2025</a>. Civilförsvarsminister Carl-Oskar Bohlin uppgav koppling till rysk underrättelse- och säkerhetstjänst. Verkets namn och hela det tekniska förloppet offentliggjordes inte. <a href="https://www.regeringen.se/pressmeddelanden/2026/04/regeringen-vidtar-atgarder-for-att-skydda-operativa-system-fran-cyberhot/">Regeringens besked om stärkt skydd för operativ teknik</a> gäller datorer och styrsystem som reglerar exempelvis värme, el, vatten och medicinsk utrustning. Ett intrång kan både röja uppgifter och stoppa eller förändra den fysiska driften.</p>
           <p>Försvarsindustrin utsätts också för digital informationsinhämtning. <a href="https://www.security.com/blog-post/swallowtail-russia-nato-targets">IT-säkerhetsföretaget Symantecs Threat Hunter Team beskrev den 20 oktober intrång</a> i två icke namngivna Natoländer. Gruppen som företaget kallar APT28/Swallowtail hade enligt analysen angripit ett örlogsvarv, en tillverkare av militära flygmotorer och en brottsbekämpande myndighet. Vid varvet användes ett dolt åtkomstprogram för att stjäla inloggningsuppgifter och skapa en bestående förbindelse in i nätverket, en SSH-tunnel. Vilka andra uppgifter som kan ha förts ut är inte offentligt fastställt. Inget svenskt mål namnges i rapporten.</p>
 <p id="msab-kopierade-verktyg">Ett intrång kan också ge tillgång till verktyg som används för att undersöka telefoner. <a href="https://investors.msab.com/sv/investerare/pressrum/pressmeddelanden/2026/intrang-hos-kund-bakom-illegala-kopior-av-xry-pro/">Svenska MSAB uppgav den 26 oktober</a> att ett datorintrång hos en legitim kund hade lett till att äldre kopior av XRY Pro såldes på nätet. Programmet används för att utvinna och analysera data från mobila enheter. Enligt bolaget hade licensskyddet kringgåtts, så att kopiorna kunde köras utan giltig licens. MSAB uppgav att intrånget skett hos kunden och att företagets teknik för att utnyttja sårbarheter i telefoner inte hade röjts. Vilka som köpt kopiorna och hur de använts framgick inte.</p><p id="oxelosund-elavbrott"><strong>Oxelösund – ett tekniskt fel med breda följder.</strong> Större delen av kommunen blev strömlös i omkring tre timmar den 4 oktober. Enligt Vattenfall hade en säkerhetsbrytare i regionnätstationen löst ut. Reservkraft fungerade vid bland annat ett äldreboende, och SSAB hade en separat elledning. Kommunens nät drabbades däremot av störningar. Två verksamheter på samma ort fick olika följder beroende på reservkraft och oberoende matning (<a href="https://www.svt.se/nyheter/lokalt/sormland/forklaringen-bakom-stora-stromavbrottet-i-oxelosund">SVT Nyheter, 2026</a>; <a href="https://www.krisinformation.se/aktuellt/nyheter/">Krisinformation.se, 2026</a>).</p><p>I Svedala berodde avbrottet på ett IT-angrepp. <a href="https://www.sverigesradio.se/artikel/it-attack-mot-svedala-kommun-system-ligger-nere">Sveriges Radio återgav den 1 oktober kommunens uppgifter</a> om att system låg nere och krishantering aktiverats. Ett angrepp med utpressningsprogram, ransomware, nämndes som möjlig förklaring. Vem som låg bakom och skadans fulla omfattning var ännu inte klarlagda.</p><p><a href="https://www.svt.se/nyheter/lokalt/skane/papper-parmar-och-en-tuta-sa-klarar-aldreomsorgen-it-attacken">SVT visade dagen därpå hur äldreomsorgen använde papper, pärmar och en tuta för att tillkalla personal</a>. Omsorgen fortsatte, men långsammare och med fler manuella moment.</p>
-<p>Reservrutinerna måste finnas på papper, vara kända av personalen och använda kontaktvägar som fungerar utan det angripna systemet. Om samma IT-miljö används för både omsorg och krisledning kan ett enda avbrott slå mot hjälpen och samordningen på samma gång.</p><p id="internationella-personregister"><strong>Personuppgifter kan också exponeras genom missbrukad åtkomst.</strong> <a href="https://www.cpr.dk/cpr-nyt/nyhedsarkiv/2026/okt/omfattende-uautoriseret-adgang-til-borgeres-cpr-oplysninger">Den danska CPR-administrationen uppgav den 5 oktober</a> att en verksamhets lagliga tillgång till personregistret hade missbrukats för sökningar om omkring 8,8 miljoner registrerade personer. Någon gärningsperson hade inte identifierats i det första beskedet och <a href="https://www.datatilsynet.dk/presse-og-nyheder/nyhedsarkiv/2026/okt/datatilsynet-er-opmaerksom-paa-sag-om-opslag-i-cpr">ärendet uppmärksammades av Datatilsynet</a>.</p><p>I Belgien <a href="https://www.ifapme.be/actualites/incident-de-securite-base-de-donnees-ifapme-0">uppgav IFAPME att en cyberincident inträffat i februari</a>. VRT rapporterade i oktober att material om omkring 700 000 personer från utbildningsverksamheten spridits på darknet. <a href="https://www.parlement-wallonie.be/pwpages?iddoc=151085&amp;p=interp-questions-voir&amp;type=28">En fråga i Valloniens parlament</a> återgav uppgifter om bland annat nationella identifikationsnummer och bankuppgifter. Händelseförloppet var inte fullständigt klarlagt. Ingen koppling till en främmande stat hade belagts i något av fallen.</p>
+<p id="svedala-aldreomsorg">Reservrutinerna måste finnas på papper, vara kända av personalen och använda kontaktvägar som fungerar utan det angripna systemet. Om samma IT-miljö används för både omsorg och krisledning kan ett enda avbrott slå mot hjälpen och samordningen på samma gång.</p><p id="internationella-personregister"><strong>Personuppgifter kan också exponeras genom missbrukad åtkomst.</strong> <a href="https://www.cpr.dk/cpr-nyt/nyhedsarkiv/2026/okt/omfattende-uautoriseret-adgang-til-borgeres-cpr-oplysninger">Den danska CPR-administrationen uppgav den 5 oktober</a> att en verksamhets lagliga tillgång till personregistret hade missbrukats för sökningar om omkring 8,8 miljoner registrerade personer. Någon gärningsperson hade inte identifierats i det första beskedet och <a href="https://www.datatilsynet.dk/presse-og-nyheder/nyhedsarkiv/2026/okt/datatilsynet-er-opmaerksom-paa-sag-om-opslag-i-cpr">ärendet uppmärksammades av Datatilsynet</a>.</p><p>I Belgien <a href="https://www.ifapme.be/actualites/incident-de-securite-base-de-donnees-ifapme-0">uppgav IFAPME att en cyberincident inträffat i februari</a>. VRT rapporterade i oktober att material om omkring 700 000 personer från utbildningsverksamheten spridits på darknet. <a href="https://www.parlement-wallonie.be/pwpages?iddoc=151085&amp;p=interp-questions-voir&amp;type=28">En fråga i Valloniens parlament</a> återgav uppgifter om bland annat nationella identifikationsnummer och bankuppgifter. Händelseförloppet var inte fullständigt klarlagt. Ingen koppling till en främmande stat hade belagts i något av fallen.</p>
 <p id="trollhattan-porttelefonkameror"><strong>Trollhättan – bilder från porttelefonkameror spreds på nätet.</strong> Källkritikbyrån rapporterade i februari att kameror i ett bostadsområde hade hackats. Bilder från en innergård och lekplats publicerades i en öppen Telegramkanal den 9 februari. En möjlig förklaring var att installatören lämnat kamerorna direkt åtkomliga via internet. Vem som låg bakom var inte fastställt av svenska myndigheter i de granskade uppgifterna. Intrånget gav ändå utomstående insyn i en miljö där de boende rör sig till vardags (<a href="https://omni.se/ryska-hackare-brot-sig-in-i-svenska-porttelefoner/a/oEWgrB">Omni, 2026</a>).</p>
 <p>Även danska privata kameror utsattes för intrång i januari. Enligt <a href="https://www.tjekdet.dk/faktatjek/russiske-hackere-i-massivt-angreb-paa-danske-overvaagningskameraer-landet-over">TjekDet</a> hävdade grupperna själva ryska kopplingar, medan Danmarks försvarsunderrättelsetjänst FE hade beskrivit trådar till ryska aktörer. <a href="https://english.aivd.nl/documents/2026/07/10/brochure-cybersecurity-advisory-russian-state-actors-are-compromising-ip-cameras">De nederländska underrättelsetjänsterna AIVD och MIVD</a> beskrev i juli rysk statlig spionering genom internetanslutna kameror i flera EU- och Natoländer samt Ukraina. Det belägger metoden, men fastställer inte vem som låg bakom intrånget i Trollhättan.</p>
 <p>Verksamheter behöver en förteckning över varje kamera, dess nätadress, programversion och administratörskonto. Direkt åtkomst från internet, gamla programversioner och kvarlämnade installatörskonton ska tas bort. Kamerorna bör ligga i separata nät och åtkomstloggarna följas upp, särskilt vid skyddsvärda platser.</p>
@@ -3752,52 +3766,93 @@ html{overflow-x:clip}
 
         <figure class="chapter-entry-visual">
           <img src="assets/chapter-entry-civil-resilience.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Tematisk illustration av samordnad civil beredskap och återställning av samhällsviktig verksamhet.">
-          <figcaption><span>Kapitel 4 · Förmåga och beroenden</span><strong>Beredskap kräver fungerande reservlösningar, personal och reparationer.</strong></figcaption>
+          <figcaption><span>Kapitel 4 · Förmåga och beroenden</span><strong>Beredskap avgörs av hur flera beroenden fungerar under samma störning.</strong></figcaption>
         </figure>
 
 
-        <div class="longform chapter-context"><p>Svensk beredskap bygger på att myndigheter och företag kan upptäcka hot, dela skyddsvärd information och hålla samhällsviktig verksamhet i gång. El och kommunikation behövs för vård, vattenförsörjning, betalningar, livsmedel och ledning. Personal, reservdelar och reparationsförmåga avgör hur länge verksamheten kan fortsätta när något skadas.</p><p><a href="https://www.nato.int/en/about-us/official-texts-and-resources/official-texts/2026/09/15/2026-resilience-baseline-requirements">Natos krav på civil motståndskraft</a> omfattar bland annat energi, livsmedel och vatten, vård, kommunikationer samt fungerande samhällsledning. Civila och militära behov ska planeras tillsammans så att resurserna räcker till båda. Transportförmågan behöver därför bedömas tillsammans med de verksamheter som ska ta emot, försörja och använda det som kommer fram (Nato, 2026).</p><p>Under 2026 fattades flera beslut som ska stärka dessa funktioner. Offlinebetalningar kan redan användas vid vissa kommunikationsavbrott. Försörjningsstrategin anger vad staten och näringslivet ska förbereda, och fyra regioner ska pröva planeringen för beredskapssjukhus. UND ska börja arbeta den 1 januari 2027, medan byggnads- och reparationsberedskapen fortfarande organiseras. GlobalEye-flygplanet och den nya isbrytaren är beställda men ännu inte i tjänst. Kapitelbedömningen utgår från vilka förmågor som kan bemannas, skyddas och användas under 2027.</p></div>
+        <div class="longform chapter-context"><p>Samhällsviktig verksamhet kan fortsätta bara om hot upptäcks, skyddsvärd information delas och beroendena hålls i drift. Kapitel 4 granskar därför vad 2026 års beslut faktiskt ger under 2027: inte varje reservlösning för sig, utan samspelet mellan el, kommunikation, bemanning och försörjning.</p><p><a href="https://www.nato.int/en/about-us/official-texts-and-resources/official-texts/2026/09/15/2026-resilience-baseline-requirements">Natos krav på civil motståndskraft</a> omfattar bland annat energi, livsmedel och vatten, vård, kommunikationer samt fungerande samhällsledning. Civila och militära behov ska planeras tillsammans så att resurserna räcker till båda. Transportförmågan behöver därför bedömas tillsammans med de verksamheter som ska ta emot, försörja och använda det som kommer fram (Nato, 2026).</p><p>Under 2026 fattades flera beslut som ska stärka dessa funktioner. Offlinebetalningar kan redan användas vid vissa kommunikationsavbrott. Försörjningsstrategin anger vad staten och näringslivet ska förbereda, och fyra regioner ska pröva planeringen för beredskapssjukhus. UND ska börja arbeta den 1 januari 2027, medan byggnads- och reparationsberedskapen fortfarande organiseras. GlobalEye-flygplanet och den nya isbrytaren är beställda men ännu inte i tjänst. Kapitelbedömningen utgår från vilka förmågor som kan bemannas, skyddas och användas under 2027.</p></div>
 
 <div class="chapter-figure civil-figure-wrap"><div class="figure-scroll"><figure class="civil-dependencies" id="civila-beroenden" aria-labelledby="dependency-title" aria-describedby="dependency-desc dependency-caption">
   <div class="dependency-heading">
     <span class="dependency-kicker">Förmåga och beroenden</span>
-    <h4 id="dependency-title">Samhällsviktig drift kräver flera förmågor samtidigt</h4>
-    <p id="dependency-desc">El, information, personal och nödvändiga varor är beroende av varandra. När en del faller bort kan samma reservkraft, tekniker eller kommunikationsväg behövas på flera håll.</p>
+    <h4 id="dependency-title">Följ hur en störning sprids mellan samhällsfunktioner</h4>
+    <p id="dependency-desc">Välj en funktion i bilden. Följdkedjan visar vad som påverkas, var flaskhalsen uppstår och vilket dokumenterat fall i rapporten som illustrerar sambandet.</p>
   </div>
   <div class="dependency-grid">
-    <article class="dependency-node dependency-power">
-      <h5><span aria-hidden="true">01</span> El och reservkraft</h5>
-      <p>Driver kommunikationsnät, IT-system, vårdutrustning, vattenförsörjning och industri.</p>
-      <p class="dependency-needs"><strong>Behöver:</strong> driftpersonal, bränsle, reservdelar och skyddade anläggningar.</p>
-    </article>
+    <button type="button" class="dependency-node dependency-power" id="dependency-button-power" data-dependency-tab="power" aria-controls="dependency-panel-power" aria-pressed="true">
+      <span class="dependency-node-title"><span aria-hidden="true">01</span> El och reservkraft</span>
+      <span class="dependency-node-copy">Driver kommunikationsnät, IT-system, vårdutrustning, vattenförsörjning och industri.</span>
+      <span class="dependency-needs"><strong>Behöver:</strong> driftpersonal, bränsle, reservdelar och skyddade anläggningar.</span>
+    </button>
     <div class="dependency-edge dependency-edge-drift" aria-hidden="true"><b>→</b><span>Drift och styrning</span></div>
-    <article class="dependency-node dependency-digital">
-      <h5><span aria-hidden="true">02</span> Information och ledning</h5>
-      <p>Möjliggör larm, beslut, skyddad informationsdelning, betalningar och samordning.</p>
-      <p class="dependency-needs"><strong>Behöver:</strong> el, säkra förbindelser, behörig personal och övade reservrutiner.</p>
-    </article>
+    <button type="button" class="dependency-node dependency-digital" id="dependency-button-comms" data-dependency-tab="comms" aria-controls="dependency-panel-comms" aria-pressed="false">
+      <span class="dependency-node-title"><span aria-hidden="true">02</span> Kommunikation och ledning</span>
+      <span class="dependency-node-copy">Möjliggör larm, beslut, skyddad informationsdelning och samordning.</span>
+      <span class="dependency-needs"><strong>Behöver:</strong> el, skilda förbindelsevägar, behörig personal och övade reservrutiner.</span>
+    </button>
     <div class="dependency-edge dependency-edge-traffic" aria-hidden="true"><b>↓</b><span>Felbilder och prioritering</span></div>
     <div class="dependency-map-label" aria-hidden="true">Utvalda samband</div>
     <div class="dependency-edge dependency-edge-orders" aria-hidden="true"><b>↓</b><span>Beställningar och information</span></div>
-    <article class="dependency-node dependency-transport">
-      <h5><span aria-hidden="true">03</span> Personal och reparation</h5>
-      <p>Driver, bevakar och återställer anläggningar, nät och tekniska system.</p>
-      <p class="dependency-needs"><strong>Behöver:</strong> ledning, tillträde, verktyg, reservmateriel och avlösning.</p>
-    </article>
+    <button type="button" class="dependency-node dependency-transport" id="dependency-button-care" data-dependency-tab="care" aria-controls="dependency-panel-care" aria-pressed="false">
+      <span class="dependency-node-title"><span aria-hidden="true">03</span> Vård och omsorg</span>
+      <span class="dependency-node-copy">Behöver hålla akut vård, journaler, läkemedel och omsorg i gång även vid avbrott.</span>
+      <span class="dependency-needs"><strong>Behöver:</strong> personal, el, kommunikation, material och fungerande reservrutiner.</span>
+    </button>
     <div class="dependency-edge dependency-edge-resources" aria-hidden="true"><b>↔</b><span>Materiel<br>och tjänster</span></div>
-    <article class="dependency-node dependency-supply">
-      <h5><span aria-hidden="true">04</span> Varor och tjänster</h5>
-      <p>Omfattar livsmedel, läkemedel, bränsle, reservdelar och samhällsviktig service.</p>
-      <p class="dependency-needs"><strong>Behöver:</strong> produktion, lager, personal, transporter samt fungerande beställningar och betalningar.</p>
-    </article>
+    <button type="button" class="dependency-node dependency-supply" id="dependency-button-payments" data-dependency-tab="payments" aria-controls="dependency-panel-payments" aria-pressed="false">
+      <span class="dependency-node-title"><span aria-hidden="true">04</span> Betalningar och försörjning</span>
+      <span class="dependency-node-copy">Gör det möjligt att köpa, beställa och fördela livsmedel, läkemedel, bränsle och reservdelar.</span>
+      <span class="dependency-needs"><strong>Behöver:</strong> el, varor, personal, betalningssystem och fungerande leveranser.</span>
+    </button>
   </div>
-  <div class="dependency-cascade">
-    <div class="dependency-cascade-heading"><h5>Så kan en störning spridas</h5><span>Illustrativt förlopp</span></div>
-    <ol aria-label="Illustrativt förlopp vid kommunikationsavbrott">
-      <li><strong>Kommunikationsavbrott</strong><span>Delade system och skyddade förbindelser blir svåra att nå.</span></li>
-      <li><strong>Manuellt arbete</strong><span>Beslut, journalföring, betalningar och lagerkontroll tar längre tid.</span></li>
-      <li><strong>Konkurrens om resurser</strong><span>Reservkraft, tekniker och reservdelar behövs samtidigt på flera håll.</span></li>
-    </ol>
+  <div class="dependency-switcher">
+    <p class="dependency-instruction">Klicka på en funktion ovan. Aktiv följdkedja: <strong id="dependency-active-label">El och reservkraft</strong></p>
+    <div class="dependency-panels" aria-live="polite">
+      <section class="dependency-panel" id="dependency-panel-power" data-dependency-panel="power" aria-labelledby="dependency-button-power">
+        <div class="dependency-cascade">
+          <div class="dependency-cascade-heading"><h5>Elavbrott</h5><span>Från fysisk skada till flera samtidiga bortfall</span></div>
+          <ol aria-label="Följdkedja vid elavbrott">
+            <li><strong>Distributionen bryts</strong><span>Byggnader, mobilmaster och tekniska system förlorar ordinarie matning.</span></li>
+            <li><strong>Fler tjänster försvagas</strong><span>Värme, telefoni, internet, nödnummer och varningar påverkas.</span></li>
+            <li><strong>Resurser måste prioriteras</strong><span>Bränsle, reservkraft och reparatörer räcker inte automatiskt till alla.</span></li>
+          </ol>
+        </div>
+        <p class="dependency-case-link"><strong>Dokumenterat fall:</strong> <a href="#tyskland-efter-avbrottet">kabelbränderna och elavbrotten i Berlin</a>.</p>
+      </section>
+      <section class="dependency-panel" id="dependency-panel-comms" data-dependency-panel="comms" aria-labelledby="dependency-button-comms" hidden>
+        <div class="dependency-cascade">
+          <div class="dependency-cascade-heading"><h5>Kommunikationsavbrott</h5><span>När fast och mobil uppkoppling delar sårbarhet</span></div>
+          <ol aria-label="Följdkedja vid kommunikationsavbrott">
+            <li><strong>Fiberförbindelsen skadas</strong><span>Fast internet försvinner och mobilnätets kapacitet kan samtidigt minska.</span></li>
+            <li><strong>Verksamheter tappar åtkomst</strong><span>Vård, larm, ledning och informationsdelning tvingas över till manuella rutiner.</span></li>
+            <li><strong>Återställningen avgör följden</strong><span>En verklig reserv behöver ett annat kabelstråk eller en annan knutpunkt.</span></li>
+          </ol>
+        </div>
+        <p class="dependency-case-link"><strong>Dokumenterat fall:</strong> <a href="#fibersabotage-sverige">fibersabotaget i Eskilstuna och Kvicksund</a>.</p>
+      </section>
+      <section class="dependency-panel" id="dependency-panel-care" data-dependency-panel="care" aria-labelledby="dependency-button-care" hidden>
+        <div class="dependency-cascade">
+          <div class="dependency-cascade-heading"><h5>IT-avbrott i omsorgen</h5><span>När digital drift ersätts av manuellt arbete</span></div>
+          <ol aria-label="Följdkedja vid IT-avbrott i vård och omsorg">
+            <li><strong>Systemen blir otillgängliga</strong><span>Journaler, kontaktvägar och planeringsstöd kan inte användas som vanligt.</span></li>
+            <li><strong>Arbetet fortsätter manuellt</strong><span>Papper, pärmar och lokala signaler ersätter delar av den digitala driften.</span></li>
+            <li><strong>Kapaciteten sjunker</strong><span>Fler moment tar längre tid och personalen måste både ge vård och bära reservrutinen.</span></li>
+          </ol>
+        </div>
+        <p class="dependency-case-link"><strong>Dokumenterat fall:</strong> <a href="#svedala-aldreomsorg">äldreomsorgens reservrutiner efter IT-angreppet i Svedala</a>.</p>
+      </section>
+      <section class="dependency-panel" id="dependency-panel-payments" data-dependency-panel="payments" aria-labelledby="dependency-button-payments" hidden>
+        <div class="dependency-cascade">
+          <div class="dependency-cascade-heading"><h5>Betalningsstörning</h5><span>Reservfunktionen löser bara en del av kedjan</span></div>
+          <ol aria-label="Följdkedja vid betalningsstörning">
+            <li><strong>Den gemensamma tjänsten faller</strong><span>Kortbetalningar påverkas samtidigt i flera länder och verksamheter.</span></li>
+            <li><strong>Offlinekort begränsar avbrottet</strong><span>Vissa köp kan genomföras med fysiskt kort och pinkod utan direkt nätkontakt.</span></li>
+            <li><strong>Butiken måste ändå fungera</strong><span>El, bemanning och varor krävs även när själva betalningen har en reservväg.</span></li>
+          </ol>
+        </div>
+        <p class="dependency-case-link"><strong>Dokumenterat fall:</strong> <a href="#nets-betalningsstorning">Nets-störningen och Riksbankens utökade offlinefunktion</a>.</p>
+      </section>
+    </div>
   </div>
   <aside class="dependency-reserves" aria-label="Reservlösningar">
     <strong>Reservlösningar</strong>
@@ -3805,6 +3860,29 @@ html{overflow-x:clip}
   </aside>
   <figcaption id="dependency-caption">Analytisk sambandsbild med utvalda beroenden och ett illustrativt förlopp. Källor: <a href="https://www.regeringen.se/informationsmaterial/2026/07/nationell-strategi-for----forsorjningsberedskap-for-totalforsvarsperioden-20252030/">Regeringens försörjningsstrategi (2026)</a> och <a href="https://www.nato.int/en/about-us/official-texts-and-resources/official-texts/2026/09/15/2026-resilience-baseline-requirements">Natos krav på motståndskraft (2026)</a>.</figcaption>
 </figure>
+
+<script id="dependency-explorer-script">
+(function () {
+  const root = document.getElementById('civila-beroenden');
+  if (!root) return;
+  const buttons = Array.from(root.querySelectorAll('[data-dependency-tab]'));
+  const panels = Array.from(root.querySelectorAll('[data-dependency-panel]'));
+  const activeLabel = root.querySelector('#dependency-active-label');
+  function activate(key) {
+    for (const button of buttons) {
+      const selected = button.dataset.dependencyTab === key;
+      button.setAttribute('aria-pressed', selected ? 'true' : 'false');
+      if (selected && activeLabel) {
+        const title = button.querySelector('.dependency-node-title');
+        activeLabel.textContent = title ? title.textContent.replace(/^\s*\d+\s*/, '').trim() : '';
+      }
+    }
+    for (const panel of panels) panel.hidden = panel.dataset.dependencyPanel !== key;
+  }
+  for (const button of buttons) button.addEventListener('click', function () { activate(button.dataset.dependencyTab); });
+  activate('power');
+})();
+</script>
 
         </div></div><div class="longform"><h3 class="topic-visual topic-scenarios" id="underrattelsereformen" style="--topic-bg:url('assets/topic-underrattelseanalys.webp');--topic-position:center;">Underrättelseförmåga: UND startar under pågående arbete</h3>
 
@@ -3855,7 +3933,7 @@ html{overflow-x:clip}
 
 <h3 id="vardberedskap" class="topic-visual topic-healthcare" style="--topic-bg:url('assets/topic-vardberedskap.webp');--topic-position:center;">Vårdberedskap: befintlig vård ska klara fler skadade</h3>
 <p><a href="https://www.socialstyrelsen.se/om-socialstyrelsen/pressrum/press/ny-planering-visar-var-varden-maste-starkas-vid-krig/">Socialstyrelsen pekade i oktober ut norra Sverige, Gotland och ostkusten</a> som särskilt viktiga i planeringen för sjukvård under krig. Norrbotten, Västerbotten, Västernorrland och Jämtland Härjedalen ska först pröva ett gemensamt upplägg för beredskapssjukhus. Beredskapssjukhus är här ett gemensamt arbetssätt för befintliga sjukhus och vårdenheter, som ska planera hur de tillsammans kan ta emot många fler traumaskadade och samtidigt fortsätta den vanliga vården.</p>
-<p>Planeringen omfattar personal, lokaler, utrustning och ledning. Regionerna ska också bygga lager av sjukvårdsmaterial och samordna arbetet med Försvarsmakten. Erfarenheterna ska ligga till grund för ett nationellt förslag den 31 mars 2027. Under större delen av bedömningsperioden är detta därför en pilot och ett planeringsarbete, inte en införd nationell vårdorganisation. Vårdens uthållighet beror dessutom på samma el, kommunikation, läkemedel och personal som andra delar av samhället behöver.</p>
+<p>Planeringen omfattar personal, lokaler, utrustning och ledning. Regionerna ska också bygga lager av sjukvårdsmaterial och samordna arbetet med Försvarsmakten. Erfarenheterna ska ligga till grund för ett nationellt förslag den 31 mars 2027. Under större delen av bedömningsperioden är detta därför en pilot och ett planeringsarbete, inte en införd nationell vårdorganisation. Det avgörande provet blir om regionerna kan fördela personal, material och vårdplatser när det civila och militära behovet ökar samtidigt.</p>
 
 <h3 id="digitala-betalningar" class="topic-visual topic-digital" style="--topic-bg:url('assets/topic-betalningsberedskap.webp');--topic-position:center;">Digital drift och betalningar: vem kan hålla systemet i gång?</h3>
 
@@ -3872,9 +3950,9 @@ html{overflow-x:clip}
 </div></details>
 <details class="report-disclosure case-collection" id="c4-europeiska-cyberfall"><summary>Europeiska jämförelser: kylsystem och myndighetsdata</summary><div class="case-collection-body"><p><a href="https://www.reuters.com/legal/litigation/investigators-hunt-french-supermarket-fridge-hackers-no-claim-responsibility-2026-10-13/">Reuters rapportering den 13 oktober</a> beskrev hur ett angrepp mot uppkopplade kylsystem drabbade hundratals franska matbutiker. Livsmedel förstördes och bränder rapporterades. Gärningspersonerna hade inte identifierats. Intrånget fick fysiska följder i livsmedelsförsörjningen, men rapporteringen belägger ingen statlig styrning eller direkt svensk påverkan.</p>
 <p><a href="https://www.berlin.de/cyberangriff/informationen-fuer-buergerinnen-und-buerger/">Staden uppgav den 16 oktober</a> att en kriminell angripargrupp hade kopierat data från Berlins förvaltningsnät, huvudsakligen den 7–12 augusti. Material publicerades den 4 september efter att staden avvisat ett utpressningskrav. Två senatsförvaltningar berördes och personuppgifter om anställda och invånare samt företagsuppgifter kan ha ingått. Enligt staden hade inget fortsatt angrepp setts sedan den 13 augusti och nätet bedömdes inte vara varaktigt infiltrerat. Kontrollen över nätet återställdes, men uppgifter som redan hade kopierats kunde fortfarande spridas (Land Berlin, 2026).</p></div></details>
-<p>På EU-nivå lade kommissionen i januari fram förslaget Cybersecurity Act 2, med en ram för att hantera risker i IKT-leverantörskedjor och begränsa högriskleverantörers roll i kritiska digitala tillgångar (<a href="https://commission.europa.eu/news-and-media/news/new-measures-strengthen-cybersecurity-resilience-and-capabilities-2026-01-20_en">Europeiska kommissionen, 2026</a>). Rådets diskussioner i juni efterfrågade större tydlighet kring hur högriskleverantörer och kritiska tillgångar ska identifieras (<a href="https://www.consilium.europa.eu/en/meetings/tte/2026/06/09/">Europeiska unionens råd, 2026</a>). Förslaget är under behandling och ska inte läsas som ett redan gällande generellt förbud.</p> <p><a href="https://www.linkedin.com/posts/svensk-osint_misst%C3%A4nkt-cyberattack-i-s%C3%B6dra-sverige-activity-7463321194532888577-Nwsz">Störningen hos Nets den 21 maj</a> påverkade kortbetalningar i Sverige och andra nordiska länder. Nets preliminära besked var att felet var internt. Störningen sammanföll med Natos utrikesministermöte i Helsingborg, men någon koppling till mötet eller främmande makt belades inte. Flera länder var ändå beroende av att samma leverantör kunde återställa tjänsten.</p>
+<p>På EU-nivå lade kommissionen i januari fram förslaget Cybersecurity Act 2, med en ram för att hantera risker i IKT-leverantörskedjor och begränsa högriskleverantörers roll i kritiska digitala tillgångar (<a href="https://commission.europa.eu/news-and-media/news/new-measures-strengthen-cybersecurity-resilience-and-capabilities-2026-01-20_en">Europeiska kommissionen, 2026</a>). Rådets diskussioner i juni efterfrågade större tydlighet kring hur högriskleverantörer och kritiska tillgångar ska identifieras (<a href="https://www.consilium.europa.eu/en/meetings/tte/2026/06/09/">Europeiska unionens råd, 2026</a>). Förslaget är under behandling och ska inte läsas som ett redan gällande generellt förbud.</p> <p id="nets-betalningsstorning"><a href="https://www.linkedin.com/posts/svensk-osint_misst%C3%A4nkt-cyberattack-i-s%C3%B6dra-sverige-activity-7463321194532888577-Nwsz">Störningen hos Nets den 21 maj</a> påverkade kortbetalningar i Sverige och andra nordiska länder. Nets preliminära besked var att felet var internt. Störningen sammanföll med Natos utrikesministermöte i Helsingborg, men någon koppling till mötet eller främmande makt belades inte. Flera länder var ändå beroende av att samma leverantör kunde återställa tjänsten.</p>
           <p><a href="https://www.riksbank.se/en-gb/press-and-published/notices-and-press-releases/press-releases/2026/offline-card-payments--the-options-are-now-expanding/">Riksbanken meddelade den 1 juli att möjligheten till offlinebetalningar med kort utökats</a> för köp av bland annat livsmedel, läkemedel och drivmedel vid bemannade stationer. Lösningen omfattar huvuddelen av de Visa- och Mastercardkort för vuxna som ingår i överenskommelsen. Den kräver fysiskt kort och pinkod; offlinebetalning med Swish var fortfarande under utredning vid beskedet.</p>
-<p>De köp som omfattas kan genomföras trots ett kommunikationsavbrott. Det ger en konkret reservmöjlighet. Butiken behöver fortfarande el, personal och varor för att kunna hålla öppet.</p>
+<p>De köp som omfattas kan genomföras trots ett kommunikationsavbrott. Offlinefunktionen löser därmed kontakten med betalningssystemet, men inte ett elavbrott eller brist på personal och varor.</p>
 
           <h3 class="topic-visual topic-germany" id="tyskland-efter-avbrottet" style="--topic-bg:url('assets/topic-tyskland-lardomar.webp');--topic-position:center;">Tyskland: ett verkligt avbrott blottlade följdfelen</h3>
 
@@ -4042,7 +4120,7 @@ html{overflow-x:clip}
  </div>
         <div class="chapter-conclusion"><h3 id="c4-samtidiga-behov" class="topic-visual topic-resilience" style="--topic-bg:url('assets/topic-samtidig-reservdrift.webp');--topic-position:center;">Flera funktioner måste hålla samtidigt</h3>
 <p>Sverige går in i 2027 med en fungerande offlinefunktion för vissa kortbetalningar, nya planer för försörjning, en regional pilot för beredskapssjukhus och beslut om hur underrättelse- och reparationsförmågan ska byggas upp. Samtidigt är bevakningen av totalförsvarsviktig civil verksamhet otillräcklig för höjd beredskap, vårdpiloten ännu inte ett nationellt system, reparationsorganisationen inte färdig och UND mitt i sin etablering. GlobalEye återstår att testa före leverans och den nya isbrytaren ska levereras 2029. Ingen av dem är en operativ förstärkning under 2027 i det granskade underlaget.</p>
-<p>Den svåra situationen uppstår när flera verksamheter behöver samma reservkraft, datakanal, tekniker eller reservdel. Då räcker det inte att en enskild butik kan ta kort offline eller att en myndighet har en reservlokal. El, vård, kommunikation, skyddad informationsdelning, betalningar, lager och reparation måste fungera tillsammans och vara bemannade tillräckligt länge. Berlins elavbrott visade hur värme, mobilnät, nödnummer och varningar kan försvagas av samma skada. Flera av systemen använder dessutom rymdtjänster för tid, positionering eller lägesbilder. En reservförbindelse för internet hjälper inte om verksamheten i stället har förlorat sin tidsreferens eller positionsdata.</p><details class="judgement-support" id="review-formaga"><summary>Bedömningsgrunder och vad som kan ändra slutsatsen</summary><p><strong>Bärande skäl:</strong> MTFA har konstaterat att skyddet och bevakningen av totalförsvarsviktig civil verksamhet inte är dimensionerade för höjd beredskap eller krig. Vid ingången av 2027 ska resurser och ansvar för byggnads- och reparationsberedskapen fortfarande identifieras, och något nationellt koncept för beredskapssjukhus är ännu inte lämnat. Must-chefen har dessutom varnat för ett tillfälligt tapp när UND byggs upp. Offlinebetalningar och andra avgränsade reserver minskar vissa sårbarheter men täcker inte hela behovet.</p><p><strong>Det som skulle sänka bedömningen:</strong> övningar där flera samhällsviktiga verksamheter samtidigt visar att de kan arbeta med reservkraft, alternativa kommunikationsvägar, oberoende tids- och positionskällor samt manuella rutiner; bemannade reparationsresurser med tillgång till materiel; vård som kan ta emot fler skadade utan att den vanliga vården upphör; samt en övergång till UND utan avbrott i inhämtning, analys och informationsdelning.</p></details></div>
+<p>Kapitelns jämförelser visar skillnaden mellan en reservlösning och verklig uthållighet. Offlinekort kan kringgå ett kommunikationsavbrott, medan Berlins erfarenhet visar att en fysisk elskada samtidigt kan slå mot värme, mobilnät, nödnummer och varningar. Den strategiska frågan blir därför vilka funktioner som prioriteras när samma tekniker, bränsle, dataförbindelser och reservdelar efterfrågas samtidigt – och om alternativen verkligen är oberoende av det system som fallit.</p><details class="judgement-support" id="review-formaga"><summary>Bedömningsgrunder och vad som kan ändra slutsatsen</summary><p><strong>Bärande skäl:</strong> MTFA har konstaterat att skyddet och bevakningen av totalförsvarsviktig civil verksamhet inte är dimensionerade för höjd beredskap eller krig. Vid ingången av 2027 ska resurser och ansvar för byggnads- och reparationsberedskapen fortfarande identifieras, och något nationellt koncept för beredskapssjukhus är ännu inte lämnat. Must-chefen har dessutom varnat för ett tillfälligt tapp när UND byggs upp. Offlinebetalningar och andra avgränsade reserver minskar vissa sårbarheter men täcker inte hela behovet.</p><p><strong>Det som skulle sänka bedömningen:</strong> övningar där flera samhällsviktiga verksamheter samtidigt visar att de kan arbeta med reservkraft, alternativa kommunikationsvägar, oberoende tids- och positionskällor samt manuella rutiner; bemannade reparationsresurser med tillgång till materiel; vård som kan ta emot fler skadade utan att den vanliga vården upphör; samt en övergång till UND utan avbrott i inhämtning, analys och informationsdelning.</p></details></div>
 <details class="chapter-refs report-disclosure report-references" aria-labelledby="refs-strategiska-domainer">
 <summary id="refs-strategiska-domainer">Referenser</summary>
 <div class="reference-body">

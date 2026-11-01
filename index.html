@@ -1182,18 +1182,16 @@ html{overflow-x:clip}
       .report-discover-card img{height:170px}
     }
 
-    /* Geografiska satellitutsnitt följer respektive huvudkapitel. */
+    /* Egna dekorativa terrängillustrationer följer respektive huvudkapitel. */
     .report-terrain{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0;background-image:linear-gradient(90deg,rgba(7,16,28,.91),rgba(7,16,28,.84) 55%,rgba(7,16,28,.76)),var(--terrain-image);background-size:cover;background-position:center;transition:opacity .45s ease}
     html[data-terrain] .report-terrain{opacity:1}
-    .terrain-credit{display:none;position:fixed;right:8px;bottom:max(4px,env(safe-area-inset-bottom));z-index:3;max-width:90vw;padding:2px 5px;background:rgba(6,15,26,.8);color:#aeb9c5;font:9px/1.3 var(--sans);text-decoration:none}
-    html[data-terrain] .terrain-credit{display:block}
-    html[data-terrain="varldsordning"]{--terrain-image:url('assets/background-satellite-atlantic.webp')}
-    html[data-terrain="sakerhetslage"]{--terrain-image:url('assets/background-satellite-europe-gulf.webp')}
-    html[data-terrain="sverige"]{--terrain-image:url('assets/background-satellite-scandinavia.webp')}
-    html[data-terrain="strategiska-domainer"]{--terrain-image:url('assets/background-satellite-nordic-baltic.webp')}
+    html[data-terrain="varldsordning"]{--terrain-image:url('assets/background-original-atlanten-v1.webp')}
+    html[data-terrain="sakerhetslage"]{--terrain-image:url('assets/background-original-europa-naromrade-v1.webp')}
+    html[data-terrain="sverige"]{--terrain-image:url('assets/background-original-skandinavien-v1.webp')}
+    html[data-terrain="strategiska-domainer"]{--terrain-image:url('assets/background-original-ostersjon-v1.webp')}
     @media(max-width:700px){.report-terrain{background-image:linear-gradient(90deg,rgba(7,16,28,.88),rgba(7,16,28,.85)),var(--terrain-image);background-position:58% center}}
     @media(prefers-reduced-motion:reduce){.report-terrain{transition:none}}
-    @media print{.report-terrain,.terrain-credit{display:none!important}}
+    @media print{.report-terrain{display:none!important}}
 
     /* En unik visuell ingång möter läsaren när varje kapitel öppnas. */
     .chapter-entry-visual{
@@ -1338,7 +1336,6 @@ html{overflow-x:clip}
 </head>
 <body>
   <div class="report-terrain" aria-hidden="true"></div>
-  <a class="terrain-credit" href="https://www.arcgis.com/home/item.html?id=10df2279f9684e4a9f6a7f08febac2a9" target="_blank" rel="noopener">Satellitbakgrund: Esri, Vantor, Earthstar Geographics, GIS User Community</a>
   <div class="site-watermark" aria-hidden="true"></div>
   <a class="skip-link" href="#innehall">Hoppa till innehållet</a>
   <header class="topbar">
@@ -1409,7 +1406,7 @@ html{overflow-x:clip}
 
 
 </section>
-<section class="intro" id="lasanvisning"><p><strong>Rapporten kan läsas på två nivåer.</strong> Den samlade bedömningen ger slutsatserna. Under <em>Läs hela kapitlet</em> finns underlag, fall, motargument och källor samt de omständigheter som kan ändra bedömningen.</p><p>Fallkartan är ett sökbart register över dokumenterade ärenden. Metodavsnittet förklarar urvalet, källvärderingen och sannolikhetsskalan.</p><p class="source-note">Fotografiska bildrubriker är AI-genererade tematiska illustrationer.</p></section><section class="section fall-explorer" id="fallkarta" aria-labelledby="h-fallkarta">
+<section class="intro" id="lasanvisning"><p><strong>Rapporten kan läsas på två nivåer.</strong> Den samlade bedömningen ger slutsatserna. Under <em>Läs hela kapitlet</em> finns underlag, fall, motargument och källor samt de omständigheter som kan ändra bedömningen.</p><p>Fallkartan är ett sökbart register över dokumenterade ärenden. Metodavsnittet förklarar urvalet, källvärderingen och sannolikhetsskalan.</p><p class="source-note">Bildrubriker och dekorativa bakgrunder är AI-genererade tematiska illustrationer.</p></section><section class="section fall-explorer" id="fallkarta" aria-labelledby="h-fallkarta">
           <div class="section-kicker">Fallbilaga · register uppdaterat till och med 30 oktober 2026</div><h2 id="h-fallkarta">Dokumenterade fall på kartan</h2>
           <details class="fall-about" open><summary>Urval och metod · 272 poster</summary>
 <p><strong>Fallregistret omfattar 272 poster: 88 händelser under 2026, 87 historiska fall med relevanta besked 2026 och 97 äldre bakgrundsposter.</strong> Kartans standardlager visar bara händelser som inträffade under 2026. Historiska fall och bakgrund kan slås på separat i lagerkontrollen på kartan. Fallregistret är ett redaktionellt urval, inte heltäckande statistik över unika händelser. Nya poster från hybrid- och veckoregister har tagits med först när källor beskriver en konkret handling, ett konkret försök eller en avgränsad påverkansoperation med strategisk relevans; registeretiketten ensam räcker inte. Sammanhängande operationer kan samlas i en post. Händelse, anklagelse och attribution skiljs åt, och osäkerhet samt ungefärliga platsangivelser markeras. Det kvantitativa jämförelseurvalet är fortsatt fryst vid 6 oktober 2026; registertilläggen ändrar inte baslinjen.</p>
@@ -4291,7 +4288,7 @@ html{overflow-x:clip}
  <p>Sannolikhetsgraden anger hur troligt det bedömda utfallet är, inte hur säker en källa är eller hur allvarlig konsekvensen skulle bli. En hög grad för fortsatt hot betyder därför inte att ett visst attentat är sannolikt. Bedömningens underlag, begränsningar och möjliga motbilder redovisas under respektive kapitel. Verifierade sakuppgifter återges som fakta utan sannolikhetsgrad. Om underlaget inte räcker för att bedöma utfallet anges <em>osäker på svar</em>.</p>
  <p>Bedömningen gäller den uttryckliga frågan och dess tidshorisont. Faktagenomgången avser 2026 till brytdatumet, medan de framåtblickande frågorna här gäller 2027. Varje huvudkapitel har en sammanvägd bedömning med bärande skäl och uppgifter som kan ändra slutsatsen. Underrubrikerna utvecklar underlaget till samma kapitelbedömning. Intervallet uttrycker hur trolig slutsatsen bedöms vara; källornas tillförlitlighet och bevisbegränsningar beskrivs i motiveringen och falltexten.</p>
  <p>Framåtblickande grader används inte för att ange skuld, gärningsman eller sannolikheten för ett visst attentat. Där redovisas det rättsliga eller administrativa besked som har kunnat kontrolleras.</p>
-          <p><strong>Kartor och illustrationer:</strong> Visualiseringarna hjälper läsaren att se geografiska och funktionella samband. Ungefärliga lägen, schematiska linjer och planerade förbindelser ska läsas enligt figurens förklaring. De är inte självständiga belägg för exakta positioner, driftsstatus eller aktörsansvar. Fallkartan använder stabila ärende-ID och skiljer händelsedatum från datum för rättsliga eller administrativa besked. Flera platser inom samma utredning räknas som ett ärende. Bakgrundsfall före 2026 visas i ett eget tidsurval. Fall utan offentlig plats behålls i listan utan geografisk markering.</p>
+          <p><strong>Kartor och illustrationer:</strong> Visualiseringarna hjälper läsaren att se geografiska och funktionella samband. Ungefärliga lägen, schematiska linjer och planerade förbindelser ska läsas enligt figurens förklaring. De är inte självständiga belägg för exakta positioner, driftsstatus eller aktörsansvar. Fallkartan använder stabila ärende-ID och skiljer händelsedatum från datum för rättsliga eller administrativa besked. Flera platser inom samma utredning räknas som ett ärende. Bakgrundsfall före 2026 visas i ett eget tidsurval. Fall utan offentlig plats behålls i listan utan geografisk markering. De dekorativa bakgrunderna med satellitperspektiv är AI-genererade illustrationer och används inte för geografiska lägesuppgifter.</p>
           <details class="report-disclosure case-collection" id="fordjupning-kostnader">
 <summary>Fördjupning: att uppskatta kostnader för angrepp och avbrott</summary>
 <div class="case-collection-body"><p id="putin-tax-uk">En brittisk studie ger ett exempel på hur den ekonomiska sidan av hybridhot kan synliggöras. Labour-ledamoten Graeme Downie och forskaren Dominic Reed uppskattar i <a href="https://graemedownie.com/wp-content/uploads/2026/10/PUTIN-TAX-FINAL-COMPLETED.pdf"><em>The Putin Tax: Estimating the Economic Cost of Russian Hostile Activity Against the United Kingdom</em></a> den årliga brittiska kostnaden för rysk fientlig verksamhet till 2–2,5 miljarder pund. Beloppet är inte officiell statistik eller en uppmätt totalsumma: det sammanför dokumenterade förluster, modellerad cyberrisk och uppskattad exponering för bland annat undervattenskablar. Författarna beskriver siffran som en lägstanivå och redovisar osäkerhet kring attribution, underrapportering och indirekta följdkostnader. För svensk uppföljning kan driftstopp, omledning, reparationer och extra skydd redovisas var för sig. De brittiska beloppen kan inte utan en separat beräkning användas som en uppskattning av svenska kostnader (Downie &amp; Reed, 2026).</p></div>

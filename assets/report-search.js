@@ -93,7 +93,7 @@
     results.hidden = !terms.length;
     if (!terms.length) { more.hidden = true; status.textContent = ''; return; }
     matches = entries.filter(entry => terms.every(term => entry.normalized.includes(term)));
-    status.textContent = matches.length ? matches.length + ' textträffar för ”' + query + '”' : 'Inga träffar för ”' + query + '”. Prova ett annat ord eller färre sökord.';
+    status.textContent = matches.length ? (matches.length === 1 ? '1 textträff för ”' + query + '”' : matches.length + ' textträffar för ”' + query + '”') : 'Inga träffar för ”' + query + '”. Prova ett annat ord eller färre sökord.';
     appendPage();
   }
   form.addEventListener('submit', event => { event.preventDefault(); search(); });

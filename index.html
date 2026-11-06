@@ -392,24 +392,18 @@
     .political-landscape .political-shared p { margin:14px 0 0;color:var(--muted);font:.9rem/1.6 var(--sans); }
     .political-landscape figcaption { margin:15px 0 0;color:var(--quiet);font:.8rem/1.6 var(--sans); }
     .longform h4.political-subheading { margin:30px 0 12px;color:var(--text);font:400 1.23rem/1.35 var(--serif); }
-    .political-voices { margin:32px 0 38px;padding:22px;border:1px solid rgba(184,151,58,.45);background:linear-gradient(145deg,rgba(11,29,50,.97),rgba(18,45,59,.9)); }
-    .political-voices-header { max-width:780px;margin-bottom:20px; }
-    .political-voices-header h4 { margin:8px 0 10px;color:var(--text);font:400 clamp(1.45rem,3vw,1.9rem)/1.2 var(--serif); }
-    .political-voices-header p { margin:0;color:var(--muted);font:.92rem/1.65 var(--sans); }
-    .political-voices-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px; }
-    .political-voice-card { min-width:0;display:flex;flex-direction:column;border:1px solid rgba(184,151,58,.34);background:rgba(7,20,36,.76);overflow:hidden; }
-    .political-voice-visual { margin:0;position:relative; }
-    .political-voice-visual img { display:block;width:100%;aspect-ratio:3/2;object-fit:cover; }
-    .political-voice-visual figcaption { position:absolute;right:8px;bottom:8px;margin:0;padding:4px 7px;background:rgba(4,14,27,.82);color:#d7dbe0;font:600 .62rem/1.35 var(--sans);letter-spacing:.02em; }
-    .political-voice-body { display:flex;flex:1;flex-direction:column;padding:16px 15px 17px; }
+    .political-country-quote { display:grid;grid-template-columns:minmax(230px,.9fr) minmax(0,1.1fr);min-width:0;margin:22px 0 30px;border:1px solid rgba(184,151,58,.42);background:linear-gradient(145deg,rgba(9,24,42,.97),rgba(17,43,58,.92));overflow:hidden; }
+    .political-voice-visual { min-height:100%;margin:0;position:relative; }
+    .political-voice-visual img { display:block;width:100%;height:100%;min-height:270px;object-fit:cover; }
+    .political-voice-visual figcaption { position:absolute;right:8px;bottom:8px;margin:0;padding:4px 7px;background:rgba(4,14,27,.84);color:#d7dbe0;font:600 .62rem/1.35 var(--sans);letter-spacing:.02em; }
+    .political-voice-body { display:flex;min-width:0;flex-direction:column;justify-content:center;padding:21px 20px 22px; }
     .political-voice-meta { color:var(--gold);font:700 .68rem/1.5 var(--sans);letter-spacing:.08em;text-transform:uppercase; }
-    .political-voice-card h5 { margin:7px 0 12px;color:var(--text);font:500 1.25rem/1.25 var(--serif); }
-    .political-voice-card h5 span { display:block;margin-top:4px;color:var(--blue);font:600 .78rem/1.45 var(--sans); }
-    .political-voice-card blockquote { margin:0 0 14px;padding:2px 0 2px 12px;border-left:3px solid var(--gold);color:#f2ead5;font:italic 1.02rem/1.5 var(--serif); }
-    .political-voice-card p { margin:0 0 16px;color:var(--muted);font:.84rem/1.62 var(--sans); }
-    .political-voice-source { margin-top:auto;color:var(--blue);font:700 .75rem/1.5 var(--sans);letter-spacing:.03em; }
-    .political-voices-analysis { margin:18px 0 0;padding:16px 17px;border-left:3px solid var(--gold);background:var(--gold-soft);color:var(--text);font:.9rem/1.65 var(--sans); }
-    .political-voices-note { margin:11px 0 0;color:var(--quiet);font:.75rem/1.55 var(--sans); }
+    .political-country-quote h5 { margin:7px 0 13px;color:var(--text);font:500 1.3rem/1.25 var(--serif); }
+    .political-country-quote h5 span { display:block;margin-top:4px;color:var(--blue);font:600 .78rem/1.45 var(--sans); }
+    .political-country-quote blockquote { margin:0 0 14px;padding:2px 0 2px 13px;border-left:3px solid var(--gold);color:#f2ead5;font:italic 1.15rem/1.52 var(--serif); }
+    .political-country-quote p { margin:0 0 15px;color:var(--muted);font:.87rem/1.62 var(--sans); }
+    .political-voice-source { margin-top:2px;color:var(--blue);font:700 .75rem/1.5 var(--sans);letter-spacing:.03em; }
+    .political-voice-note { margin:10px 0 0;color:var(--quiet);font:.68rem/1.5 var(--sans); }
     @media(max-width:720px) {
       .political-landscape { padding:17px 14px;margin:24px 0; }
       .political-country-grid { grid-template-columns:minmax(0,1fr);gap:12px; }
@@ -420,12 +414,13 @@
       .political-shared { padding:17px; }
       .political-dependencies { display:grid;grid-template-columns:minmax(0,1fr); }
       .political-dependencies span { font-size:.88rem; }
-      .political-voices { padding:17px 14px;margin:24px 0 30px; }
-      .political-voices-grid { grid-template-columns:minmax(0,1fr);gap:16px; }
-      .political-voice-card p { font-size:.92rem; }
-      .political-voice-card blockquote { font-size:1.12rem; }
+      .political-country-quote { grid-template-columns:minmax(0,1fr);margin:19px 0 27px; }
+      .political-voice-visual img { height:auto;min-height:0;aspect-ratio:3/2; }
+      .political-voice-body { padding:18px 17px 20px; }
+      .political-country-quote p { font-size:.92rem; }
+      .political-country-quote blockquote { font-size:1.12rem; }
     }
-    @media print { .political-country,.political-voice-card { break-inside:avoid; }.political-country-grid,.political-voices-grid { grid-template-columns:minmax(0,1fr); }.political-landscape,.political-voices { background:transparent; } }
+    @media print { .political-country,.political-country-quote { break-inside:avoid; }.political-country-grid { grid-template-columns:minmax(0,1fr); }.political-landscape,.political-country-quote { background:transparent; } }
 /* Ombud: HTML text keeps the diagram readable when branches stack on phones. */
     .proxy-network { margin:30px 0 34px;padding:22px;border:1px solid rgba(184,151,58,.5);background:linear-gradient(150deg,#102d3e,#0d1e34);min-width:0;max-width:100%; }
     .proxy-network .proxy-kicker { color:var(--blue);font:700 .7rem/1.5 var(--sans);letter-spacing:.13em;text-transform:uppercase; }
@@ -1621,66 +1616,42 @@ html{overflow-x:clip}
             <figcaption id="political-graphic-caption">Analytisk sammanställning av landgenomgången nedan. Inflytande kan uppstå genom opposition, delstatsmakt eller regeringsmakt. Hur det påverkar säkerhetssamarbetet beror på de beslut som faktiskt fattas.</figcaption>
           </figure>
 
-          <section class="political-voices" id="ukrainastod-politiska-skiften" aria-labelledby="political-voices-title">
-            <header class="political-voices-header">
-              <span class="political-graphic-kicker">Politisk skiljelinje · hösten 2026</span>
-              <h4 id="political-voices-title">Tre uttalanden som kan påverka Europas Ukrainastöd</h4>
-              <p>Uttalandena är inte likvärdiga. Marine Le Pen vill stoppa det finansiella stödet efter en övergångsperiod, Alice Weidel vill avsluta finansieringen av ett krig hon beskriver som förlorat, medan Nigel Farage vill villkora stödet med hårdare kontroll.</p>
-            </header>
-            <div class="political-voices-grid">
-              <article class="political-voice-card">
-                <figure class="political-voice-visual">
-                  <img src="assets/politisk-citat-le-pen.webp" alt="AI-genererad redaktionell illustration av Marine Le Pen vid en talarstol mot fransk bakgrund." loading="lazy" decoding="async">
-                  <figcaption>AI-genererad illustration</figcaption>
-                </figure>
-                <div class="political-voice-body">
-                  <span class="political-voice-meta">Frankrike · 14 oktober 2026</span>
-                  <h5>Marine Le Pen <span>RN:s presidentkandidat</span></h5>
-                  <blockquote>”Efter det stoppar vi det finansiella stödet till Ukraina, eftersom vi inte längre har råd.”</blockquote>
-                  <p>Le Pen sade att det finansiella stödet skulle fortsätta i sex månader efter ett makttillträde och därefter upphöra. Hon öppnade samtidigt för fortsatt utbildning av ukrainska soldater och stöd med materiel.</p>
-                  <a class="political-voice-source" href="https://www.vrt.be/vrtmax/a-z/terzake/2026/terzake-d20261014-a185/" target="_blank" rel="noopener noreferrer">Se VRT-intervjun →</a>
-                </div>
-              </article>
-              <article class="political-voice-card">
-                <figure class="political-voice-visual">
-                  <img src="assets/politisk-citat-weidel.webp" alt="AI-genererad redaktionell illustration av Alice Weidel vid en talarstol mot tysk bakgrund." loading="lazy" decoding="async">
-                  <figcaption>AI-genererad illustration</figcaption>
-                </figure>
-                <div class="political-voice-body">
-                  <span class="political-voice-meta">Tyskland · 15 oktober 2026</span>
-                  <h5>Alice Weidel <span>AfD:s medordförande</span></h5>
-                  <blockquote>”Det är fel att fortsätta finansiera ett krig som redan är förlorat.”</blockquote>
-                  <p>Weidel fördömde samtidigt Rysslands invasion 2022. Hennes slutsats var ändå att Ukraina inte kan vinna mot Ryssland och att fortsatt tysk finansiering därför strider mot Tysklands intressen.</p>
-                  <a class="political-voice-source" href="https://podcasts.apple.com/us/podcast/an-interview-with-alice-weidel/id151230264?i=1000797420862" target="_blank" rel="noopener noreferrer">Lyssna på The Economists intervju →</a>
-                </div>
-              </article>
-              <article class="political-voice-card">
-                <figure class="political-voice-visual">
-                  <img src="assets/politisk-citat-farage.webp" alt="AI-genererad redaktionell illustration av Nigel Farage vid en talarstol mot brittisk bakgrund." loading="lazy" decoding="async">
-                  <figcaption>AI-genererad illustration</figcaption>
-                </figure>
-                <div class="political-voice-body">
-                  <span class="political-voice-meta">Storbritannien · 12 oktober 2026</span>
-                  <h5>Nigel Farage <span>Reform UK:s ledare</span></h5>
-                  <blockquote>”Ingens stöd till Ukraina kan vara obegränsat.”</blockquote>
-                  <p>Farage sade att han inte motsatte sig fortsatt stöd och beskrev Putin som ett större hot. Han krävde däremot en hårdare granskning av hur brittiska skattemedel används i Ukraina.</p>
-                  <a class="political-voice-source" href="https://www.theguardian.com/politics/live/2026/oct/12/uk-politics-live-tories-andy-burnham-russian-interference-brexit-eu-latest" target="_blank" rel="noopener noreferrer">Läs originalrapporteringen →</a>
-                </div>
-              </article>
-            </div>
-            <p class="political-voices-analysis"><strong>Betydelse för Sverige:</strong> Om dessa linjer får genomslag kan följden bli mindre finansiering, fler villkor eller långsammare beslut om Ukraina. Det påverkar hur mycket stöd Europa kan bära utan USA och hur resurser fördelas mellan Ukrainastöd och Natos egen försvarsförmåga.</p>
-            <p class="political-voices-note">Citaten är svenska översättningar. Bilderna är AI-genererade redaktionella illustrationer och ska inte uppfattas som dokumentära fotografier.</p>
-          </section>
-
-          <h4 class="political-subheading topic-visual topic-politics" style="--topic-bg:url('assets/topic-tyskland-politik.webp');--topic-position:center;">Tyskland: från valresultat till försvarsplanering</h4>
+          <h4 id="tyskland-afd-ukrainastod" class="political-subheading topic-visual topic-politics" style="--topic-bg:url('assets/topic-tyskland-politik.webp');--topic-position:center;">Tyskland: från valresultat till försvarsplanering</h4>
           <p><a href="https://www.linkedin.com/feed/update/urn:li:activity:7502977442966585344">AfD fick 43,8 procent av rösterna i Sachsen-Anhalt den 6 september</a>. Partiet vann 39 av 83 mandat men fick ingen egen majoritet. <a href="https://wahlergebnisse.sachsen-anhalt.de/wahlen/lt26/erg_land.html?v=1788767981813">Delstatens valmyndighet publicerade det slutliga resultatet den 22 september</a>. Tysklands utrikes- och försvarspolitik avgörs på nationell nivå, men delstater och kommuner medverkar i det praktiska genomförandet av försvaret (Statistisches Landesamt Sachsen-Anhalt, 2026).</p>
           <p>Den kopplingen blev tydlig när <a href="https://www.linkedin.com/feed/update/urn:li:activity:7505135669103673345">reservistförbundet ville begränsa tillgången till Operationsplan Deutschland, OPLAN DEU</a>, vid ett möjligt AfD-styre. Planen berör bland annat hur Tyskland ska stödja allierade förstärkningar. <a href="https://www.n-tv.de/politik/Angst-vor-Russland-Zugriff-Reservistenverband-will-Nato-Operationsplan-aus-Sachsen-Anhalt-abziehen-id31301915.html">Förbundsordföranden Bastian Ernst varnade den 14–15 september för att känsliga uppgifter skulle kunna nå Ryssland</a>, enligt N-tv och AFP. Han redovisade ingen konstaterad överföring.</p><p>OPLAN DEU kan bara genomföras om civila myndigheter och företag får den information som krävs för mottagande, försörjning och skydd. Begränsad tillgång till planen skulle fördröja deras förberedelser. Ett förändrat säkerhetsskydd i en tysk delstat kan därför påverka hur snabbt svenska och andra allierade förband får stöd, utan att Natos formella åtaganden ändras (N-tv &amp; AFP, 2026).</p>
           <p>AfD har också använt parlamentariska verktyg för att motsätta sig stöd till Ukraina. Partiet <a href="https://www.linkedin.com/posts/svensk-osint_deutscher-bundestag-antrag-will-gaskraftwerk-activity-7464028635633643521-OBfP">ville stoppa överlåtelsen av ett gaseldat kraftverk i Lubmin</a>. <a href="https://www.bundestag.de/dokumente/textarchiv/2026/kw21-de-lubmin-1178606">Förbundsdagen hänvisade förslaget till utskott den 22 maj</a>. Det redovisade beskedet gäller behandling av motionen; något beslut att stoppa överlåtelsen framgår inte där (Deutscher Bundestag, 2026).</p>
-          <p><a href="#ukrainastod-politiska-skiften">AfD:s medordförande Alice Weidel skärpte linjen i en intervju med <em>The Economist</em> den 15 oktober</a>. Hon sade att Ukraina inte kan vinna mot Ryssland och kallade fortsatt finansiering av kriget fel. Uttalandet visar hur frågan kopplas till tysk ekonomi och nationella prioriteringar, inte bara till utrikespolitisk sympati (The Economist, 2026).</p>
+          <aside class="political-country-quote" id="ukrainastod-politiska-skiften" aria-label="Alice Weidel om Tysklands stöd till Ukraina">
+            <figure class="political-voice-visual">
+              <img src="assets/politisk-citat-weidel.webp" alt="AI-genererad redaktionell illustration av Alice Weidel vid en talarstol mot tysk bakgrund." loading="lazy" decoding="async">
+              <figcaption>AI-genererad illustration</figcaption>
+            </figure>
+            <div class="political-voice-body">
+              <span class="political-voice-meta">Politiskt besked · Tyskland · 15 oktober 2026</span>
+              <h5>Alice Weidel <span>AfD:s medordförande</span></h5>
+              <blockquote>”Det är fel att fortsätta finansiera ett krig som redan är förlorat.”</blockquote>
+              <p>Weidel fördömde Rysslands invasion 2022 men sade att Ukraina inte kan vinna mot Ryssland. Hon kopplade ett stopp för fortsatt finansiering till tyska ekonomiska och nationella intressen.</p>
+              <a class="political-voice-source" href="https://podcasts.apple.com/us/podcast/an-interview-with-alice-weidel/id151230264?i=1000797420862" target="_blank" rel="noopener noreferrer">Lyssna på <em>The Economists</em> intervju →</a>
+              <span class="political-voice-note">Citatet är översatt till svenska.</span>
+            </div>
+          </aside>
           <p>Partiets rättsliga ställning är samtidigt omstridd. <a href="https://recht.nulegal.eu/rechtsprechung/vg-koeln/2026-02-26/13-l-1109-25">Förvaltningsdomstolen i Köln beslutade den 26 februari</a> att den tyska säkerhetstjänsten BfV tills vidare inte fick behandla den nationella AfD-organisationen som säkerställt högerextremistisk. Det tillfälliga beslutet gäller i väntan på prövning i första instans. Bedömningar av enskilda delstatsorganisationer omfattas av andra prövningar (Verwaltungsgericht Köln, 2026).</p>
 
-          <h4 class="political-subheading topic-visual topic-deterrence" style="--topic-bg:url('assets/topic-nordisk-avskrackning.webp');--topic-position:center;">Frankrike: presidentval, parlament och avskräckning</h4>
+          <h4 id="frankrike-rn-ukrainastod" class="political-subheading topic-visual topic-deterrence" style="--topic-bg:url('assets/topic-nordisk-avskrackning.webp');--topic-position:center;">Frankrike: presidentval, parlament och avskräckning</h4>
           <p>I Frankrike kan presidentvalet 2027 direkt förändra den politiska ledningen för en europeisk kärnvapenmakt. RN har haft ett <a href="https://www.linkedin.com/feed/update/urn:li:activity:7498284707206361088">starkt opinionsläge inför valet</a>. I <a href="https://www.ifopgroup.com/wp-content/uploads/2026/08/122732-resultats-ensemble.pdf">Ifop-Fiducials mätning den 24–25 augusti</a> fick Marine Le Pen 33–35 procent i de testade kandidatfälten för första omgången. Mätningen visar stödet i dessa alternativ, medan en valseger även kräver att hon klarar en eventuell andra valomgång (Ifop-Fiducial, 2026).</p><p>Le Pen sade i en intervju med <a href="https://www.ft.com/content/9acc4f6f-2faa-4ac1-aa7b-42166d677316">Financial Times</a> att hon, om hon blir president, skulle avsluta Frankrikes finansiella stöd till Ukraina efter sex månader. <a href="https://www.france24.com/en/europe/20261015-france-can-no-longer-finance-ukraine-far-right-candidate-marine-le-pen-says">France 24 återgav också beskedet</a>. Vallöftet gör stödet till en konkret stridsfråga inför 2027. Om det genomförs kan andra europeiska länder behöva täcka en större del av Ukrainas behov.</p>
+          <aside class="political-country-quote" aria-label="Marine Le Pen om Frankrikes stöd till Ukraina">
+            <figure class="political-voice-visual">
+              <img src="assets/politisk-citat-le-pen.webp" alt="AI-genererad redaktionell illustration av Marine Le Pen vid en talarstol mot fransk bakgrund." loading="lazy" decoding="async">
+              <figcaption>AI-genererad illustration</figcaption>
+            </figure>
+            <div class="political-voice-body">
+              <span class="political-voice-meta">Vallöfte · Frankrike · 14 oktober 2026</span>
+              <h5>Marine Le Pen <span>RN:s presidentkandidat</span></h5>
+              <blockquote>”Efter det stoppar vi det finansiella stödet till Ukraina, eftersom vi inte längre har råd.”</blockquote>
+              <p>Beskedet gäller det finansiella stödet efter en sexmånadersperiod. Le Pen öppnade samtidigt för fortsatt utbildning av ukrainska soldater och stöd med materiel.</p>
+              <a class="political-voice-source" href="https://www.vrt.be/vrtmax/a-z/terzake/2026/terzake-d20261014-a185/" target="_blank" rel="noopener noreferrer">Se VRT-intervjun →</a>
+              <span class="political-voice-note">Citatet är översatt till svenska.</span>
+            </div>
+          </aside>
           <p><a href="https://www.lemonde.fr/en/france/article/2026/10/25/marine-le-pen-vows-to-restore-rule-of-law-at-presidential-campaign-kickoff_6763891_7.html">Le Pen inledde presidentvalskampanjen i Orléans den 25 oktober</a>. Hon lyfte lag och ordning samt starkare statlig auktoritet som huvudteman (Le Monde med AFP, 2026).</p>
           <p>Hennes möjlighet att kandidera har påverkats av rättsprocessen om EU-parlamentsmedel. <a href="https://lcp.fr/actualites/marine-le-pen-condamnee-mais-pas-ecartee-de-la-presidentielle-le-recit-depuis-la-cour-d">Paris appellationsdomstol fastställde hennes skuld den 7 juli</a>, men kortade den ovillkorliga delen av valbarhetsförbudet till 15 månader. Den tiden hade då redan löpt ut. Domen omfattade även ett års ovillkorligt fängelse, med möjlighet till elektronisk övervakning. <a href="https://lcp.fr/actualites/ce-soir-je-suis-candidate-a-l-election-presidentielle-annonce-marine-le-pen-438886">Samma kväll meddelade Le Pen att hon avsåg att kandidera 2027 och gå vidare till kassationsdomstolen</a> (Marchal, 2026; LCP, 2026).</p>
           <p>RN har också en äldre finansiell koppling till Ryssland. <a href="https://questions.assemblee-nationale.fr/dyn/opendata/CRCANR5L16S2023PO812752N034.html">Nationalförsamlingens utfrågning av Le Pen den 24 maj 2023</a> behandlade partiets ryska lån på omkring nio miljoner euro från 2014. Lånet är en dokumenterad del av partiets finansieringshistoria. Någon rysk styrning av ett framtida franskt regeringsbeslut är inte fastställd genom den uppgiften (Assemblée nationale, 2023).</p>
@@ -1688,9 +1659,22 @@ html{overflow-x:clip}
 <p><a href="https://rassemblementnational.fr/communiques/la-dissuasion-engage-la-nation-elle-ne-se-delegue-pas">RN:s uttalande den 2 mars</a> visar en skiljelinje i den frågan. Marine Le Pen och Jordan Bardella kritiserade förslagen om att sprida franska kärnvapenstyrkor till europeiska partner och motsatte sig att avskräckningen används för europeisk integration. De accepterade gemensamma övningar och ömsesidigt fördelaktigt industrisamarbete. Både RN och Macron vill behålla fransk beslutanderätt; oenigheten gäller hur långt samarbetet med andra länder ska gå. Sverige skulle därför kunna möta snävare villkor för samarbete även om Frankrikes arsenal består (Rassemblement national, 2026).</p>
 <p>Ett regeringsskifte och ett presidentskifte får olika följder. <a href="https://www.elysee.fr/emmanuel-macron/2026/03/02/deplacement-sur-la-base-operationnelle-de-lile-longue">Presidenten beslutar om kärnvapenanvändning och tolkar vilka vitala intressen som ska försvaras</a>. Regeringen kan samtidigt påverka resurser och genomförande genom <a href="https://www.legifrance.gouv.fr/loda/texte_lc/LEGITEXT000006071194/">den franska konstitutionens ansvarsfördelning</a>. Om RN även vinner presidentposten får partiet inflytande över det yttersta beslutet.</p><p>RN:s redovisade linje innebär inte att den franska arsenalen försvinner. Den skulle däremot ge Sverige och andra partner snävare villkor för kärnvapensamarbetet. Samarbetets värde för Sverige beror därför på vilka hot en framtida fransk president är beredd att räkna som ett franskt vitalt intresse.</p>
 
-          <h4 class="political-subheading topic-visual topic-uk-politics" style="--topic-bg:url('assets/topic-storbritannien-politik.webp');--topic-position:center;">Storbritannien: politisk konkurrens och finansieringsgranskning</h4>
+          <h4 id="storbritannien-reform-ukrainastod" class="political-subheading topic-visual topic-uk-politics" style="--topic-bg:url('assets/topic-storbritannien-politik.webp');--topic-position:center;">Storbritannien: politisk konkurrens och finansieringsgranskning</h4>
           <p>I Storbritannien verkar Reform UK genom både opinionsstöd och konkurrensen med andra partier. <a href="https://yougov.com/en-gb/articles/55640-voting-intention-27-28-september-2026-ref-25-lab-24-con-19-ld-12-grn-11">YouGovs mätning den 27–28 september</a> gav Reform UK 25 procent, Labour 24 och de konservativa 19. Mandaten avgörs dock i enskilda valkretsar. Även före ett regeringsskifte kan konkurrensen om väljare påverka vilka frågor sittande politiker prioriterar (YouGov, 2026).</p>
-          <p><a href="#ukrainastod-politiska-skiften">Nigel Farage sade den 12 oktober att inget lands stöd till Ukraina kan vara obegränsat</a>. Han motsatte sig inte fortsatt stöd men ville granska hur brittiska pengar används och hänvisade till risken för korruption. Till skillnad från Le Pen och Weidel formulerade han alltså inte ett stoppdatum; hans linje kan i stället leda till hårdare villkor och större politisk prövning av enskilda stödinsatser (The Guardian, 2026).</p>
+          <aside class="political-country-quote" aria-label="Nigel Farage om Storbritanniens stöd till Ukraina">
+            <figure class="political-voice-visual">
+              <img src="assets/politisk-citat-farage.webp" alt="AI-genererad redaktionell illustration av Nigel Farage vid en talarstol mot brittisk bakgrund." loading="lazy" decoding="async">
+              <figcaption>AI-genererad illustration</figcaption>
+            </figure>
+            <div class="political-voice-body">
+              <span class="political-voice-meta">Politiskt utspel · Storbritannien · 12 oktober 2026</span>
+              <h5>Nigel Farage <span>Reform UK:s ledare</span></h5>
+              <blockquote>”Ingens stöd till Ukraina kan vara obegränsat.”</blockquote>
+              <p>Farage motsatte sig inte fortsatt stöd och beskrev Putin som ett större hot. Till skillnad från Le Pen och Weidel angav han inget stoppdatum, utan krävde hårdare kontroll av hur brittiska skattemedel används.</p>
+              <a class="political-voice-source" href="https://www.theguardian.com/politics/live/2026/oct/12/uk-politics-live-tories-andy-burnham-russian-interference-brexit-eu-latest" target="_blank" rel="noopener noreferrer">Läs originalrapporteringen →</a>
+              <span class="political-voice-note">Citatet är översatt till svenska.</span>
+            </div>
+          </aside>
           <p><a href="https://www.linkedin.com/feed/update/urn:li:activity:7501901565725929472">Reform UK granskades i september för uppgifter om utländsk finansiering</a>, bland annat betalning för opinionsmätningar. Efter Channel 4 News och Verbatims granskning med dold kamera lämnade policychefen James Orr och rådgivaren Dan Jukes sina uppdrag i väntan på partiets interna utredning. <a href="https://www.itv.com/news/2026-09-03/reform-reported-to-police-over-alleged-foreign-donations">ITV återgav den 4 september både anklagelserna och Nigel Farages bestridande av lagbrott</a>. Någon rysk finansiering eller beställning av partiets politik fastställdes inte i rapporteringen (ITV News, 2026).</p>
           <p>Ett äldre, rättsligt fastställt påverkansfall gäller Nathan Gill, som senare blev ledare för Reform UK i Wales. <a href="https://www.judiciary.uk/wp-content/uploads/2025/11/R-v-Nathan-Gill.pdf">Han dömdes den 21 november 2025 till tio och ett halvt års fängelse för åtta mutbrott</a>. Som EU-parlamentariker 2018–2019 hade han tagit emot pengar genom Oleg Voloshyn för uttalanden som gynnade Viktor Medvedchuks intressen. Domen visar hur en enskild folkvald köptes som påverkanskanal. Den gäller Gills gärningar, inte partiets samlade verksamhet (Central Criminal Court, 2025).</p>
           <p>Storbritannien står inte inför samma omedelbara beslutspunkt under 2027 som Frankrikes presidentval. För svensk del får den politiska konkurrensen säkerhetspolitisk betydelse om den ändrar brittiska budgetar, Ukrainaleveranser eller försvarsåtaganden. Ett förändrat opinionsläge säger ännu inte att dessa bidrag minskar.</p>
@@ -1701,7 +1685,7 @@ html{overflow-x:clip}
           <p>I Norge uppgav Høyres ledare Ine Eriksen Søreide den 23 oktober att partiet <a href="https://www.vg.no/nyheter/i/ylpjzK/ine-eriksen-soereide-advarer-deg-mot-russiske-roboter">anmält misstänkta ryska påverkansförsök till Nasjonal sikkerhetsmyndighet</a>. Hon beskrev automatiserade konton, AI-användning och proryska budskap i sociala medier. Rapporteringen återger partiets misstankar, men saknar ett offentligt tekniskt underlag som knyter kontona till Ryssland. Vem som styrt dem och hur stor påverkan de fått är därmed fortfarande oklart (VG, 2026).</p>
           <p>Även USA försöker påverka Europas politiska riktning. <a href="https://www.whitehouse.gov/wp-content/uploads/2025/12/2025-National-Security-Strategy.pdf">Den amerikanska nationella säkerhetsstrategin från 2025</a> välkomnar inflytandet för vad dokumentet kallar patriotiska europeiska partier och förespråkar motstånd inom Europa mot dess nuvarande kurs. USA gör detta öppet genom ett officiellt strategidokument. De ryska kampanjerna ovan använder dolda eller vilseledande kanaler. Aktörerna och metoderna är olika även när deras budskap i enskilda frågor pekar åt samma håll (The White House, 2025).</p>
           <p>Sociala plattformar påverkar dessutom vilket innehåll användare möter. <a href="https://news.sky.com/story/how-sky-news-investigated-xs-algorithm-for-political-bias-13463916">Sky News undersökte nio nya X-konton i november 2025</a> och fann att rekommendationsflödena förstärkte högerorienterat och extremistiskt innehåll. Experimentet visar vad dessa konton exponerades för. Det mätte inte om användarna ändrade uppfattning eller hur rekommendationerna påverkade ett valresultat (Sky News Data and Forensics Unit, 2025).</p>
-          <p>De tre länderna visar hur politiska beslut kan påverka olika delar av ett försvarssamarbete. I Tyskland gäller frågan bland annat vem som får del av känsliga planer. I Frankrike kan presidentvalet ändra villkoren för avskräckning och Ukrainastöd. I Storbritannien avgör budgetar och fortsatta leveranser hur åtagandena omsätts i handling. Ett allierat land kan ha de resurser Sverige behöver men ändå begränsa när och hur de får användas.</p>
+          <p>Uttalandena är inte likvärdiga. Le Pen anger ett stoppdatum för finansiellt stöd, Weidel vill avsluta finansieringen av ett krig hon beskriver som förlorat och Farage kräver hårdare kontroll utan att föreslå ett fullständigt stopp. För Sverige är den gemensamma följden att Ukrainastöd, försvarsbudgetar och tillgång till allierade resurser kan få nya villkor även om Natoavtalet består.</p>
           <h3 class="topic-visual topic-ukraine" id="ryska-roda-linjer" style="--topic-bg:url('assets/topic-ukraina-forhandlingar.webp');--topic-position:center;">Förhandlingarna om Ukraina och Europas säkerhetsvillkor</h3>
 
           <p>Den 5 september reste Donald Trumps sändebud Steve Witkoff och Jared Kushner till Moskva för samtal med Vladimir Putin. Mötet varade omkring tre timmar. Dagen därpå fortsatte de till Kyiv, där de träffade Volodymyr Zelenskyj och även deltog i samtal med företrädare för Frankrike, Storbritannien och Tyskland. Förhandlingsspåret omfattade därmed både direktkontakter mellan Washington och Moskva och konsultationer med Ukraina och europeiska partner (<a href="https://www.osw.waw.pl/en/publikacje/analyses/2026-09-07/witkoff-and-kushner-moscow-and-kyiv-white-house-resumes-peace">Rodkiewicz et al., 2026</a>).</p>

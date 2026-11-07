@@ -483,6 +483,21 @@
     .paired-case figcaption { display:grid;grid-template-columns:auto minmax(0,1fr);gap:13px;align-items:start;margin:0;padding:11px 16px 12px;border-top:1px solid rgba(184,151,58,.24);color:var(--muted);font:.72rem/1.5 var(--sans); }
     .paired-case figcaption strong { color:var(--gold);font-size:.67rem;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap; }
 
+    .case-total { display:grid;grid-template-columns:minmax(150px,.43fr) minmax(0,1.57fr);min-width:0;margin:14px 0 18px;border:1px solid rgba(184,151,58,.42);background:linear-gradient(145deg,rgba(8,24,42,.98),rgba(16,43,57,.93));overflow:hidden; }
+    .case-total-number { display:flex;min-width:0;flex-direction:column;justify-content:center;padding:15px 17px;border-right:1px solid rgba(184,151,58,.28);background:linear-gradient(145deg,rgba(184,151,58,.12),rgba(5,18,32,.1)); }
+    .case-total-kicker { color:var(--gold);font:700 .62rem/1.4 var(--sans);letter-spacing:.11em;text-transform:uppercase; }
+    .case-total-value { margin:3px 0 0;color:#fff;font:500 clamp(2.8rem,6vw,4.25rem)/.95 var(--serif);font-variant-numeric:tabular-nums; }
+    .case-total-unit { margin-top:5px;color:var(--quiet);font:600 .67rem/1.35 var(--sans); }
+    .case-total figcaption { min-width:0;margin:0;padding:14px 17px 13px; }
+    .case-total-explanation { margin:0 0 11px;color:var(--muted);font:.77rem/1.52 var(--sans); }
+    .case-total-bar { display:flex;width:100%;height:9px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.05);overflow:hidden; }
+    .case-total-bar span:nth-child(1) { flex:88;background:#e5c85d; }
+    .case-total-bar span:nth-child(2) { flex:87;background:#7aaec4; }
+    .case-total-bar span:nth-child(3) { flex:97;background:#52677b; }
+    .case-total-legend { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:8px; }
+    .case-total-legend span { min-width:0;color:var(--quiet);font:.61rem/1.35 var(--sans); }
+    .case-total-legend strong { display:block;margin-bottom:1px;color:var(--text);font:700 .72rem/1.2 var(--sans);font-variant-numeric:tabular-nums; }
+
     @media(max-width:720px) {
       .political-moment { grid-template-columns:minmax(0,1fr); }
       .political-moment-visual,.political-moment-visual img { min-height:0; }
@@ -507,8 +522,15 @@
       .paired-case-card p { font-size:.79rem; }
       .paired-case figcaption { grid-template-columns:minmax(0,1fr);gap:3px;padding:10px 14px 11px; }
       .paired-case figcaption strong { white-space:normal; }
+      .case-total { grid-template-columns:112px minmax(0,1fr); }
+      .case-total-number { padding:13px 12px;border-right:1px solid rgba(184,151,58,.28); }
+      .case-total-value { font-size:2.75rem; }
+      .case-total figcaption { padding:12px 12px 11px; }
+      .case-total-explanation { font-size:.7rem;line-height:1.45; }
+      .case-total-legend { gap:6px; }
+      .case-total-legend span { font-size:.54rem; }
     }
-    @media print { .political-moment,.object-explainer,.outage-day,.paired-case { break-inside:avoid;background:transparent; }.outage-day-steps { grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible; }.paired-case-grid { grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible; } }
+    @media print { .political-moment,.object-explainer,.outage-day,.paired-case,.case-total { break-inside:avoid;background:transparent; }.outage-day-steps { grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible; }.paired-case-grid { grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible; } }
 /* Ombud: HTML text keeps the diagram readable when branches stack on phones. */
     .proxy-network { margin:30px 0 34px;padding:22px;border:1px solid rgba(184,151,58,.5);background:linear-gradient(150deg,#102d3e,#0d1e34);min-width:0;max-width:100%; }
     .proxy-network .proxy-kicker { color:var(--blue);font:700 .7rem/1.5 var(--sans);letter-spacing:.13em;text-transform:uppercase; }
@@ -1580,8 +1602,16 @@ html{overflow-x:clip}
   <p class="source-note">Bildrubriker och dekorativa bakgrunder är AI-genererade tematiska illustrationer.</p>
 </section><section class="section fall-explorer" id="fallkarta" aria-labelledby="h-fallkarta">
           <div class="section-kicker">Fallbilaga · register uppdaterat till och med 30 oktober 2026</div><h2 id="h-fallkarta">Dokumenterade fall på kartan</h2>
-          <details class="fall-about" open><summary>Urval och metod · 272 poster</summary>
-<p><strong>Fallregistret innehåller 272 poster.</strong> Av dem gäller 88 händelser under 2026, 87 äldre händelser som fått ett nytt besked under 2026 och 97 äldre bakgrundsfall. Kartan visar bara 2026 års händelser från start. Du kan slå på historiska fall och bakgrund i kartans lagerkontroll.</p><p>Registret är ett redaktionellt urval, inte heltäckande brotts- eller incidentstatistik. En post tas med först när en källa beskriver en konkret handling, ett konkret försök eller en avgränsad påverkansoperation. Flera händelser i samma operation kan samlas i en post. Rapporten skiljer mellan det som har hänt, vem som anklagas och vem som har pekats ut som ansvarig. Osäkra uppgifter och ungefärliga platser markeras tydligt. Jämförelseurvalet är fryst vid den 6 oktober 2026; senare tillägg ändrar inte den baslinjen.</p>
+          <details class="fall-about" open><summary>Så ska kartans siffror läsas</summary>
+<figure class="case-total" id="fallregistret-272" aria-labelledby="fallregistret-272-rubrik">
+  <div class="case-total-number"><span class="case-total-kicker">Talet bakom kartan</span><strong class="case-total-value" id="fallregistret-272-rubrik">272</strong><span class="case-total-unit">poster i registret</span></div>
+  <figcaption>
+    <p class="case-total-explanation">Kartan visar 272 poster – men bara 88 är händelser från 2026. Ytterligare 87 är äldre händelser som fått ett nytt besked under året, medan 97 används som bakgrund. Därför öppnar kartan med 88 händelser från 2026 och låter dig slå på de två övriga lagren.</p>
+    <div class="case-total-bar" role="img" aria-label="88 händelser från 2026, 87 äldre händelser med nytt besked under 2026 och 97 bakgrundsfall"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></div>
+    <div class="case-total-legend" aria-hidden="true"><span><strong>88</strong>Händelser 2026</span><span><strong>87</strong>Nytt besked 2026</span><span><strong>97</strong>Bakgrundsfall</span></div>
+  </figcaption>
+</figure>
+<p>Registret är ett redaktionellt urval, inte heltäckande brotts- eller incidentstatistik. En post tas med först när en källa beskriver en konkret handling, ett konkret försök eller en avgränsad påverkansoperation. Flera händelser i samma operation kan samlas i en post. Rapporten skiljer mellan det som har hänt, vem som anklagas och vem som har pekats ut som ansvarig. Osäkra uppgifter och ungefärliga platser markeras tydligt. Jämförelseurvalet är fryst vid den 6 oktober 2026; senare tillägg ändrar inte den baslinjen.</p>
           </details>
           <details class="fall-filter-panel" open><summary>Filtrera och sök i fallregistret</summary>
 <div class="fall-controls">

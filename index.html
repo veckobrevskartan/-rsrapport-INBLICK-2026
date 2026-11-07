@@ -421,6 +421,72 @@
       .political-country-quote blockquote { font-size:1.12rem; }
     }
     @media print { .political-country,.political-country-quote { break-inside:avoid; }.political-country-grid { grid-template-columns:minmax(0,1fr); }.political-landscape,.political-country-quote { background:transparent; } }
+
+    /* Three compact editorial breaks: one political moment, one system object and one illustrated first day. */
+    .political-moment { display:grid;grid-template-columns:minmax(220px,.82fr) minmax(0,1.18fr);min-width:0;margin:18px 0 25px;border:1px solid rgba(184,151,58,.42);background:linear-gradient(145deg,rgba(9,24,42,.98),rgba(17,43,58,.92));overflow:hidden; }
+    .political-moment-visual { position:relative;min-height:248px;margin:0; }
+    .political-moment-visual img { display:block;width:100%;height:100%;min-height:248px;object-fit:cover;object-position:42% center; }
+    .editorial-ai-label { position:absolute;right:8px;bottom:8px;margin:0;padding:4px 7px;background:rgba(4,14,27,.86);color:#d7dbe0;font:600 .6rem/1.35 var(--sans);letter-spacing:.02em; }
+    .political-moment-body { display:flex;min-width:0;flex-direction:column;justify-content:center;padding:18px 20px 19px; }
+    .political-moment-meta,.object-explainer-kicker,.outage-day-kicker { color:var(--gold);font:700 .66rem/1.45 var(--sans);letter-spacing:.1em;text-transform:uppercase; }
+    .political-moment h4 { margin:6px 0 10px;color:var(--text);font:500 1.28rem/1.22 var(--serif); }
+    .political-moment h4 span { display:block;margin-top:3px;color:var(--blue);font:600 .74rem/1.4 var(--sans); }
+    .political-moment blockquote { margin:0 0 11px;padding:1px 0 1px 12px;border-left:3px solid var(--gold);color:#f2ead5;font:italic 1.08rem/1.45 var(--serif); }
+    .political-moment p { margin:0 0 11px;color:var(--muted);font:.82rem/1.55 var(--sans); }
+    .political-moment a { color:var(--blue);font:700 .73rem/1.45 var(--sans); }
+
+    .object-explainer { display:grid;grid-template-columns:minmax(0,1.16fr) minmax(250px,.84fr);min-width:0;margin:22px 0 28px;border:1px solid rgba(184,151,58,.43);background:linear-gradient(145deg,rgba(10,27,45,.98),rgba(15,42,56,.92));overflow:hidden; }
+    .object-explainer-media { position:relative;min-height:330px;margin:0; }
+    .object-explainer-media::after { content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,17,31,.12),transparent 52%,rgba(5,17,31,.28));pointer-events:none; }
+    .object-explainer-media img { display:block;width:100%;height:100%;min-height:330px;object-fit:cover; }
+    .object-marker { position:absolute;z-index:2;display:flex;align-items:center;gap:6px;padding:5px 8px;border:1px solid rgba(231,207,115,.72);background:rgba(5,18,32,.88);color:#f4ead0;font:700 .65rem/1.2 var(--sans);box-shadow:0 2px 14px rgba(0,0,0,.22); }
+    .object-marker b { display:grid;width:21px;height:21px;place-items:center;border-radius:50%;background:var(--gold);color:#071321;font-size:.6rem; }
+    .object-marker-power { left:5%;bottom:12%; }
+    .object-marker-control { left:43%;bottom:8%; }
+    .object-marker-access { right:5%;top:18%; }
+    .object-explainer-body { display:flex;min-width:0;flex-direction:column;justify-content:center;padding:19px 18px 18px; }
+    .object-explainer h4 { margin:6px 0 8px;color:var(--text);font:500 clamp(1.25rem,2.4vw,1.58rem)/1.2 var(--serif); }
+    .object-explainer-intro { margin:0 0 13px;color:var(--muted);font:.81rem/1.55 var(--sans); }
+    .object-explainer ol { display:grid;gap:8px;margin:0;padding:0;list-style:none;counter-reset:object-step; }
+    .object-explainer li { position:relative;padding:0 0 0 29px;color:var(--muted);font:.75rem/1.45 var(--sans);counter-increment:object-step; }
+    .object-explainer li::before { content:counter(object-step,decimal-leading-zero);position:absolute;left:0;top:1px;color:var(--gold);font:700 .62rem/1.5 var(--sans); }
+    .object-explainer li strong { display:block;color:var(--text);font-size:.77rem; }
+    .object-impact-strip { display:flex;flex-wrap:wrap;gap:5px;margin-top:14px;padding-top:12px;border-top:1px solid rgba(184,151,58,.25); }
+    .object-impact-strip span { padding:4px 7px;border:1px solid rgba(184,151,58,.26);color:var(--quiet);font:600 .62rem/1.25 var(--sans); }
+
+    .outage-day { min-width:0;margin:24px 0 30px;border:1px solid rgba(184,151,58,.42);background:linear-gradient(145deg,rgba(8,24,42,.98),rgba(16,43,57,.93));overflow:hidden; }
+    .outage-day-header { display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,.7fr);gap:18px;align-items:end;padding:18px 19px 15px; }
+    .outage-day h4 { margin:5px 0 0;color:var(--text);font:500 clamp(1.28rem,2.6vw,1.65rem)/1.2 var(--serif); }
+    .outage-day-header p { margin:0;color:var(--muted);font:.78rem/1.55 var(--sans); }
+    .outage-day-media { position:relative;margin:0;border-top:1px solid rgba(184,151,58,.22);border-bottom:1px solid rgba(184,151,58,.25); }
+    .outage-day-media img { display:block;width:100%;height:190px;object-fit:cover; }
+    .outage-day-steps { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;padding:0;list-style:none; }
+    .outage-day-steps li { min-width:0;padding:13px 14px 14px;border-right:1px solid rgba(184,151,58,.22); }
+    .outage-day-steps li:last-child { border-right:0; }
+    .outage-day-steps time { display:block;margin-bottom:5px;color:#f0d66f;font:700 .68rem/1.35 var(--sans);letter-spacing:.06em;text-transform:uppercase; }
+    .outage-day-steps strong { display:block;margin-bottom:3px;color:var(--text);font:600 .78rem/1.35 var(--sans); }
+    .outage-day-steps span { display:block;color:var(--muted);font:.7rem/1.45 var(--sans); }
+    .outage-day figcaption { margin:0;padding:9px 14px 10px;border-top:1px solid rgba(184,151,58,.2);color:var(--quiet);font:.68rem/1.5 var(--sans); }
+
+    @media(max-width:720px) {
+      .political-moment { grid-template-columns:minmax(0,1fr); }
+      .political-moment-visual,.political-moment-visual img { min-height:0; }
+      .political-moment-visual img { aspect-ratio:16/9;object-position:center 32%; }
+      .political-moment-body { padding:17px 16px 18px; }
+      .object-explainer { grid-template-columns:minmax(0,1fr); }
+      .object-explainer-media,.object-explainer-media img { min-height:0; }
+      .object-explainer-media img { aspect-ratio:16/9; }
+      .object-marker { padding:4px;background:rgba(5,18,32,.9); }
+      .object-marker span { display:none; }
+      .object-explainer-body { padding:17px 16px 18px; }
+      .object-explainer li,.object-explainer li strong { font-size:.84rem; }
+      .outage-day-header { grid-template-columns:minmax(0,1fr);gap:7px;padding:16px 14px 13px; }
+      .outage-day-media img { height:auto;aspect-ratio:2/1; }
+      .outage-day-steps { grid-auto-flow:column;grid-auto-columns:minmax(210px,74vw);grid-template-columns:none;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-color:rgba(184,151,58,.5) transparent; }
+      .outage-day-steps li { min-height:132px;scroll-snap-align:start; }
+      .outage-day-steps span { font-size:.78rem; }
+    }
+    @media print { .political-moment,.object-explainer,.outage-day { break-inside:avoid;background:transparent; }.outage-day-steps { grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible; } }
 /* Ombud: HTML text keeps the diagram readable when branches stack on phones. */
     .proxy-network { margin:30px 0 34px;padding:22px;border:1px solid rgba(184,151,58,.5);background:linear-gradient(150deg,#102d3e,#0d1e34);min-width:0;max-width:100%; }
     .proxy-network .proxy-kicker { color:var(--blue);font:700 .7rem/1.5 var(--sans);letter-spacing:.13em;text-transform:uppercase; }
@@ -1580,6 +1646,20 @@ html{overflow-x:clip}
           <p><a href="https://media.defense.gov/2026/Jan/23/2003864773/-1/-1/0/2026-NATIONAL-DEFENSE-STRATEGY.PDF">USA:s nationella försvarsstrategi för 2026</a> anger fyra prioriteringar: försvar av hemlandet, avskräckning av Kina, större ansvar för allierade och en starkare försvarsindustri. <a href="https://www.linkedin.com/posts/svensk-osint_national-defense-strategy-activity-7420970034044428288-Vgco">Strategin framhåller också amerikansk tillgång till Grönland och Panamakanalen</a>. Europeiska allierade måste därför planera för att amerikanska flygplan, fartyg och andra resurser kan behövas i andra regioner samtidigt som en kris pågår i Europa.</p>
           <p id="usa-styrkeataganden-2026"><a href="https://apnews.com/live/trump-administration-updates-06-03-2026">Associated Press rapporterade den 3 juni att USA:s Europakommando, EUCOM, hade minskat sina styrkeåtaganden i Natos beredskapsplanering</a>. Andra allierade förväntades bidra med mer flyg och fler fartyg när USA reserverade resurser för andra regioner. Några exakta förändringar offentliggjordes inte. Det offentliga beskedet gäller vilka styrkor USA lovar Nato i en kris, inte en redovisad förflyttning av förband som redan finns i Europa (Finley, 2026).</p>
           <p>USA:s prioritering av västra halvklotet syntes redan den 3 januari, när amerikanska styrkor grep Nicolás Maduro och hans hustru i Caracas. <a href="https://www.linkedin.com/posts/svensk-osint_trump-claims-us-has-captured-venezuelan-dictator-activity-7413155720432353280-deq4?utm_source=share&amp;utm_medium=member_ios&amp;rcm=ACoAADjG1qsB-0UCM_-IZE_s41MHtz1tWTArOik">Den första rapporteringen om operationen</a> följdes av <a href="https://www.justice.gov/opa/pr/us-soldier-charged-using-classified-information-profit-prediction-market-bets">USA:s justitiedepartements redogörelse</a>, som bekräftade tid och plats. Operationen riktade amerikanska militära resurser och politisk uppmärksamhet mot samma region som försvarsstrategin ger högre prioritet.</p><p id="gronland-vald-och-patryckningar">Konflikten om Grönland belastade samtidigt relationen till Danmark. Redan den 7 januari 2025 vägrade Trump utesluta militärt eller ekonomiskt tvång för att få kontroll över ön (Weissert &amp; Miller, 2025). Den 6 januari 2026 uppgav <a href="https://www.reuters.com/world/trump-advisers-discussing-options-acquiring-greenland-us-military-is-always-an-2026-01-06/">Vita huset att militära medel fortfarande var ett alternativ</a>. Först i <a href="https://www.weforum.org/stories/forum-institutional/davos-2026-special-address-donald-trump-president-united-states-america/">Davos den 21 januari sade Trump att han inte skulle använda våld</a>, samtidigt som han begärde förhandlingar om ett amerikanskt förvärv. Danmark utsattes därmed för territoriella krav och hot om tvång från sin viktigaste militära allierade (Holland et al., 2026; World Economic Forum, 2026).</p>
+          <aside class="political-moment" aria-labelledby="trump-davos-title">
+            <figure class="political-moment-visual">
+              <img src="assets/report-davos-gronland.webp" alt="AI-genererad redaktionell illustration av Donald Trump vid en talarstol med Grönland i bakgrunden" loading="lazy" width="1536" height="1024">
+              <figcaption class="editorial-ai-label">AI-genererad illustration</figcaption>
+            </figure>
+            <div class="political-moment-body">
+              <span class="political-moment-meta">Politiskt ögonblick · Davos · 21 januari 2026</span>
+              <h4 id="trump-davos-title">Donald J. Trump <span>USA:s president</span></h4>
+              <blockquote>”Jag behöver inte använda våld. Jag vill inte använda våld. Jag kommer inte att använda våld.”</blockquote>
+              <p>Beskedet uteslöt våld men inte kravet på förhandlingar om ett amerikanskt förvärv. Den öppet uttalade risken för militärt tvång minskade; konflikten om Grönlands framtid bestod.</p>
+              <a href="https://www.weforum.org/stories/forum-institutional/davos-2026-special-address-donald-trump-president-united-states-america/">Läs talet hos World Economic Forum →</a>
+              <small class="political-voice-note">Citatet är översatt från engelska.</small>
+            </div>
+          </aside>
           <p><a href="https://www.linkedin.com/posts/svensk-osint_activity-7419832738318569472-G37N?utm_source=share&amp;utm_medium=member_ios&amp;rcm=ACoAADjG1qsB-0UCM_-IZE_s41MHtz1tWTArOik">De planerade extra tullarna i Grönlandskonflikten drogs senare tillbaka</a>. <a href="https://www.consilium.europa.eu/en/press/press-releases/2026/01/23/oral-conclusions-drawn-by-president-antonio-costa-following-the-informal-meeting-of-the-members-of-the-european-council-of-22-january-2026/">Europeiska rådets ordförande António Costa välkomnade beskedet den 23 januari</a>, men betonade att Danmark och Grönland själva bestämmer över sin framtid. Tullhotet upphörde, men frågan om hur långt USA var berett att pressa en allierad följde med in i de fortsatta förhandlingarna (<a href="#ref-costa-january">Costa, 2026a</a>).</p>
           <p id="gronlandsavtalets-innebord"><a href="https://stm.dk/media/hf5nivaz/aftale_dan.pdf">USA, Danmark och Grönland undertecknade ett försvarsavtal den 22 september</a>. Det bekräftar dansk suveränitet och Grönlands rätt till självbestämmande, samtidigt som verksamheten vid Pituffik Space Base ska moderniseras och utökas. Narsarsuaq och Mestersvig anges som ytterligare amerikanska försvarsområden. Deras praktiska villkor ska förhandlas vidare. Avtalet öppnar för fler områden, saknar slutdatum och ska träda i kraft efter parlamentariska förfaranden och en diplomatisk not.</p><p>Avtalet löste inte förtroendekonflikten. Det gav USA större möjligheter att använda baser i Nordatlanten samtidigt som Grönland förblev under dansk suveränitet. USA:s politik kombinerade därmed hårda påtryckningar mot Danmark med fortsatt militärt samarbete (Danmarks regering, Naalakkersuisut &amp; USA:s regering, 2026).</p>
           <p>Trots motsättningarna bekräftar <a href="https://www.nato.int/en/about-us/official-texts-and-resources/official-texts/2026/07/08/the-ankara-summit-declaration">Natos Ankaradeklaration</a> artikel 5 om kollektivt försvar och det transatlantiska samarbetet. Enligt Nato ökade europeiska allierade och Kanada sina investeringar i prioriterade försvarsbehov med över 139 miljarder dollar under 2025. De åtog sig också att finansiera huvuddelen av Ukrainastödet och utlovade 70 miljarder euro i militär materiel, stöd och utbildning för 2026, med minst samma nivå 2027. Europa tar därmed på sig större ekonomiska åtaganden inom alliansen.</p>
@@ -3996,6 +4076,27 @@ html{overflow-x:clip}
   <figcaption id="dependency-caption">Analytisk sambandsbild med utvalda beroenden och ett illustrativt förlopp. Källor: <a href="https://www.regeringen.se/informationsmaterial/2026/07/nationell-strategi-for----forsorjningsberedskap-for-totalforsvarsperioden-20252030/">Regeringens försörjningsstrategi (2026)</a> och <a href="https://www.nato.int/en/about-us/official-texts-and-resources/official-texts/2026/09/15/2026-resilience-baseline-requirements">Natos krav på motståndskraft (2026)</a>.</figcaption>
 </figure>
 
+<figure class="outage-day" id="kommunikationsavbrott-forsta-dygnet" aria-labelledby="kommunikationsavbrott-title">
+  <header class="outage-day-header">
+    <div>
+      <span class="outage-day-kicker">Illustrerat förlopp · kommunikationsavbrott</span>
+      <h4 id="kommunikationsavbrott-title">Avbrottets första dygn</h4>
+    </div>
+    <p>Fyra tidpunkter visar hur en regional störning kan spridas till betalningar, vård, larm och transporter.</p>
+  </header>
+  <div class="outage-day-media">
+    <img src="assets/report-forsta-dygnet.webp" alt="AI-genererad bildberättelse om ett kommunikationsavbrott: nätutrustning, störda digitala tjänster, manuellt arbete och reparation" loading="lazy" width="1600" height="800">
+    <span class="editorial-ai-label">AI-genererad illustration</span>
+  </div>
+  <ol class="outage-day-steps">
+    <li><time>Direkt</time><strong>Kontaktvägar försvinner</strong><span>Larm, fjärrstyrning och digitala tjänster kan sluta fungera samtidigt.</span></li>
+    <li><time>Efter 1 timme</time><strong>Reservvägar prövas</strong><span>Offlinebetalning och reservsamband hjälper där de finns och är övade.</span></li>
+    <li><time>Efter 6 timmar</time><strong>Människan blir reservsystemet</strong><span>Papper, telefonlistor och manuell prioritering tar mer tid och personal.</span></li>
+    <li><time>Efter 24 timmar</time><strong>Återställningen blir flaskhalsen</strong><span>Tekniker, reservdelar, bränsle och alternativa platser kan avgöra uthålligheten.</span></li>
+  </ol>
+  <figcaption>Illustrerat scenario – inte en prognos. Följderna beror på avbrottets omfattning, reservkraft, separata nät och bemanning.</figcaption>
+</figure>
+
 <script id="dependency-explorer-script">
 (function () {
   const root = document.getElementById('civila-beroenden');
@@ -4144,6 +4245,27 @@ html{overflow-x:clip}
 <details class="report-disclosure case-collection" id="c4-europeiska-cyberfall"><summary>Europeiska jämförelser: kylsystem, vård och myndighetsdata</summary><div class="case-collection-body"><p><a href="https://www.cert.se/2026/11/cyberangrepp-mot-uppkopplade-frys-och-kylsystem.html">CERT-SE bekräftade den 2 november att svenska verksamheter berörts av incidenterna mot uppkopplade frys- och kylsystem</a>. Två dagar senare uppgav <a href="https://www.enisa.europa.eu/news/joint-statement-on-cyber-incidents-in-refrigeration-systems-across-the-eu">EU:s cybersäkerhetsmyndighet ENISA</a> att flera medlemsländer hade drabbats sedan den 11 oktober och att en ny våg inträffat den 1–2 november. Angreppen visar hur fjärransluten driftteknik hos butiker och externa leverantörer kan ge direkt påverkan på livsmedelsförsörjningen.</p>
 <p>Samma typ av åtkomst nådde även vårdsektorn. <a href="https://apnews.com/article/12b80bcf93b8404264209e519c204919">Vid tre anläggningar hos den franska blodtjänsten EFS ändrades temperatur- och avfrostningsgränser för plasmaförvaring</a>. Larm upptäckte förändringarna och personal hann säkra eller flytta produkterna; inga blodprodukter gick förlorade. <a href="https://yle.fi/a/7-10108167">Finlands cybersäkerhetscenter bekräftade samtidigt angrepp mot butikernas distansstyrning och identifierade 30 internetexponerade enheter</a>. Kylstyrningen blir därmed ett gemensamt beroende för mat, läkemedel och vård – inte en isolerad butiksteknisk fråga. Vem som låg bakom den samlade incidentserien var inte fastställt vid rapportens tidsgräns.</p>
 <p><a href="https://www.berlin.de/cyberangriff/informationen-fuer-buergerinnen-und-buerger/">Staden uppgav den 16 oktober</a> att en kriminell angripargrupp hade kopierat data från Berlins förvaltningsnät, huvudsakligen den 7–12 augusti. Material publicerades den 4 september efter att staden avvisat ett utpressningskrav. Två senatsförvaltningar berördes och personuppgifter om anställda och invånare samt företagsuppgifter kan ha ingått. Enligt staden hade inget fortsatt angrepp setts sedan den 13 augusti och nätet bedömdes inte vara varaktigt infiltrerat. Kontrollen över nätet återställdes, men uppgifter som redan hade kopierats kunde fortfarande spridas (Land Berlin, 2026).</p></div></details>
+
+<figure class="object-explainer" id="kylsystem-samma-teknik" aria-labelledby="kylsystem-samma-teknik-title">
+  <div class="object-explainer-media">
+    <img src="assets/report-kylsystem.webp" alt="AI-genererad illustration av ett uppkopplat industriellt kylsystem med el-, nätverks- och serviceanslutningar" loading="lazy" width="1600" height="900">
+    <span class="object-marker object-marker-power"><b>01</b><span>El</span></span>
+    <span class="object-marker object-marker-control"><b>02</b><span>Styrning</span></span>
+    <span class="object-marker object-marker-access"><b>03</b><span>Lokal åtkomst</span></span>
+    <span class="editorial-ai-label">AI-genererad illustration</span>
+  </div>
+  <figcaption class="object-explainer-body">
+    <span class="object-explainer-kicker">Ett föremål förklarar systemet</span>
+    <h4 id="kylsystem-samma-teknik-title">Samma kylstyrning – olika konsekvenser</h4>
+    <p class="object-explainer-intro">En uppkopplad kylmaskin visar varför teknik, el och människor måste fungera tillsammans.</p>
+    <ol>
+      <li><strong>Elförsörjning</strong>Kompressor, styrning och larm behöver ström.</li>
+      <li><strong>Uppkoppling och styrning</strong>Fjärråtkomst underlättar drift men kan också bli en angreppsväg.</li>
+      <li><strong>Personal och lokal åtkomst</strong>Någon måste upptäcka felet, isolera systemet och flytta känsliga varor.</li>
+    </ol>
+    <div class="object-impact-strip" aria-label="Verksamheter som kan påverkas"><span>Livsmedel</span><span>Plasma</span><span>Läkemedel</span></div>
+  </figcaption>
+</figure>
 <p>På EU-nivå lade kommissionen i januari fram förslaget Cybersecurity Act 2, med en ram för att hantera risker i IKT-leverantörskedjor och begränsa högriskleverantörers roll i kritiska digitala tillgångar (<a href="https://commission.europa.eu/news-and-media/news/new-measures-strengthen-cybersecurity-resilience-and-capabilities-2026-01-20_en">Europeiska kommissionen, 2026</a>). Rådets diskussioner i juni efterfrågade större tydlighet kring hur högriskleverantörer och kritiska tillgångar ska identifieras (<a href="https://www.consilium.europa.eu/en/meetings/tte/2026/06/09/">Europeiska unionens råd, 2026</a>). Förslaget är under behandling och ska inte läsas som ett redan gällande generellt förbud.</p> <p id="nets-betalningsstorning"><a href="https://www.linkedin.com/posts/svensk-osint_misst%C3%A4nkt-cyberattack-i-s%C3%B6dra-sverige-activity-7463321194532888577-Nwsz">Störningen hos Nets den 21 maj</a> påverkade kortbetalningar i Sverige och andra nordiska länder. Nets preliminära besked var att felet var internt. Störningen sammanföll med Natos utrikesministermöte i Helsingborg, men någon koppling till mötet eller främmande makt belades inte. Flera länder var ändå beroende av att samma leverantör kunde återställa tjänsten.</p>
           <p><a href="https://www.riksbank.se/en-gb/press-and-published/notices-and-press-releases/press-releases/2026/offline-card-payments--the-options-are-now-expanding/">Riksbanken meddelade den 1 juli att möjligheten till offlinebetalningar med kort utökats</a> för köp av bland annat livsmedel, läkemedel och drivmedel vid bemannade stationer. Lösningen omfattar huvuddelen av de Visa- och Mastercardkort för vuxna som ingår i överenskommelsen. Den kräver fysiskt kort och pinkod; offlinebetalning med Swish var fortfarande under utredning vid beskedet.</p>
 <p>De köp som omfattas kan genomföras trots ett kommunikationsavbrott. Offlinefunktionen löser därmed kontakten med betalningssystemet, men inte ett elavbrott eller brist på personal och varor.</p>

@@ -422,7 +422,7 @@
     }
     @media print { .political-country,.political-country-quote { break-inside:avoid; }.political-country-grid { grid-template-columns:minmax(0,1fr); }.political-landscape,.political-country-quote { background:transparent; } }
 
-    /* Three compact editorial breaks: one political moment, one system object and one illustrated first day. */
+    /* Compact editorial breaks that clarify a case without taking over the chapter. */
     .political-moment { display:grid;grid-template-columns:minmax(220px,.82fr) minmax(0,1.18fr);min-width:0;margin:18px 0 25px;border:1px solid rgba(184,151,58,.42);background:linear-gradient(145deg,rgba(9,24,42,.98),rgba(17,43,58,.92));overflow:hidden; }
     .political-moment-visual { position:relative;min-height:248px;margin:0; }
     .political-moment-visual img { display:block;width:100%;height:100%;min-height:248px;object-fit:cover;object-position:42% center; }
@@ -468,6 +468,21 @@
     .outage-day-steps span { display:block;color:var(--muted);font:.7rem/1.45 var(--sans); }
     .outage-day figcaption { margin:0;padding:9px 14px 10px;border-top:1px solid rgba(184,151,58,.2);color:var(--quiet);font:.68rem/1.5 var(--sans); }
 
+    .paired-case { min-width:0;margin:24px 0 27px;border:1px solid rgba(184,151,58,.42);background:linear-gradient(145deg,rgba(8,24,42,.98),rgba(16,43,57,.93));overflow:hidden; }
+    .paired-case>header { display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:20px;align-items:end;padding:14px 17px 13px;border-bottom:1px solid rgba(184,151,58,.24); }
+    .paired-case-kicker { color:var(--gold);font:700 .64rem/1.4 var(--sans);letter-spacing:.11em;text-transform:uppercase; }
+    .paired-case h4 { margin:0;color:var(--text);font:500 clamp(1.12rem,2.1vw,1.42rem)/1.22 var(--serif); }
+    .paired-case-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .paired-case-card { position:relative;isolation:isolate;display:flex;min-width:0;min-height:154px;flex-direction:column;justify-content:flex-end;padding:16px 17px;background-position:center;background-size:cover; }
+    .paired-case-card::before { content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(180deg,rgba(4,14,26,.26),rgba(4,14,26,.94) 76%); }
+    .paired-case-card:first-child { border-right:1px solid rgba(184,151,58,.28);background-image:url('assets/report-kylsystem.webp');background-position:center 54%; }
+    .paired-case-card:last-child { background-image:url('assets/report-forsta-dygnet.webp');background-position:right center; }
+    .paired-case-route { display:block;margin-bottom:4px;color:#f0d66f;font:700 .62rem/1.35 var(--sans);letter-spacing:.08em;text-transform:uppercase; }
+    .paired-case h5 { margin:0 0 5px;color:#fff;font:600 .92rem/1.3 var(--sans); }
+    .paired-case-card p { max-width:36rem;margin:0;color:#d6dce2;font:.73rem/1.48 var(--sans); }
+    .paired-case figcaption { display:grid;grid-template-columns:auto minmax(0,1fr);gap:13px;align-items:start;margin:0;padding:11px 16px 12px;border-top:1px solid rgba(184,151,58,.24);color:var(--muted);font:.72rem/1.5 var(--sans); }
+    .paired-case figcaption strong { color:var(--gold);font-size:.67rem;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap; }
+
     @media(max-width:720px) {
       .political-moment { grid-template-columns:minmax(0,1fr); }
       .political-moment-visual,.political-moment-visual img { min-height:0; }
@@ -485,8 +500,15 @@
       .outage-day-steps { grid-auto-flow:column;grid-auto-columns:minmax(210px,74vw);grid-template-columns:none;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-color:rgba(184,151,58,.5) transparent; }
       .outage-day-steps li { min-height:132px;scroll-snap-align:start; }
       .outage-day-steps span { font-size:.78rem; }
+      .paired-case>header { grid-template-columns:minmax(0,1fr);gap:4px;padding:13px 14px 12px; }
+      .paired-case-grid { grid-auto-flow:column;grid-auto-columns:minmax(245px,82vw);grid-template-columns:none;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-color:rgba(184,151,58,.5) transparent; }
+      .paired-case-card { min-height:164px;scroll-snap-align:start; }
+      .paired-case-card:first-child { border-right:1px solid rgba(184,151,58,.28); }
+      .paired-case-card p { font-size:.79rem; }
+      .paired-case figcaption { grid-template-columns:minmax(0,1fr);gap:3px;padding:10px 14px 11px; }
+      .paired-case figcaption strong { white-space:normal; }
     }
-    @media print { .political-moment,.object-explainer,.outage-day { break-inside:avoid;background:transparent; }.outage-day-steps { grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible; } }
+    @media print { .political-moment,.object-explainer,.outage-day,.paired-case { break-inside:avoid;background:transparent; }.outage-day-steps { grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible; }.paired-case-grid { grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible; } }
 /* Ombud: HTML text keeps the diagram readable when branches stack on phones. */
     .proxy-network { margin:30px 0 34px;padding:22px;border:1px solid rgba(184,151,58,.5);background:linear-gradient(150deg,#102d3e,#0d1e34);min-width:0;max-width:100%; }
     .proxy-network .proxy-kicker { color:var(--blue);font:700 .7rem/1.5 var(--sans);letter-spacing:.13em;text-transform:uppercase; }
@@ -4286,6 +4308,26 @@ html{overflow-x:clip}
               <li><time datetime="2026-08">Mars–augusti 2026</time><strong>Lagkrav följs av praktiska åtgärder</strong><span>KRITIS-lagen träder i kraft. Berlin beslutar därefter om reservkraft, bättre larmkedjor och snabbare tillträde för reparatörer vid stadens mobilmaster.</span></li>
             </ol>
             <figcaption id="germany-lessons-caption">Förloppet bygger på Berlins redovisning av elavbrotten och stadens <a href="https://www.berlin.de/rbmskzl/aktuelles/pressemitteilungen/2026/pressemitteilung.1701581.php">åtgärdsplan för kommunikationsnäten</a>.</figcaption>
+          </figure>
+
+          <figure class="paired-case" id="kylsystem-berlin-jamforelse" aria-labelledby="kylsystem-berlin-jamforelse-title">
+            <header>
+              <span class="paired-case-kicker">Två händelser · en gemensam sårbarhet</span>
+              <h4 id="kylsystem-berlin-jamforelse-title">Olika angreppsvägar, samma beroendekedja</h4>
+            </header>
+            <div class="paired-case-grid">
+              <article class="paired-case-card">
+                <span class="paired-case-route">Digital väg · Sverige och Frankrike</span>
+                <h5>Uppkopplade kylsystem</h5>
+                <p>Distansåtkomst blev en angreppsväg mot butiker och plasmaförvaring. I Frankrike begränsade larm och personal följderna.</p>
+              </article>
+              <article class="paired-case-card">
+                <span class="paired-case-route">Fysisk väg · Berlin</span>
+                <h5>Bränder mot elinfrastruktur</h5>
+                <p>Skadan i elnätet slog vidare mot värme, telefoni, internet, nödnummer och myndigheternas varningar.</p>
+              </article>
+            </div>
+            <figcaption><strong>Detta förenar fallen</strong><span>Följderna avgörs inte bara av det första felet. Larm, reservkraft, kommunikation, personal och tillträde måste fungera tillsammans.</span></figcaption>
           </figure>
 
           <details class="report-disclosure case-collection" id="c4-tyskland-efteranalys"><summary>Vad Berlin och den tyska staten ändrade efter avbrottet</summary><div class="case-collection-body">

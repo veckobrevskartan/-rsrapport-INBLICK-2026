@@ -804,7 +804,7 @@
 .chapter-film-note{margin:0;padding:8px 12px 10px;color:var(--quiet);font:.68rem/1.5 var(--sans)}
 @media(max-width:600px){.chapter-film{margin-top:13px}.chapter-film>summary{grid-template-columns:18px minmax(0,1fr) 16px;gap:8px;padding:10px}.chapter-film-meta{grid-column:2;grid-row:2;white-space:normal}.chapter-film>summary::after{grid-column:3;grid-row:1/span 2}}
 
-/* Chapter 01 uses a visible, automatically playing lead film. */
+/* Featured chapter films play directly above their assessments. */
 .chapter-film-featured{width:min(820px,100%);margin:18px 0 24px;border:1px solid rgba(184,151,58,.42);background:rgba(5,11,19,.82);box-shadow:0 20px 54px rgba(0,0,0,.34);overflow:hidden}
 .chapter-film-featured .chapter-film-video{width:100%;aspect-ratio:16/9;object-fit:cover}
 @media(max-width:600px){.chapter-film-featured{margin:14px 0 18px}}
@@ -1956,16 +1956,17 @@ html{overflow-x:clip}
   <div class="chapter-opening-bg" role="img" aria-label="Tematisk illustration av elförsörjning, kommunikationer och industriverksamhet i en europeisk kuststad."></div>
   <div class="chapter-opening-content"><div class="section-kicker">02 · Krig, avskräckning och geografiska samband · lägesbild 5 november 2026</div>
   <h2 id="h-sakerhetslage">Krig och sabotage orsakar återkommande avbrott i Europa</h2>
+  <figure class="chapter-film-featured">
+    <video class="chapter-film-video" controls autoplay muted loop playsinline preload="auto" poster="assets/chapter-02-summary-poster.webp" aria-label="Ljudlös sammanfattningsfilm för kapitel 02, Europas säkerhetsläge">
+      <source src="assets/chapter-02-summary.mp4?v=20261109-2" type="video/mp4">
+      Din webbläsare kan inte spela upp MP4-video.
+    </video>
+  </figure>
   <div class="judgement chapter-judgement">
  <p class="judgement-label">Bedömningsfråga</p>
  <p class="judgement-question">Kommer krig och sabotage under 2027 att orsaka återkommande skador eller avbrott i Europas energi-, kommunikations- och transportsystem eller i försvarsindustrin?</p>
  <p class="judgement-answer"><span class="chapter-meter" aria-hidden="true"><svg viewBox="0 0 120 120"><circle class="chapter-meter-track" cx="60" cy="60" r="48" pathLength="100"></circle><circle class="chapter-meter-range" cx="60" cy="60" r="48" pathLength="100" data-fill="80" stroke-dasharray="0 100" stroke-dashoffset="0" transform="rotate(-90 60 60)"></circle></svg><span class="chapter-meter-center"><span class="chapter-meter-level">Sannolik</span><span class="chapter-meter-band">≥80 %</span></span></span><strong class="likelihood">Sannolik <span>≥80 %</span></strong><span class="judgement-conclusion">Ja. Rapporten bedömer att nya skador eller avbrott är sannolika under 2027. Kriget har redan skadat Ukrainas elnät och civil sjöfart i Svarta havet. I andra delar av Europa har sabotage slagit mot el-, tele- och järnvägsanläggningar. Myndigheter har också stoppat eller utrett planer mot försvarsföretag.</span></p>
  </div>
-  
-<details class="chapter-film">
-  <summary><span class="chapter-film-icon" aria-hidden="true">▶</span><span class="chapter-film-title">Se sammanfattningen av kapitel 02</span><span class="chapter-film-meta">40 sek · utan ljud</span></summary>
-  <div class="chapter-film-body"><video class="chapter-film-video" controls playsinline preload="none" poster="assets/kapitel-europeiska-samhallssystem-v2.webp" aria-label="Ljudlös sammanfattningsfilm för kapitel 02, Europas säkerhetsläge"><source src="assets/chapter-02-summary.mp4" type="video/mp4">Din webbläsare kan inte spela upp MP4-video.</video><p class="chapter-film-note">Textfilm byggd av kapitlets bedömning och rapportens tematiska illustration.</p></div>
-</details>
 </div>
   <p class="chapter-opening-caption">Tematisk illustration av Europas elförsörjning, kommunikationer och industri. AI-genererad.</p>
 </div>

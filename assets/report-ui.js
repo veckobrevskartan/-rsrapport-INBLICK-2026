@@ -36,6 +36,37 @@ document.documentElement.setAttribute('data-report-ui', 'loaded');
   window.addEventListener('resize', fillVisibleMeters);
   window.addEventListener('hashchange', function () { requestAnimationFrame(fillVisibleMeters); });
 
+  const terrainChapters = [
+    { id:'varldsordning', terrain:'varldsordning' },
+    { id:'sakerhetslage', terrain:'sakerhetslage' },
+    { id:'sverige', terrain:'sverige' },
+    { id:'strategiska-domainer', terrain:'strategiska-domainer' }
+  ].map(function (item) {
+    return { element:document.getElementById(item.id), terrain:item.terrain };
+  }).filter(function (item) { return item.element; });
+  let terrainFrame = 0;
+  function updateTerrain() {
+    terrainFrame = 0;
+    const focusLine = window.innerHeight * 0.42;
+    let active = null;
+    terrainChapters.forEach(function (item) {
+      const rect = item.element.getBoundingClientRect();
+      if (rect.top <= focusLine && rect.bottom > focusLine) active = item.terrain;
+    });
+    if (active) document.documentElement.setAttribute('data-terrain', active);
+    else document.documentElement.removeAttribute('data-terrain');
+  }
+  function queueTerrainUpdate() {
+    if (terrainFrame) return;
+    terrainFrame = requestAnimationFrame(updateTerrain);
+  }
+  updateTerrain();
+  requestAnimationFrame(updateTerrain);
+  window.addEventListener('load', updateTerrain, { once:true });
+  window.addEventListener('scroll', queueTerrainUpdate, { passive:true });
+  window.addEventListener('resize', queueTerrainUpdate);
+  window.addEventListener('hashchange', function () { requestAnimationFrame(updateTerrain); });
+
   const root = document.querySelector('#hormuz-marknadsbild');
   if (!root) return;
   const svg = root.querySelector('[data-hormuz-chart]');

@@ -1,4 +1,5 @@
 /* Interaktioner för sannolikhetsmätare och kapitelvisualiseringar. */
+document.documentElement.setAttribute('data-report-ui', 'loaded');
 (function () {
   const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const meters = Array.from(document.querySelectorAll('.chapter-meter-range[data-fill]'));
@@ -22,14 +23,18 @@
     });
   }
 
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) { if (entry.isIntersecting) fillMeter(entry.target); });
-    }, { threshold:.08, rootMargin:'0px' });
-    meters.forEach(function (circle) { observer.observe(circle.closest('.chapter-meter') || circle); });
-  } else {
-    meters.forEach(fillMeter);
+  function fillVisibleMeters() {
+    meters.forEach(function (circle) {
+      if (circle.dataset.animated === 'true') return;
+      const meter = circle.closest('.chapter-meter') || circle;
+      const rect = meter.getBoundingClientRect();
+      if (rect.bottom >= 0 && rect.top <= window.innerHeight) fillMeter(meter);
+    });
   }
+  fillVisibleMeters();
+  window.addEventListener('scroll', fillVisibleMeters, { passive:true });
+  window.addEventListener('resize', fillVisibleMeters);
+  window.addEventListener('hashchange', function () { requestAnimationFrame(fillVisibleMeters); });
 
   const root = document.querySelector('#hormuz-marknadsbild');
   if (!root) return;

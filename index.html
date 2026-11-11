@@ -1518,10 +1518,10 @@ html{overflow-x:clip}
     /* Egna dekorativa terrängillustrationer följer respektive huvudkapitel. */
     .report-terrain{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0;background-image:linear-gradient(90deg,rgba(7,16,28,.91),rgba(7,16,28,.84) 55%,rgba(7,16,28,.76)),var(--terrain-image);background-size:cover;background-position:center;transition:opacity .45s ease}
     html[data-terrain] .report-terrain{opacity:1}
-    html[data-terrain="varldsordning"]{--terrain-image:url('assets/background-original-atlanten-v1.webp')}
-    html[data-terrain="sakerhetslage"]{--terrain-image:url('assets/background-original-europa-naromrade-v1.webp')}
-    html[data-terrain="sverige"]{--terrain-image:url('assets/background-original-skandinavien-v1.webp')}
-    html[data-terrain="strategiska-domainer"]{--terrain-image:url('assets/background-original-ostersjon-v1.webp')}
+    html[data-terrain="varldsordning"]{--terrain-image:url('assets/background-satellite-atlantic.webp')}
+    html[data-terrain="sakerhetslage"]{--terrain-image:url('assets/background-satellite-europe-gulf.webp')}
+    html[data-terrain="sverige"]{--terrain-image:url('assets/background-satellite-scandinavia.webp')}
+    html[data-terrain="strategiska-domainer"]{--terrain-image:url('assets/background-satellite-nordic-baltic.webp')}
     @media(max-width:700px){.report-terrain{background-image:linear-gradient(90deg,rgba(7,16,28,.88),rgba(7,16,28,.85)),var(--terrain-image);background-position:58% center}}
     @media(prefers-reduced-motion:reduce){.report-terrain{transition:none}}
     @media print{.report-terrain{display:none!important}}

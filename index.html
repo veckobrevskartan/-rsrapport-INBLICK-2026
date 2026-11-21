@@ -5334,7 +5334,8 @@ html{overflow-x:clip}
       links.className = 'toc-group-links';
       links.append(link(item.id, 'Kapitelöversikt', 'toc-overview'));
       chapter.querySelectorAll('h3[id]').forEach(heading => {
-        if (heading.closest('details, figure, [role="tabpanel"]')) return;
+        const nearestDetails = heading.closest('details');
+        if ((nearestDetails && !nearestDetails.classList.contains('chapter-full')) || heading.closest('figure, [role="tabpanel"]')) return;
         links.append(link(heading.id, heading.textContent.trim()));
       });
       group.append(summary, links);
@@ -5385,7 +5386,9 @@ html{overflow-x:clip}
       if (activeChapter) {
         const chapter = document.getElementById(active.id);
         chapter.querySelectorAll('h3[id]').forEach(heading => {
-          if (!heading.closest('details, figure, [role="tabpanel"]') && heading.getBoundingClientRect().top <= focusLine) {
+          const nearestDetails = heading.closest('details');
+          const isMainHeading = (!nearestDetails || nearestDetails.classList.contains('chapter-full')) && !heading.closest('figure, [role="tabpanel"]');
+          if (isMainHeading && heading.getBoundingClientRect().top <= focusLine) {
             activeTarget = heading.id;
           }
         });
